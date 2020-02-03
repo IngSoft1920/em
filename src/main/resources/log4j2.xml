@@ -13,8 +13,8 @@
 
 		<!-- Rolling File Appender -->
 		<RollingFile name="FileAppender"
-			fileName="logs/em.log"
-			filePattern="logs/em-%d{yyyy-MM-dd}-%i.log">
+			fileName="/hs/logs/em.log"
+			filePattern="/hs/logs/em-%d{yyyy-MM-dd}-%i.log">
 			<PatternLayout>
 				<Pattern>${LOG_PATTERN}</Pattern>
 			</PatternLayout>
