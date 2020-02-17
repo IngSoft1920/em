@@ -39,6 +39,16 @@ public class API {
 	//recibimos (id_turno,id_empleado,horario) que vamos a insertar en la tabla turnos 
 	public void creaTurno(@RequestBody DatoTurnoBean nuevoTurno){
 		 //TurnoDAO.insertarTurno(nuevoTurno);
+		BeanListHandler<DatoTurnoBean> handler=new BeanListHandler<>(DatoTurnoBean.class);
+		QueryRunner runner=new QueryRunner();
+		String query="Insert into empleado values("+nuevoTurno.getId_turno()+","+nuevoTurno.getId_empleado()+","+nuevoTurno.getTiempo()+")";
+		List<DatoTurnoBean> res=null;
+		try {
+			res=runner.query(ConectorBBDD.conectar(), query,handler);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		
 	}
 	
 	
@@ -55,16 +65,22 @@ public class API {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		JsonArray listaEmpleados=new JsonArray();
+		JsonArray listaIDEmpleados=new JsonArray();
+		JsonArray listaEstadoEmpleados=new JsonArray();
+		JsonArray listaIDRolEmpleados=new JsonArray();
 		
 		for(DatoEmpleadoBean empleado:res) {
-			listaEmpleados.add("NuevoEmpleado");
-			listaEmpleados.add(empleado.getId_empleado());
-			listaEmpleados.add(empleado.getEstado());
-			listaEmpleados.add(empleado.getId_rol());
+			listaIDEmpleados.add(empleado.getId_empleado());
+			listaEstadoEmpleados.add(empleado.getEstado());
+			listaIDRolEmpleados.add(empleado.getId_rol());
 		}
 		
-		return listaEmpleados.toString();
+		JsonObject empleado = new JsonObject();
+		empleado.add("id_empleado",listaIDEmpleados);
+		empleado.add("estado",listaEstadoEmpleados);
+		empleado.add("id_rol",listaIDRolEmpleados);
+		
+		return empleado.toString();
 	}
 	
 	
