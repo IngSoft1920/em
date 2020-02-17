@@ -1,7 +1,7 @@
 package ingsoft1920.em.Beans;
 
 public class DatoEmpleadoBean {
-	private int id_empleado;
+	int id_empleado;
 	int estado;
 	int id_rol;
 	

@@ -37,6 +37,5 @@ public class ConectorBBDD {
 		conn = null;
 	}
 	
-	
-	
+		
 }
