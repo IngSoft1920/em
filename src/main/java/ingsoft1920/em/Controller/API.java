@@ -41,10 +41,10 @@ public class API {
 		 //TurnoDAO.insertarTurno(nuevoTurno);
 		BeanListHandler<DatoTurnoBean> handler=new BeanListHandler<>(DatoTurnoBean.class);
 		QueryRunner runner=new QueryRunner();
-		String query="Insert into empleado values("+nuevoTurno.getId_turno()+","+nuevoTurno.getId_empleado()+","+nuevoTurno.getTiempo()+")";
+		String query="Insert into empleado values(?,?,?)";
 		List<DatoTurnoBean> res=null;
 		try {
-			res=runner.query(ConectorBBDD.conectar(), query,handler);
+			res=runner.query(ConectorBBDD.conectar(), query,handler,nuevoTurno.getId_turno(),nuevoTurno.getId_empleado(),nuevoTurno.getTiempo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
