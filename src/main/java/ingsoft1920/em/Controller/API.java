@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 //TO-DO IMPORTAR PAQUETES NECESARIOS
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.DatoTurnoBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
@@ -37,17 +39,21 @@ public class API {
 	@ResponseBody
 	@PostMapping("/creaTurno")
 	//recibimos (id_turno,id_empleado,horario) que vamos a insertar en la tabla turnos 
-	public void creaTurno(@RequestBody DatoTurnoBean nuevoTurno){
+	public void creaTurno(@RequestBody String req){
 		 //TurnoDAO.insertarTurno(nuevoTurno);
-		BeanListHandler<DatoTurnoBean> handler=new BeanListHandler<>(DatoTurnoBean.class);
+		JsonObject obj = (JsonObject) JsonParser.parseString(req);
+		int id_turno=obj.get("id_turno").getAsInt();
+		int id_empleado=obj.get("id_empleado").getAsInt();
+		System.out.println(id_turno+","+id_empleado);
 		QueryRunner runner=new QueryRunner();
-		String query="Insert into empleado values(?,?,?)";
-		List<DatoTurnoBean> res=null;
+		String query="Insert into turno (id_turno,id_empleado) values(?,?)";
 		try {
-			res=runner.query(ConectorBBDD.conectar(), query,handler,nuevoTurno.getId_turno(),nuevoTurno.getId_empleado(),nuevoTurno.getTiempo());
+			int numRows=runner.update(ConectorBBDD.conectar(),query,id_turno,id_empleado);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
+		
+		
 		
 	}
 	
