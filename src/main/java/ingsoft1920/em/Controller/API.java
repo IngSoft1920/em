@@ -131,7 +131,6 @@ public class API {
 		JsonArray listaEstadoEmpleados=new JsonArray();
 		JsonArray listaIDRolEmpleados=new JsonArray();
 		
-		List<DatoEmpleadoBean> res=null;
 		
 		for(DatoEmpleadoBean empleado:res) {
 			listaIDEmpleados.add(empleado.getId_empleado());
