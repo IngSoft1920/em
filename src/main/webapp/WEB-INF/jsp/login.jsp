@@ -19,7 +19,7 @@
 		<br>
 		<label>Contraseña</label>
 			<form:input type="password" name="password" path="password" />
-			<input type="password" name="Contraseña" required=true>
+			<input type="password" name="Password" required=true>
 		<br>
 		<input type="submit" value="Login">
 		<br>
