@@ -54,13 +54,15 @@ public class API {
 		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
 		QueryRunner runner=new QueryRunner();
 		String query="SELECT * FROM empleado";
-		List<DatoEmpleadoBean> res=null;
 		try {
 			res=runner.query(ConectorBBDD.conectar(), query,handler);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		JsonArray listaEmpleados=new JsonArray();
+		
+		List<DatoEmpleadoBean> res=null;
 		
 		for(DatoEmpleadoBean empleado:res) {
 			listaEmpleados.add("NuevoEmpleado");
