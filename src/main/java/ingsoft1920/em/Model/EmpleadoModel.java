@@ -4,18 +4,25 @@ public class EmpleadoModel {
 //esto instancia objetos 
 	private int id_Empleado;
 	private int id_Turno;
-	private String id_Rol;
-	private int estado;
 	
 	//Modelo para la consulta1
-	public EmpleadoModelC1(int id_Empleado, int id_Turno) {
+	public EmpleadoModel(int id_Empleado, int id_Turno) {
+		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Turno=id_Turno;
 		}
-	//Modelo para la consulta2
-	public EmpleadoModelC2(int id_Empleado, String id_Rol, int estado) {
-		this.id_Empleado=id_Empleado;
-		this.id_Rol=id_Rol;
-		this.estado=estado;
+	
+	public int getId_Empleado() {
+		return id_Empleado;
+	}
+	public void setId_Empleado(int id_Empleado) {
+		this.id_Empleado = id_Empleado;
+	}
+	public int getId_Turno() {
+		return id_Turno;
+	}
+	public void setId_Turno(int id_Turno) {
+		this.id_Turno = id_Turno;
 	}
 }
+	
