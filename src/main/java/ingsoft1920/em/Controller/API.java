@@ -34,7 +34,7 @@ public class API {
 		//consulta sql
 		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
 		QueryRunner runner=new QueryRunner();
-		String query="select empleado.id_empleado,empleado.nombre from empleado join rol on empleado.id_empleado=rol.id_empleado where empleado.estado=0 and rol.id_rol=?";
+		String query="select empleado.id_empleado,empleado.nombre,empleado.estado from empleado join rol on empleado.id_empleado=rol.id_empleado where rol.id_rol=?";
 		List<DatoEmpleadoBean> res=null;
 		try {
 			res=runner.query(ConectorBBDD.conectar(), query,handler,id_rol);
@@ -44,15 +44,18 @@ public class API {
 		//recogemos informacion y procesamos json
 		JsonArray listaIDEmpleados=new JsonArray();
 		JsonArray listaEmpleadosNombres=new JsonArray();
+		JsonArray listaEmpleadosEstado=new JsonArray();
 		
 		for(DatoEmpleadoBean empleado:res) {
 			listaIDEmpleados.add(empleado.getId_empleado());
 			listaEmpleadosNombres.add(empleado.getNombre());
+			listaEmpleadosEstado.add(empleado.getEstado());
 		}
 		
 		JsonObject empleado = new JsonObject();
 		empleado.add("id_empleado",listaIDEmpleados);
-		empleado.add("estado",listaEmpleadosNombres);
+		empleado.add("nombre",listaEmpleadosNombres);
+		empleado.add("estado",listaEmpleadosEstado);
 		return empleado.toString();
 		}
 	
