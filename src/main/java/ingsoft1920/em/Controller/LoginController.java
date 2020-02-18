@@ -32,22 +32,18 @@ public class LoginController {
 	@PostMapping("/login")
 	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		
-//		String usuarioValido= "usuario";
-//		String passValida= "1234";		
-//		String usuario = "";  
-//		String pass = "";
-//		TODO coger datos del formulario y checkearlos para entrar en el menú
-		
-		
-		if (loginBean.checkCamposValidos() )
-			return "menu";
+				
+		String usuario = loginBean.getUsuario();  
+		String pass = loginBean.getPassword();
+				
+		if (usuario.equals("usuario") && pass.equals("1234"))
+			return "/menu";
 		
 		
 		else {
 			model.addAttribute("signupBean",loginBean);
-			model.addAttribute("mensajeError","Usuario no valido");
-			return "login";
+			model.addAttribute("mensajeError","Usuario o contraseña no validos");
+			return "/login";
 		}
 		
 	}
