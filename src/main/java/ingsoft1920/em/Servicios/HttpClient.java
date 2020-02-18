@@ -50,4 +50,38 @@ public class HttpClient {
 			throw ex;
 		}
 	}
+
+	//Obtiene el cuerpo de la respeusta como string.
+	public String getResponseBody() throws Exception {
+		logger.info("Obteniendo el cuerpo de la respuesta");
+		try {
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String inputLine;
+			StringBuffer content = new StringBuffer();
+			while ((inputLine = in.readLine()) != null) {
+				content.append(inputLine);
+			}
+			in.close();
+			logger.debug("Cuerpo de la respuesta: \n"+content.toString());
+			return content.toString();
+		}catch(Exception ex) {
+			logger.error("Error al leer cuerpo de la peticion",ex);
+			throw ex;
+		}
+	}
+	public String getUrlasString() {
+		return this.url.toString();
+	}
+	//Esatblece el cuerpo de la peticion como string
+	public void setRequestBody(String body) {
+		con.setDoOutput(true);
+		try(OutputStream os = con.getOutputStream()) {
+		    byte[] input = body.getBytes("utf-8");
+		    os.write(input, 0, input.length);
+		    con.setRequestMethod(this.method);
+		}catch(Exception ex) {
+		}
+		logger.info("Estableciendo cuerpo de peticion");
+		logger.debug("Cuerpo de la peticion: \n"+body);
+	}
 }
