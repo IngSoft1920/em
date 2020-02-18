@@ -1,19 +1,28 @@
 package ingsoft1920.em.Beans;
 
 public class DatoEmpleadoBean {
-	private int id_empleado;
-	int estado;
+	int id_empleado;
+	boolean estado;
 	int id_rol;
-	
+	String nombre;
 	public DatoEmpleadoBean() {}
 	
-	public DatoEmpleadoBean(int empleado_id,int estado_id,int rol_id) {
+	public DatoEmpleadoBean(int empleado_id,boolean estado,int rol_id,String nombre) {
 		this.id_empleado=empleado_id;
-		this.estado=estado_id;
+		this.estado=estado;
 		this.id_rol=rol_id;
+		this.nombre=nombre;
 	}
 	
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public int getId_empleado() {
 		return id_empleado;
 	}
@@ -22,11 +31,11 @@ public class DatoEmpleadoBean {
 		this.id_empleado = id_empleado;
 	}
 
-	public int getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
 
-	public void setEstado(int estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
