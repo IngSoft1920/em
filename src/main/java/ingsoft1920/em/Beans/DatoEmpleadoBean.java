@@ -4,16 +4,25 @@ public class DatoEmpleadoBean {
 	int id_empleado;
 	int estado;
 	int id_rol;
-	
+	String nombre;
 	public DatoEmpleadoBean() {}
 	
-	public DatoEmpleadoBean(int empleado_id,int estado_id,int rol_id) {
+	public DatoEmpleadoBean(int empleado_id,int estado_id,int rol_id,String nombre) {
 		this.id_empleado=empleado_id;
 		this.estado=estado_id;
 		this.id_rol=rol_id;
+		this.nombre=nombre;
 	}
 	
 	
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 	public int getId_empleado() {
 		return id_empleado;
 	}
