@@ -1,4 +1,4 @@
-<html>
+ <html>
 <head>
 	<meta charset="utf-8">
 	<title>Página de inicio de empleados</title> 
@@ -7,11 +7,12 @@
 	<div>
 		<h1 text-align = "center">
 		<br>
-			Registro de Empleados
+			 Login Empleados
 		</h1>
 	</div>
-	<form method="POST" action="Pagina Empleados.html"
-		modelAttribute="signupBean" style = "font-family:courier,arial,helvética;">
+	<form method="POST" 
+		modelAttribute="loginBean" style = "font-family:courier;">
+		
 		<label>Usuario</label>
 			<form:input type="text" name="usuario" path="usuario" />
 			<input type="text" name="Usuario" required=true" > 
@@ -27,7 +28,7 @@
 <style>
             
             body{
-                text-align: left;
+                text-align: center;
                 color: Black;
                 background-color:399D9A ;
                  padding: 5px;

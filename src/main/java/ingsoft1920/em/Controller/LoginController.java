@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ingsoft1920.em.Beans.LoginBean;
+import ingsoft1920.em.Beans.LoginBean;;
 
 
 @Controller
@@ -18,30 +18,37 @@ public class LoginController {
 	
 	final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	//@Autowired
-	//LoginBean loginBean;
+//	@Autowired
+//	LoginBean loginBean;
 	
 	@GetMapping("/login")
 	public String login(Model model) {
-		//LoginBean loginBean = new LoginBean();
-		//model.addAttribute("loginBean",loginBean);
-		//model.addAttribute("mensajeError","");
+		LoginBean loginBean = new LoginBean();
+		model.addAttribute("loginBean",loginBean);
+		model.addAttribute("mensajeError","");
 		return "login";
 	}
-//	
-//	@PostMapping("/login")
-//	public String signupPost(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-//			Model model) {
-//		
-//		if(loginBean.checkCamposValidos()) {
-//			//Podemos utilizar los metodos debug, info, warn y error para loggear mensajes
-//			//Hay que evitar el uso de System.out.println(), ya que NO SE GUARDA UNA VEZ SE ACABA
-//			//LA EJECUCION
-//			logger.info("Peticion de Signup recibida correctamente y con campos validos");
-//		
-//				return "menu";
-//
-//	}
-//		return "login";
-	//}
+	
+	@PostMapping("/login")
+	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		
+//		String usuarioValido= "usuario";
+//		String passValida= "1234";		
+//		String usuario = "";  
+//		String pass = "";
+//		TODO coger datos del formulario y checkearlos para entrar en el menú
+		
+		
+		if (loginBean.checkCamposValidos() )
+			return "menu";
+		
+		
+		else {
+			model.addAttribute("signupBean",loginBean);
+			model.addAttribute("mensajeError","Usuario no valido");
+			return "login";
+		}
+		
+	}
 }

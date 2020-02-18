@@ -9,7 +9,7 @@ public class LoginBean {
 	public LoginBean() {}
 	
 	public boolean checkCamposValidos() {
-		return true;
+		return false;
 	}
 
 	public String getUsuario() {
