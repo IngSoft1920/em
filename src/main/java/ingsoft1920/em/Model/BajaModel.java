@@ -3,9 +3,9 @@ package ingsoft1920.em.Model;
 public class BajaModel {
 	private int id_Empleado;
 	private int id_Baja;
-	private int duracion;
+	private String duracion;
 	
-	public BajaModel(int id_Empleado,int id_Baja, int duracion) {
+	public BajaModel(int id_Empleado,int id_Baja, String duracion) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Baja=id_Baja;
@@ -28,11 +28,11 @@ public class BajaModel {
 		this.id_Baja = id_Baja;
 	}
 
-	public int getDuracion() {
+	public String getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int duracion) {
+	public void setDuracion(String duracion) {
 		this.duracion = duracion;
 	}
 	

@@ -3,9 +3,9 @@ package ingsoft1920.em.Model;
 public class VacacionesModel {
 	private int id_Empleado;
 	private int id_Vacaciones;
-	private int duracion;
+	private String duracion;
 	
-	public VacacionesModel(int id_Empleado,int id_Vacaciones, int duracion) {
+	public VacacionesModel(int id_Empleado,int id_Vacaciones, String duracion) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Vacaciones=id_Vacaciones;
@@ -28,11 +28,11 @@ public class VacacionesModel {
 		this.id_Vacaciones = id_Vacaciones;
 	}
 
-	public int getDuracion() {
+	public String getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(int duracion) {
+	public void setDuracion(String duracion) {
 		this.duracion = duracion;
 	}
 

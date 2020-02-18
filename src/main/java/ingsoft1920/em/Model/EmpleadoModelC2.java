@@ -3,10 +3,10 @@ package ingsoft1920.em.Model;
 public class EmpleadoModelC2 {
 	private int id_Empleado;
 	private String id_Rol;
-	private int estado;
+	private boolean estado;
 	
 	//Modelo para la consulta2
-	public EmpleadoModelC2(int id_Empleado, String id_Rol, int estado) {
+	public EmpleadoModelC2(int id_Empleado, String id_Rol, boolean estado) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Rol=id_Rol;
@@ -29,11 +29,11 @@ public class EmpleadoModelC2 {
 		this.id_Rol = id_Rol;
 	}
 
-	public int getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
 
-	public void setEstado(int estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 
