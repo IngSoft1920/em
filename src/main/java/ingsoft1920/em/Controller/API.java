@@ -17,6 +17,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.Beans.DatoNominasBean;
 import ingsoft1920.em.Beans.DatoTurnoBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 @Controller
@@ -111,7 +112,50 @@ public class API {
 		
 		return turno.toString();
 	}
-	
+	//API PARA DHO
+			@ResponseBody
+			@PostMapping("/creaNomina")
+			//recibimos (id_empleado,nomina) que vamos a insertar en la tabla nominas 
+			public void creaNomina(@RequestBody String req){
+				 //NominaDAO.insertarNomina(nuevaNomina);
+				JsonObject obj = (JsonObject) JsonParser.parseString(req);
+				int id_empleado=obj.get("id_empleado").getAsInt();
+				int nomina=obj.get("nomina").getAsInt();
+				QueryRunner runner=new QueryRunner();
+				String query="Insert into nomina (id_empleado,nomina) values(?,?)";
+				try {
+					int numRows=runner.update(ConectorBBDD.conectar(),query,id_empleado,nomina);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			//API PARA DHO
+			@ResponseBody
+			@GetMapping("/seleccionaNomina")
+			//Enviamos la lista de los nominas
+			public String nominas() {
+				BeanListHandler<DatoNominasBean> handler=new BeanListHandler<>(DatoNominasBean.class);
+				QueryRunner runner=new QueryRunner();
+				String query="SELECT * FROM nomina";
+				List<DatoNominasBean> res=null;
+				try {
+					res=runner.query(ConectorBBDD.conectar(), query,handler);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				JsonArray listaIDNomina=new JsonArray();
+				JsonArray listaIDEmpleados=new JsonArray();
+				for(DatoNominasBean nomina:res) {
+					listaIDNomina.add(nomina.getNomina());
+					listaIDEmpleados.add(nomina.getId_empleado());
+				}
+				
+				JsonObject nomina = new JsonObject();
+				nomina.add("nomina",listaIDNomina);
+				nomina.add("id_empleado",listaIDNomina);
+				
+				return nomina.toString();
+			}
 	
 	
 	//EJEMPLO OBTENCION EMPLEADOS BBDD
