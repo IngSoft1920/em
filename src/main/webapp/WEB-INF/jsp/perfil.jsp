@@ -17,11 +17,11 @@
 
       <div id="menu">
         <ul>
-          <li><a href="#" class="enlace">Inicio</a></li>
-          <li><a href="#" class="enlace">Nomina</a></li>
-          <li><a href="#" class="enlace">Tareas</a></li>
-          <li><a href="#" class="activate-menu">Perfil</a></li>
-          <li><a href="#" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu2" class="enlace">Inicio</a></li>
+          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/tareas2" class="enlace">Tareas</a></li>
+          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 

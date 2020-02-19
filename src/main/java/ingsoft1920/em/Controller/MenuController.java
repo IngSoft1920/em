@@ -13,19 +13,14 @@ import ingsoft1920.em.Beans.LoginBean;
 
 @Controller
 public class MenuController {
+	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
 	@GetMapping("/menu")
-	public String login(Model model) {
+	public String menu(Model model) {
 		return "menu";
 	}
-	
-	@PostMapping("/menu")
-	public String menu(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) {
-		return "menu";
-	}
-	
+		
 	@GetMapping("/nomina")
 	public String nomina(Model model) {
 		return "nomina";
@@ -58,5 +53,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 			Model model) {
 		return "login";
 	}
+	
+	
 
 }

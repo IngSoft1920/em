@@ -31,7 +31,7 @@
 
     <section id="publicaciones1">
       <article class="cuerpo-nomina">
-        <a href="" class="enlace-nomina">
+        <a href="/nomina" class="enlace-nomina">
         <h2 class="nomina"> NOMINA </h2>
         </a>
         <img src="/img/nomina.jpg" class="img-post1">
@@ -52,7 +52,7 @@
 
     <section id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="" class="enlace-tarea">
+        <a href="/tarea" class="enlace-tarea">
         <h2 class="tarea"> TAREAS </h2>
         </a>
         <img src="/img/tareas.jpg" class="img-post2">
@@ -73,7 +73,7 @@
 
     <section id="publicaciones3">
       <article class="cuerpo-perfil">
-        <a href="" class="enlace-perfil">
+        <a href="/perfil" class="enlace-perfil">
         <h2 class="perfil"> PERFIL </h2>
         </a>
         <img src="/img/perfill.jpg" class="img-post3">
