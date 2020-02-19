@@ -15,8 +15,8 @@
 
       <div id="menu">
         <ul>
-          <li><a href="#" class="activate-menu">Inicio</a></li>
-          <li><a href="#" class="enlace">Nomina</a></li>
+          <li><a href="/menu" class="activate-menu">Inicio</a></li>
+          <li><a href="/nomina" class="enlace">Nomina</a></li>
           <li><a href="#" class="enlace">Tareas</a></li>
           <li><a href="#" class="enlace">Perfil</a></li>
           <li><a href="#" class="enlace">Cerrar Sesion</a></li>
