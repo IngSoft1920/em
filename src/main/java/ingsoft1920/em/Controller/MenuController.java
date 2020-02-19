@@ -24,7 +24,29 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String menu(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
 		return "menu";
-}
+	}
 	
+	@GetMapping("/nomina")
+	public String nomina(Model model) {
+		return "nomina";
+	}
+	
+	@PostMapping("/nomina")
+	public String nomina(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "nomina";
+	}
+	
+	@GetMapping("/perfil")
+	public String perfil(Model model) {
+		return "perfil";
+	}
+	
+	@PostMapping("/perfil")
+	public String perfil(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "perfil";
+	}
+
 
 }
