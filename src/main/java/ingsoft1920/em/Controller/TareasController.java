@@ -10,61 +10,61 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
+
+
 @Controller 
-public class NominaController {
+public class TareasController {
 
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu3")
+	@GetMapping("/menu4")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu3")
+	@PostMapping("/menu4")
 	public String menup(Model model) {
 		return "menu";
 	}
 	
-	@GetMapping("/nomina3")
+	@GetMapping("/nomina4")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina3")
+	@PostMapping("/nomina4")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil3")
+	@GetMapping("/perfil4")
 	public String perfilp1(Model model) {
 		return "perfil";
 	}
 	
-	@PostMapping("/perfil3")
+	@PostMapping("/perfil4")
 	public String perfilp(Model model) {
 		return "perfil";
 	}
 	
-	@GetMapping("/cerrar3")
+	@GetMapping("/cerrar4")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar3")
+	@PostMapping("/cerrar4")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas3")
+	@GetMapping("/tareas4")
 	public String tareasp1(Model model) {
 		return "tareas";
 	}
 	
-	@PostMapping("/tareas3")
+	@PostMapping("/tareas4")
 	public String tareasp(Model model) {
 		return "tareas";
 	}
 	
 }
-
-

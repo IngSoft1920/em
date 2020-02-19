@@ -54,6 +54,17 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "login";
 	}
 	
+	@GetMapping("/tareas")
+	public String tareas(Model model) {
+		return "tareas";
+	}
+	
+	@PostMapping("/tareas")
+	public String tareas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "tareas";
+	}
+	
 	
 
 }

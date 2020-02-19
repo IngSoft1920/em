@@ -17,7 +17,7 @@
         <ul>
           <li><a href="/menu" class="activate-menu">Inicio</a></li>
           <li><a href="/nomina" class="enlace">Nomina</a></li>
-          <li><a href="#" class="enlace">Tareas</a></li>
+          <li><a href="/tareas" class="enlace">Tareas</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
@@ -52,7 +52,7 @@
 
     <section id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="/tarea" class="enlace-tarea">
+        <a href="/tareas" class="enlace-tarea">
         <h2 class="tarea"> TAREAS </h2>
         </a>
         <img src="/img/tareas.jpg" class="img-post2">
