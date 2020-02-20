@@ -13,18 +13,58 @@ import ingsoft1920.em.Beans.LoginBean;
 
 @Controller
 public class MenuController {
+	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
 	@GetMapping("/menu")
-	public String login(Model model) {
+	public String menu(Model model) {
 		return "menu";
 	}
+		
+	@GetMapping("/nomina")
+	public String nomina(Model model) {
+		return "nomina";
+	}
 	
-	@PostMapping("/menu")
-	public String menu(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+	@PostMapping("/nomina")
+	public String nomina(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "menu";
-}
+		return "nomina";
+	}
+	
+	@GetMapping("/perfil")
+	public String perfil(Model model) {
+		return "perfil";
+	}
+	
+	@PostMapping("/perfil")
+	public String perfil(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "perfil";
+	}
+	
+	@GetMapping("/cerrar")
+	public String cerrar(Model model) {
+		return "login";
+	}
+	
+	@PostMapping("/cerrar")
+	public String cerrar(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "login";
+	}
+	
+	@GetMapping("/tareas")
+	public String tareas(Model model) {
+		return "tareas";
+	}
+	
+	@PostMapping("/tareas")
+	public String tareas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "tareas";
+	}
+	
 	
 
 }

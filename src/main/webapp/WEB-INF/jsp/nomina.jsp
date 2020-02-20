@@ -18,11 +18,11 @@
 
       <div id="menu">
         <ul>
-          <li><a href="#" class="enlace">Inicio</a></li>
-          <li><a href="#" class="activate-menu">Nomina</a></li>
-          <li><a href="#" class="enlace">Tareas</a></li>
-          <li><a href="#" class="enlace">Perfil</a></li>
-          <li><a href="#" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu3" class="enlace">Inicio</a></li>
+          <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
+          <li><a href="/tareas3" class="enlace">Tareas</a></li>
+          <li><a href="/perfil3" class="enlace">Perfil</a></li>
+          <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 

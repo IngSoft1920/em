@@ -17,9 +17,9 @@
         <ul>
           <li><a href="/menu" class="activate-menu">Inicio</a></li>
           <li><a href="/nomina" class="enlace">Nomina</a></li>
-          <li><a href="#" class="enlace">Tareas</a></li>
-          <li><a href="#" class="enlace">Perfil</a></li>
-          <li><a href="#" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/tareas" class="enlace">Tareas</a></li>
+          <li><a href="/perfil" class="enlace">Perfil</a></li>
+          <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
@@ -31,10 +31,10 @@
 
     <section id="publicaciones1">
       <article class="cuerpo-nomina">
-        <a href="" class="enlace-nomina">
+        <a href="/nomina" class="enlace-nomina">
         <h2 class="nomina"> NOMINA </h2>
         </a>
-        <img src="img/nomina.png" class="img-post1">
+        <img src="/img/nomina.jpg" class="img-post1">
       </article>
     </section>
 
@@ -52,10 +52,10 @@
 
     <section id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="" class="enlace-tarea">
+        <a href="/tareas" class="enlace-tarea">
         <h2 class="tarea"> TAREAS </h2>
         </a>
-        <img src="img/tareas.png" class="img-post2">
+        <img src="/img/tareas.jpg" class="img-post2">
       </article>
     </section>
 
@@ -73,10 +73,10 @@
 
     <section id="publicaciones3">
       <article class="cuerpo-perfil">
-        <a href="" class="enlace-perfil">
+        <a href="/perfil" class="enlace-perfil">
         <h2 class="perfil"> PERFIL </h2>
         </a>
-        <img src="img/perfill.jpg" class="img-post3">
+        <img src="/img/perfill.jpg" class="img-post3">
         
       </article>
     </section>
