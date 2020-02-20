@@ -20,7 +20,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 //	@Autowired
 //	LoginBean loginBean;
 	
-	@GetMapping("/login")
+	@GetMapping("/")
 	public String login(Model model) {
 		LoginBean loginBean = new LoginBean();
 		model.addAttribute("loginBean",loginBean);
@@ -28,7 +28,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "login";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/")
 	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
 				
