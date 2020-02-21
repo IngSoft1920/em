@@ -16,13 +16,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.DatoTurnoBean;
+import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 @Controller
 public class API {
 
-	//TO-DO
 	//API fnb Devolvemos camareros disponibles  
 	@ResponseBody
 	@GetMapping("/empleadoTipo")
@@ -112,6 +113,144 @@ public class API {
 		return turno.toString();
 	}
 	
+	//API AÑADIR EMPLEADO
+	@ResponseBody
+	@PostMapping("/añadirEmpleado")
+	//Recibimos id_empleado, nombre, telefono , correo
+	public void añadeEmpleado(@RequestBody String req) {
+		//Creamos el objeto json con los parametros recibidos
+		JsonObject obj = (JsonObject) JsonParser.parseString(req);
+		int id_empleado=obj.get("id_empleado").getAsInt();
+		String nombre_empleado=obj.get("nombre").getAsString();
+		String telefono_empleado=obj.get("telefono").getAsString();
+		String correo_empleado=obj.get("correo").getAsString();
+		//Ejecutamos query
+		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
+		QueryRunner runner=new QueryRunner();
+		String query="INSERT INTO empleado (id_empleado,nombre,telefono,correo) VALUES (?,?,?,?);";
+		List<DatoEmpleadoBean> res=null;
+		try {
+			res=runner.query(ConectorBBDD.conectar(), query,handler,id_empleado,nombre_empleado,telefono_empleado,correo_empleado);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//API ELIMINAR EMPLEADO
+	@ResponseBody
+	@PostMapping("/eliminarEmpleado")
+	//Recibimos correo
+	public void eliminaEmpleado(@RequestBody String req) {
+		//Creamos el objeto json con los parametros recibidos
+		JsonObject obj = (JsonObject) JsonParser.parseString(req);
+		String correo_empleado=obj.get("correo").getAsString();
+		//Ejecutamos query
+		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
+		QueryRunner runner=new QueryRunner();
+		String query="DELETE FROM empleado WHERE correo=?";
+		List<DatoEmpleadoBean> res=null;
+		try {
+			res=runner.query(ConectorBBDD.conectar(), query,handler,correo_empleado);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//API ASIGNAR NOMINA
+	@ResponseBody
+	@PostMapping("/asignaNomina")
+	//Recibimos una nomina con un valor
+	public void asignaNomina(@RequestBody String req) {
+		//Creamos el objeto json con los parametros recibidos
+		JsonObject obj = (JsonObject) JsonParser.parseString(req);
+		int id_empleado=obj.get("id_empleado").getAsInt();
+		int valor=obj.get("valor").getAsInt();
+		//Ejecutamos query
+		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
+		QueryRunner runner=new QueryRunner();
+		String query="INSERT INTO nomina (id_empleado,valor) VALUES (?,?)";
+		List<DatoEmpleadoBean> res=null;
+		try {
+			res=runner.query(ConectorBBDD.conectar(), query,handler,id_empleado,valor);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//API ENVIA BAJA
+	@ResponseBody
+	@GetMapping("/baja")
+	//Enviamos informacion de la baja de un empleado recibimos id_empleado
+	public String baja(@RequestBody String req) {
+		//Obtenemos parametro recibido
+		JsonObject obj = (JsonObject) JsonParser.parseString(req);
+		int id_empleado=obj.get("id_empleado").getAsInt();
+		//QUERY
+		BeanListHandler<BajaBean> handler=new BeanListHandler<>(BajaBean.class);
+		QueryRunner runner=new QueryRunner();
+		String query="SELECT (id_baja,duracion,estado) FROM baja WHERE id_empleado=?";
+		List<BajaBean> res=null;
+		try {
+			res=runner.query(ConectorBBDD.conectar(), query,handler,id_empleado);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		//Guardamos resultado
+		JsonArray listaIDBaja=new JsonArray();
+		JsonArray listaDuracion=new JsonArray();
+		JsonArray listaEstado=new JsonArray();
+		for(BajaBean baja:res) {
+			listaIDBaja.add(baja.getId_baja());
+			listaDuracion.add(baja.getDuracion());
+			listaEstado.add(baja.isEstado());
+		}
+		//Transformamos a formato deseado
+		JsonObject baja = new JsonObject();
+		baja.add("id_baja",listaIDBaja);
+		baja.add("duracion",listaDuracion);
+		baja.add("estado",listaEstado);
+		
+		return baja.toString();
+		
+	}
+	
+	//API ENVIA VACACIONES
+		@ResponseBody
+		@GetMapping("/vacaciones")
+		//Enviamos informacion de las vacaciones de un empleado filtramos id_empleado
+		public String vacaciones(@RequestBody String req) {
+			//Obtenemos parametro recibido
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			int id_empleado=obj.get("id_empleado").getAsInt();
+			//QUERY
+			BeanListHandler<VacacionBean> handler=new BeanListHandler<>(VacacionBean.class);
+			QueryRunner runner=new QueryRunner();
+			String query="SELECT (id_baja,duracion,estado) FROM vacaciones WHERE id_empleado=?";
+			List<VacacionBean> res=null;
+			try {
+				res=runner.query(ConectorBBDD.conectar(), query,handler,id_empleado);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//Guardamos resultado
+			JsonArray listaIDVacacion=new JsonArray();
+			JsonArray listaDuracion=new JsonArray();
+			JsonArray listaEstado=new JsonArray();
+			for(VacacionBean vacacion:res) {
+				listaIDVacacion.add(vacacion.getId_vacacion());
+				listaDuracion.add(vacacion.getDuracion());
+				listaEstado.add(vacacion.isEstado());
+			}
+			//Transformamos a formato deseado
+			JsonObject vacacion = new JsonObject();
+			vacacion.add("id_vacacion",listaIDVacacion);
+			vacacion.add("duracion",listaDuracion);
+			vacacion.add("estado",listaEstado);
+			
+			return vacacion.toString();
+			
+		}
+		
 	
 	
 	//EJEMPLO OBTENCION EMPLEADOS BBDD
