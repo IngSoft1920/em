@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.BajaModel;
 
@@ -51,4 +53,36 @@ public class BajaDAO {
 		  }
 		  return res;
 	}
+
+
+	public static void editaBaja(BajaBean baja) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		boolean estado=baja.isEstado();
+		int id_empleado=baja.getId_empleado();
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("UPDATE baja SET estado=? WHERE id_empleado=?;");
+			   stmt.setBoolean(1, estado);
+			   stmt.setInt(2, id_empleado);
+			   stmt.executeUpdate();
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+	}
+
 }
