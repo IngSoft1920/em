@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import ingsoft1920.em.Beans.BajasBean;
+import ingsoft1920.em.Beans.VacacionesBean;
 import ingsoft1920.em.Servicios.HttpClient;
 
 public class BajasCM {
@@ -23,17 +24,15 @@ public class BajasCM {
 				int[] id_Bajas = new int[id_BajaLista.size()];
 				JsonArray id_EmpleadoLista = obj.get("id_empleado").getAsJsonArray();
 				int[] id_Empleados = new int[id_EmpleadoLista.size()];
-				JsonArray ListaInicioBaja = obj.get("bajaInicio").getAsJsonArray();
-				String[] inicioBaja = new String[ListaInicioBaja.size()];
-				JsonArray ListaFinBaja = obj.get("bajaFin").getAsJsonArray();
-				String[] finBaja = new String[ListaFinBaja.size()];
+				JsonArray duracionBajaLista = obj.get("duracion").getAsJsonArray();
+				String[] duracionBaja = new String[duracionBajaLista.size()];
 				List<BajasBean> lista = new ArrayList<BajasBean>();
 				
 				for(int i=0;i<id_BajaLista.size();i++) {
 					id_Bajas[i]=id_BajaLista.get(i).getAsInt();
 					id_Empleados[i]=id_EmpleadoLista.get(i).getAsInt();
-					inicioBaja[i]=ListaInicioBaja.get(i).getAsString();
-					finBaja[i]=ListaFinBaja.get(i).getAsString();
+					duracionBaja[i]=duracionBajaLista.get(i).getAsString();
+					lista.add(new BajasBean(id_Bajas[i],id_Empleados[i],duracionBaja[i]));
 				}
 				return lista;	
 			}
