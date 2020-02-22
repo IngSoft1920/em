@@ -74,4 +74,13 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "vacaciones";
 	}
 	
+	@GetMapping("/bajas5")
+	public String bajasp1(Model model) {
+		return "bajas";
+	}
+	
+	@PostMapping("/bajas5")
+	public String bajasp(Model model) {
+		return "bajas";
+	}
 }

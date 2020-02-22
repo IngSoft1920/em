@@ -43,12 +43,13 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu4" class="enlace">Inicio</a></li>
-          <li><a href="/nomina4" class="enlace">Nomina</a></li>
-          <li><a href="/tareas4" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones4" class="enlace">Vacaciones</a></li>
-          <li><a href="/perfil4" class="activate-menu">Perfil</a></li>
-          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu2" class="enlace">Inicio</a></li>
+          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/tareas2" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
+          <li><a href="/bajas2" class="enlace">Bajas</a></li>
+          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 

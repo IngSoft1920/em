@@ -45,6 +45,7 @@
           <li><a href="/nomina5" class="enlace">Nomina</a></li>
           <li><a href="/tareas5" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones5" class="activate-menu">Vacaciones</a></li>
+          <li><a href="/bajas5" class="enlace">Bajas</a></li>
           <li><a href="/perfil5" class="enlace">Perfil</a></li>
           <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
         </ul>
