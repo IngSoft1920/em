@@ -44,6 +44,7 @@
           <li><a href="/menu" class="activate-menu">Inicio</a></li>
           <li><a href="/nomina" class="enlace">Nomina</a></li>
           <li><a href="/tareas" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones" class="enlace">Vacaciones</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
@@ -140,7 +141,7 @@ header{
 }
 
 #encabezado{
-  width: 80%;
+  width: 90%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;

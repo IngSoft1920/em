@@ -10,70 +10,68 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller 
-public class PerfilController {
-	
+public class VacacionesController {
+
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu2")
+	@GetMapping("/menu5")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu2")
+	@PostMapping("/menu5")
 	public String menup(Model model) {
 		return "menu";
 	}
 	
-	@GetMapping("/nomina2")
+	@GetMapping("/nomina5")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina2")
+	@PostMapping("/nomina5")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil2")
+	@GetMapping("/perfil5")
 	public String perfilp1(Model model) {
 		return "perfil";
 	}
 	
-	@PostMapping("/perfil2")
+	@PostMapping("/perfil5")
 	public String perfilp(Model model) {
 		return "perfil";
 	}
 	
-	@GetMapping("/cerrar2")
+	@GetMapping("/cerrar5")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar2")
+	@PostMapping("/cerrar5")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas2")
+	@GetMapping("/tareas5")
 	public String tareasp1(Model model) {
 		return "tareas";
 	}
 	
-	@PostMapping("/tareas2")
+	@PostMapping("/tareas5")
 	public String tareasp(Model model) {
 		return "tareas";
 	}
 	
-	@GetMapping("/vacaciones2")
+	@GetMapping("/vacaciones5")
 	public String vacacionesp1(Model model) {
 		return "vacaciones";
 	}
 	
-	@PostMapping("/vacaciones2")
+	@PostMapping("/vacaciones5")
 	public String vacacionesp(Model model) {
 		return "vacaciones";
 	}
 	
 }
-
-

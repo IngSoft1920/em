@@ -67,4 +67,14 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "tareas";
 	}
 	
+	@GetMapping("/vacaciones4")
+	public String vacacionesp1(Model model) {
+		return "vacaciones";
+	}
+	
+	@PostMapping("/vacaciones4")
+	public String vacacionesp(Model model) {
+		return "vacaciones";
+	}
+	
 }
