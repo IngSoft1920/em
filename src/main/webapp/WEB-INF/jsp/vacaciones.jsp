@@ -1,16 +1,14 @@
-
 <html lan="es">
 
 <head>
   <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
-  <title> USUARIO: </title>
-  <link rel="stylesheet" type="text/css" href="css/estilonom.css"> <!--carpeta donde se encuentra el estilo css-->
+  <title> USUARIO  : </title> <!--Título-->
+  <link rel="stylesheet" type="text/css" href="css/vacaciones.css"> <!--carpeta donde se encuentra el estilo css-->
 
 
 </head>
 
 <body>
-
 
 <%
 
@@ -38,18 +36,18 @@
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
-        PORTAL EMPLEADOS
+        VACACIONES
       </div>
 
       <div id="menu">
         <ul>
-          <li><a href="/menu3" class="enlace">Inicio</a></li>
-          <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
-          <li><a href="/tareas3" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones3" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas3" class="enlace">Bajas</a></li>
-          <li><a href="/perfil3" class="enlace">Perfil</a></li>
-          <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu5" class="enlace">Inicio</a></li>
+          <li><a href="/nomina5" class="enlace">Nomina</a></li>
+          <li><a href="/tareas5" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones5" class="activate-menu">Vacaciones</a></li>
+          <li><a href="/bajas5" class="enlace">Bajas</a></li>
+          <li><a href="/perfil5" class="enlace">Perfil</a></li>
+          <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
@@ -60,62 +58,32 @@
     <section id="publicaciones">
       <article class="post">
 
-
         <a href="" class="enlace-post">
-          <h2 class="titulo-post">Visualizar nomina: </h2>
+          <h1 class="titulo-post">Duracion
+            <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
+          </h1>
         </a>
 
-        <table border="tabla">
 
-          <thead>
-          <tr>
-            <th>Nomina</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-            <td>
-
-              <nav class="nav">
-              <ul class="menu">
-
-              <li><a href="a">- Elige un mes -</a>
-                  <ul class="submenu">
-                      <li><a href="/ejemplo">Enero</a></li>
-                      <li><a href="/ejemplo">Febrero</a></li>
-                      <li><a href="/ejemplo">Marzo</a></li>
-                      <li><a href="/ejemplo">Abril</a></li>
-                      <li><a href="/ejemplo">Mayo</a></li>
-                      <li><a href="/ejemplo">Junio</a></li>
-                      <li><a href="/ejemplo">Julio</a></li>
-                      <li><a href="/ejemplo">Agosto</a></li>
-                      <li><a href="/ejemplo">Septiembre</a></li>
-                      <li><a href="/ejemplo">Octubre</a></li>
-                      <li><a href="/ejemplo">Noviembre</a></li>
-                      <li><a href="/ejemplo">Diciembre</a></li>
-                  </ul>
-              </li>
-
-              </ul>
-              </nav>
-
-            </td>
-          </tr>
-          </tbody>
-
-        </table>
-        <p class="parrafo-post">
-
-            <button class="boton"> Ver </button>
-
-        </p>
 
       </article>
-    </section>
-  </section>
+</section>
 
+    <section id="publicaciones">
+      <article class="post">
+
+        <a href="" class="enlace-post">
+          <h1 class="titulo-post">Motivo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+        </a>
+
+
+      </article>
+
+  </section>
+  
+  
   <style>
+  
   *{
   margin: 0;
   padding: 0;
@@ -139,7 +107,7 @@ header{
   width: 90%;
   height: 30px;
   margin: auto;
-  border: 0px solid #000;
+  border: 0px solid #fff;
 }
 
 #logo{
@@ -157,6 +125,7 @@ header{
   border: 0px solid;
   float: right;
   margin-top: 55px;
+  border: 0px solid #fff;
 }
 
 #menu ul{}
@@ -195,26 +164,25 @@ header{
   width: 80%;
   height: auto; overflow: hidden;
   border: 0px solid; /* si no le ponemos nada significa negro*/
-  margin: 0px auto;
+  margin: 10px auto;
 }
 
 #publicaciones{
-  width: 20%;
+  width: 70%;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
-  margin-top: 10px;
-  margin-left: 390px;
-  float:middle;
+  margin-top: 0px;
+  float:left;
 }
 
   .post{ /*aplicar estilo a cada articulo. Espacios del texto*/
-    width: 99%;
-    height: 90%; overflow: hidden;
-    padding: 15px;
-    background: #fff;
-    /*border-Left-style: solid;
+    width: 96%;
+    height: auto; overflow: hidden;
+    padding: 10px 7px;
+    background: #fdfdfd;
+    border-Left-style: solid;
     border-Left-width: 5px;
-    border-Left-color: #048981;
+    border-Left-color: #0489B1;
     border-radius: 10px;
     box-shadow: 0px 0px 15px #ccc;/*color gris*/
     margin-bottom: 25px;
@@ -222,10 +190,6 @@ header{
 
 .enlace-post{
  text-decoration: none;
- padding: 5px;
- height: 5px;
- color: #01a9db;
-
 }
 
 
@@ -233,13 +197,13 @@ header{
 
   position:relative;
   display: inline-inline-block;
-  float:right;
+  float:left;
 }
 
 .menu > li > a{
   display: block;
-  padding: 20px 20px;
-
+  padding: 5px 20px;
+  color: #353535;
   font-family: 'Open sans';
   text-decoration: none;
 
@@ -247,7 +211,7 @@ header{
 
 
 .menu li a:hover{
-  color: #048981;
+  color: #CE7D35;
 
 
 }
@@ -264,7 +228,7 @@ header{
 
 .submenu li a{
   display: block;
-  color: #ffff;
+  color: #fff;
   padding: 10px;
   font-family: 'Open sans';
   text-decoration: none;
@@ -293,7 +257,7 @@ header{
   top: 0px;
 }
   
+  
   </style>
 
-  
-</html>
+  </html>

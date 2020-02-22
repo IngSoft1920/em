@@ -1,33 +1,36 @@
 <html>
 
+
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html";charset="utf-8">
 	<title>Pagina de inicio de empleados</title>
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 
+
+
 <body>
-
-<section class="form-login">
+	<section class="form-login">
 	<h5>Login Empleados</h5>
+	
+	<form action="menu2" method="post"/>
+	
+	<label>Usuario</label>
+	<td><input class="controls" type="text" name="usuario"/></td>
 
-	<form method="POST" modelAttribute="loginBean";>
+		
+	<label>Contrasena</label>
+	<td><input class="controls" type="password" name="contrasenia"/>
 
-		<label>Usuario</label>
-			<form:input type="text" name="usuario" path="usuario" />
-			<input class="controls" type="text" name="Usuario" required="true" >
+	<input type="submit" value="Ingresar"/>
+	</section>
 
-		<br>
-		<label>Contrasena</label>
-			<form:input type="password" name="password" path="password" />
-			<input class="controls" type="password" name="Password" required=true>
-		</br>
-		<input class="buttons" type="submit" name="" value="Ingresar" />
-	</form:form>
-
-
-</section>
 </body>
+
+
+
+
+
 
 <style>
 

@@ -9,6 +9,30 @@
 </head>
 
 <body>
+
+<%
+
+	String UsuarioIn=" ",ContraseniaIn=" ";
+	if(request.getParameter("usuario")!=null){
+		UsuarioIn=request.getParameter("usuario");
+	}
+	
+	if(request.getParameter("contrasenia")!=null){
+		ContraseniaIn=request.getParameter("contrasenia");
+	}
+
+
+	%>
+	
+	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
+	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
+	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
+	
+	<table>
+	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
+	</table>
+
+
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
@@ -20,6 +44,8 @@
           <li><a href="/menu4" class="enlace">Inicio</a></li>
           <li><a href="/nomina4" class="enlace">Nomina</a></li>
           <li><a href="/tareas4" class="activate-menu">Tareas</a></li>
+          <li><a href="/vacaciones4" class="enlace">Vacaciones</a></li>
+          <li><a href="/bajas4" class="enlace">Bajas</a></li>
           <li><a href="/perfil4" class="enlace">Perfil</a></li>
           <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
         </ul>
@@ -230,7 +256,7 @@ header{
 }
 
 #encabezado{
-  width: 80%;
+  width: 90%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
