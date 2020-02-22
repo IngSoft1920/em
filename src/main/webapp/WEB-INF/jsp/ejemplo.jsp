@@ -8,9 +8,8 @@
 </head>
 <body>
 
-
-
     <li><a href="/menu" class="activate-menu">Inicio</a></li>
+   	<!--aqui for each-->
     
 </body>
 
