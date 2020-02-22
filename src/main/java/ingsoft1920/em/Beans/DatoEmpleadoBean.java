@@ -1,19 +1,35 @@
 package ingsoft1920.em.Beans;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
 public class DatoEmpleadoBean {
+	String usuario;
+	String contrasenia;
 	int id_empleado;
 	boolean estado;
 	int id_rol;
 	String nombre;
-	public DatoEmpleadoBean() {}
 	
-	public DatoEmpleadoBean(int empleado_id,boolean estado,int rol_id,String nombre) {
-		this.id_empleado=empleado_id;
-		this.estado=estado;
-		this.id_rol=rol_id;
-		this.nombre=nombre;
+	public String getUsuario() {
+		return usuario;
 	}
 	
+	public void setUsuario(String usuario) {
+		this.usuario=usuario;
+	}
+	
+	public String getContrasenia() {
+		return contrasenia;
+	}
+	
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia=contrasenia;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -49,3 +65,5 @@ public class DatoEmpleadoBean {
 
 	public void doWhatEver() {}
 }
+
+
