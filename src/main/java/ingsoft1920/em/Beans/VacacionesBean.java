@@ -3,16 +3,14 @@ package ingsoft1920.em.Beans;
 public class VacacionesBean {
 	int id_vacaciones;
 	int id_empleado;
-	String vacacionesInicio;
-	String vacacionesFin;
+	String duracion;
 	
 	public VacacionesBean() {};
 	
-	public VacacionesBean(int id_vacaciones,int id_empleado, String vacacionesInicio, String vacacionesFin) {
+	public VacacionesBean(int id_vacaciones,int id_empleado, String duracion) {
 		this.id_vacaciones=id_vacaciones;
 		this.id_empleado=id_empleado;
-		this.vacacionesInicio=vacacionesInicio;
-		this.vacacionesFin=vacacionesFin;
+		this.duracion=duracion;
 	}
 	public int getId_vacaciones() {
 		return id_vacaciones;
@@ -27,14 +25,11 @@ public class VacacionesBean {
 	public void setId_empleado(int id_empleado) {
 		this.id_empleado=id_empleado;
 	}
-	public String getVacacionesInicio() {
-		return vacacionesInicio;
+	public String getDuracion() {
+		return duracion;
 	}
-	public void setVacacionesInicio(String vacacionesInicio) {
-		this.vacacionesInicio=vacacionesInicio;
-	}
-	public String getVacacionesFin() {
-		return vacacionesFin;
+	public void setDuracion(String duracion) {
+		this.duracion=duracion;
 	}
 
 }
