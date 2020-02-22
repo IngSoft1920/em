@@ -285,6 +285,48 @@ public class API {
 		return empleado.toString();
 	}
 	
+	//OBTENCION EMPLEADOS BBDD dado nombre
+		@ResponseBody
+		@GetMapping("/infoEmpleado")
+		public String infoEmpleado(@RequestBody String req) {
+			//Sacamos nombre del empleado
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			String nombre=obj.get("nombre").getAsString();
+			//Preparamos query
+			BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
+			QueryRunner runner=new QueryRunner();
+			String query="SELECT empleado.id_empleado,empleado.nombre,empleado.telefono,empleado.correo,rol.id_rol FROM empleado join rol on empleado.id_empleado=rol.id_empleado WHERE empleado.nombre=?";
+			List<DatoEmpleadoBean> res=null;
+			try {
+				res=runner.query(ConectorBBDD.conectar(), query,handler,nombre);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			JsonArray listaIDEmpleados=new JsonArray();
+			JsonArray listaNombreEmpleados=new JsonArray();
+			JsonArray listaTelefonoEmpleados=new JsonArray();
+			JsonArray listaCorreoEmpleados=new JsonArray();
+			JsonArray listaIDRolEmpleados=new JsonArray();
+			
+			
+			for(DatoEmpleadoBean empleado:res) {
+				listaIDEmpleados.add(empleado.getId_empleado());
+				listaNombreEmpleados.add(empleado.getNombre());
+				listaTelefonoEmpleados.add(empleado.getTelefono());
+				listaCorreoEmpleados.add(empleado.getCorreo());
+				listaIDRolEmpleados.add(empleado.getId_rol());
+			}
+			JsonObject empleado = new JsonObject();
+			empleado.add("id_empleado",listaIDEmpleados);
+			empleado.add("nombre",listaNombreEmpleados);
+			empleado.add("telefono",listaTelefonoEmpleados);
+			empleado.add("correo",listaCorreoEmpleados);
+			empleado.add("id_rol",listaIDRolEmpleados);
+			
+			return empleado.toString();
+			
+		}
+		
 	
 	
 }

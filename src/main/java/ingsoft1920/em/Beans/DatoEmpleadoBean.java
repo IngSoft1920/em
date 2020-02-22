@@ -5,6 +5,24 @@ public class DatoEmpleadoBean {
 	boolean estado;
 	int id_rol;
 	String nombre;
+	String telefono;
+	String correo;
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public DatoEmpleadoBean() {}
 	
 	public DatoEmpleadoBean(int empleado_id,boolean estado,int rol_id,String nombre) {
