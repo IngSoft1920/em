@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+@Component
 public class DatoEmpleadoBean {
 	String usuario;
 	String contrasenia;

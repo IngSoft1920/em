@@ -1,5 +1,8 @@
 package ingsoft1920.em.Beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BajaBean {
 	int id_baja;
 	int id_empleado;

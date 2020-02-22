@@ -1,5 +1,8 @@
 package ingsoft1920.em.Beans;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class VacacionBean {
 	int id_vacacion;
 	int id_empleado;
