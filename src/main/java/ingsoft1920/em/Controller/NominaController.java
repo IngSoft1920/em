@@ -1,5 +1,7 @@
 package ingsoft1920.em.Controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.Model.NominaModel;
 
 
 @Controller 
@@ -68,6 +73,8 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@GetMapping("/ejemplo")
 	public String ejemplop1(Model model) {
 		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
+		List<NominaModel>nominas=NominaDAO.verNomina(1);
+		model.addAttribute("nominas", nominas);
 		return "ejemplo";
 	}
 	

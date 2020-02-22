@@ -1,5 +1,8 @@
 package ingsoft1920.em.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,7 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.LoginBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
+import ingsoft1920.em.Model.TurnoModel;
 
 @Controller
 public class MenuController {
@@ -34,7 +43,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil")
 	public String perfil(Model model) {
-		return "perfil";
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil")
@@ -56,13 +67,32 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas")
 	public String tareas(Model model) {
-		return "tareas";
+		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
+		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
+		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
+		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas")
 	public String tareas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
 		return "tareas";
+	}
+	
+	@GetMapping("/turnos")
+	public String turnos(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
+	
+	@PostMapping("/turnos")
+	public String turnos(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "turnos";
 	}
 	
 	@GetMapping("/vacaciones1")

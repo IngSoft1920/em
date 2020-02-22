@@ -17,6 +17,15 @@ public class DatoEmpleadoBean {
 	String nombre;
 	String telefono;
 	String correo;
+	String nombre_rol;
+	public String getNombre_rol() {
+		return nombre_rol;
+	}
+
+	public void setNombre_rol(String nombre_rol) {
+		this.nombre_rol = nombre_rol;
+	}
+
 	public String getCorreo() {
 		return correo;
 	}

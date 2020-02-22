@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
@@ -76,6 +77,47 @@ public class EmpleadoDAO {
 		  return res;
 	}
 	
+	public static DatoEmpleadoBean sacaEmpleado(int id_empleado) {
+		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su nombre y estado
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		DatoEmpleadoBean res=new DatoEmpleadoBean();
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		  try { 
+		   stmt = conn.prepareStatement("select empleado.nombre,empleado.telefono,empleado.correo,rol.nombre_rol from empleado join rol on empleado.id_empleado=rol.id_empleado where empleado.id_empleado=?");;
+		   stmt.setInt(1,id_empleado);
+		   rs=stmt.executeQuery();
+		   while(rs.next()) {
+			   res.setNombre(rs.getString("nombre"));
+			   res.setTelefono(rs.getString("telefono"));
+			   res.setCorreo(rs.getString("correo"));
+			   res.setNombre_rol("nombre_rol");
+			   
+		   }
+          } 
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+				if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
+		  return res;
+	}
 	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
