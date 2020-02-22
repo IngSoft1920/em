@@ -14,17 +14,30 @@ public class NominaDAO {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt= null; 
-		  try { 
-			  stmt=conn.prepareStatement("INSERT INTO nomina(id_Empleado,sueldo)"+
-						"values( ? , ?");
+		try { 
+			  stmt=conn.prepareStatement("INSERT INTO nomina(id_Empleado,valor)"+
+						"values( ? , ?);");
 							stmt.setInt(1, id_Empleado);
 							stmt.setInt(2, sueldo);
 							stmt.executeUpdate();
 		   
         } 
-		  catch (SQLException ex){ 
-		   System.out.println("SQLException: " + ex.getMessage());
-		  }
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
 		}
+		finally {
+			if (stmt!=null){
+				try{stmt.close();
+				}
+				catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		}
+	}
+	
 
 }
