@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
+import ingsoft1920.em.Model.EmpleadoModel;
+import ingsoft1920.em.Model.TurnoModel;
+import ingsoft1920.em.Model.VacacionesModel;
 
 public class TurnoDAO {
 	static Connection conn;
@@ -38,5 +41,30 @@ public class TurnoDAO {
 				}
 		  }
 		}
+	
+	public static TurnoModel enviarTurnos() {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		TurnoModel res = null;
+		Statement stmt = null; 
+		ResultSet rs = null; 
+		  try { 
+		   stmt=conn.createStatement();
+		   rs = stmt.executeQuery("SELECT * FROM turno");
+		   while (rs.next()){
+		      res = new TurnoModel ( 
+		      rs.getInt("id_Empleado"), 
+		      rs.getInt("id_Turno"),
+		      rs.getTime("horarioInicio"),
+		      rs.getTime("horarioFin"));
+		      }
+          } 
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  return res;
+		
+	}
 
 }
