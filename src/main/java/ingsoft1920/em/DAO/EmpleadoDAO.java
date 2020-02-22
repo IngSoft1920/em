@@ -26,7 +26,7 @@ public class EmpleadoDAO {
 		  try { 
 		   stmt=conn.createStatement();
 		   rs = stmt.executeQuery("SELECT * FROM empleado");
-		   if (rs.next()){
+		   while (rs.next()){
 		      res = new EmpleadoModel ( 
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"));
@@ -38,17 +38,17 @@ public class EmpleadoDAO {
 		  return res;
 		}
 	public static EmpleadoModelC2 sacaEmpleados2() {
-		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su id_Rol y estado
+		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su nombre y estado
 		EmpleadoModelC2 res = null;
 		Statement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
 		   stmt = conn.createStatement() ;
 		   rs = stmt.executeQuery("SELECT * FROM empleado");
-		   if (rs.next()){
+		   while (rs.next()){
 		      res = new EmpleadoModelC2 ( 
 		      rs.getInt("id_Empleado"), 
-		      rs.getString("id_Rol"),
+		      rs.getString("nombre"),
 		      rs.getBoolean("estado"));
 		      }
           } 
@@ -57,52 +57,48 @@ public class EmpleadoDAO {
 		  }
 		  return res;
 	}
-	public static BajaModel BajaModelSacaBajas() {
-		//CONSULTA3-> Hay que enviar a cm las bajas con el id_empleado que la pide y su duraci�n
-		BajaModel res = null;
-		Statement stmt = null; 
-		ResultSet rs = null; 
+	
+	public static void aniadirEmpleado(int id_Empleado, String nombre, String telefono, String correo) {
+		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
+		PreparedStatement stmt= null; 
 		  try { 
-		   stmt = conn.createStatement() ;
-		   rs = stmt.executeQuery("SELECT * FROM bajas");
-		   if (rs.next()){
-		      res = new BajaModel ( 
-		      rs.getInt("id_Empleado"), 
-		      rs.getInt("id_Baja"),
-		      rs.getString("duracion"));
-		      }
+			  stmt=conn.prepareStatement("INSERT INTO empleados(id_Empleado,nombre,telefono,correo)"+
+						"values( ? , ? , ? , ? ");
+							stmt.setInt(1, id_Empleado);
+							stmt.setString(2, nombre);
+							stmt.setString(3, telefono);
+							stmt.setString(4, correo);
+							stmt.executeUpdate();
+		   
           } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		  }
-		  return res;
 	}
 	
-	public static VacacionesModel sacaBajas() {
-		//CONSULTA4-> Hay que enviar a cm las vacacioens con el id_empleado que la pide y su duraci�n
-		VacacionesModel res = null;
-		Statement stmt = null; 
+	public static void eliminarEmpleado(String correo) {
+		//CONSULTA4->Eliminar un empleado de la base de datos a partir de su correo
+		Statement stmt1 = null; 
 		ResultSet rs = null; 
+		PreparedStatement stmt2= null; 
+	    int id_e=0; //suponiendo que el id=0 no es asignado a ningún empleado
 		  try { 
-		   stmt = conn.createStatement() ;
-		   rs = stmt.executeQuery("SELECT * FROM vacaciones");
-		   if (rs.next()){
-		      res = new VacacionesModel ( 
-		      rs.getInt("id_Empleado"), 
-		      rs.getInt("id_Vacaciones"),
-		      rs.getString("duracion"));
-		      }
-          } 
+			  stmt1 = conn.createStatement();
+			  rs = stmt1.executeQuery("SELECT id_empleado FROM empleado WHERE correo= ? ");
+			  if(rs.next()) { //si encuentra alguno que coincida con el correo entonces guardo su id para borrarlo 
+				  id_e = rs.getInt("id_empleado");
+			  }
+			  
+			  stmt2=conn.prepareStatement("DELETE FROM empleados WHERE id_empleado = ? ;");
+							stmt2.setInt(1, id_e);
+							stmt2.executeUpdate();
+		   
+        } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		  }
-		  return res;
 	}
-	public static void añadirTurno(int id_Empleado) {
-		//CONSULTA3-> Hay que enviar el turno sabiendo el id_empleado
-		int id_turno;
-		PreparedStatement stmt=null;
-		
-		
-	}
+	
+	
+	
 }
