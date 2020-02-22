@@ -5,10 +5,10 @@ import java.sql.Time;
 public class TurnoModel {
 	private int id_Empleado;
 	private int id_Turno;
-	private Time horarioInicio;
-	private Time horarioFin;
+	private String horarioInicio;
+	private String horarioFin;
 	
-	public TurnoModel(int id_Empleado, int id_Turno, Time horarioInicio, Time horarioFin) {
+	public TurnoModel(int id_Empleado, int id_Turno, String horarioInicio, String horarioFin) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Turno=id_Turno;
@@ -32,19 +32,19 @@ public class TurnoModel {
 		this.id_Turno = id_Turno;
 	}
 
-	public Time getHorarioInicio() {
+	public String getHorarioInicio() {
 		return horarioInicio;
 	}
 
-	public void setHorarioInicio(Time horarioInicio) {
+	public void setHorarioInicio(String horarioInicio) {
 		this.horarioInicio = horarioInicio;
 	}
 
-	public Time getHorarioFin() {
+	public String getHorarioFin() {
 		return horarioFin;
 	}
 
-	public void setHorarioFin(Time horarioFin) {
+	public void setHorarioFin(String horarioFin) {
 		this.horarioFin = horarioFin;
 	}
 	

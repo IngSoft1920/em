@@ -29,6 +29,7 @@ import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
+import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 @Controller
 public class API {
@@ -81,22 +82,16 @@ public class API {
 	@GetMapping("/seleccionaTurno")
 	//Enviamos la lista de los turnos
 	public String turnos() {
-		BeanListHandler<DatoTurnoBean> handler=new BeanListHandler<>(DatoTurnoBean.class);
-		QueryRunner runner=new QueryRunner();
-		String query="SELECT * FROM turno";
-		List<DatoTurnoBean> res=null;
-		try {
-			res=runner.query(ConectorBBDD.conectar(), query,handler);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		List<TurnoModel> respuesta=new ArrayList<TurnoModel>();
+		respuesta=TurnoDAO.enviarTurnos();
+		
 		JsonArray listaIDTurno=new JsonArray();
 		JsonArray listaIDEmpleados=new JsonArray();
 		JsonArray listaHorarioInicio=new JsonArray();
 		JsonArray listaHorarioFin=new JsonArray();
-		for(DatoTurnoBean turno:res) {
-			listaIDTurno.add(turno.getId_turno());
-			listaIDEmpleados.add(turno.getId_empleado());
+		for(TurnoModel turno:respuesta) {
+			listaIDTurno.add(turno.getId_Turno());
+			listaIDEmpleados.add(turno.getId_Turno());
 			listaHorarioInicio.add(turno.getHorarioInicio());
 			listaHorarioFin.add(turno.getHorarioFin());
 		}
@@ -217,39 +212,6 @@ public class API {
 			
 		}
 		
-	
-	
-	//EJEMPLO OBTENCION EMPLEADOS BBDD
-	@ResponseBody
-	@GetMapping("/empleados")
-	public String empleados() {
-		BeanListHandler<DatoEmpleadoBean> handler=new BeanListHandler<>(DatoEmpleadoBean.class);
-		QueryRunner runner=new QueryRunner();
-		String query="SELECT empleado.id_empleado,empleado.estado,rol.id_rol FROM empleado join rol on empleado.id_empleado=rol.id_empleado";
-		List<DatoEmpleadoBean> res=null;
-		try {
-			res=runner.query(ConectorBBDD.conectar(), query,handler);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		JsonArray listaIDEmpleados=new JsonArray();
-		JsonArray listaEstadoEmpleados=new JsonArray();
-		JsonArray listaIDRolEmpleados=new JsonArray();
-		
-		
-		for(DatoEmpleadoBean empleado:res) {
-			listaIDEmpleados.add(empleado.getId_empleado());
-			listaEstadoEmpleados.add(empleado.getEstado());
-			listaIDRolEmpleados.add(empleado.getId_rol());
-		}
-		
-		JsonObject empleado = new JsonObject();
-		empleado.add("id_empleado",listaIDEmpleados);
-		empleado.add("estado",listaEstadoEmpleados);
-		empleado.add("id_rol",listaIDRolEmpleados);
-		
-		return empleado.toString();
-	}
 	
 	//OBTENCION EMPLEADOS BBDD dado nombre
 		@ResponseBody

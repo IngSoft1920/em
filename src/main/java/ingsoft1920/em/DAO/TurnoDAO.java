@@ -2,7 +2,11 @@ package ingsoft1920.em.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.EmpleadoModel;
@@ -42,13 +46,14 @@ public class TurnoDAO {
 		  }
 		}
 	
-	public static TurnoModel enviarTurnos() {
+	public static List<TurnoModel> enviarTurnos() {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		TurnoModel res = null;
 		Statement stmt = null; 
 		ResultSet rs = null; 
+		List<TurnoModel> turnos=new ArrayList<TurnoModel>();
 		  try { 
 		   stmt=conn.createStatement();
 		   rs = stmt.executeQuery("SELECT * FROM turno");
@@ -56,14 +61,31 @@ public class TurnoDAO {
 		      res = new TurnoModel ( 
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"),
-		      rs.getTime("horarioInicio"),
-		      rs.getTime("horarioFin"));
+		      rs.getString("horarioInicio"),
+		      rs.getString("horarioFin"));
+		      turnos.add(res);
 		      }
           } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		  }
-		  return res;
+		  finally {
+				if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
+		  return turnos;
 		
 	}
 
