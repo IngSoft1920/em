@@ -112,10 +112,11 @@ public class API {
 	public void creaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		int id_empleado=obj.get("id_empleado").getAsInt();
+		int id_empleado=obj.get("id").getAsInt();
 		String nombre=obj.get("nombre").getAsString();
 		String telefono=obj.get("telefono").getAsString();
-		String correo=obj.get("correo").getAsString();
+		String correo=obj.get("email").getAsString();
+		//falta ocupacion es decir rol
 		//Ejecutamos query
 		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo);
 		
