@@ -18,6 +18,7 @@ public class BajaBean {
 		this.estado = estado;
 	}
 
+
 	public int getId_baja() {
 		return id_baja;
 	}
