@@ -80,7 +80,7 @@
               <nav class="nav">
               <ul class="menu">
 
-              <li><a href="a">- Elige un mes -</a>
+              <li><a> Elige un mes </a>
                   <ul class="submenu">
                       <li><a href="/ejemplo">Enero</a></li>
                       <li><a href="/ejemplo">Febrero</a></li>
@@ -105,12 +105,7 @@
           </tbody>
 
         </table>
-        <p class="parrafo-post">
-
-            <button class="boton"> Ver </button>
-
-        </p>
-
+ 
       </article>
     </section>
   </section>

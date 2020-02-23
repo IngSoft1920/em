@@ -56,13 +56,10 @@
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
-
-        <a href="" class="enlace-post">
           <h1 class="titulo-post">Duracion
             <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
           </h1>
-        </a>
-
+        
 
 
       </article>
@@ -70,14 +67,11 @@
 
     <section id="publicaciones">
       <article class="post">
-
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Motivo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-        </a>
-
+        <h1 class="titulo-post">Motivo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+       
 
       </article>
-
+		<input type="submit" value="Registro">
   </section>
   
   
