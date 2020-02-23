@@ -5,8 +5,6 @@
   <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
   <title> USUARIO  : </title> <!--Título-->
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
-
-
 </head>
 
 <body>
