@@ -1,5 +1,7 @@
 package ingsoft1920.em.Controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +9,15 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+
+import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.DAO.BajaDAO;
+import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.Model.BajaModel;
+import ingsoft1920.em.Model.NominaModel;
 
 @Controller 
 
@@ -84,4 +94,32 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String bajasp(Model model) {
 		return "bajas";
 	}
+	
+	@GetMapping("/verBaja")
+	public String verBaja(Model model) {
+		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(1);
+		model.addAttribute("bajas",bajas);
+		return "muestraBajas";
+	}
+	@PostMapping("/verBaja")
+	public String verBaja1(Model model) {
+		return "muestraBajas";
+	}
+
+	@GetMapping("/añadeBaja")
+	public String añadeBaja(Model model) {
+		BajaBean baja=new BajaBean();
+		model.addAttribute("bajaBean",baja);
+		model.addAttribute("mensajeError","");
+		return "bajas";
+	}
+	@PostMapping("/añadeBaja")
+	public String añadeBaja1(BajaBean bajaBean,Model model) {
+		//TO-DO COMPROBAR CAMPOS VALIDOS
+		BajaDAO.insertaBaja(1, bajaBean.getDuracion());
+		return "bajas";
+	}
+
+	
+	
 }

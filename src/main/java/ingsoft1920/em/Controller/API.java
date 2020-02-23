@@ -129,7 +129,7 @@ public class API {
 	public void eliminaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		String correo_empleado=obj.get("correo").getAsString();
+		String correo_empleado=obj.get("email").getAsString();
 		//Ejecutamos query
 		EmpleadoDAO.eliminarEmpleado(correo_empleado);
 	}

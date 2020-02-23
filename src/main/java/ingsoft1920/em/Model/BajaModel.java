@@ -1,5 +1,9 @@
 package ingsoft1920.em.Model;
 
+import javax.validation.Valid;
+
+import ingsoft1920.em.Beans.BajaBean;
+
 public class BajaModel {
 	private int id_Empleado;
 	private int id_Baja;
@@ -13,6 +17,13 @@ public class BajaModel {
 		this.estado=estado;
 	}
 	
+	public BajaModel(BajaBean baja) {
+		this.id_Empleado=baja.getId_empleado();
+		this.id_Baja=baja.getId_baja();
+		this.duracion=baja.getDuracion();
+		this.estado=baja.isEstado();
+	}
+
 	public boolean isEstado() {
 		return estado;
 	}
