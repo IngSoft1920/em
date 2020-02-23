@@ -38,7 +38,10 @@
 
     </div>
   </header>
-  
+ 
+ 
+<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
+ 
 <form method="POST" 	action="añadeBaja"	modelAttribute="BajaBean">
  
   <section id="principal">
@@ -57,13 +60,12 @@
         </h1>
       </article>
 		<input type="submit" value="Enviar" >
-		
+	</section>
+			
 </form>
 
-		
-		<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
 
-  </section>
+
   
   
   <style>
