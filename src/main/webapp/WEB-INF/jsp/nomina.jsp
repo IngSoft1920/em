@@ -10,6 +10,31 @@
 </head>
 
 <body>
+
+
+<%
+
+	String UsuarioIn=" ",ContraseniaIn=" ";
+	if(request.getParameter("usuario")!=null){
+		UsuarioIn=request.getParameter("usuario");
+	}
+	
+	if(request.getParameter("contrasenia")!=null){
+		ContraseniaIn=request.getParameter("contrasenia");
+	}
+
+
+	%>
+	
+	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
+	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
+	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
+	
+	<table>
+	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
+	</table>
+	
+	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
@@ -21,6 +46,8 @@
           <li><a href="/menu3" class="enlace">Inicio</a></li>
           <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
           <li><a href="/tareas3" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones3" class="enlace">Vacaciones</a></li>
+          <li><a href="/bajas3" class="enlace">Bajas</a></li>
           <li><a href="/perfil3" class="enlace">Perfil</a></li>
           <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
         </ul>
@@ -32,6 +59,7 @@
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
+
 
         <a href="" class="enlace-post">
           <h2 class="titulo-post">Visualizar nomina: </h2>
@@ -52,20 +80,20 @@
               <nav class="nav">
               <ul class="menu">
 
-              <li><a href="a">- Elige un mes -</a>
+              <li><a> Elige un mes </a>
                   <ul class="submenu">
-                      <li><a href="a">Enero</a></li>
-                      <li><a href="a">Febrero</a></li>
-                      <li><a href="a">Marzo</a></li>
-                      <li><a href="a">Abril</a></li>
-                      <li><a href="a">Mayo</a></li>
-                      <li><a href="a">Junio</a></li>
-                      <li><a href="a">Julio</a></li>
-                      <li><a href="a">Agosto</a></li>
-                      <li><a href="a">Septiembre</a></li>
-                      <li><a href="a">Octubre</a></li>
-                      <li><a href="a">Noviembre</a></li>
-                      <li><a href="a">Diciembre</a></li>
+                      <li><a href="/ejemplo">Enero</a></li>
+                      <li><a href="/ejemplo">Febrero</a></li>
+                      <li><a href="/ejemplo">Marzo</a></li>
+                      <li><a href="/ejemplo">Abril</a></li>
+                      <li><a href="/ejemplo">Mayo</a></li>
+                      <li><a href="/ejemplo">Junio</a></li>
+                      <li><a href="/ejemplo">Julio</a></li>
+                      <li><a href="/ejemplo">Agosto</a></li>
+                      <li><a href="/ejemplo">Septiembre</a></li>
+                      <li><a href="/ejemplo">Octubre</a></li>
+                      <li><a href="/ejemplo">Noviembre</a></li>
+                      <li><a href="/ejemplo">Diciembre</a></li>
                   </ul>
               </li>
 
@@ -77,12 +105,7 @@
           </tbody>
 
         </table>
-        <p class="parrafo-post">
-
-            <button class="boton"> Ver </button>
-
-        </p>
-
+ 
       </article>
     </section>
   </section>
@@ -108,7 +131,7 @@ header{
 }
 
 #encabezado{
-  width: 80%;
+  width: 90%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;

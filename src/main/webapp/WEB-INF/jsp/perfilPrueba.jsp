@@ -1,4 +1,4 @@
-	
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html lan="es">
 
 <head>
@@ -11,28 +11,9 @@
 
 <body>
 
-
-  <%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
 	
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
 	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
 	
 	
   <header class="header"> <!-- La parte de arriba de la página web-->
@@ -56,111 +37,31 @@
     </div>
   </header>
 
-  <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Nombre
-            <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
-          </h1>
-        </a>
 
 
+<body>
 
-      </article>
-</section>
+	<li>
+		<p>
+          <b>nombre:</b>${empleado.nombre }<br>
+		</p>
+	
+    	<p>
+        	<b>telefono:</b>${empleado.telefono }<br>
+		</p>
+	
+	  	<p>
+          <b>correo:</b>${empleado.correo }<br>
+        </p>
+	
+	  	<p>
+          <b>Rol:</b>${empleado.nombre_rol }<br>
+        </p>
+	</li>
 
-    <section id="publicaciones">
-      <article class="post">
+</body>
 
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Apellidos <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-        </a>
-
-
-      </article>
-
-  </section>
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Direccion de correo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-
-    </article>
-
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero seg social <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Hotel <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero de contacto <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Puesto de trabajo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-
-    </article>
-
-</section>
-
-
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Fecha de nacimiento <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-    </article>
-</section>
-
-
-
-
-
-  </section>
-
-
-	<style>
+<style>
 	
 	*{
   margin: 0;
@@ -333,23 +234,7 @@ header{
 
   top: 0px;
 }
-	
-	
-	
-	
+		
 	</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
   
   </html>

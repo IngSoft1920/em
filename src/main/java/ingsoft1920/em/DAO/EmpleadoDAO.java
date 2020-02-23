@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
-import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
-import ingsoft1920.em.Model.VacacionesModel;
 
 public class EmpleadoDAO {
 	//TODAS las consultas a las bases de datos
@@ -26,7 +27,7 @@ public class EmpleadoDAO {
 		  try { 
 		   stmt=conn.createStatement();
 		   rs = stmt.executeQuery("SELECT * FROM empleado");
-		   if (rs.next()){
+		   while (rs.next()){
 		      res = new EmpleadoModel ( 
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"));
@@ -37,72 +38,141 @@ public class EmpleadoDAO {
 		  }
 		  return res;
 		}
-	public static EmpleadoModelC2 sacaEmpleados2() {
-		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su id_Rol y estado
-		EmpleadoModelC2 res = null;
-		Statement stmt = null; 
+	public static List<EmpleadoModelC2> sacaEmpleados2(int id_rol) {
+		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su nombre y estado
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		List<EmpleadoModelC2> res = new ArrayList <EmpleadoModelC2>();
+		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.createStatement() ;
-		   rs = stmt.executeQuery("SELECT * FROM empleado");
-		   if (rs.next()){
-		      res = new EmpleadoModelC2 ( 
-		      rs.getInt("id_Empleado"), 
-		      rs.getString("id_Rol"),
-		      rs.getBoolean("estado"));
+		   stmt = conn.prepareStatement("select empleado.id_empleado,empleado.nombre,empleado.estado from empleado join rol on empleado.id_empleado=rol.id_empleado where rol.id_rol=?",id_rol);;
+		   stmt.setInt(1,id_rol);
+		   rs=stmt.executeQuery();
+		   while (rs.next()){
+			  EmpleadoModelC2 empleado=new EmpleadoModelC2(rs.getInt("id_Empleado"),rs.getString("nombre"),rs.getBoolean("estado"));
+			  res.add(empleado); 
 		      }
           } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		  }
-		  return res;
-	}
-	public static BajaModel BajaModelSacaBajas() {
-		//CONSULTA3-> Hay que enviar a cm las bajas con el id_empleado que la pide y su duraci�n
-		BajaModel res = null;
-		Statement stmt = null; 
-		ResultSet rs = null; 
-		  try { 
-		   stmt = conn.createStatement() ;
-		   rs = stmt.executeQuery("SELECT * FROM bajas");
-		   if (rs.next()){
-		      res = new BajaModel ( 
-		      rs.getInt("id_Empleado"), 
-		      rs.getInt("id_Baja"),
-		      rs.getString("duracion"));
-		      }
-          } 
-		  catch (SQLException ex){ 
-		   System.out.println("SQLException: " + ex.getMessage());
+		  finally {
+				if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
 		  }
 		  return res;
 	}
 	
-	public static VacacionesModel sacaBajas() {
-		//CONSULTA4-> Hay que enviar a cm las vacacioens con el id_empleado que la pide y su duraci�n
-		VacacionesModel res = null;
-		Statement stmt = null; 
+	public static DatoEmpleadoBean sacaEmpleado(int id_empleado) {
+		//CONSULTA2-> Hay que enviar a fnb id_Empleado con su nombre y estado
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		DatoEmpleadoBean res=new DatoEmpleadoBean();
+		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.createStatement() ;
-		   rs = stmt.executeQuery("SELECT * FROM vacaciones");
-		   if (rs.next()){
-		      res = new VacacionesModel ( 
-		      rs.getInt("id_Empleado"), 
-		      rs.getInt("id_Vacaciones"),
-		      rs.getString("duracion"));
-		      }
+		   stmt = conn.prepareStatement("select empleado.nombre,empleado.telefono,empleado.correo,rol.nombre_rol from empleado join rol on empleado.id_empleado=rol.id_empleado where empleado.id_empleado=?");;
+		   stmt.setInt(1,id_empleado);
+		   rs=stmt.executeQuery();
+		   while(rs.next()) {
+			   res.setNombre(rs.getString("nombre"));
+			   res.setTelefono(rs.getString("telefono"));
+			   res.setCorreo(rs.getString("correo"));
+			   res.setNombre_rol("nombre_rol");
+			   
+		   }
           } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		  }
+		  finally {
+				if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
 		  return res;
 	}
-	public static void añadirTurno(int id_Empleado) {
-		//CONSULTA3-> Hay que enviar el turno sabiendo el id_empleado
-		int id_turno;
-		PreparedStatement stmt=null;
-		
-		
+	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo) {
+		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
+		PreparedStatement stmt= null; 
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}  
+		try { 
+			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo)"+
+						"values( ? , ? , ? , ? );");
+							stmt.setInt(1, id_empleado);
+							stmt.setString(2, nombre);
+							stmt.setString(3, telefono);
+							stmt.setString(4, correo);
+							stmt.executeUpdate();
+		   
+          } 
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
 	}
+	
+	public static void eliminarEmpleado(String correo) {
+		//CONSULTA4->Eliminar un empleado de la base de datos a partir de su correo
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt2= null; 
+	    try { 
+			  stmt2=conn.prepareStatement("DELETE FROM empleado WHERE correo = ? ;");
+							stmt2.setString(1, correo);
+							stmt2.executeUpdate();
+		   
+        } 
+		catch (SQLException ex){ 
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}		  
+		}
+	}
+	
+	
+	
 }
