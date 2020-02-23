@@ -39,26 +39,26 @@
     </div>
   </header>
   
-<form:form method="POST" 	action="añadeBaja"	modelAttribute="BajaBean">
+<form method="POST" 	action="añadeBaja"	modelAttribute="BajaBean">
+ 
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Duracion
-            <td><input type="text" name="buscar" placeholder="Escribe aqui" path="duracion" ></td>
+            <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
           </h1>
-        
-
       </article>
-</section>
+	</section>
 
     <section id="publicaciones">
       <article class="post">
         <h1 class="titulo-post">Motivo 
-        <td><input type="text" name="buscar" placeholder="Escribe aqui" ></td></h1>
-       
+        <td><input type="text" name="buscar" placeholder="Escribe aqui" ></td>
+        </h1>
       </article>
-		<input type="submit" value="Enviar" ">
-</form:form>
+		<input type="submit" value="Enviar" >
+		
+</form>
 
 		
 		<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />

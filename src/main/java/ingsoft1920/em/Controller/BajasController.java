@@ -114,10 +114,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "bajas";
 	}
 	@PostMapping("/añadeBaja")
-	public String añadeBaja1(@Valid @ModelAttribute("signupBean") BajaBean bajaBean,Model model) {
+	public String añadeBaja1(BajaBean bajaBean,Model model) {
 		//TO-DO COMPROBAR CAMPOS VALIDOS
-		BajaModel bajaModel = new BajaModel(bajaBean);
-		BajaDAO.insertaBaja(1, bajaModel.getDuracion());
+		BajaDAO.insertaBaja(1, bajaBean.getDuracion());
 		return "bajas";
 	}
 
