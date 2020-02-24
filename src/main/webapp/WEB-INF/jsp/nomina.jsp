@@ -45,6 +45,7 @@
         <ul>
           <li><a href="/menu3" class="enlace">Inicio</a></li>
           <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
+          <li><a href="/turnos3" class="enlace">Turnos</a></li>
           <li><a href="/tareas3" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones3" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas3" class="enlace">Bajas</a></li>
@@ -131,7 +132,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 100%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
