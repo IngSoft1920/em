@@ -13,25 +13,28 @@ import ingsoft1920.em.Servicios.HttpClient;
 public class ActividadesDHO {
 	public static List<ActividadBean> peticionPedirTarea() {
 		try {
-			HttpClient client= new HttpClient("http://http://piedrafita.ls.fi.upm.es:7001/getTarea","GET");
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/getTarea/1","GET");
 			int respCode = client.getResponseCode();
 		
 			if(respCode==200){
+				//parseamos respuesta
 				String resp=client.getResponseBody();
 				JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-				JsonArray id_TareaLista=obj.get("id_tarea").getAsJsonArray();
+				//obtenemos los 3 campos
+				JsonArray id_TareaLista=obj.get("id_TareaLista").getAsJsonArray();
 				int[] id_Tareas= new int[id_TareaLista.size()];
-				JsonArray id_EmpleadoLista=obj.get("id_empleado").getAsJsonArray();
-				int[] id_Empleados= new int[id_EmpleadoLista.size()];
-				JsonArray id_DescripcionTareaLista=obj.get("descripcionTarea").getAsJsonArray();
-				String[] id_Descripciones= new String[id_DescripcionTareaLista.size()];
-				List<ActividadBean> lista=new ArrayList<ActividadBean>();
 				
+				int id_empleado=obj.get("empleado_id").getAsInt();
+				
+				JsonArray id_DescripcionTareaLista=obj.get("descripcionLista").getAsJsonArray();
+				String[] id_Descripciones= new String[id_DescripcionTareaLista.size()];
+				//Creamos objeto de salida
+				List<ActividadBean> lista=new ArrayList<ActividadBean>();
+				//Añadimos la info
 				for(int i=0;i<id_TareaLista.size();i++) {
 					id_Tareas[i]=id_TareaLista.get(i).getAsInt();
-					id_Empleados[i]=id_EmpleadoLista.get(i).getAsInt();
 					id_Descripciones[i]=id_DescripcionTareaLista.get(i).getAsString();
-					lista.add(new ActividadBean(id_Tareas[i], id_Empleados[i],id_Descripciones[i]));
+					lista.add(new ActividadBean(id_Tareas[i], id_empleado,id_Descripciones[i]));
 				}
 			return lista;
 			}

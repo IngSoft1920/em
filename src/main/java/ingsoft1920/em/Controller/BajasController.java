@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.BajaDAO;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 
 
@@ -47,7 +51,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil6")
 	public String perfilp1(Model model) {
-		return "perfil";
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil6")
@@ -64,10 +70,23 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String cerrarp(Model model) {
 		return "login";
 	}
+
+	@GetMapping("/turnos6")
+	public String turnosp1(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
 	
+	@PostMapping("/turnos6")
+	public String turnosp(Model model) {
+		return "turnos";
+	}
 	@GetMapping("/tareas6")
 	public String tareasp1(Model model) {
-		return "tareas";
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas6")
