@@ -93,7 +93,7 @@ public class EmpleadoDAO {
 			   res.setNombre(rs.getString("nombre"));
 			   res.setTelefono(rs.getString("telefono"));
 			   res.setCorreo(rs.getString("correo"));
-			   res.setNombre_rol("nombre_rol");
+			   res.setNombre_rol(rs.getString("nombre_rol"));
 			   
 		   }
 		   return res;
