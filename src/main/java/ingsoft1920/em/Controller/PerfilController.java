@@ -83,7 +83,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@PostMapping("/tareas2")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/vacaciones2")
