@@ -56,12 +56,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas5")
 	public String tareasp1(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas5")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/vacaciones5")
