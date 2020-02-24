@@ -65,12 +65,12 @@ public class VacacionesController {
 
 	@GetMapping("/tareas7")
 	public String tareasp1(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 
 	@PostMapping("/tareas7")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 
 	@GetMapping("/vacaciones7")

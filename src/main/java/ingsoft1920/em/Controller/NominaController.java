@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.Model.NominaModel;
 
@@ -62,12 +64,18 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas3")
 	public String tareasp1(Model model) {
-		return "tareas";
+		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
+		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
+		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
+		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas3")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/ejemplo")
@@ -102,6 +110,17 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String bajasp(Model model) {
 		return "bajas";
 	}
+	
+	@GetMapping("/turnos3")
+	public String turnosp1(Model model) {
+		return "turnos";
+	}
+	
+	@PostMapping("/turnos3")
+	public String turnosp(Model model) {
+		return "turnos";
+	}
+	
 	
 }
 
