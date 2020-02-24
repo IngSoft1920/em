@@ -45,6 +45,7 @@
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
           <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/turno2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas2" class="enlace">Bajas</a></li>

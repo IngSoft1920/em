@@ -28,6 +28,7 @@
         <ul>
           <li><a href="/menu6" class="enlace">Inicio</a></li>
           <li><a href="/nomina6" class="enlace">Nomina</a></li>
+          <li><a href="/turnos6" class="enlace">Turnos</a></li>
           <li><a href="/tareas6" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones6" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas6" class="activate-menu">Bajas</a></li>

@@ -96,6 +96,7 @@ public class EmpleadoDAO {
 			   res.setNombre_rol("nombre_rol");
 			   
 		   }
+		   return res;
           } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
@@ -171,6 +172,34 @@ public class EmpleadoDAO {
 				conn=null;
 			}		  
 		}
+	}
+	public static void añadirRol(String rol,int id_empleado) {
+		PreparedStatement stmt= null; 
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}  
+		try { 
+			  stmt=conn.prepareStatement("INSERT INTO rol(nombre_rol,id_empleado)"+
+						"values( ?,? );");
+							stmt.setString(1, rol);
+							stmt.setInt(2, id_empleado);
+							stmt.executeUpdate();
+		   
+          } 
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
 	}
 	
 	
