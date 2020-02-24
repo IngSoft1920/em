@@ -39,12 +39,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil4")
 	public String perfilp1(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil4")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar4")

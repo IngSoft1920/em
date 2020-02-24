@@ -1,5 +1,8 @@
 package ingsoft1920.em.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +10,13 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.LoginBean;
+import ingsoft1920.em.DAO.TurnoDAO;
+import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 
 public class PerfilController {
@@ -36,12 +45,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil2")
 	public String perfilp1(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil2")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar2")
@@ -55,12 +64,19 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/tareas2")
-	public String tareasp1(Model model) {
-		return "tareas";
+	public String tareas(Model model) {
+		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
+		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
+		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
+		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas2")
-	public String tareasp(Model model) {
+	public String tareas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
 		return "tareas";
 	}
 	
@@ -82,6 +98,19 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/bajas2")
 	public String bajasp(Model model) {
 		return "bajas";
+	}
+	
+	@GetMapping("/turnos2")
+	public String turnos(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
+	
+	@PostMapping("/turnos2")
+	public String turnos(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "turnos";
 	}
 	
 }

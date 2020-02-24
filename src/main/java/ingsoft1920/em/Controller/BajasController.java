@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -12,12 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.Beans.LoginBean;
 import ingsoft1920.em.DAO.BajaDAO;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 
 
@@ -46,12 +52,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/perfil6")
-	public String perfilp1(Model model) {
-		return "perfil";
+	public String perfil(Model model) {
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil6")
-	public String perfilp(Model model) {
+	public String perfil(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
 		return "perfil";
 	}
 	
@@ -67,12 +76,18 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas6")
 	public String tareasp1(Model model) {
-		return "tareas";
+		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
+		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
+		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
+		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas6")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/vacaciones6")
@@ -93,6 +108,19 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/bajas6")
 	public String bajasp(Model model) {
 		return "bajas";
+	}
+	
+	@GetMapping("/turnos6")
+	public String turnos(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
+	
+	@PostMapping("/turnos6")
+	public String turnos(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "turnos";
 	}
 	
 	@GetMapping("/verBaja")

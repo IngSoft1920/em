@@ -10,11 +10,15 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.LoginBean;
 import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.TurnoModel;
 
 
 @Controller 
@@ -44,12 +48,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil3")
 	public String perfilp1(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil3")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar3")
@@ -112,12 +116,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/turnos3")
-	public String turnosp1(Model model) {
+	public String turnos(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
 		return "turnos";
 	}
 	
 	@PostMapping("/turnos3")
-	public String turnosp(Model model) {
+	public String turnos(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
 		return "turnos";
 	}
 	
