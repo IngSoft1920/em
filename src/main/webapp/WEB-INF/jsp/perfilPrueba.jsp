@@ -25,8 +25,8 @@
       <div id="menu">
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/turnos2" class="enlace">Turnos</a></li>
           <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/turnos2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas2" class="enlace">Bajas</a></li>
@@ -84,7 +84,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 100%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;

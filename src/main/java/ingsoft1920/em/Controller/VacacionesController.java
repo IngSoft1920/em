@@ -42,12 +42,12 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 
 	@PostMapping("/perfil7")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 
 	@GetMapping("/cerrar7")

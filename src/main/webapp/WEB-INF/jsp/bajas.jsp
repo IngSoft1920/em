@@ -43,7 +43,7 @@
  
 <input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
  
-<form method="POST" 	action="añadeBaja"	modelAttribute="BajaBean">
+<form method="POST" 	action="aï¿½adeBaja"	modelAttribute="BajaBean">
  
   <section id="principal">
     <section id="publicaciones">
@@ -91,7 +91,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 100%;
   height: 30px;
   margin: auto;
   border: 0px solid #fff;
