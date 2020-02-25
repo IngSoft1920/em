@@ -1,64 +1,59 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html lan="es">
 
 <head>
   <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
   <title> USUARIO  : </title> <!--Título-->
-  <link rel="stylesheet" type="text/css" href="css/vacaciones.css"> <!--carpeta donde se encuentra el estilo css-->
-
-
+  <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 </head>
 
 <body>
 
 
-	
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	
 	<table>
 	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
 	</table>
 	
+	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
-        VACACIONES
+        PERFIL
       </div>
 
       <div id="menu">
         <ul>
-          <li><a href="/menu7" class="enlace">Inicio</a></li>
-          <li><a href="/nomina7" class="enlace">Nomina</a></li>
-          <li><a href="/turnos7" class="enlace">Turnos</a></li>
-          <li><a href="/tareas7" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones7" class="activate-menu">Vacaciones</a></li>
-          <li><a href="/bajas7" class="enlace">Bajas</a></li>
-          <li><a href="/perfil7" class="enlace">Perfil</a></li>
-          <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu2" class="enlace">Inicio</a></li>
+          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/tareas2" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
+          <li><a href="/bajas2" class="enlace">Bajas</a></li>
+          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
     </div>
   </header>
- 
- 
-<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
- 
-<form method="POST" 	action="a�adeVacaciones"	modelAttribute="VacacionBean">
- 
-  <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-          <h1 class="titulo-post">Duracion
-            <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
-          </h1>
-      </article>
-      <input type="submit" value="Enviar" >
-	</section>			
-</form>
-  
-  <style>
-  
-  *{
+
+	<u1>
+		<c:forEach var="vacaciones" items="${vacaciones}">
+			<li>
+				<p>
+						
+					<b>duracion:</b> ${vacaciones.duracion} <br>
+					<b>estado:</b> ${vacaciones.estado} <br>
+				</p>
+			</li>
+		</c:forEach>
+
+	</u1>
+</body>			
+
+	<style>
+	
+	*{
   margin: 0;
   padding: 0;
 
@@ -81,7 +76,7 @@ header{
   width: 90%;
   height: 30px;
   margin: auto;
-  border: 0px solid #fff;
+  border: 0px solid #000;
 }
 
 #logo{
@@ -99,7 +94,6 @@ header{
   border: 0px solid;
   float: right;
   margin-top: 55px;
-  border: 0px solid #fff;
 }
 
 #menu ul{}
@@ -230,9 +224,8 @@ header{
 
   top: 0px;
 }
-  
-  
-  
-  </style>
-
-  </html>
+	
+	
+	
+	
+	</style>

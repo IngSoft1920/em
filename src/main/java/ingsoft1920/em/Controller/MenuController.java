@@ -51,7 +51,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/perfil")
 	public String perfil(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar")
