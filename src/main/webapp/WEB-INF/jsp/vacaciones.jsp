@@ -43,7 +43,7 @@
  
 <input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
  
-<form method="POST" 	action="añadeVacaciones"	modelAttribute="VacacionBean">
+<form method="POST" 	action="aï¿½adeVacaciones"	modelAttribute="VacacionBean">
  
   <section id="principal">
     <section id="publicaciones">
@@ -78,7 +78,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 100%;
   height: 30px;
   margin: auto;
   border: 0px solid #fff;
