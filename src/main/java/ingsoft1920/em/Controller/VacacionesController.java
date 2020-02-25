@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.DAO.VacacionesDAO;
@@ -62,6 +64,8 @@ public class VacacionesController {
 
 	@GetMapping("/tareas7")
 	public String tareasp1(Model model) {
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 
