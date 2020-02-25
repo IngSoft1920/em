@@ -10,28 +10,13 @@
 
 <body>
 
-<%
 
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
 	
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
 	
 	<table>
 	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
 	</table>
-	
 	
   <header class="header"> <!-- La parte de arriba de la pÃ¡gina web-->
     <div id="encabezado">
@@ -41,46 +26,37 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu5" class="enlace">Inicio</a></li>
-          <li><a href="/nomina5" class="enlace">Nomina</a></li>
-          <li><a href="/turnos5" class="enlace">Turnos</a></li>
-          <li><a href="/tareas5" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones5" class="activate-menu">Vacaciones</a></li>
-          <li><a href="/bajas5" class="enlace">Bajas</a></li>
-          <li><a href="/perfil5" class="enlace">Perfil</a></li>
-          <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu7" class="enlace">Inicio</a></li>
+          <li><a href="/nomina7" class="enlace">Nomina</a></li>
+          <li><a href="/turnos7" class="enlace">Turnos</a></li>
+          <li><a href="/tareas7" class="enlace">Tareas</a></li>
+          <li><a href="/vacaciones7" class="activate-menu">Vacaciones</a></li>
+          <li><a href="/bajas7" class="enlace">Bajas</a></li>
+          <li><a href="/perfil7" class="enlace">Perfil</a></li>
+          <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
     </div>
   </header>
-
+ 
+ 
+<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
+ 
+<form method="POST" 	action="añadeVacaciones"	modelAttribute="VacacionesBean">
+ 
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
-
-        <a href="" class="enlace-post">
           <h1 class="titulo-post">Duracion
-            <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
+            <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
           </h1>
-        </a>
-
-
-
       </article>
-</section>
-
-    <section id="publicaciones">
-      <article class="post">
-
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Motivo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-        </a>
+	</section>			
+</form>
 
 
-      </article>
 
-  </section>
   
   
   <style>
@@ -257,6 +233,7 @@ header{
 
   top: 0px;
 }
+  
   
   
   </style>
