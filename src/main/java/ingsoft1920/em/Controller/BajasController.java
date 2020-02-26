@@ -1,0 +1,144 @@
+package ingsoft1920.em.Controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.BajaDAO;
+import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
+import ingsoft1920.em.Model.BajaModel;
+import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.TurnoModel;
+
+@Controller 
+
+public class BajasController {
+
+final static Logger logger = LogManager.getLogger(LoginController.class.getName());
+	
+	@GetMapping("/menu6")
+	public String loginp(Model model) {
+		return "menu";
+	}
+	
+	@PostMapping("/menu6")
+	public String menup(Model model) {
+		return "menu";
+	}
+	
+	@GetMapping("/nomina6")
+	public String nominap1(Model model) {
+		return "nomina";
+	}
+	
+	@PostMapping("/nomina6")
+	public String nominap(Model model) {
+		return "nomina";
+	}
+	
+	@GetMapping("/perfil6")
+	public String perfilp1(Model model) {
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
+	}
+	
+	@PostMapping("/perfil6")
+	public String perfilp(Model model) {
+		return "perfil";
+	}
+	
+	@GetMapping("/cerrar6")
+	public String cerrarp1(Model model) {
+		return "login";
+	}
+	
+	@PostMapping("/cerrar6")
+	public String cerrarp(Model model) {
+		return "login";
+	}
+
+	@GetMapping("/turnos6")
+	public String turnosp1(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
+	
+	@PostMapping("/turnos6")
+	public String turnosp(Model model) {
+		return "turnos";
+	}
+	@GetMapping("/tareas6")
+	public String tareasp1(Model model) {
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
+	}
+	
+	@PostMapping("/tareas6")
+	public String tareasp(Model model) {
+		return "tareaPrueba";
+	}
+	
+	@GetMapping("/vacaciones6")
+	public String vacacionesp1(Model model) {
+		return "vacaciones";
+	}
+	
+	@PostMapping("/vacaciones6")
+	public String vacacionesp(Model model) {
+		return "vacaciones";
+	}
+	
+	@GetMapping("/bajas6")
+	public String bajasp1(Model model) {
+		return "bajas";
+	}
+	
+	@PostMapping("/bajas6")
+	public String bajasp(Model model) {
+		return "bajas";
+	}
+	
+	@GetMapping("/verBaja")
+	public String verBaja(Model model) {
+		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(1);
+		model.addAttribute("bajas",bajas);
+		return "muestraBajas";
+	}
+	@PostMapping("/verBaja")
+	public String verBaja1(Model model) {
+		return "muestraBajas";
+	}
+
+	@GetMapping("/añadeBaja")
+	public String añadeBaja(Model model) {
+		BajaBean baja=new BajaBean();
+		model.addAttribute("bajaBean",baja);
+		model.addAttribute("mensajeError","");
+		return "bajas";
+	}
+	@PostMapping("/añadeBaja")
+	public String añadeBaja1(BajaBean bajaBean,Model model) {
+		//TO-DO COMPROBAR CAMPOS VALIDOS
+		BajaDAO.insertaBaja(1, bajaBean.getDuracion());
+		return "bajas";
+	}
+
+	
+	
+}

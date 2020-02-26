@@ -18,9 +18,4 @@ public class EmApplication {
 		SpringApplication.run(EmApplication.class, args);
 	}
 
-	@ResponseBody
-	@GetMapping("/helloWorld")
-	public String helloWorldController() {
-		return "Hello world!";
-	}
 }
