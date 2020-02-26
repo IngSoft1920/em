@@ -80,8 +80,33 @@ public class VacacionesDAO {
 						conn=null;
 					}
 			  }
-		
-		 
-			
+	}
+	
+	public static void insertaVacaciones(int id_empleado,String duracion) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion) values (?,?);");
+			   stmt.setInt(1, id_empleado);
+			   stmt.setString(2, duracion);
+			   stmt.executeUpdate();
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
 	}
 }

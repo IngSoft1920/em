@@ -51,7 +51,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/perfil")
 	public String perfil(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar")
@@ -67,11 +67,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas")
 	public String tareas(Model model) {
-		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
-		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
-		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
-		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
-		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
@@ -79,7 +75,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/tareas")
 	public String tareas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/turnos")

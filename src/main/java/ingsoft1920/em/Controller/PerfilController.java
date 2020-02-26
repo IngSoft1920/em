@@ -1,5 +1,7 @@
 package ingsoft1920.em.Controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,6 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
+import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 
 public class PerfilController {
@@ -23,7 +31,17 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String menup(Model model) {
 		return "menu";
 	}
+	@GetMapping("/turnos2")
+	public String turnosp1(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
+	}
 	
+	@PostMapping("/turnos2")
+	public String turnosp(Model model) {
+		return "turnos";
+	}
 	@GetMapping("/nomina2")
 	public String nominap1(Model model) {
 		return "nomina";
@@ -36,12 +54,14 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil2")
 	public String perfilp1(Model model) {
-		return "perfil";
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil2")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 	
 	@GetMapping("/cerrar2")
@@ -56,12 +76,14 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas2")
 	public String tareasp1(Model model) {
-		return "tareas";
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
 	}
 	
 	@PostMapping("/tareas2")
 	public String tareasp(Model model) {
-		return "tareas";
+		return "tareaPrueba";
 	}
 	
 	@GetMapping("/vacaciones2")

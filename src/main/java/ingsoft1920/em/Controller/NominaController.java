@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.NominaDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.TurnoModel;
 
 
 @Controller 
@@ -44,7 +48,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil3")
 	public String perfilp1(Model model) {
-		return "perfil";
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
+		return "perfilPrueba";
 	}
 	
 	@PostMapping("/perfil3")
@@ -64,11 +70,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/tareas3")
 	public String tareasp1(Model model) {
-		//List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
-		List<ActividadBean> tareas=new ArrayList<ActividadBean>();
-		tareas.add(new ActividadBean(1,1,"limpiar habitacion 1"));
-		tareas.add(new ActividadBean(2,1,"limpiar habitacion 2"));
-		tareas.add(new ActividadBean(3,1,"limpiar habitacion 3"));
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
@@ -113,6 +115,8 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/turnos3")
 	public String turnosp1(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
 		return "turnos";
 	}
 	

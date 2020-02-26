@@ -28,6 +28,7 @@
         <ul>
           <li><a href="/menu7" class="enlace">Inicio</a></li>
           <li><a href="/nomina7" class="enlace">Nomina</a></li>
+          <li><a href="/turnos7" class="enlace">Turnos</a></li>
           <li><a href="/tareas7" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones7" class="activate-menu">Vacaciones</a></li>
           <li><a href="/bajas7" class="enlace">Bajas</a></li>
@@ -42,7 +43,7 @@
  
 <input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
  
-<form method="POST" 	action="añadeVacaciones"	modelAttribute="VacacionesBean">
+<form method="POST" 	action="aï¿½adeVacaciones"	modelAttribute="VacacionBean">
  
   <section id="principal">
     <section id="publicaciones">
@@ -51,12 +52,9 @@
             <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
           </h1>
       </article>
+      <input type="submit" value="Enviar" >
 	</section>			
 </form>
-
-
-
-  
   
   <style>
   
@@ -80,7 +78,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 100%;
   height: 30px;
   margin: auto;
   border: 0px solid #fff;

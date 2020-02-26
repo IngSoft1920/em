@@ -18,6 +18,7 @@ public class DatoEmpleadoBean {
 	String telefono;
 	String correo;
 	String nombre_rol;
+	
 	public String getNombre_rol() {
 		return nombre_rol;
 	}

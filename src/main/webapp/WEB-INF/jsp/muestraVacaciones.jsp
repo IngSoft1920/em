@@ -1,35 +1,16 @@
-	
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html lan="es">
 
 <head>
   <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
   <title> USUARIO  : </title> <!--Título-->
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
-
-
 </head>
 
 <body>
 
 
-  <%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
 	<table>
 	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
 	</table>
@@ -45,7 +26,6 @@
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
           <li><a href="/nomina2" class="enlace">Nomina</a></li>
-          <li><a href="/turno2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas2" class="enlace">Bajas</a></li>
@@ -57,109 +37,19 @@
     </div>
   </header>
 
-  <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
+	<u1>
+		<c:forEach var="vacaciones" items="${vacaciones}">
+			<li>
+				<p>
+						
+					<b>duracion:</b> ${vacaciones.duracion} <br>
+					<b>estado:</b> ${vacaciones.estado} <br>
+				</p>
+			</li>
+		</c:forEach>
 
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Nombre
-            <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
-          </h1>
-        </a>
-
-
-
-      </article>
-</section>
-
-    <section id="publicaciones">
-      <article class="post">
-
-        <a href="" class="enlace-post">
-          <h1 class="titulo-post">Apellidos <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-        </a>
-
-
-      </article>
-
-  </section>
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Direccion de correo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-
-    </article>
-
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero seg social <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Hotel <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-<section id="publicaciones">
-  <article class="post">
-
-    <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero de contacto <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-    </a>
-
-
-  </article>
-</section>
-
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Puesto de trabajo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-
-    </article>
-
-</section>
-
-
-
-  <section id="publicaciones">
-    <article class="post">
-
-      <a href="" class="enlace-post">
-        <h1 class="titulo-post">Fecha de nacimiento <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
-      </a>
-
-    </article>
-</section>
-
-
-
-
-
-  </section>
-
+	</u1>
+</body>			
 
 	<style>
 	
@@ -183,7 +73,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 90%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -339,18 +229,3 @@ header{
 	
 	
 	</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  </html>

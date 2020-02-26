@@ -14,14 +14,14 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu" class="enlace">Inicio</a></li>
-          <li><a href="/nomina" class="enlace">Nomina</a></li>
-          <li><a href="/turnos" class="enlace">Turnos</a></li>
-          <li><a href="/tareas" class="activate-menu">Tareas</a></li>
-          <li><a href="/vacaciones" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas" class="enlace">Bajas</a></li>
-          <li><a href="/perfil" class="enlace">Perfil</a></li>
-          <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu4" class="enlace">Inicio</a></li>
+          <li><a href="/nomina4" class="enlace">Nomina</a></li>
+          <li><a href="/turnos4" class="enlace">Turnos</a></li>
+          <li><a href="/tareas4" class="activate-menu">Tareas</a></li>
+          <li><a href="/vacaciones4" class="enlace">Vacaciones</a></li>
+          <li><a href="/bajas4" class="enlace">Bajas</a></li>
+          <li><a href="/perfil4" class="enlace">Perfil</a></li>
+          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>

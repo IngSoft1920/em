@@ -11,11 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.VacacionBean;
-import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
-import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
 @Controller
@@ -45,12 +44,12 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 
 	@PostMapping("/perfil7")
 	public String perfilp(Model model) {
-		return "perfil";
+		return "perfilPrueba";
 	}
 
 	@GetMapping("/cerrar7")
@@ -65,6 +64,8 @@ public class VacacionesController {
 
 	@GetMapping("/tareas7")
 	public String tareasp1(Model model) {
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 
@@ -92,23 +93,23 @@ public class VacacionesController {
 	public String bajasp(Model model) {
 		return "bajas";
 	}
-// TODO
+
 	@GetMapping("/verVacaciones")
 	public String verVacaciones(Model model) {
 		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(1);
-		model.addAttribute("bajas", vacaciones);
-		return "muestraVacaciones";//TODO
+		model.addAttribute("vacaciones", vacaciones);
+		return "muestraVacaciones";
 	}
 
 	@PostMapping("/verVacaciones")
 	public String verVacaciones1(Model model) {
-		return "muestraVacaciones"; // TODO
+		return "muestraVacaciones"; 
 	}
 
 	@GetMapping("/añadeVacaciones")
 	public String añadeBaja(Model model) {
 		VacacionBean vacacion = new VacacionBean();
-		model.addAttribute("vacacionesBean", vacacion);
+		model.addAttribute("vacaciones", vacacion);
 		model.addAttribute("mensajeError", "");
 		return "vacaciones";
 	}
@@ -116,8 +117,9 @@ public class VacacionesController {
 	@PostMapping("/añadeVacaciones")
 	public String añadeVacaciones1(BajaBean bajaBean, Model model) {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		VacacionBean vacacion = new VacacionBean();
-		VacacionesDAO.editaVacacion(vacacion);
+		
+		VacacionesDAO.insertaVacaciones(1,bajaBean.getDuracion());
 		return "vacaciones";
 	}
-  }
+	
+}
