@@ -2,6 +2,7 @@ package ingsoft1920.em.Controller;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,7 +186,7 @@ public class API {
 		@ResponseBody
 		@GetMapping("/vacaciones")
 		//Enviamos informacion de las vacaciones de un empleado filtramos id_empleado
-		public String vacaciones(@RequestBody String req) {
+		public String vacaciones(@RequestBody String req) throws ParseException {
 			//Obtenemos parametro recibido
 			JsonObject obj = (JsonObject) JsonParser.parseString(req);
 			int id_empleado=obj.get("id_empleado").getAsInt();

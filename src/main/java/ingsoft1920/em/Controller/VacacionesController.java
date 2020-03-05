@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -95,7 +96,7 @@ public class VacacionesController {
 	}
 
 	@GetMapping("/verVacaciones")
-	public String verVacaciones(Model model) {
+	public String verVacaciones(Model model) throws ParseException {
 		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(1);
 		model.addAttribute("vacaciones", vacaciones);
 		return "muestraVacaciones";
