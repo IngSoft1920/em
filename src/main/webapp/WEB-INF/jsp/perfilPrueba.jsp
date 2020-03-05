@@ -43,21 +43,40 @@
 <body>
 
 	<li>
-		<p>
-          <b>nombre:</b>${empleado.nombre }<br>
-		</p>
-	
-    	<p>
-        	<b>telefono:</b>${empleado.telefono }<br>
-		</p>
-	
-	  	<p>
-          <b>correo:</b>${empleado.correo }<br>
-        </p>
-	
-	  	<p>
-          <b>Rol:</b>${empleado.nombre_rol }<br>
-        </p>
+		
+		<section id="publicaciones">
+      		<article class="post">
+        		
+          			<h1 class="titulo-post">Nombre:<td>${empleado.nombre }<br></td></h1>
+        		
+      		</article>
+		</section>
+		
+		<section id="publicaciones">
+      		<article class="post">
+        		
+          			<h1 class="titulo-post">Telefono:<td>${empleado.telefono }<br></td></h1>
+        		
+      		</article>
+		</section>
+		
+		<section id="publicaciones">
+      		<article class="post">
+        		
+          			<h1 class="titulo-post">Correo:<td>${empleado.correo }<br></td></h1>
+        		
+      		</article>
+		</section>
+		
+		<section id="publicaciones">
+      		<article class="post">
+        		
+          			<h1 class="titulo-post">Rol:<td>${empleado.nombre_rol }<br></td></h1>
+        		
+      		</article>
+		</section>
+		
+		
 	</li>
 
 </body>
@@ -84,7 +103,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -158,7 +177,7 @@ header{
     width: 96%;
     height: auto; overflow: hidden;
     padding: 10px 7px;
-    background: #fdfdfd;
+    background: #fff;
     border-Left-style: solid;
     border-Left-width: 5px;
     border-Left-color: #0489B1;

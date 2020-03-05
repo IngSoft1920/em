@@ -143,7 +143,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
