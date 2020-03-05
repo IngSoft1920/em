@@ -1,6 +1,5 @@
 package ingsoft1920.em.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,107 +14,113 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
-import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
-import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Model.TurnoModel;
 
 
+
+
 @Controller 
-public class NominaController {
+public class AusenciasController {
 
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu3")
+	@GetMapping("/menu4")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu3")
+	@PostMapping("/menu4")
 	public String menup(Model model) {
 		return "menu";
 	}
 	
-	@GetMapping("/nomina3")
+	@GetMapping("/nomina4")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina3")
+	@PostMapping("/nomina4")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil3")
+	@GetMapping("/perfil4")
 	public String perfilp1(Model model) {
 		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 	
-	@PostMapping("/perfil3")
+	@PostMapping("/perfil4")
 	public String perfilp(Model model) {
 		return "perfil";
 	}
 	
-	@GetMapping("/cerrar3")
+	@GetMapping("/cerrar4")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar3")
+	@PostMapping("/cerrar4")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas3")
+	@GetMapping("/ausencias4")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
+	}
+	
+	@PostMapping("/ausencias4")
+	public String ausenciasp(Model model) {
+		return "ausencias";
+	}
+	
+	@GetMapping("/tareas4")
 	public String tareasp1(Model model) {
 		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 	
-	@PostMapping("/tareas3")
+	@PostMapping("/tareas4")
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/ejemplo")
-	public String ejemplop1(Model model) {
-		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
-		List<NominaModel>nominas=NominaDAO.verNomina(1);
-		model.addAttribute("nominas", nominas);
-		return "ejemplo";
-	}
-	
-	@PostMapping("/ejemplo")
-	public String ejemplop(Model model) {
-		return "ejemplo";
-	}
-	
-	@GetMapping("/ausencias3")
-	public String ausenciasp1(Model model) {
-		return "ausencias";
-	}
-	
-	@PostMapping("/ausencias3")
-	public String ausenciasp(Model model) {
-		return "ausencias";
-	}
-	
-	@GetMapping("/turnos3")
+	@GetMapping("/turnos4")
 	public String turnosp1(Model model) {
 		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
 		model.addAttribute("turnos", turnos);
 		return "turnos";
 	}
 	
-	@PostMapping("/turnos3")
+	@PostMapping("/turnos4")
 	public String turnosp(Model model) {
 		return "turnos";
 	}
 	
+	@GetMapping("/vacaciones4")
+	public String vacacionesp1(Model model) {
+		return "vacaciones";
+	}
+	
+	@PostMapping("/vacaciones4")
+	public String vacacionesp(Model model) {
+		return "vacaciones";
+	}
+	
+	
+	@GetMapping("/bajas4")
+	public String bajasp1(Model model) {
+		return "bajas";
+	}
+	
+	@PostMapping("/bajas4")
+	public String bajasp(Model model) {
+		return "bajas";
+	}
+	
 	
 }
-
-

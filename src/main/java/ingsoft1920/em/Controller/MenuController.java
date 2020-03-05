@@ -91,30 +91,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "turnos";
 	}
 	
-	@GetMapping("/vacaciones1")
-	public String vacaciones(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias")
+	public String ausencias(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones1")
-	public String vacaciones(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+	@PostMapping("/ausencias")
+	public String ausencias(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "vacaciones";
+		return "ausencias";
 	}
 	
-	@GetMapping("/bajas")
-	public String bajas(Model model) {
-		return "bajas";
-	}
-	
-	@PostMapping("/bajas")
-	public String bajas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) {
-		return "bajas";
-	}
-	
-	
-	
-	
-
 }

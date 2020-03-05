@@ -28,8 +28,7 @@
           <li><a href="/nomina2" class="enlace">Nomina</a></li>
           <li><a href="/turnos2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas2" class="enlace">Bajas</a></li>
+          <li><a href="/ausencias2" class="enlace">Ausencias</a></li>
           <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
           <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
         </ul>

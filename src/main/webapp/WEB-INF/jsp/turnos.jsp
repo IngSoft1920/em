@@ -19,8 +19,7 @@
           <li><a href="/nomina" class="enlace">Nomina</a></li>
           <li><a href="/turnos" class="activate-menu">Turnos</a></li>
           <li><a href="/tareas" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas" class="enlace">Bajas</a></li>
+          <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>

@@ -74,25 +74,16 @@ public class VacacionesController {
 		return "tareaPrueba";
 	}
 
-	@GetMapping("/vacaciones7")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias7")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 
-	@PostMapping("/vacaciones7")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@PostMapping("/ausencias7")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 
-	@GetMapping("/bajas7")
-	public String bajasp1(Model model) {
-		return "bajas";
-	}
-
-	@PostMapping("/bajas7")
-	public String bajasp(Model model) {
-		return "bajas";
-	}
 
 	@GetMapping("/verVacaciones")
 	public String verVacaciones(Model model) {

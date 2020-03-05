@@ -1,5 +1,7 @@
 package ingsoft1920.em.Controller;
 
+
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,88 +19,76 @@ import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
-
-
-
 @Controller 
 public class TareasController {
 
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu4")
+	@GetMapping("/menu5")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu4")
+	@PostMapping("/menu5")
 	public String menup(Model model) {
 		return "menu";
 	}
 	
-	@GetMapping("/nomina4")
+	@GetMapping("/nomina5")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina4")
+	@PostMapping("/nomina5")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil4")
+	@GetMapping("/perfil5")
 	public String perfilp1(Model model) {
 		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 	
-	@PostMapping("/perfil4")
+	@PostMapping("/perfil5")
 	public String perfilp(Model model) {
 		return "perfil";
 	}
 	
-	@GetMapping("/cerrar4")
+	@GetMapping("/cerrar5")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar4")
+	@PostMapping("/cerrar5")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas4")
+	@GetMapping("/tareas5")
 	public String tareasp1(Model model) {
 		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 	
-	@PostMapping("/tareas4")
+	@PostMapping("/tareas5")
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/vacaciones4")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias5")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones4")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@PostMapping("/ausencias5")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
-	
-	@GetMapping("/bajas4")
-	public String bajasp1(Model model) {
-		return "bajas";
-	}
-	
-	@PostMapping("/bajas4")
-	public String bajasp(Model model) {
-		return "bajas";
-	}
-	@GetMapping("/turnos4")
+
+	@GetMapping("/turnos5")
 	public String turnosp(Model model) {
 		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
 		model.addAttribute("turnos", turnos);
