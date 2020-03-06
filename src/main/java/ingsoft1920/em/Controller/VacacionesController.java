@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.VacacionBean;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
+import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
 @Controller
@@ -72,6 +74,13 @@ public class VacacionesController {
 	@PostMapping("/tareas7")
 	public String tareasp(Model model) {
 		return "tareaPrueba";
+	}
+	
+	@GetMapping("/turnos7")
+	public String turnosp(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
 	}
 
 	@GetMapping("/ausencias7")
