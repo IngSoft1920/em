@@ -188,11 +188,13 @@ public class API {
 		//Enviamos informacion de las vacaciones de un empleado filtramos id_empleado
 		public String vacaciones(@RequestBody String req) throws ParseException {
 			//Obtenemos parametro recibido
+			String res="";
 			JsonObject obj = (JsonObject) JsonParser.parseString(req);
 			int id_empleado=obj.get("id_empleado").getAsInt();
 			List<VacacionesModel>consulta=new ArrayList<VacacionesModel>();
 			//QUERY
 			consulta=VacacionesDAO.sacaVacaciones(id_empleado);
+			if (consulta!=null) {
 			//Guardamos resultado
 			JsonArray listaIDEmpleado=new JsonArray();
 			JsonArray listaIDVacacion=new JsonArray();
@@ -210,8 +212,10 @@ public class API {
 			vacacion.add("id_vacacion",listaIDVacacion);
 			vacacion.add("duracion",listaDuracion);
 			vacacion.add("estado",listaEstado);
+			res=vacacion.toString();
+			}
 			
-			return vacacion.toString();
+			return res;
 			
 		}
 		
