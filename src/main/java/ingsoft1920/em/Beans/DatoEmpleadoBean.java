@@ -18,6 +18,7 @@ public class DatoEmpleadoBean {
 	String telefono;
 	String correo;
 	String nombre_rol;
+	int id_hotel;
 	
 	public String getNombre_rol() {
 		return nombre_rol;
@@ -91,6 +92,12 @@ public class DatoEmpleadoBean {
 
 	public void setId_rol(int id_rol) {
 		this.id_rol = id_rol;
+	}
+	public int getId_hotel() {
+		return id_hotel;
+	}
+	public void setId_hotel(int id_hotel) {
+		this.id_hotel = id_hotel;
 	}
 
 	public void doWhatEver() {}

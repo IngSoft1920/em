@@ -12,6 +12,7 @@ import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
+import ingsoft1920.em.Model.EmpleadoModelC3;
 
 public class EmpleadoDAO {
 	//TODAS las consultas a las bases de datos
@@ -201,7 +202,44 @@ public class EmpleadoDAO {
 				}
 		  }
 	}
-	
+	public static List<EmpleadoModelC3> sacaEmpleados3(int id_hotel){
+		//CONSULTA5 -> enviamos a dho id:empleado, id_hotel, id_rol
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		List<EmpleadoModelC3> res = new ArrayList<EmpleadoModelC3>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement("select empleado.id_empleado, empleado.id_hotel, empleado.id_rol from empleado join hotel on empleado.id_empleado=hotel.id_empleado where hotel.id_hotel=?",id_hotel);
+			stmt.setInt(1,id_hotel);
+			rs=stmt.executeQuery();
+			while(rs.next()) {
+				EmpleadoModelC3 empleado = new EmpleadoModelC3(rs.getInt("id_empleado"),rs.getInt("id_hotel"),rs.getInt("id_rol"));
+				res.add(empleado);
+			}
+		}
+		catch(SQLException ex) {
+			System.out.println("SQLException: " +ex.getMessage());				
+		}
+		finally {
+			if(rs!=null) {
+				try {rs.close();
+				}catch(SQLException sqlEx) {}
+				rs=null;
+			}
+			if(stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		return res;
+	}
 	
 	
 }

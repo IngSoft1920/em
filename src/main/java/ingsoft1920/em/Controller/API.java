@@ -29,6 +29,7 @@ import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
+import ingsoft1920.em.Model.EmpleadoModelC3;
 import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 @Controller
@@ -256,6 +257,35 @@ public class API {
 			return empleado.toString();
 			
 		}
+		//API para DHO, devolvemos lista de empleados
+		@ResponseBody
+		@GetMapping("/sacaEmpleadoHotel")
+		//recibimos el id_hotel del que quiere obtener la lista de empleados
+		public String getEmpleadoHotel(@RequestBody String req) {
+			//convertimos el parámetro recibido a variable
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			int id_hotel=obj.get("id_hotel").getAsInt();
+			//consulta sql
+			List<EmpleadoModelC3> listaEmpleados = new ArrayList<EmpleadoModelC3>();
+			listaEmpleados = EmpleadoDAO.sacaEmpleados3(id_hotel);
+			//Guardamos la info de la consulta en formato JSON
+			JsonArray listaIDEmpleados = new JsonArray();
+			JsonArray listaIDHotel = new JsonArray();
+			JsonArray listaIDRol = new JsonArray();
+			
+			for(EmpleadoModelC3 empleado:listaEmpleados) {
+				listaIDEmpleados.add(empleado.getId_Empleado());
+				listaIDHotel.add(empleado.getId_Hotel());
+				listaIDRol.add(empleado.getId_Rol());			
+			}
+			
+			JsonObject empleado = new JsonObject();
+			empleado.add("id_empleado", listaIDEmpleados);
+			empleado.add("id_hotel", listaIDHotel);
+			empleado.add("id_rol", listaIDRol);
+			return empleado.toString();
+		}
+		
 		
 	
 	
