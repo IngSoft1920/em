@@ -25,6 +25,7 @@ public class VacacionesDAO {
 		List<VacacionesModel> res = new ArrayList<VacacionesModel>();
 		PreparedStatement stmt = null;
 		PreparedStatement stmt2 = null;
+		PreparedStatement stmt3= null; 
 		ResultSet rs = null; 
 		ResultSet rs2 = null;
 		Date fecha_alta;
@@ -33,8 +34,8 @@ public class VacacionesDAO {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	    String today = formatter.format(date);
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    
-		
+	    int vacacionesGastadas=0;
+		int vacacionesApedir=0;
 	    
 	    
 		  try { 
@@ -55,9 +56,22 @@ public class VacacionesDAO {
 		   }
 		   while (rs.next()){
 			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getInt("duracion"),rs.getBoolean("estado"));
-			   if(((dias/30)*2.5)<=vacaciones.getDuracion())
+			   if(rs.getBoolean("estado")) {
+				   vacacionesGastadas=vacacionesGastadas+rs.getInt("duracion");
+			   }
+			   else {
+				   vacacionesApedir = vacacionesApedir+rs.getInt("duracion");
+			   }
 			   res.add(vacaciones);
 			   } 
+		   if(((dias/30)*2.5)>vacacionesApedir+vacacionesGastadas) { //si pide más de lo que puede, se borra esa entrada en la base de datos porque no se le pueden conceder y se le dewvolveria un list vacio ya que no habria que mandarle nada a cm
+			   stmt3=conn.prepareStatement("DELETE FROM vacaciones WHERE id_empleado = ? and estado=? ;");
+			   stmt3.setInt(1, id_empleado);
+			   stmt3.setBoolean(3, false);
+			   stmt3.executeUpdate();  
+			   res=null;
+			  }
+		
 		  } 
 		  catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
@@ -78,6 +92,7 @@ public class VacacionesDAO {
 					conn=null;
 				}
 		  }
+		  
 		  return res;
 	}
 
