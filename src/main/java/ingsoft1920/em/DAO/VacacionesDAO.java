@@ -126,16 +126,49 @@ public class VacacionesDAO {
 			  }
 	}
 	
-	public static void insertaVacaciones(int id_empleado,String duracion) {
+	public static void insertaVacaciones(int id_empleado,int duracion) throws ParseException {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null; 
+		PreparedStatement stmt2 = null;
+		PreparedStatement stmt3= null; 
+		ResultSet rs = null;
+		ResultSet rs2 = null;
+		Date fecha_alta;
+		int dias = 0;
+		Date date = new Date();
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+	    String today = formatter.format(date);
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    int vacacionesGastadas=0;
+	    
 		try { 
-			   stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion) values (?,?);");
+			   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado FROM vacaciones WHERE id_empleado=?");
 			   stmt.setInt(1, id_empleado);
-			   stmt.setString(2, duracion);
-			   stmt.executeUpdate();
+			   rs=stmt.executeQuery();
+			   //para contabilizar las vacaciones antes de mandarlas
+			   stmt2=conn.prepareStatement("SELECT fecha_alta FROM empleado WHERE id_empleado=?");
+			   stmt2.setInt(1, id_empleado);
+			   rs2 = stmt2.executeQuery();
+			   if(rs2.next()) {
+				   fecha_alta = rs.getDate("fecha_alta"); 
+				   Date fechaInicial=dateFormat.parse("fecha_alta"); //para restar la fechaFinal (que es el dia en el que piden vacaciones
+				   													//menos la fechaInicial que es cuando se dan de alta y asi ver cuantos dias le correspoden
+				   Date fechaFinal=dateFormat.parse(today);
+				   dias = (int) ((fechaFinal.getTime()-fechaInicial.getTime())/86400000); //dias de vacas que le corresponden al empleado
+				   }
+			   while (rs.next()){
+				   if(rs.getBoolean("estado")) {
+					   vacacionesGastadas=vacacionesGastadas+rs.getInt("duracion");
+				   }
+			   }
+			   if(((dias/30)*2.5)<=duracion+vacacionesGastadas) { //si pide más de lo que puede, se borra esa entrada en la base de datos porque no se le pueden conceder y se le dewvolveria un list vacio ya que no habria que mandarle nada a cm
+				  stmt3 = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion) values (?,?);");
+			      stmt.setInt(1, id_empleado);
+			      stmt.setInt(2, duracion);
+			      stmt.executeUpdate();
+			   }
 		} 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
