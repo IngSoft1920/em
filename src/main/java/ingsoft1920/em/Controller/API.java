@@ -2,6 +2,7 @@ package ingsoft1920.em.Controller;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +74,9 @@ public class API {
 		int id_empleado=obj.get("id_empleado").getAsInt();
 		String horarioInicio=obj.get("horarioInicio").getAsString();
 		String horarioFin=obj.get("horarioFin").getAsString();
+		String diaSemana=obj.get("dia").getAsString();
 		//Ejecutamos consulta insert
-		TurnoDAO.añadirTurno(id_empleado, horarioInicio, horarioFin);
+		TurnoDAO.añadirTurno(id_empleado, horarioInicio, horarioFin,diaSemana);
 	}
 	//TO-DO
 	//API PARA DHO
@@ -89,11 +91,13 @@ public class API {
 		JsonArray listaIDEmpleados=new JsonArray();
 		JsonArray listaHorarioInicio=new JsonArray();
 		JsonArray listaHorarioFin=new JsonArray();
+		JsonArray listaDiaSemana=new JsonArray();
 		for(TurnoModel turno:respuesta) {
 			listaIDTurno.add(turno.getId_Turno());
 			listaIDEmpleados.add(turno.getId_Turno());
 			listaHorarioInicio.add(turno.getHorarioInicio());
 			listaHorarioFin.add(turno.getHorarioFin());
+			listaDiaSemana.add(turno.getDiaSemana());
 		}
 		
 		JsonObject turno = new JsonObject();
@@ -101,6 +105,7 @@ public class API {
 		turno.add("id_empleado",listaIDTurno);
 		turno.add("horarioInicio",listaHorarioInicio);
 		turno.add("horarioFin",listaHorarioFin);
+		turno.add("diaSemana",listaDiaSemana);
 		
 		return turno.toString();
 	}
