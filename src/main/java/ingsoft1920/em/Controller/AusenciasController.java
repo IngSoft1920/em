@@ -122,5 +122,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "bajas";
 	}
 	
+	@GetMapping("/registro4")
+	public String registrop1(Model model) {
+		return "registro";
+	}
+	
+	@PostMapping("/registro4")
+	public String registrop(Model model) {
+		return "registro";
+	}
+	
 	
 }

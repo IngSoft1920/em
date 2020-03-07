@@ -102,4 +102,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "ausencias";
 	}
 	
+	@GetMapping("/registro")
+	public String registro(Model model) {
+		return "registro";
+	}
+	
+	@PostMapping("/registro")
+	public String registro(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+			Model model) {
+		return "registro";
+	}
+	
 }

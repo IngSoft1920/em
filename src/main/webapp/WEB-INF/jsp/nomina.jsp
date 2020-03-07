@@ -11,30 +11,6 @@
 
 <body>
 
-
-<%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
-	
-	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
@@ -49,6 +25,7 @@
           <li><a href="/tareas3" class="enlace">Tareas</a></li>
           <li><a href="/ausencias3" class="enlace">Ausencias</a></li>
           <li><a href="/perfil3" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>

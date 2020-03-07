@@ -41,14 +41,14 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu4" class="enlace">Inicio</a></li>
-          <li><a href="/nomina4" class="enlace">Nomina</a></li>
-          <li><a href="/turnos4" class="enlace">Turnos</a></li>
-          <li><a href="/tareas4" class="enlace">Tareas</a></li>
-          <li><a href="/ausencias4" class="activate-menu">Ausencias</a></li>
-          <li><a href="/perfil4" class="enlace">Perfil</a></li>
-          <li><a href="/registro4" class="enlace">Registro</a></li>
-          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu" class="enlace">Inicio</a></li>
+          <li><a href="/nomina" class="enlace">Nomina</a></li>
+          <li><a href="/turnos" class="enlace">Turnos</a></li>
+          <li><a href="/tareas" class="enlace">Tareas</a></li>
+          <li><a href="/ausencias" class="enlace">Ausencias</a></li>
+          <li><a href="/perfil" class="enlace">Perfil</a></li>
+          <li><a href="/registro" class="activate-menu">Registro</a></li>
+          <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
@@ -61,9 +61,9 @@
     <div id="publicaciones1">
       <article class="cuerpo-nomina">
         <a href="/vacaciones4" class="enlace-nomina">
-        <h2 class="nomina"> VACACIONES </h2>
+        <h2 class="nomina"> CHECK-IN </h2>
         </a>
-        <img src="/img/playa.jpg" class="img-post1">
+        <img src="/img/checkin2.jpg" class="img-post1">
       </article>
     </div>
 
@@ -74,9 +74,9 @@
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
         <a href="/bajas4" class="enlace-tarea">
-        <h2 class="tarea"> BAJAS </h2>
+        <h2 class="tarea"> CHECK-OUT </h2>
         </a>
-        <img src="/img/tareas.jpg" class="img-post2">
+        <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
 
@@ -179,7 +179,7 @@ header{
 }
 
 #publicaciones2{
-  width: 300px;
+  width: 330px;
   float:left;
   padding:10px;
   margin:40px;
@@ -207,7 +207,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 20px; /*CENTRAR LA IMAGEN*/
+  margin-left: 35px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones1 a .nomina:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -246,7 +246,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 80px; /*CENTRAR LA IMAGEN*/
+  margin-left: 45px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones2 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -258,7 +258,7 @@ header{
   height: 100px;
   float: left;
   margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
-  margin-left: 68px; /*CENTRAR LA IMAGEN*/
+  margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
 
 

@@ -10,29 +10,6 @@
 
 <body>
 
-  <%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
-
-
   <header class="header">
     <div id="encabezado">
       <div id="logo">
@@ -47,6 +24,7 @@
           <li><a href="/tareas" class="enlace">Tareas</a></li>
           <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
+          <li><a href="/registro" class="enlace">Registro</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -60,9 +38,9 @@
     <div id="publicaciones1">
       <article class="cuerpo-nomina">
         <a href="/vacaciones4" class="enlace-nomina">
-        <h2 class="nomina"> CHECK-IN </h2>
+        <h2 class="nomina"> NOMINA </h2>
         </a>
-        <img src="/img/checkin2.jpg" class="img-post1">
+        <img src="/img/nomina.jpg" class="img-post1">
       </article>
     </div>
 
@@ -70,12 +48,14 @@
     </div>
 
 
+
+
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
         <a href="/bajas4" class="enlace-tarea">
-        <h2 class="tarea"> CHECK-OUT </h2>
+        <h2 class="tarea"> PERFIL </h2>
         </a>
-        <img src="/img/checkout.jpg" class="img-post2">
+        <img src="/img/perfill.jpg" class="img-post2">
       </article>
     </div>
 

@@ -21,6 +21,7 @@
           <li><a href="/tareas" class="enlace">Tareas</a></li>
           <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
+          <li><a href="/registro" class="enlace">Registro</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>

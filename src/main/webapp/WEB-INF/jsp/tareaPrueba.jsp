@@ -20,6 +20,7 @@
           <li><a href="/tareas5" class="activate-menu">Tareas</a></li>
           <li><a href="/ausencias5" class="enlace">Ausencias</a></li>
           <li><a href="/perfil5" class="enlace">Perfil</a></li>
+          <li><a href="/registro5" class="enlace">Registro</a></li>
           <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
