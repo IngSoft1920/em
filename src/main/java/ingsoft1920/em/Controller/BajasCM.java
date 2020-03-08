@@ -22,7 +22,7 @@ public class BajasCM {
 				JsonObject obj = (JsonObject) JsonParser.parseString(resp);
 				res.setId_baja(obj.get("id_baja").getAsInt());
 				res.setId_empleado(obj.get("id_empleado").getAsInt());
-				res.setDuracion(obj.get("duracion").getAsString());
+				res.setDuracion(obj.get("duracion").getAsInt());
 				res.setEstado(obj.get("estado").getAsBoolean());
 				
 				return res;	

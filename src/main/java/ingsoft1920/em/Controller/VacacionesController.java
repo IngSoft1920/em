@@ -96,7 +96,7 @@ public class VacacionesController {
 	}
 
 	@GetMapping("/verVacaciones")
-	public String verVacaciones(Model model) throws ParseException {
+	public String verVacaciones(Model model){
 		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(1);
 		model.addAttribute("vacaciones", vacaciones);
 		return "muestraVacaciones";
@@ -116,10 +116,13 @@ public class VacacionesController {
 	}
 
 	@PostMapping("/añadeVacaciones")
-	public String añadeVacaciones1(BajaBean bajaBean, Model model) {
+	public String añadeVacaciones1(BajaBean bajaBean, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		
+		boolean sePuede;
+		sePuede = VacacionesDAO.contVacaciones(bajaBean.getId_empleado(), bajaBean.getDuracion());
+		if (sePuede) {
 		VacacionesDAO.insertaVacaciones(1,bajaBean.getDuracion());
+		}
 		return "vacaciones";
 	}
 	
