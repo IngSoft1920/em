@@ -12,25 +12,26 @@ import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Servicios.HttpClient;
 
 public class BajasCM {
-	public static BajaBean peticionPedirBaja(){
+	public static void peticionPedirBaja(BajaBean baja){
 		try {
-			HttpClient client = new HttpClient("http://localhost:7000/ausencia","GET");
+			HttpClient client = new HttpClient("http://localhost:7000/ausencia","POST");
+			JsonObject obj = new JsonObject();
+			obj.addProperty("ausencia_id", baja.getId_baja());
+			obj.addProperty("motivo", "baja");
+			obj.addProperty("fecha_inicio", baja.getFecha_inicio().toString());
+			obj.addProperty("fecha_fin", baja.getFecha_fin().toString());
+			obj.addProperty("empleado_id", baja.getId_empleado());
+			
+			client.setRequestBody(obj.toString());
+		
 			int respCode = client.getResponseCode();
-			BajaBean res=new BajaBean();
-			if(respCode==200) {
-				String resp = client.getResponseBody();
-				JsonObject obj = (JsonObject) JsonParser.parseString(resp);
-				res.setId_baja(obj.get("id_baja").getAsInt());
-				res.setId_empleado(obj.get("id_empleado").getAsInt());
-				res.setDuracion(obj.get("duracion").getAsString());
-				res.setEstado(obj.get("estado").getAsBoolean());
-				
-				return res;	
+			
+			if(respCode!=200) {
+				System.out.println("Ha habido un error");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return null;	
 	}
 }
 
