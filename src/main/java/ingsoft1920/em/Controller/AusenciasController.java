@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
@@ -103,6 +104,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/vacaciones4")
 	public String vacacionesp1(Model model) {
+		HorarioDAO.checkin(1);
 		return "vacaciones";
 	}
 	
@@ -114,6 +116,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/bajas4")
 	public String bajasp1(Model model) {
+		HorarioDAO.checkout(1);
 		return "bajas";
 	}
 	
