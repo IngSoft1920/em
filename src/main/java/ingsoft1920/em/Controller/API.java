@@ -117,9 +117,10 @@ public class API {
 		String telefono=obj.get("telefono").getAsString();
 		String correo=obj.get("email").getAsString();
 		String rol=obj.get("ocupacion").getAsString();
+		int id_hotel=obj.get("hotel").getAsInt();
 		//falta ocupacion es decir rol
 		//Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo);
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 	}
 	
