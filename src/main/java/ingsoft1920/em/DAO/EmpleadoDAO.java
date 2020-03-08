@@ -211,11 +211,11 @@ public class EmpleadoDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			stmt = conn.prepareStatement("select empleado.id_empleado, empleado.id_hotel, empleado.id_rol from empleado join hotel on empleado.id_empleado=hotel.id_empleado where hotel.id_hotel=?",id_hotel);
+			stmt = conn.prepareStatement("SELECT empleado.id_empleado, empleado.id_hotel, rol.nombre_rol from empleado join rol on empleado.id_empleado=rol.id_empleado where empleado.id_hotel=?",id_hotel);
 			stmt.setInt(1,id_hotel);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
-				EmpleadoModelC3 empleado = new EmpleadoModelC3(rs.getInt("id_empleado"),rs.getInt("id_hotel"),rs.getInt("id_rol"));
+				EmpleadoModelC3 empleado = new EmpleadoModelC3(rs.getInt("id_empleado"),rs.getInt("id_hotel"),rs.getString("nombre_rol"));
 				res.add(empleado);
 			}
 		}

@@ -3,14 +3,14 @@ package ingsoft1920.em.Model;
 public class EmpleadoModelC3 {
 	private int id_Empleado;
 	private int id_Hotel;
-	private int id_Rol;
+	private String rol;
 	
 	//Modelo para la consulta3
-	public EmpleadoModelC3(int id_Empleado, int id_Hotel, int id_Rol) {
+	public EmpleadoModelC3(int id_Empleado, int id_Hotel,String rol) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Hotel=id_Hotel;
-		this.id_Rol=id_Rol;
+		this.rol=rol;
 		}
 
 	public int getId_Empleado() {
@@ -28,13 +28,15 @@ public class EmpleadoModelC3 {
 	public void setId_Hotel(int id_Hotel) {
 		this.id_Hotel = id_Hotel;
 	}
-	
-	public int getId_Rol() {
-		return id_Rol;
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 	
-	public void setId_Rol(int id_Rol) {
-		this.id_Rol = id_Rol;
-	}
+
 
 }

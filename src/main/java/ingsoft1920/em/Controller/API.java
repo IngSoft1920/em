@@ -271,18 +271,18 @@ public class API {
 			//Guardamos la info de la consulta en formato JSON
 			JsonArray listaIDEmpleados = new JsonArray();
 			JsonArray listaIDHotel = new JsonArray();
-			JsonArray listaIDRol = new JsonArray();
+			JsonArray listaRol = new JsonArray();
 			
 			for(EmpleadoModelC3 empleado:listaEmpleados) {
 				listaIDEmpleados.add(empleado.getId_Empleado());
 				listaIDHotel.add(empleado.getId_Hotel());
-				listaIDRol.add(empleado.getId_Rol());			
+				listaRol.add(empleado.getRol());			
 			}
 			
 			JsonObject empleado = new JsonObject();
 			empleado.add("id_empleado", listaIDEmpleados);
 			empleado.add("id_hotel", listaIDHotel);
-			empleado.add("id_rol", listaIDRol);
+			empleado.add("rol", listaRol);
 			return empleado.toString();
 		}
 		
