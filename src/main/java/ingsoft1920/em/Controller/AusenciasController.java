@@ -135,5 +135,25 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "registro";
 	}
 	
+	@GetMapping("/checkin")
+	public String checkin(Model model) {
+		HorarioDAO.checkin(1);
+		return "menu";
+	}
+	@PostMapping("/checkin")
+	public String checkinp(Model model) {
+		return "menu";
+	}
+	
+	@GetMapping("/checkout")
+	public String checkout(Model model) {
+		HorarioDAO.checkout(1);
+		return "menu";
+	}
+	@PostMapping("/checkout")
+	public String checkoutp(Model model) {
+		return "menu";
+	}
+	
 	
 }
