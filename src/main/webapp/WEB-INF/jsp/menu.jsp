@@ -37,7 +37,7 @@
 
     <div id="publicaciones1">
       <article class="cuerpo-nomina">
-        <a href="/vacaciones4" class="enlace-nomina">
+        <a href="/nomina" class="enlace-nomina">
         <h2 class="nomina"> NOMINA </h2>
         </a>
         <img src="/img/nomina.jpg" class="img-post1">
@@ -52,7 +52,7 @@
 
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="/bajas4" class="enlace-tarea">
+        <a href="/perfil" class="enlace-tarea">
         <h2 class="tarea"> PERFIL </h2>
         </a>
         <img src="/img/perfill.jpg" class="img-post2">

@@ -32,6 +32,7 @@
           <li><a href="/tareas6" class="enlace">Tareas</a></li>
           <li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil6" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar6" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>

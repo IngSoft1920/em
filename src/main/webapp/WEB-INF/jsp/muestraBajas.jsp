@@ -31,6 +31,7 @@
           <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas2" class="activate-menu">Bajas</a></li>
           <li><a href="/perfil2" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>

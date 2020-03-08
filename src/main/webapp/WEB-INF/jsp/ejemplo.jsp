@@ -20,6 +20,7 @@
           <li><a href="/vacaciones3" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas3" class="enlace">Bajas</a></li>
           <li><a href="/perfil3" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
