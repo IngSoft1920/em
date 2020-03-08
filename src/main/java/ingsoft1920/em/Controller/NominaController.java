@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Model.TurnoModel;
+import ingsoft1920.em.Servicios.GenerarPDF;
 
 
 @Controller 
@@ -85,6 +87,8 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
 		List<NominaModel>nominas=NominaDAO.verNomina(1);
 		model.addAttribute("nominas", nominas);
+		File pdf=new File("C:\\Users\\Óscar\\Desktop\\prueba.pdf");
+		GenerarPDF.createPDF(pdf);
 		return "ejemplo";
 	}
 	
