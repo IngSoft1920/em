@@ -118,10 +118,13 @@ public class API {
 		String correo=obj.get("email").getAsString();
 		String rol=obj.get("ocupacion").getAsString();
 		int id_hotel=obj.get("hotel").getAsInt();
-		//falta ocupacion es decir rol
+		int valor=obj.get("valor").getAsInt();
+		//fecha contratacion
+		
 		//Ejecutamos query
 		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
+		NominaDAO.asignarNomina(id_empleado, valor);
 	}
 	
 	//API ELIMINAR EMPLEADO
@@ -131,23 +134,11 @@ public class API {
 	public void eliminaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		String correo_empleado=obj.get("email").getAsString();
+		int id_empleado=obj.get("id").getAsInt();
 		//Ejecutamos query
-		EmpleadoDAO.eliminarEmpleado(correo_empleado);
+		EmpleadoDAO.eliminarEmpleado(id_empleado);
 	}
 	
-	//API ASIGNAR NOMINA
-	@ResponseBody
-	@PostMapping("/asignaNomina")
-	//Recibimos una nomina con un valor
-	public void asignaNomina(@RequestBody String req) {
-		//Creamos el objeto json con los parametros recibidos
-		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		int id_empleado=obj.get("id_empleado").getAsInt();
-		int valor=obj.get("valor").getAsInt();
-		//Ejecutamos query
-		NominaDAO.asignarNomina(id_empleado, valor);
-	}
 	
 	//API ENVIA BAJA
 	@ResponseBody

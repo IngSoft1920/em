@@ -14,7 +14,7 @@ import ingsoft1920.em.Servicios.HttpClient;
 public class BajasCM {
 	public static BajaBean peticionPedirBaja(){
 		try {
-			HttpClient client = new HttpClient("http://localhost:7004/getBaja","GET");
+			HttpClient client = new HttpClient("http://localhost:7000/ausencia","GET");
 			int respCode = client.getResponseCode();
 			BajaBean res=new BajaBean();
 			if(respCode==200) {
