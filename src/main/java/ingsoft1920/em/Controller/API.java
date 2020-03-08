@@ -160,7 +160,7 @@ public class API {
 			listaIDEmpleado.add(baja.getId_Empleado());
 			listaIDBaja.add(baja.getId_Baja());
 			listaDuracion.add(baja.getDuracion());
-			listaEstado.add(baja.isEstado());
+			listaEstado.add(baja.getEstado());
 		}
 		//Transformamos a formato deseado
 		JsonObject baja = new JsonObject();
@@ -193,7 +193,7 @@ public class API {
 				listaIDEmpleado.add(vacacion.getId_Empleado());
 				listaIDVacacion.add(vacacion.getId_Vacaciones());
 				listaDuracion.add(vacacion.getDuracion());
-				listaEstado.add(vacacion.isEstado());
+				listaEstado.add(vacacion.getEstado());
 			}
 			//Transformamos a formato deseado
 			JsonObject vacacion = new JsonObject();
@@ -205,6 +205,32 @@ public class API {
 			return vacacion.toString();
 			
 		}
+		
+		//API que recibe el estado de la ausencia (vacacion)
+		@ResponseBody
+		@PostMapping("vacaciones")
+		public void cambiaEstadoVacacion(@RequestBody String req) {
+			//Creamos el objeto json con los parametros recibidos
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			int id_ausencia=obj.get("id_ausencia").getAsInt();
+			String estado=obj.get("resultado").getAsString();
+			//Ejecutamos query
+			VacacionesDAO.editaVacacion(id_ausencia,estado);
+		}
+		
+		//API que recibe el estado de la ausencia (baja)
+		@ResponseBody
+		@PostMapping("baja")
+		public void cambiaEstadoBaja(@RequestBody String req) {
+			//Creamos el objeto json con los parametros recibidos
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			int id_ausencia=obj.get("id_ausencia").getAsInt();
+			String estado=obj.get("resultado").getAsString();
+			//Ejecutamos query
+			BajaDAO.editaBaja(id_ausencia,estado);
+		}
+		
+		
 		
 	
 	//OBTENCION EMPLEADOS BBDD dado nombre

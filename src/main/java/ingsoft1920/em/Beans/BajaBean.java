@@ -9,13 +9,13 @@ public class BajaBean {
 	int id_baja;
 	int id_empleado;
 	String duracion;
-	boolean estado;
+	String estado;
 	Date fecha_inicio;
 	Date fecha_fin;
 	
 	public BajaBean() {}
 	
-	public BajaBean(int id_baja, int id_empleado, String duracion, boolean estado,Date fecha_inicio, Date fecha_fin) {
+	public BajaBean(int id_baja, int id_empleado, String duracion, String estado,Date fecha_inicio, Date fecha_fin) {
 		this.id_baja = id_baja;
 		this.id_empleado = id_empleado;
 		this.duracion = duracion;
@@ -65,11 +65,11 @@ public class BajaBean {
 		this.duracion = duracion;
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 	

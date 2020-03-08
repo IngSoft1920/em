@@ -4,9 +4,9 @@ public class VacacionesModel {
 	private int id_Empleado;
 	private int id_Vacaciones;
 	private String duracion;
-	private boolean estado;
+	private String estado;
 	
-	public VacacionesModel(int id_Empleado,int id_Vacaciones, String duracion,boolean estado) {
+	public VacacionesModel(int id_Empleado,int id_Vacaciones, String duracion,String estado) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Vacaciones=id_Vacaciones;
@@ -14,11 +14,11 @@ public class VacacionesModel {
 		this.estado=estado;
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
