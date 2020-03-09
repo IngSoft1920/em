@@ -15,18 +15,19 @@ import ingsoft1920.em.Model.VacacionesModel;
 
 public class TurnoDAO {
 	static Connection conn;
-	public static void añadirTurno(int id_Empleado, String horarioInicio, String horarioFin) {
+	public static void añadirTurno(int id_Empleado, String horarioInicio, String horarioFin,String diaSemana) {
 		//CONSULTA5-> Recibimos nuevos turnos y los almacenamos en la tabla turno de la base de datos
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt= null; 
 		  try { 
-			  stmt=conn.prepareStatement("INSERT INTO turno(id_Empleado,horarioInicio,horarioFin)"+
-						"values( ? , ? , ?  );");
+			  stmt=conn.prepareStatement("INSERT INTO turno(id_Empleado,horarioInicio,horarioFin,diaSemana)"+
+						"values( ? , ? , ? ,DAYOFWEEK(?) );");
 							stmt.setInt(1, id_Empleado);
 							stmt.setString(2, horarioInicio);
 							stmt.setString(3, horarioFin);
+							stmt.setString(4, diaSemana);
 							stmt.executeUpdate();
 		   
           } 
@@ -62,7 +63,8 @@ public class TurnoDAO {
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"),
 		      rs.getString("horarioInicio"),
-		      rs.getString("horarioFin"));
+		      rs.getString("horarioFin"),
+		      rs.getString("diaSemana"));
 		      turnos.add(res);
 		      }
           } 

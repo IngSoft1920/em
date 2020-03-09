@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -95,7 +96,7 @@ public class VacacionesController {
 	}
 
 	@GetMapping("/verVacaciones")
-	public String verVacaciones(Model model) {
+	public String verVacaciones(Model model){
 		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(1);
 		model.addAttribute("vacaciones", vacaciones);
 		return "muestraVacaciones";
@@ -115,10 +116,17 @@ public class VacacionesController {
 	}
 
 	@PostMapping("/añadeVacaciones")
-	public String añadeVacaciones1(BajaBean bajaBean, Model model) {
+	public String añadeVacaciones1(VacacionBean vacacionBean, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		
-		VacacionesDAO.insertaVacaciones(1,bajaBean.getDuracion());
+		int[] res;
+		int diasRestantes;
+		res = VacacionesDAO.contVacaciones(vacacionBean.getId_empleado(), vacacionBean.getDuracion());
+		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+		model.addAttribute("diasRestantes", diasRestantes);
+		if(diasRestantes >= vacacionBean.getDuracion()) {
+		VacacionesCM.peticionPedirVacaciones(vacacionBean);
+		VacacionesDAO.insertaVacaciones(1,vacacionBean.getDuracion());
+		}
 		return "vacaciones";
 	}
 	

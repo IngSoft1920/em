@@ -38,6 +38,7 @@
 					<b>id_turno:</b> ${turnos.id_Turno} <br>
 					<b>horarioInicio:</b> ${turnos.horarioInicio} <br>
 					<b>horarioFin:</b> ${turnos.horarioFin} <br>
+					<b>diaSemana:</b> ${turnos.diaSemana} <br>
 				</p>
 			</li>
 		</c:forEach>

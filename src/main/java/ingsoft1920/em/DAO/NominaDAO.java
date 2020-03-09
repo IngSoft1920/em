@@ -82,6 +82,41 @@ public class NominaDAO {
 	  return res;
 		
 	}
+
+	public static double sumaNomina(int id_Hotel) {
+		//CONSULTA-> Pasar a fna la suma de las nominas de los empleados del hotel que nos pidan 
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt= null;
+		ResultSet rs = null; 
+		double suma=0;
+		try { 
+			  stmt=conn.prepareStatement("SELECT * FROM nominaWHERE id_Hotel=?");
+			  stmt.setInt(1, id_Hotel);
+			  rs= stmt.executeQuery();
+			  while(rs.next()) {
+					suma=suma+rs.getInt("id_sueldo")+rs.getInt("id_incentivo");
+				}	
+		   
+        } 
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+			if (stmt!=null){
+				try{stmt.close();
+				}
+				catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		}
+		return suma;
+	}
 	
 
 }
