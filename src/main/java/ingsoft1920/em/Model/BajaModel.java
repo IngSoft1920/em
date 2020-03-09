@@ -8,9 +8,9 @@ public class BajaModel {
 	private int id_Empleado;
 	private int id_Baja;
 	private String duracion;
-	private boolean estado;
+	private String estado;
 	
-	public BajaModel(int id_Empleado,int id_Baja, String duracion,boolean estado) {
+	public BajaModel(int id_Empleado,int id_Baja, String duracion,String estado) {
 		this.id_Empleado=id_Empleado;
 		this.id_Baja=id_Baja;
 		this.duracion=duracion;
@@ -21,14 +21,14 @@ public class BajaModel {
 		this.id_Empleado=baja.getId_empleado();
 		this.id_Baja=baja.getId_baja();
 		this.duracion=baja.getDuracion();
-		this.estado=baja.isEstado();
+		this.estado=baja.getEstado();
 	}
 
-	public boolean isEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 

@@ -26,7 +26,7 @@ public class VacacionesDAO {
 		   stmt.setInt(1, id_empleado);
 		   rs=stmt.executeQuery();
 		   while (rs.next()){
-			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getString("duracion"),rs.getBoolean("estado"));
+			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getString("duracion"),rs.getString("estado"));
 			   res.add(vacaciones);
 			   } 
 		  } 
@@ -52,17 +52,15 @@ public class VacacionesDAO {
 		  return res;
 	}
 
-	public static void editaVacacion(VacacionBean vacacion) {
+	public static void editaVacacion(int id_vacacion,String estado) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
-		boolean estado=vacacion.isEstado();
-		int id_empleado=vacacion.getId_empleado();
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado=? WHERE id_empleado=?;");
-			   stmt.setBoolean(1, estado);
-			   stmt.setInt(2, id_empleado);
+			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado=? WHERE id_vacacion=?;");
+			   stmt.setString(1, estado);
+			   stmt.setInt(2, id_vacacion);
 			   stmt.executeUpdate();
 			  } 
 			  catch (SQLException ex){ 

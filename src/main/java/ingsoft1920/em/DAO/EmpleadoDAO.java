@@ -120,19 +120,20 @@ public class EmpleadoDAO {
 		  }
 		  return res;
 	}
-	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo) {
+	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}  
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo)"+
-						"values( ? , ? , ? , ? );");
+			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel)"+
+						"values( ? , ? , ? , ? , ?);");
 							stmt.setInt(1, id_empleado);
 							stmt.setString(2, nombre);
 							stmt.setString(3, telefono);
 							stmt.setString(4, correo);
+							stmt.setInt(5, id_hotel);
 							stmt.executeUpdate();
 		   
           } 
@@ -152,15 +153,15 @@ public class EmpleadoDAO {
 		  }
 	}
 	
-	public static void eliminarEmpleado(String correo) {
+	public static void eliminarEmpleado(int id_empleado) {
 		//CONSULTA4->Eliminar un empleado de la base de datos a partir de su correo
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt2= null; 
 	    try { 
-			  stmt2=conn.prepareStatement("DELETE FROM empleado WHERE correo = ? ;");
-							stmt2.setString(1, correo);
+			  stmt2=conn.prepareStatement("DELETE FROM empleado WHERE id_empleado = ? ;");
+							stmt2.setInt(1, id_empleado);
 							stmt2.executeUpdate();
 		   
         } 
