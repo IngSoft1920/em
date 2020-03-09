@@ -129,9 +129,9 @@ public class VacacionesDAO {
 		Date fecha_alta;
 		int dias = 0;
 		Date date = new Date();
-		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 	    String today = formatter.format(date);
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	    int vacacionesGastadas=0;
 	    boolean res = false;
 	    
