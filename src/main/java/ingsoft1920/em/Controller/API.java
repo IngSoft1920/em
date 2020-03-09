@@ -124,7 +124,7 @@ public class API {
 		String telefono=obj.get("telefono").getAsString();
 		String correo=obj.get("email").getAsString();
 		String rol=obj.get("ocupacion").getAsString();
-		int id_hotel=obj.get("hotel").getAsInt();
+		int id_hotel=obj.get("id_hotel").getAsInt();
 		int valor=obj.get("valor").getAsInt();
 		//fecha contratacion
 		
