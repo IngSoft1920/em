@@ -43,7 +43,8 @@ target/
 *.iws
 *.iml
 *.ipr
-
+*.glo
+*.pdf
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

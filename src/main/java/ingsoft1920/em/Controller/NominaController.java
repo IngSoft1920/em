@@ -87,7 +87,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
 		List<NominaModel>nominas=NominaDAO.verNomina(1);
 		model.addAttribute("nominas", nominas);
-		File pdf=new File("C:\\Users\\Óscar\\Desktop\\prueba.pdf");
+		File pdf=new File("prueba.pdf");
 		GenerarPDF.createPDF(pdf);
 		return "ejemplo";
 	}
