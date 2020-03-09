@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 public class BajaBean {
 	int id_baja;
 	int id_empleado;
-	String duracion;
+	int duracion;
 	String estado;
 	Date fecha_inicio;
 	Date fecha_fin;
 	
 	public BajaBean() {}
 	
-	public BajaBean(int id_baja, int id_empleado, String duracion, String estado,Date fecha_inicio, Date fecha_fin) {
+	public BajaBean(int id_baja, int id_empleado, int duracion, String estado,Date fecha_inicio, Date fecha_fin) {
 		this.id_baja = id_baja;
 		this.id_empleado = id_empleado;
 		this.duracion = duracion;
@@ -57,11 +57,11 @@ public class BajaBean {
 		this.id_empleado = id_empleado;
 	}
 
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 

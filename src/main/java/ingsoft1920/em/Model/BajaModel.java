@@ -7,10 +7,10 @@ import ingsoft1920.em.Beans.BajaBean;
 public class BajaModel {
 	private int id_Empleado;
 	private int id_Baja;
-	private String duracion;
+	private int duracion;
 	private String estado;
 	
-	public BajaModel(int id_Empleado,int id_Baja, String duracion,String estado) {
+	public BajaModel(int id_Empleado,int id_Baja, int duracion,String estado) {
 		this.id_Empleado=id_Empleado;
 		this.id_Baja=id_Baja;
 		this.duracion=duracion;
@@ -49,11 +49,11 @@ public class BajaModel {
 		this.id_Baja = id_Baja;
 	}
 
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 	
