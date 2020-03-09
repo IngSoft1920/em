@@ -53,7 +53,19 @@
           </h1>
       </article>
       <input type="submit" value="Enviar" >
-	</section>			
+	</section>
+	
+	<u1>
+		<c:forEach var="diasRestantes" items="${diasRestantes}">
+			<li>
+				<p>
+						
+					<b>dias restantes:</b> ${diasRestantes} <br>
+				</p>
+			</li>
+		</c:forEach>
+
+	</u1>			
 </form>
   
   <style>

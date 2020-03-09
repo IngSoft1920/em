@@ -28,7 +28,7 @@ public class BajaDAO {
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getString("duracion"),rs.getBoolean("estado"));
+			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getInt("duracion"),rs.getString("estado"));
 			   res.add(baja);
 			   }
 		   return res;
@@ -56,17 +56,15 @@ public class BajaDAO {
 	}
 
 
-	public static void editaBaja(BajaBean baja) {
+	public static void editaBaja(int id_baja,String estado) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
-		boolean estado=baja.isEstado();
-		int id_empleado=baja.getId_empleado();
 		PreparedStatement stmt = null; 
 		try { 
 			   stmt = conn.prepareStatement("UPDATE baja SET estado=? WHERE id_empleado=?;");
-			   stmt.setBoolean(1, estado);
-			   stmt.setInt(2, id_empleado);
+			   stmt.setString(1, estado);
+			   stmt.setInt(2, id_baja);
 			   stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -86,7 +84,7 @@ public class BajaDAO {
 		}
 	}
 
-	public static void insertaBaja(int id_empleado,String duracion) {
+	public static void insertaBaja(int id_empleado,int duracion) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -94,7 +92,7 @@ public class BajaDAO {
 		try { 
 			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,duracion) values (?,?);");
 			   stmt.setInt(1, id_empleado);
-			   stmt.setString(2, duracion);
+			   stmt.setInt(2, duracion);
 			   stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 

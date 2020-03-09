@@ -28,13 +28,26 @@ public class ActividadesDHO {
 				
 				JsonArray id_DescripcionTareaLista=obj.get("descripcionLista").getAsJsonArray();
 				String[] id_Descripciones= new String[id_DescripcionTareaLista.size()];
+				
+				JsonArray horaInicio=obj.get("horaInicio").getAsJsonArray();
+				String[] horasInicio= new String[horaInicio.size()];
+				
+				JsonArray horaFin=obj.get("horaFin").getAsJsonArray();
+				String[] horasFin= new String[horaFin.size()];
+
+				JsonArray dia=obj.get("dia").getAsJsonArray();
+				String[] dias= new String[dia.size()];
+				
 				//Creamos objeto de salida
 				List<ActividadBean> lista=new ArrayList<ActividadBean>();
 				//Añadimos la info
 				for(int i=0;i<id_TareaLista.size();i++) {
 					id_Tareas[i]=id_TareaLista.get(i).getAsInt();
 					id_Descripciones[i]=id_DescripcionTareaLista.get(i).getAsString();
-					lista.add(new ActividadBean(id_Tareas[i], id_empleado,id_Descripciones[i]));
+					horasInicio[i]=horaInicio.get(i).getAsString();
+					horasFin[i]=horaFin.get(i).getAsString();
+					dias[i]=dia.get(i).getAsString();
+					lista.add(new ActividadBean(id_Tareas[i], id_empleado,id_Descripciones[i],horasInicio[i],horasFin[i],dias[i]));
 				}
 			return lista;
 			}
