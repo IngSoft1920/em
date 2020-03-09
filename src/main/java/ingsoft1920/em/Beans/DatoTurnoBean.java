@@ -10,15 +10,29 @@ public class DatoTurnoBean {
 	int id_empleado;
 	String horarioInicio;
 	String horarioFin;
+	String diaSemana;
 	
+	
+	
+	public String getDiaSemana() {
+		return diaSemana;
+	}
+
+
+	public void setDiaSemana(String diaSemana) {
+		this.diaSemana = diaSemana;
+	}
+
+
 	public DatoTurnoBean() {};
 	
 	
-	public DatoTurnoBean(int id_turno,int id_empleado,String horarioInicio,String horarioFin) {
+	public DatoTurnoBean(int id_turno,int id_empleado,String horarioInicio,String horarioFin,String diaSemana) {
 		this.id_turno=id_turno;
 		this.id_empleado=id_empleado;
 		this.horarioInicio=horarioInicio;
 		this.horarioFin=horarioFin;
+		this.diaSemana=diaSemana;
 	}
 
 		public int getId_empleado() {
