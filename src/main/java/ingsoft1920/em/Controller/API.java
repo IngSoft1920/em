@@ -149,7 +149,7 @@ public class API {
 	
 	//API ENVIA BAJA
 	@ResponseBody
-	@GetMapping("/baja")
+	@GetMapping("/sacaBaja")
 	//Enviamos informacion de la baja de un empleado recibimos id_empleado
 	public String baja(@RequestBody String req) {
 		//Obtenemos parametro recibido
@@ -182,7 +182,7 @@ public class API {
 	
 	//API ENVIA VACACIONES
 		@ResponseBody
-		@GetMapping("/vacaciones")
+		@GetMapping("/sacaVacaciones")
 		//Enviamos informacion de las vacaciones de un empleado filtramos id_empleado
 		public String vacaciones(@RequestBody String req) throws ParseException {
 			//Obtenemos parametro recibido
