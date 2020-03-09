@@ -117,7 +117,7 @@ public class API {
 	@PostMapping("/creaEmpleado")
 	//Recibimos id_empleado, nombre, telefono , correo
 	public void creaEmpleado(@RequestBody String req) {
-		//Creamos el objeto json con los parametros recibidos
+		//Creamos el objeto json cod los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
 		int id_empleado=obj.get("id").getAsInt();
 		String nombre=obj.get("nombre").getAsString();
@@ -125,7 +125,7 @@ public class API {
 		String correo=obj.get("email").getAsString();
 		String rol=obj.get("ocupacion").getAsString();
 		int id_hotel=obj.get("id_hotel").getAsInt();
-		int valor=obj.get("valor").getAsInt();
+		int valor=(int) obj.get("valor").getAsDouble();
 		//fecha contratacion
 		
 		//Ejecutamos query
