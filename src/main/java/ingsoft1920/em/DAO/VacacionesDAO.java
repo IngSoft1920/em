@@ -116,7 +116,7 @@ public class VacacionesDAO {
 	}
 	
 	//Contabiliza las vacaciones y devuelve un boolean que indica si se puden pedir o no
-	public static boolean contVacaciones(int id_empleado,int duracion) throws ParseException {
+	public static int[] contVacaciones(int id_empleado,int duracion) throws ParseException {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -131,7 +131,7 @@ public class VacacionesDAO {
 	    String today = formatter.format(date);
 	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	    int vacacionesGastadas=0;
-	    boolean res = false;
+	    int[] res= new int[2];
 	    
 		try { 
 			   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado FROM vacaciones WHERE id_empleado=?");
@@ -153,9 +153,11 @@ public class VacacionesDAO {
 					   vacacionesGastadas=vacacionesGastadas+rs.getInt("duracion");
 				   }
 			   }
-			   if(((dias/30)*2.5)<=duracion+vacacionesGastadas) { 
-				  res = true;
-			   }
+			   res[0]=dias;
+			   res[1]=vacacionesGastadas;
+			   
+			   return res;
+			   
 		} 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());

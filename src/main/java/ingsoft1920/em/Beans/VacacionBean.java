@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 public class VacacionBean {
 	int id_vacacion;
 	int id_empleado;
-	String duracion;
+	int duracion;
 	Date fecha_inicio;
 	Date fecha_fin;
 	String estado;
 	
 	public VacacionBean() {}
 	
-	public VacacionBean(int id_vacacion, int id_empleado, String duracion, String estado, Date fecha_inicio, Date fecha_fin) {
+	public VacacionBean(int id_vacacion, int id_empleado, int duracion, String estado, Date fecha_inicio, Date fecha_fin) {
 		this.id_vacacion = id_vacacion;
 		this.id_empleado = id_empleado;
 		this.duracion = duracion;
@@ -57,11 +57,11 @@ public class VacacionBean {
 		this.id_empleado = id_empleado;
 	}
 
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 

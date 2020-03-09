@@ -116,12 +116,16 @@ public class VacacionesController {
 	}
 
 	@PostMapping("/añadeVacaciones")
-	public String añadeVacaciones1(BajaBean bajaBean, Model model) throws ParseException {
+	public String añadeVacaciones1(VacacionBean vacacionBean, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		boolean sePuede;
-		sePuede = VacacionesDAO.contVacaciones(bajaBean.getId_empleado(), bajaBean.getDuracion());
-		if (sePuede) {
-		VacacionesDAO.insertaVacaciones(1,bajaBean.getDuracion());
+		int[] res;
+		int diasRestantes;
+		res = VacacionesDAO.contVacaciones(vacacionBean.getId_empleado(), vacacionBean.getDuracion());
+		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+		model.addAttribute("diasRestantes", diasRestantes);
+		if(diasRestantes >= vacacionBean.getDuracion()) {
+		VacacionesCM.peticionPedirVacaciones(vacacionBean);
+		VacacionesDAO.insertaVacaciones(1,vacacionBean.getDuracion());
 		}
 		return "vacaciones";
 	}
