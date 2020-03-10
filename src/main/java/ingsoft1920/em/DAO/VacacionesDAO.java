@@ -124,7 +124,7 @@ public class VacacionesDAO {
 		PreparedStatement stmt2 = null; 
 		ResultSet rs = null;
 		ResultSet rs2 = null;
-		Date fecha_alta;
+		java.sql.Date fecha_alta;
 		int dias = 0;
 		Date date = new Date();
 		DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
@@ -143,7 +143,8 @@ public class VacacionesDAO {
 			   rs2 = stmt2.executeQuery();
 			   if(rs2.next()) {
 				   fecha_alta = rs.getDate("fecha_contratacion"); 
-				   Date fechaInicial=dateFormat.parse("fecha_contratacion"); //para restar la fechaFinal (que es el dia en el que piden vacaciones
+				   String fecha = formatter.format(fecha_alta);
+				   Date fechaInicial=dateFormat.parse(fecha); //para restar la fechaFinal (que es el dia en el que piden vacaciones
 				   													//menos la fechaInicial que es cuando se dan de alta y asi ver cuantos dias le correspoden
 				   Date fechaFinal=dateFormat.parse(today);
 				   dias = (int) ((fechaFinal.getTime()-fechaInicial.getTime())/86400000); //dias de vacas que le corresponden al empleado
