@@ -138,12 +138,12 @@ public class VacacionesDAO {
 			   stmt.setInt(1, id_empleado);
 			   rs=stmt.executeQuery();
 			   //para contabilizar las vacaciones antes de mandarlas
-			   stmt2=conn.prepareStatement("SELECT fecha_alta FROM empleado WHERE id_empleado=?");
+			   stmt2=conn.prepareStatement("SELECT fecha_contratacion FROM empleado WHERE id_empleado=?");
 			   stmt2.setInt(1, id_empleado);
 			   rs2 = stmt2.executeQuery();
 			   if(rs2.next()) {
-				   fecha_alta = rs.getDate("fecha_alta"); 
-				   Date fechaInicial=dateFormat.parse("fecha_alta"); //para restar la fechaFinal (que es el dia en el que piden vacaciones
+				   fecha_alta = rs.getDate("fecha_contratacion"); 
+				   Date fechaInicial=dateFormat.parse("fecha_contratacion"); //para restar la fechaFinal (que es el dia en el que piden vacaciones
 				   													//menos la fechaInicial que es cuando se dan de alta y asi ver cuantos dias le correspoden
 				   Date fechaFinal=dateFormat.parse(today);
 				   dias = (int) ((fechaFinal.getTime()-fechaInicial.getTime())/86400000); //dias de vacas que le corresponden al empleado

@@ -1,9 +1,11 @@
 package ingsoft1920.em.Controller;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,10 +128,17 @@ public class API {
 		String rol=obj.get("ocupacion").getAsString();
 		int id_hotel=obj.get("id_hotel").getAsInt();
 		int valor=(int) obj.get("valor").getAsDouble();
+		String fecha_contratacion= obj.get("fecha_contratacion").getAsString();
 		//fecha contratacion
-		
-		//Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        java.util.Date parsed = null;
+		try {
+			parsed = format.parse(fecha_contratacion);
+		} catch (ParseException e) {}
+        java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+        
+	    //Ejecutamos query
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 		NominaDAO.asignarNomina(id_empleado, valor);
 	}

@@ -43,7 +43,7 @@
  
 <input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
  
-<form method="POST" 	action="a�adeVacaciones"	modelAttribute="VacacionBean">
+<form method="POST" 	action="aniadeVacaciones"	modelAttribute="VacacionBean">
  
   <section id="principal">
     <section id="publicaciones">
