@@ -29,27 +29,35 @@
  </header>
  
 
-	
-	<u1>
+<div class="main-container">
+	<table>	
+          <thead>
+          <tr>
+            <th class="text-center">HORA INICIO</th>
+            <th class="text-center">HORA FIN</th>
+            <th>DESCRIPCION TAREA</th>
+          </tr>
+          </thead>
+
+			<u1>
 		<c:forEach var="tareas" items="${tareas}">
 			<li>
 				<p>
-					<section id="publicaciones">
-    					<article class="post">
-      						
-     			   				<h1 class="titulo-post">id_tarea: <td> ${tareas.id_tarea} <br></h1>
-     			   				<h1 class="titulo-post">id_empleado: <td> ${tareas.id_empleado} <br></h1>
-     			   				<h1 class="titulo-post">id_incentivo: <td> ${tareas.descripcionTarea} <br></h1>
-    				  		
-    					</article>
-
-					</section>
+          <tbody>
+          <tr>
+            <th class="text-center> ${tareas.id_tarea} <br></td>
+            <th class="text-center> ${tareas.id_empleado} <br></td>
+            <td> ${tareas.descripcionTarea} <br></td>
+          </tr>
+          </tbody>
+	
 				</p>
 			</li>
 		</c:forEach>
 	</u1>
-					
-					
+    </table>					
+	</div>
+	  
     
 </body>
 
@@ -162,6 +170,33 @@ header{
  text-decoration: none;
 }
 
+#main-container{
+margin:50px auto;
+width:80%;
+}
+
+table{
+text-align: center;
+padding-left:180px;
+width:80%;
+}
+
+th,td{
+padding: 20px;
+}
+
+thead{
+
+background-color: #0B8894;
+border-bottom: solid 5px #075F68;
+color:white;
+}
+
+tr:nth-child(even){
+background-color: #ddd;
+}
+
+
 
 .menu > li{
 
@@ -226,6 +261,11 @@ header{
 
   top: 0px;
 }
+
+
+
+
+
 </style>
 
 </html>
