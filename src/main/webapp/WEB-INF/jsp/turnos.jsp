@@ -23,6 +23,7 @@
           <li><a href="/perfil" class="enlace">Perfil</a></li>
           <li><a href="/registro" class="enlace">Registro</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/volver" class="enlace">Volver</a></li>
         </ul>
       </div>
     </div>

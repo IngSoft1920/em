@@ -21,8 +21,8 @@
 		
 	<label>Contrasena</label>
 	<td><input class="controls" type="password" name="contrasenia"/>
-
-	<input type="submit" value="Ingresar"/>
+	
+	<input type="submit" value="Ingresar" >
 	</section>
 
 </body>

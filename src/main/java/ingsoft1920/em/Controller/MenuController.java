@@ -65,6 +65,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "login";
 	}
 	
+	@GetMapping("/volver")
+	public String volverp1(Model model) {
+		return "menu";
+	}
+	
+	@PostMapping("/volver")
+	public String volverp(Model model) {
+		return "menu";
+	}	
+	
 	@GetMapping("/tareas")
 	public String tareas(Model model) {
 		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();

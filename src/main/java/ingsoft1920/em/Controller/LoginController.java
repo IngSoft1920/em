@@ -18,32 +18,32 @@ public class LoginController {
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
 //	@Autowired
-//	LoginBean loginBean;
-	
+
 	@GetMapping("/")
-	public String login(Model model) {
-		LoginBean loginBean = new LoginBean();
-		model.addAttribute("loginBean",loginBean);
-		model.addAttribute("mensajeError","");
+	public String loginp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/")
-	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) {
-				
-		String usuario = loginBean.getUsuario();  
-		String pass = loginBean.getPassword();
-				
-		if (usuario.equals("usuario") && pass.equals("1234"))
-			return "redirect:menu";
-		
-		
-		else {
-			model.addAttribute("signupBean",loginBean);
-			model.addAttribute("mensajeError","Usuario o contraseña no validos");
-			return "login";
-		}
-		
-	}
+	@PostMapping("/login") 
+	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean, 
+			Model model) { 
+				 
+		String usuario = loginBean.getUsuario();  // esta es la variable que muestra el usuario que ha hecho login
+		System.out.println(usuario);
+		String pass = loginBean.getPassword(); 
+				 
+		if (usuario.equals("usuario") && pass.equals("1234")) 
+			return "/menu"; 
+		 
+		 
+		else { 
+			model.addAttribute("signupBean",loginBean); 
+			model.addAttribute("mensajeError","Usuario o contraseña no validos"); 
+			return "/login"; 
+		} 
+		 
+	} 
+	
 }
+
+

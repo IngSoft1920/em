@@ -49,6 +49,7 @@
           <li><a href="/perfil4" class="enlace">Perfil</a></li>
           <li><a href="/registro4" class="enlace">Registro</a></li>
           <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/volver4" class="enlace">Volver</a></li>          
         </ul>
       </div>
     </div>

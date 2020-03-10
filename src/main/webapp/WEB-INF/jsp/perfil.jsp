@@ -51,6 +51,7 @@
           <li><a href="/bajas2" class="enlace">Bajas</a></li>
           <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
           <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/volver2" class="enlace">Volver</a></li>
         </ul>
       </div>
 

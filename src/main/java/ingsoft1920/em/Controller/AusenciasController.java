@@ -68,6 +68,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "login";
 	}
 	
+	@GetMapping("/volver4")
+	public String volverp1(Model model) {
+		return "menu";
+	}
+	
+	@PostMapping("/volver4")
+	public String volverp(Model model) {
+		return "menu";
+	}
+	
 	@GetMapping("/ausencias4")
 	public String ausenciasp1(Model model) {
 		return "ausencias";
