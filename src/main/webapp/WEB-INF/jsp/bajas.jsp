@@ -50,7 +50,7 @@ $(function() {
   </header>
  
  
-<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
+
  
 <form method="POST" 	action="a�adeBaja"	modelAttribute="BajaBean">
  
@@ -61,7 +61,6 @@ $(function() {
             <td><input type="text" name="duracion" id="inicio" ></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" >
       </section>
 
     <section id="publicaciones">
@@ -70,7 +69,6 @@ $(function() {
             <td><input type="text" name="duracion" id="fin" ></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" >
 	</section>			
 	
 	
@@ -85,7 +83,7 @@ $(function() {
 	</section>
 </form>
 
-
+<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
 
   
   

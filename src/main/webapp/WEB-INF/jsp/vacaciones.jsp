@@ -64,7 +64,6 @@ $(function() {
             <td><input type="text" name="duracion" id="inicio" ></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" >
       </section>
 
     <section id="publicaciones">
