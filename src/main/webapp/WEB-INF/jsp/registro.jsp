@@ -6,32 +6,24 @@
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 
 
+<script type="text/javascript">
+// Variable global por estar declarada sin hacer uso de var
+
+function activar(){
+   document.getElementById('checkin').disabled = false;
+   document.getElementById('hola').disabled = true;
+ }
+
+ function activar2(){
+    document.getElementById('checkin').disabled = true;
+    document.getElementById('hola').disabled = false;
+  }
+
+	</script>
+
 </head>
 
 <body>
-
-  <%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
-
 
   <header class="header">
     <div id="encabezado">
@@ -57,12 +49,13 @@
 
 
   <div id="principal1">
-
+  
+  
+   
     <div id="publicaciones1">
-      <article class="cuerpo-nomina">
-        <a href="/checkin" class="enlace-nomina">
-        <h2 class="nomina"> CHECK-IN </h2>
-        </a>
+    <article class="cuerpo-tarea">
+      <input type="button" name="tratamiento" id="checkin" value="Check-in" disabled="false" onClick="activar2()"/<br/>
+       </a>
         <img src="/img/checkin2.jpg" class="img-post1">
       </article>
     </div>
@@ -73,9 +66,8 @@
 
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="/checkout" class="enlace-tarea">
-        <h2 class="tarea"> CHECK-OUT </h2>
-        </a>
+        <input type="button" value="Check-out" id="hola" onClick="activar()" />
+        </a><br/>
         <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
@@ -85,6 +77,8 @@
     </div>
 
   </div>
+
+
 
 </body>
 <style>
@@ -224,6 +218,10 @@ header{
 
 /*TAREAAAASSSSSSS*/
 
+input[type="button"]{
+margin:5px 5px 10px 5px;
+float:left;
+width:99%;}
 
 .cuerpo-tarea{
   width: 99%;
@@ -260,10 +258,7 @@ header{
   margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
   margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
-
-
-          
-            
+     
     </style>
 
 

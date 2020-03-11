@@ -186,7 +186,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 35px; /*CENTRAR LA IMAGEN*/
+  margin-left: 70px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones1 a .nomina:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -225,7 +225,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 45px; /*CENTRAR LA IMAGEN*/
+  margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones2 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
