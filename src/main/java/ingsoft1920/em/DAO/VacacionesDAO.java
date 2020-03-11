@@ -142,7 +142,8 @@ public class VacacionesDAO {
 			   stmt2.setInt(1, id_empleado);
 			   rs2 = stmt2.executeQuery();
 			   if(rs2.next()) {
-				   fecha_alta = rs.getDate("fecha_contratacion"); 
+				   fecha_alta = rs2.getDate("fecha_contratacion");
+				   System.out.println(fecha_alta);
 				   String fecha = formatter.format(fecha_alta);
 				   Date fechaInicial=dateFormat.parse(fecha); //para restar la fechaFinal (que es el dia en el que piden vacaciones
 				   													//menos la fechaInicial que es cuando se dan de alta y asi ver cuantos dias le correspoden

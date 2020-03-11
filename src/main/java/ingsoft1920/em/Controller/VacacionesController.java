@@ -119,9 +119,8 @@ public class VacacionesController {
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
 		int[] res;
-		int diasRestantes;
-		res = VacacionesDAO.contVacaciones(vacaciones.getId_empleado(), vacaciones.getDuracion());
-		System.out.println(res[0]);
+		int diasRestantes=0;
+		res = VacacionesDAO.contVacaciones(1, vacaciones.getDuracion()); //vacaciones.getIdEmpleado()
 		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
 		model.addAttribute("diasRestantes", diasRestantes);
 		if(diasRestantes >= vacaciones.getDuracion()) {
