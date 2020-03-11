@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.VacacionBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.TurnoModel;
@@ -46,6 +48,8 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 
