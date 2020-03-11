@@ -12,11 +12,13 @@
 function activar(){
    document.getElementById('checkin').disabled = false;
    document.getElementById('hola').disabled = true;
+   alert("Se ha guardado tu check-in correctamente")
  }
 
  function activar2(){
     document.getElementById('checkin').disabled = true;
     document.getElementById('hola').disabled = false;
+    alert("Se ha guardado tu check-out correctamente")
   }
 
 	</script>
