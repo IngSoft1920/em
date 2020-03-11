@@ -7,6 +7,18 @@
   <link rel="stylesheet" type="text/css" href="css/estilonom.css"> <!--carpeta donde se encuentra el estilo css-->
 
 
+
+	<script>
+	function elige() {
+         var lista = document.getElementById("colores")
+         if (lista.selectedIndex == null || lista.selectedIndex == 0) { 
+            alert("No se ha podido realizar tu peticion; \n Debes elegir un mes de la lista.")
+            return false
+            }
+         	
+         }
+	
+	</script>
 </head>
 
 <body>
@@ -39,47 +51,30 @@
 
 
         <a href="" class="enlace-post">
-          <h2 class="titulo-post">Visualizar nomina: </h2>
+          <h2 class="titulo-post">Para visualizar la nomina elige un mes: </h2><br/>
         </a>
 
         <table border="tabla">
 
-          <thead>
-          <tr>
-            <th>Nomina</th>
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-            <td>
-
-              <nav class="nav">
-              <ul class="menu">
-
-              <li><a> Elige un mes </a>
-                  <ul class="submenu">
-                      <li><a href="/ejemplo">Enero</a></li>
-                      <li><a href="/ejemplo">Febrero</a></li>
-                      <li><a href="/ejemplo">Marzo</a></li>
-                      <li><a href="/ejemplo">Abril</a></li>
-                      <li><a href="/ejemplo">Mayo</a></li>
-                      <li><a href="/ejemplo">Junio</a></li>
-                      <li><a href="/ejemplo">Julio</a></li>
-                      <li><a href="/ejemplo">Agosto</a></li>
-                      <li><a href="/ejemplo">Septiembre</a></li>
-                      <li><a href="/ejemplo">Octubre</a></li>
-                      <li><a href="/ejemplo">Noviembre</a></li>
-                      <li><a href="/ejemplo">Diciembre</a></li>
-                  </ul>
-              </li>
-
-              </ul>
-              </nav>
-
-            </td>
-          </tr>
-          </tbody>
+                  <form action="/ejemplo" name="formulario3" onsubmit="return elige()">
+					<select name="colores" id="colores" >
+					     <option>Elige un mes</option>
+					     <option>ENERO</option>
+					     <option>FEBRERO</option>
+					     <option>MARZO</option>
+					     <option>ABRIL</option>
+					     <option>MAYO</option>
+					     <option>JUNIO</option>
+					     <option>JULIO</option>
+					     <option>AGOSTO</option>
+					     <option>SEPTIEMBRE</option>
+					     <option>OCTUBRE</option>
+					     <option>NOVIEMBRE</option>
+					     <option>DICIEMBRE</option>
+					     
+					  </select><br/><br/>
+					    <input type="submit" />
+					</form>
 
         </table>
  
@@ -171,7 +166,7 @@ header{
 }
 
 #publicaciones{
-  width: 20%;
+  width: 80%;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
   margin-top: 10px;
@@ -194,6 +189,7 @@ header{
 
 .enlace-post{
  text-decoration: none;
+ width:90%;
  padding: 5px;
  height: 5px;
  color: #01a9db;
