@@ -4,19 +4,28 @@
   <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
   <title> USUARIO  : </title> <!--Título-->
   <link rel="stylesheet" type="text/css" href="css/bajas.css"> <!--carpeta donde se encuentra el estilo css-->
-
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
 </head>
 
 <body>
 
+	<script type="text/javascript">
 
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
+$(function() {
+    $("#inicio").datepicker({ dateFormat: "dd-mm-yy" }).val()
+});
+
+
+$(function() {
+    $("#fin").datepicker({ dateFormat: "dd-mm-yy" }).val()
+});
+
+
+
+</script>
 	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
@@ -48,12 +57,23 @@
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
-          <h1 class="titulo-post">Duracion
-            <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
+          <h1 class="titulo-post">Desde
+            <td><input type="text" name="duracion" id="inicio" ></td>
           </h1>
       </article>
-	</section>
+      <input type="submit" value="Enviar" >
+      </section>
 
+    <section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Hasta
+            <td><input type="text" name="duracion" id="fin" ></td>
+          </h1>
+      </article>
+      <input type="submit" value="Enviar" >
+	</section>			
+	
+	
     <section id="publicaciones">
       <article class="post">
         <h1 class="titulo-post">Motivo 
@@ -62,7 +82,7 @@
       </article>
 		<input type="submit" value="Enviar" >
 	</section>
-			
+	</section>
 </form>
 
 
