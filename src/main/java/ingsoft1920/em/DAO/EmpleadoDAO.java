@@ -1,6 +1,7 @@
 package ingsoft1920.em.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -120,20 +121,21 @@ public class EmpleadoDAO {
 		  }
 		  return res;
 	}
-	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel) {
+	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}  
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel)"+
-						"values( ? , ? , ? , ? , ?);");
+			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel,fecha_contratacion)"+
+						"values( ? , ? , ? , ? , ?,?);");
 							stmt.setInt(1, id_empleado);
 							stmt.setString(2, nombre);
 							stmt.setString(3, telefono);
 							stmt.setString(4, correo);
 							stmt.setInt(5, id_hotel);
+							stmt.setDate(6, fecha);
 							stmt.executeUpdate();
 		   
           } 

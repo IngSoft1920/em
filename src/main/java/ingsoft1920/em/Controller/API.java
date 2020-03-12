@@ -1,9 +1,11 @@
 package ingsoft1920.em.Controller;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,7 @@ import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
 import ingsoft1920.em.Model.EmpleadoModelC3;
+import ingsoft1920.em.Model.SueldoModel;
 import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 @Controller
@@ -126,10 +129,17 @@ public class API {
 		String rol=obj.get("ocupacion").getAsString();
 		int id_hotel=obj.get("id_hotel").getAsInt();
 		int valor=(int) obj.get("valor").getAsDouble();
+		String fecha_contratacion= obj.get("fecha_contratacion").getAsString();
 		//fecha contratacion
-		
-		//Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        java.util.Date parsed = null;
+		try {
+			parsed = format.parse(fecha_contratacion);
+		} catch (ParseException e) {}
+        java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+        
+	    //Ejecutamos query
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 		NominaDAO.asignarNomina(id_empleado, valor);
 	}
@@ -313,6 +323,30 @@ public class API {
 			empleado.add("rol", listaRol);
 			return empleado.toString();
 		}
+		
+		//API PARA FNA
+		@ResponseBody
+		@GetMapping("/sueldoHotel")
+		public String getSueldoHotel(@RequestBody String req) {
+			//consulta sql
+			List<SueldoModel> listaSueldos = new ArrayList<SueldoModel>();
+			listaSueldos = NominaDAO.sumaNomina();
+			//Guardamos la info de la consulta en formato JSON
+			JsonArray listaIdHotel = new JsonArray();
+			JsonArray listaValor = new JsonArray();
+			
+			for(SueldoModel sueldo:listaSueldos) {
+				listaIdHotel.add(sueldo.getId_hotel());
+				listaValor.add(sueldo.getId_valor());			
+			}
+			
+			JsonObject sueldo = new JsonObject();
+			sueldo.add("id_hotel", listaIdHotel);
+			sueldo.add("valor", listaValor);
+			
+			return sueldo.toString();
+		}
+		
 		
 	
 	
