@@ -23,6 +23,24 @@ $(function() {
     $("#fin").datepicker({ dateFormat: "dd-mm-yy" }).val()
 });
 
+function mensaje(){
+
+var todo_correcto=true;
+
+if(document.getElementById('buscar').value==''){
+todo_correcto=false;
+}
+
+if(!todo_correcto){
+alert('Debes rellenar todos los campos');
+}
+
+if(todo_corecto){
+
+alert('Se ha enviado tu peticion correctamente');
+}
+
+}
 
 
 </script>
@@ -58,7 +76,7 @@ $(function() {
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Desde
-            <td><input type="text" name="duracion" id="inicio" ></td>
+            <td><input type="text" name="duracion" id="inicio" required></td>
           </h1>
       </article>
       </section>
@@ -66,7 +84,7 @@ $(function() {
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Hasta
-            <td><input type="text" name="duracion" id="fin" ></td>
+            <td><input type="text" name="duracion" id="fin" required></td>
           </h1>
       </article>
 	</section>			
@@ -75,10 +93,10 @@ $(function() {
     <section id="publicaciones">
       <article class="post">
         <h1 class="titulo-post">Motivo 
-        <td><input type="text" name="buscar" placeholder="Escribe aqui" ></td>
+        <td><input type="text" id="buscar" placeholder="Escribe aqui" required></td>
         </h1>
       </article>
-		<input type="submit" value="Enviar" >
+		<input type="submit" value="Enviar" onClick="mensaje()">
 	</section>
 	</section>
 </form>

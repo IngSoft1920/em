@@ -11,13 +11,13 @@
 
 function activar(){
    document.getElementById('checkin').disabled = false;
-   document.getElementById('hola').disabled = true;
+   document.getElementById('checkout').disabled = true;
    alert("Se ha guardado tu check-in correctamente")
  }
 
  function activar2(){
     document.getElementById('checkin').disabled = true;
-    document.getElementById('hola').disabled = false;
+    document.getElementById('checkout').disabled = false;
     alert("Se ha guardado tu check-out correctamente")
   }
 
@@ -56,7 +56,8 @@ function activar(){
    
     <div id="publicaciones1">
     <article class="cuerpo-tarea">
-      <input type="button" name="tratamiento" id="checkin" value="Check-in" disabled="false" onClick="activar2()"/<br/>
+    <input type="button" value="Check-in" id="checkout" onClick="activar()" />
+      
        </a>
         <img src="/img/checkin2.jpg" class="img-post1">
       </article>
@@ -68,7 +69,7 @@ function activar(){
 
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <input type="button" value="Check-out" id="hola" onClick="activar()" />
+        <input type="button" name="tratamiento" id="checkin" value="Check-out" disabled="false" onClick="activar2()"/<br/>
         </a><br/>
         <img src="/img/checkout.jpg" class="img-post2">
       </article>
