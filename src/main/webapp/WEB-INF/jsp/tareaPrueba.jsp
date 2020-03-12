@@ -14,34 +14,49 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu4" class="enlace">Inicio</a></li>
-          <li><a href="/nomina4" class="enlace">Nomina</a></li>
-          <li><a href="/turnos4" class="enlace">Turnos</a></li>
-          <li><a href="/tareas4" class="activate-menu">Tareas</a></li>
-          <li><a href="/vacaciones4" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas4" class="enlace">Bajas</a></li>
-          <li><a href="/perfil4" class="enlace">Perfil</a></li>
-          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu5" class="enlace">Inicio</a></li>
+          <li><a href="/nomina5" class="enlace">Nomina</a></li>
+          <li><a href="/turnos5" class="enlace">Turnos</a></li>
+          <li><a href="/tareas5" class="activate-menu">Tareas</a></li>
+          <li><a href="/ausencias5" class="enlace">Ausencias</a></li>
+          <li><a href="/perfil5" class="enlace">Perfil</a></li>
+          <li><a href="/registro5" class="enlace">Registro</a></li>
+          <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
  </header>
  
-	<h1>Visualizacion Tareas</h1>
-	
-	<u1>
+
+<div class="main-container">
+	<table>	
+          <thead>
+          <tr>
+            <th class="text-center">HORA INICIO</th>
+            <th class="text-center">HORA FIN</th>
+            <th>DESCRIPCION TAREA</th>
+          </tr>
+          </thead>
+
+			<u1>
 		<c:forEach var="tareas" items="${tareas}">
 			<li>
 				<p>
-					<b>id_tarea:</b> ${tareas.id_tarea} <br>
-					<b>id_empleado:</b> ${tareas.id_empleado} <br>
-					<b>id_incentivo:</b> ${tareas.descripcionTarea} <br>
+          <tbody>
+          <tr>
+            <th class="text-center> ${tareas.id_tarea} <br></td>
+            <th class="text-center> ${tareas.id_empleado} <br></td>
+            <td> ${tareas.descripcionTarea} <br></td>
+          </tr>
+          </tbody>
+	
 				</p>
 			</li>
 		</c:forEach>
 	</u1>
-					
-					
+    </table>					
+	</div>
+	  
     
 </body>
 
@@ -69,7 +84,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -120,6 +135,135 @@ header{
   border-radius: 5px 5px 0px 0px;
   padding: 10px;
 }
+
+
+#principal{
+  width: 80%;
+  height: auto; overflow: hidden;
+  border: 0px solid; /* si no le ponemos nada significa negro*/
+  margin: 10px auto;
+}
+
+#publicaciones{
+  width: 70%;
+  height: auto; overflow: hidden;
+  border: 0px solid red; /*significa que es rojo*/
+  margin-top: 0px;
+  float:left;
+}
+
+  .post{ /*aplicar estilo a cada articulo. Espacios del texto*/
+    width: 96%;
+    height: auto; overflow: hidden;
+    padding: 10px 7px;
+    background: #fdfdfd;
+    border-Left-style: solid;
+    border-Left-width: 5px;
+    border-Left-color: #0489B1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px #ccc;/*color gris*/
+    margin-bottom: 25px;
+  }
+
+.enlace-post{
+ text-decoration: none;
+}
+
+#main-container{
+margin:50px auto;
+width:80%;
+}
+
+table{
+text-align: center;
+padding-left:180px;
+width:80%;
+}
+
+th,td{
+padding: 20px;
+}
+
+thead{
+
+background-color: #0B8894;
+border-bottom: solid 5px #075F68;
+color:white;
+}
+
+tr:nth-child(even){
+background-color: #ddd;
+}
+
+
+
+.menu > li{
+
+  position:relative;
+  display: inline-inline-block;
+  float:left;
+}
+
+.menu > li > a{
+  display: block;
+  padding: 5px 20px;
+  color: #353535;
+  font-family: 'Open sans';
+  text-decoration: none;
+
+}
+
+
+.menu li a:hover{
+  color: #CE7D35;
+
+
+}
+
+.submenu{
+  position: absolute;
+  background: #006480;
+  visibility: hidden;
+  opacity: 0;
+  list-style: none;
+
+
+}
+
+.submenu li a{
+  display: block;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Open sans';
+  text-decoration: none;
+  position: relative;
+}
+
+.menu li:hover .submenu{
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+
+}
+
+.nav li:hover > ul {
+  display:block;
+
+}
+
+.nav li ul li{
+  position: relative;
+
+}
+
+.nav li ul li {
+
+  top: 0px;
+}
+
+
+
+
 
 </style>
 

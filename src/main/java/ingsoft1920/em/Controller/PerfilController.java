@@ -86,25 +86,26 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/vacaciones2")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias2")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones2")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@PostMapping("/ausencias2")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 	
-	@GetMapping("/bajas2")
-	public String bajasp1(Model model) {
-		return "bajas";
+	@GetMapping("/registro2")
+	public String registrop1(Model model) {
+		return "registro";
 	}
 	
-	@PostMapping("/bajas2")
-	public String bajasp(Model model) {
-		return "bajas";
+	@PostMapping("/registro2")
+	public String registrop(Model model) {
+		return "registro";
 	}
+
 	
 }
 

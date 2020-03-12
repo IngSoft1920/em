@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.VacacionBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
+import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
 @Controller
@@ -45,6 +49,8 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 
@@ -74,26 +80,24 @@ public class VacacionesController {
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
-
-	@GetMapping("/vacaciones7")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	
+	@GetMapping("/turnos7")
+	public String turnosp(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
 	}
 
-	@PostMapping("/vacaciones7")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias7")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 
-	@GetMapping("/bajas7")
-	public String bajasp1(Model model) {
-		return "bajas";
+	@PostMapping("/ausencias7")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 
-	@PostMapping("/bajas7")
-	public String bajasp(Model model) {
-		return "bajas";
-	}
 
 	@GetMapping("/verVacaciones")
 	public String verVacaciones(Model model){

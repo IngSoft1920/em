@@ -10,29 +10,6 @@
 
 <body>
 
-  <%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
-
-
   <header class="header">
     <div id="encabezado">
       <div id="logo">
@@ -45,9 +22,9 @@
           <li><a href="/nomina" class="enlace">Nomina</a></li>
           <li><a href="/turnos" class="enlace">Turnos</a></li>
           <li><a href="/tareas" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones1" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas" class="enlace">Bajas</a></li>
+          <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
+          <li><a href="/registro" class="enlace">Registro</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -56,74 +33,42 @@
 
 
 
-  <section id="principal1">
+  <div id="principal1">
 
-    <section id="publicaciones1">
+    <div id="publicaciones1">
       <article class="cuerpo-nomina">
         <a href="/nomina" class="enlace-nomina">
         <h2 class="nomina"> NOMINA </h2>
         </a>
         <img src="/img/nomina.jpg" class="img-post1">
       </article>
-    </section>
+    </div>
 
-    <section id="sidebar1">
-    </section>
-
-  </section>
+    <div id="sidebar1">
+    </div>
 
 
 
 
-
-
-  <section id="principal2">
-
-    <section id="publicaciones2">
+    <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="/tareas" class="enlace-tarea">
-        <h2 class="tarea"> TAREAS </h2>
+        <a href="/perfil" class="enlace-tarea">
+        <h2 class="tarea"> PERFIL </h2>
         </a>
-        <img src="/img/tareas.jpg" class="img-post2">
+        <img src="/img/perfill.jpg" class="img-post2">
       </article>
-    </section>
+    </div>
 
 
-    <section id="sidebar2">
-    </section>
+    <div id="sidebar2">
+    </div>
 
-  </section>
-
-
-
-
-
-  <section id="principal3">
-
-    <section id="publicaciones3">
-      <article class="cuerpo-perfil">
-        <a href="/perfil" class="enlace-perfil">
-        <h2 class="perfil"> PERFIL </h2>
-        </a>
-        <img src="/img/perfill.jpg" class="img-post3">
-        
-      </article>
-    </section>
-
-
-    <section id="sidebar3">
-    </section>
-
-  </section>
-
-
-
-
+  </div>
 
 </body>
 <style>
             
-          *{
+*{
   margin: 0;
   padding: 0;
 
@@ -143,7 +88,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -200,27 +145,35 @@ header{
 
 /*NOMINAAAAAAA*/
 #principal1{ /*para cambiar el contenido de nomina*/
-  width: 15%;
-  height: auto; overflow: hidden;
-  border: 0px solid;
-  margin: 0px auto;
+  padding:10px;
+  
 }
 
 #publicaciones1{
-  width: 500%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*lo quiero quitar */
-  margin-top: 10px;
+  width: 300px;
+  float:left;
+  padding:10px;
+  margin:80px; /*NOMINAAAAAAA*/
+  margin-left:150px;
 }
+
+#publicaciones2{
+  width: 330px;
+  float:left;
+  padding:10px;
+  margin:40px;
+  margin-left:290px;
+}
+
 
 .cuerpo-nomina{
   width: 99%;
   height: auto; overflow: hidden;
   padding: 15px;
   background: #fdfdfd;
-  border-left-style: solid;
-  border-left-width: 5px;
-  border-left-color: #048981;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #048981;
   border-radius: 10px;
   margin-bottom: 35px;
 }
@@ -233,6 +186,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
+  margin-left: 70px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones1 a .nomina:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -244,38 +198,23 @@ header{
   height: 100px;
   float: left;
   margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
-  margin-left: 17px; /*CENTRAR LA IMAGEN*/
+  margin-left: 70px; /*CENTRAR LA IMAGEN*/
 }
-
-
-
 
 /*TAREAAAASSSSSSS*/
-#principal2{ /*para cambiar el contenido de nomina*/
-  width: 15%;
-  height: auto; overflow: hidden;
-  border: 0px solid;
-  margin: 0px auto;
-}
-
-#publicaciones2{
-  width: 150%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*lo quiero quitar */
-  margin-top: 0px;
-}
 
 
 .cuerpo-tarea{
   width: 99%;
   height: auto; overflow: hidden;
-  padding: 7px;
+  padding: 15px;
   background: #fdfdfd;
-  border-left-style: solid;
-  border-left-width: 5px;
-  border-left-color: #048981;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #048981;
   border-radius: 10px;
-  margin-bottom: 35px;
+  margin-bottom: 5px;
+  margin-left:0px;
 }
 
 .enlace-tarea{
@@ -286,6 +225,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
+  margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones2 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -297,64 +237,13 @@ header{
   height: 100px;
   float: left;
   margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
-  margin-left: 17px; /*CENTRAR LA IMAGEN*/
+  margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
 
 
-/*PERFILLLLLLLL*/
-#principal3{ /*para cambiar el contenido de nomina*/
-  width: 15%;
-  height: auto; overflow: hidden;
-  border: 0px solid;
-  margin: 10px 1000px;
-  float: left;
-
-}
-
-#publicaciones3{
-  width: 500%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*lo quiero quitar */
-  margin-top: 10px;
-}
-
-.cuerpo-perfil{
-  width: 99%;
-  height: auto; overflow: hidden;
-  padding: 15px;
-  background: #fdfdfd;
-  border-left-style: solid;
-  border-left-width: 5px;
-  border-left-color: #048981;
-  border-radius: 10px;
-  margin-bottom: 35px;
-}
-
-.enlace-perfil{
-  text-decoration: none;
-}
-
-#publicaciones3 a .perfil{ /*titulo-post*/
-  color: #6e6e6e;
-  font-size: 40px;
-  font-family: 'calibri light';
-}
-
-#publicaciones3 a .perfil:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
-  text-decoration: underline;
-}
-
-#publicaciones3 .img-post3{
-  width: 150px;
-  height: 100px;
-  float: left;
-  margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
-  margin-left: 17px; /*CENTRAR LA IMAGEN*/
-}
           
             
     </style>
 
 
 </html>
-

@@ -93,24 +93,14 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "ejemplo";
 	}
 	
-	@GetMapping("/vacaciones3")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias3")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones3")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
-	}
-	
-	@GetMapping("/bajas3")
-	public String bajasp1(Model model) {
-		return "bajas";
-	}
-	
-	@PostMapping("/bajas3")
-	public String bajasp(Model model) {
-		return "bajas";
+	@PostMapping("/ausencias3")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 	
 	@GetMapping("/turnos3")
@@ -125,6 +115,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "turnos";
 	}
 	
+	@GetMapping("/registro3")
+	public String registrop1(Model model) {
+		return "registro";
+	}
+	
+	@PostMapping("/registro3")
+	public String registrop(Model model) {
+		return "registro";
+	}
 	
 }
 

@@ -24,13 +24,14 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
-          <li><a href="/tareas2" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas2" class="enlace">Bajas</a></li>
-          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu7" class="enlace">Inicio</a></li>
+          <li><a href="/nomina7" class="enlace">Nomina</a></li>
+          <li><a href="/turnos7" class="enlace">Turnos</a></li>
+          <li><a href="/tareas7" class="enlace">Tareas</a></li>
+          <li><a href="/ausencias7" class="activate-menu">Ausencias</a></li>
+          <li><a href="/perfil7" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
+          <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
@@ -73,7 +74,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
