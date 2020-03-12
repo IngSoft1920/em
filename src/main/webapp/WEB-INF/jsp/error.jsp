@@ -17,7 +17,7 @@
 		<br>
 		<input type="submit" value="Volver a intentar">
 		<br>
-	</form:form>
+	</form>
 </body>
 <style>
             

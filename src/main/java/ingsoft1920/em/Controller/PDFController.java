@@ -16,15 +16,17 @@ import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Servicios.GenerarPDF;
 
+@Controller
 public class PDFController {
 	
-	@RequestMapping(value = "/gererarPDF", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	@RequestMapping(value = "/generarPDF", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	
 	public ResponseEntity<InputStreamResource> generarNomina(){
 		
 		List<NominaModel> nominas = NominaDAO.verNomina(1);
 		
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);	
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
 		

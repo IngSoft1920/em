@@ -29,7 +29,7 @@ import ingsoft1920.em.Model.NominaModel;
 
 public class GenerarPDF {
 	
-	final static Logger logger = LogManager.getLogger(GenerarPDF.class);
+	private static final Logger logger = LogManager.getLogger(GenerarPDF.class);
     
 	private static int valor=0;
 	//tipos de fuente
@@ -49,68 +49,73 @@ public class GenerarPDF {
 
         try {
         	
-        	PdfPTable table = new PdfPTable(3);
-        	table.setWidthPercentage(60);
-        	table.setWidths(new int[] {1,3,3});
+        	PdfPTable table = new PdfPTable(5);
+        	table.setWidthPercentage(110);
+        	table.setWidths(new int[] {40,40,40,40,40});
         	
         	PdfPCell hcell;
-        	hcell = new PdfPCell(new Phrase("Id_Nomina", chapterFont));
-        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Id_Nomina", categoryFont));
+        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Empleado",chapterFont));
-        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Id_Empleado",categoryFont));
+        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Incentivo",chapterFont));
-        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Id_Incentivo",categoryFont));
+        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Sueldo",chapterFont));
-        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Id_Sueldo",categoryFont));
+        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Valor",chapterFont));
-        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
+        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	for (NominaModel nomina:listaNominas) {
+ 	for (NominaModel nomina:listaNominas) {
         		
         		PdfPCell cell;
         		
         		cell = new PdfPCell(new Phrase(nomina.getId_nomina()));
-        		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         		table.addCell(cell);
         		
         		cell = new PdfPCell(new Phrase(nomina.getId_empleado()));
-        		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         		table.addCell(cell);
         		
         		cell = new PdfPCell(new Phrase(nomina.getId_incentivo()));
-        		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         		table.addCell(cell);
         		
         		cell = new PdfPCell(new Phrase(nomina.getId_sueldo()));
-        		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
         		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         		table.addCell(cell);
         		
         		valor = nomina.getId_sueldo() + nomina.getId_incentivo();
-        		cell = new PdfPCell(new Phrase(valor));
-        		cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+        		cell = new PdfPCell(new Phrase(valor));       		
         		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
         		table.addCell(cell);
-        		
-        	}
-        	
+ 	}
+       
+        		        	
         	PdfWriter.getInstance(document, out);
         	
-            document.open();
-            document.addTitle("Nomina)");
-            document.add(table);  
+            document.open(); 
+            document.addTitle("Nomina");
+         // First page
+         // Primera página 
+         Chunk chunk = new Chunk("Nomina", chapterFont);
+         chunk.setBackground(BaseColor.CYAN);
+         // Let's create de first Chapter (Creemos el primer capítulo)
+         Chapter chapter = new Chapter(new Paragraph(chunk), 1);
+         chapter.setNumberDepth(0);
+         chapter.add(new Paragraph("esto es una prueba", paragraphFont));
+         document.add(chapter);  
+         //Añadimos una tabla  
+            document.add(table);        
             document.close();
             
         } catch (DocumentException documentException) {
