@@ -13,12 +13,12 @@
 <script type="text/javascript">
 
 $(function() {
-    $("#inicio").datepicker({ dateFormat: "dd-mm-yy" }).val()
+    $("#inicio").datepicker({ dateFormat: "yy-mm-dd" }).val()
 });
 
 
 $(function() {
-    $("#fin").datepicker({ dateFormat: "dd-mm-yy" }).val()
+    $("#fin").datepicker({ dateFormat: "yy-mm-dd" }).val()
 });
 
 
@@ -77,16 +77,7 @@ alert('Se ha enviado tu peticion correctamente');
  
 <form method="POST" 	action="aniadeVacaciones"	modelAttribute="VacacionBean">
  
-  <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-          <h1 class="titulo-post">Desde
-            <td><input type="text" name="duracion" id="inicio" required></td>
-          </h1>
-      </article>
-      <input type="submit" value="Enviar" >
-	</section>
-	
+ <section id="principal">
 	<u1>
 		<c:forEach var="diasRestantes" items="${diasRestantes}">
 			<li>
@@ -99,6 +90,19 @@ alert('Se ha enviado tu peticion correctamente');
 
 	</u1>			
       </section>
+      
+  <section id="principal">
+    <section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Desde
+            <td><input type="text" name="duracion" id="inicio" required></td>
+          </h1>
+      </article>
+
+      </br>
+	</section>
+	
+	
 
     <section id="publicaciones">
       <article class="post">
@@ -111,7 +115,7 @@ alert('Se ha enviado tu peticion correctamente');
 	</section>		
 </form>
 
-<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
+<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones'" />
 
 </body>
   

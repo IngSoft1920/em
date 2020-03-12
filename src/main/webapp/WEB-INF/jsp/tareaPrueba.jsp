@@ -5,7 +5,6 @@
 </head>
 
 <body>
-
 <header class="header">
     <div id="encabezado">
       <div id="logo">
@@ -44,8 +43,8 @@
 				<p>
           <tbody>
           <tr>
-            <th class="text-center> ${tareas.id_tarea} <br></td>
-            <th class="text-center> ${tareas.id_empleado} <br></td>
+            <th class="text-center> ${tareas.horarioInicio} <br></td>
+            <th class="text-center> ${tareas.horarioFin} <br></td>
             <td> ${tareas.descripcionTarea} <br></td>
           </tr>
           </tbody>
