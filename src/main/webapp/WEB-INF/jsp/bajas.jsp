@@ -27,6 +27,13 @@ function mensaje(){
 
 var todo_correcto=true;
 
+if(document.getElementById('inicio').value==''){
+todo_correcto=false;
+}
+if(document.getElementById('fin').value==''){
+todo_correcto=false;
+}
+
 if(document.getElementById('buscar').value==''){
 todo_correcto=false;
 }

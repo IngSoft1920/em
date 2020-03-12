@@ -22,7 +22,27 @@ $(function() {
 });
 
 
+function mensaje(){
 
+var todo_correcto=true;
+
+if(document.getElementById('inicio').value==''){
+todo_correcto=false;
+}
+if(document.getElementById('fin').value==''){
+todo_correcto=false;
+}
+
+if(!todo_correcto){
+alert('Debes rellenar todos los campos');
+}
+
+if(todo_corecto){
+
+alert('Se ha enviado tu peticion correctamente');
+}
+
+}
 </script>
 
 </head>
@@ -61,7 +81,7 @@ $(function() {
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Desde
-            <td><input type="text" name="duracion" id="inicio" ></td>
+            <td><input type="text" name="duracion" id="inicio" required></td>
           </h1>
       </article>
       </section>
@@ -69,10 +89,10 @@ $(function() {
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Hasta
-            <td><input type="text" name="duracion" id="fin" ></td>
+            <td><input type="text" name="duracion" id="fin" required></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" >
+      <input type="submit" value="Enviar" onClick="mensaje()">
 	</section>	
 	</section>		
 </form>

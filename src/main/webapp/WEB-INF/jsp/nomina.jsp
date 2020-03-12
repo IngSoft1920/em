@@ -46,13 +46,9 @@
   </header>
 
   <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-
-
-        <a href="" class="enlace-post">
-          <h2 class="titulo-post">Para visualizar la nomina elige un mes: </h2><br/>
-        </a>
+    
+          <h2> -> Para visualizar la nomina elige un mes: </h2><br/>
+        
 
         <table border="tabla">
 
@@ -78,8 +74,7 @@
 
         </table>
  
-      </article>
-    </section>
+
   </section>
 
   <style>
@@ -159,33 +154,17 @@ header{
 /*--------contenido principal ---------*/
 
 #principal{
-  width: 80%;
-  height: auto; overflow: hidden;
-  border: 0px solid; /* si no le ponemos nada significa negro*/
+  width: 60%;
+  height: 20%; overflow: hidden;
+  border: 3px solid; /* si no le ponemos nada significa negro*/
   margin: 0px auto;
+  padding:15px;
 }
 
-#publicaciones{
-  width: 80%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*significa que es rojo*/
-  margin-top: 10px;
-  margin-left: 390px;
-  float:middle;
-}
+h2{
+color:#585858;
 
-  .post{ /*aplicar estilo a cada articulo. Espacios del texto*/
-    width: 99%;
-    height: 90%; overflow: hidden;
-    padding: 15px;
-    background: #fff;
-    /*border-Left-style: solid;
-    border-Left-width: 5px;
-    border-Left-color: #048981;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px #ccc;/*color gris*/
-    margin-bottom: 25px;
-  }
+}
 
 .enlace-post{
  text-decoration: none;
@@ -197,69 +176,9 @@ header{
 }
 
 
-.menu > li{
-
-  position:relative;
-  display: inline-inline-block;
-  float:right;
-}
-
-.menu > li > a{
-  display: block;
-  padding: 20px 20px;
-
-  font-family: 'Open sans';
-  text-decoration: none;
-
-}
 
 
-.menu li a:hover{
-  color: #048981;
 
-
-}
-
-.submenu{
-  position: absolute;
-  background: #006480;
-  visibility: hidden;
-  opacity: 0;
-  list-style: none;
-
-
-}
-
-.submenu li a{
-  display: block;
-  color: #ffff;
-  padding: 10px;
-  font-family: 'Open sans';
-  text-decoration: none;
-  position: relative;
-}
-
-.menu li:hover .submenu{
-  visibility: visible;
-  opacity: 1;
-  position: relative;
-
-}
-
-.nav li:hover > ul {
-  display:block;
-
-}
-
-.nav li ul li{
-  position: relative;
-
-}
-
-.nav li ul li {
-
-  top: 0px;
-}
   
   </style>
 
