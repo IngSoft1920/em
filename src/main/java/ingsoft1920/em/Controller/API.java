@@ -131,7 +131,7 @@ public class API {
 		int valor=(int) obj.get("valor").getAsDouble();
 		String fecha_contratacion= obj.get("fecha_contratacion").getAsString();
 		//fecha contratacion
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date parsed = null;
 		try {
 			parsed = format.parse(fecha_contratacion);
