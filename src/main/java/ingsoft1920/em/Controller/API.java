@@ -327,7 +327,7 @@ public class API {
 		//API PARA FNA
 		@ResponseBody
 		@GetMapping("/sueldoHotel")
-		public String getSueldoHotel(@RequestBody String req) {
+		public String getSueldoHotel() {
 			//consulta sql
 			List<SueldoModel> listaSueldos = new ArrayList<SueldoModel>();
 			listaSueldos = NominaDAO.sumaNomina();
