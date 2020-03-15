@@ -290,7 +290,7 @@ public class API {
 		}
 		//API para DHO, devolvemos lista de empleados
 		@ResponseBody
-		@GetMapping("/sacaEmpleadoHotel")
+		@PostMapping("/sacaEmpleadoHotel")
 		//recibimos el id_hotel del que quiere obtener la lista de empleados
 		public String getEmpleadoHotel(@RequestBody String req) {
 			//convertimos el parámetro recibido a variable
