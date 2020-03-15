@@ -44,6 +44,22 @@
 		</c:forEach>
 	</u1>
 					
+		      <section id="principal1">
+
+     <section id="principal1">
+
+    <section id="publicaciones1">
+      <article class="cuerpo-nomina">
+        <a href="/generarPDF" class="enlace-generarPDF">
+        <h2 class="generarPDF"> PDF </h2>
+        </a>
+      </article>
+    </section>
+
+    <section id="sidebar1">
+    </section>
+
+  </section>
 					
     
 </body>
