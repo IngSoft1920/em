@@ -73,31 +73,17 @@ public class GenerarPDF {
         	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
         	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
-        	
  	for (NominaModel nomina:listaNominas) {
         		
-        		PdfPCell cell;
+        		table.addCell( Integer.toString(nomina.getId_nomina()));
         		
-        		cell = new PdfPCell(new Phrase(nomina.getId_nomina()));
-        		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        		table.addCell(cell);
+        		table.addCell( Integer.toString(nomina.getId_empleado()));
         		
-        		cell = new PdfPCell(new Phrase(nomina.getId_empleado()));
-        		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        		table.addCell(cell);
+        		table.addCell( Integer.toString(nomina.getId_incentivo()));
         		
-        		cell = new PdfPCell(new Phrase(nomina.getId_incentivo()));
-        		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        		table.addCell(cell);
-        		
-        		cell = new PdfPCell(new Phrase(nomina.getId_sueldo()));
-        		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        		table.addCell(cell);
-        		
-        		valor = nomina.getId_sueldo() + nomina.getId_incentivo();
-        		cell = new PdfPCell(new Phrase(valor));       		
-        		cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-        		table.addCell(cell);
+        		table.addCell( Integer.toString(nomina.getId_sueldo()));
+    
+        		table.addCell(Integer.toString(nomina.getValor()));
  	}
        
         		        	
@@ -109,11 +95,7 @@ public class GenerarPDF {
          // Primera página 
          Chunk chunk = new Chunk("Nomina", chapterFont);
          chunk.setBackground(BaseColor.CYAN);
-         // Let's create de first Chapter (Creemos el primer capítulo)
-         Chapter chapter = new Chapter(new Paragraph(chunk), 1);
-         chapter.setNumberDepth(0);
-         chapter.add(new Paragraph("esto es una prueba", paragraphFont));
-         document.add(chapter);  
+        
          //Añadimos una tabla  
             document.add(table);        
             document.close();

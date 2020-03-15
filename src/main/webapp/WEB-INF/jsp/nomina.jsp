@@ -83,18 +83,18 @@
 
               <li><a> Elige un mes </a>
                   <ul class="submenu">
-                      <li><a href="/ejemplo">Enero</a></li>
-                      <li><a href="/ejemplo">Febrero</a></li>
-                      <li><a href="/ejemplo">Marzo</a></li>
-                      <li><a href="/ejemplo">Abril</a></li>
-                      <li><a href="/ejemplo">Mayo</a></li>
-                      <li><a href="/ejemplo">Junio</a></li>
-                      <li><a href="/ejemplo">Julio</a></li>
-                      <li><a href="/ejemplo">Agosto</a></li>
-                      <li><a href="/ejemplo">Septiembre</a></li>
-                      <li><a href="/ejemplo">Octubre</a></li>
-                      <li><a href="/ejemplo">Noviembre</a></li>
-                      <li><a href="/ejemplo">Diciembre</a></li>
+                      <li><a href="/generarPDF">Enero</a></li>
+                      <li><a href="/generarPDF">Febrero</a></li>
+                      <li><a href="/generarPDF">Marzo</a></li>
+                      <li><a href="/generarPDF">Abril</a></li>
+                      <li><a href="/generarPDF">Mayo</a></li>
+                      <li><a href="/generarPDF">Junio</a></li>
+                      <li><a href="/generarPDF">Julio</a></li>
+                      <li><a href="/generarPDF">Agosto</a></li>
+                      <li><a href="/generarPDF">Septiembre</a></li>
+                      <li><a href="/generarPDF">Octubre</a></li>
+                      <li><a href="/generarPDF">Noviembre</a></li>
+                      <li><a href="/generarPDF">Diciembre</a></li>
                   </ul>
               </li>
 

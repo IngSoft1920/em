@@ -24,7 +24,6 @@ public class PDFController {
 	public ResponseEntity<InputStreamResource> generarNomina(){
 		
 		List<NominaModel> nominas = NominaDAO.verNomina(1);
-		
 		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
 		
 		HttpHeaders headers = new HttpHeaders();
