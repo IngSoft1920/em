@@ -93,11 +93,12 @@ public class VacacionesDAO {
 		}
 		PreparedStatement stmt = null; 
 		try { 
-				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion,fecha_inicio,fecha_fin) values (?,?,?,?);");
+				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion,fecha_inicio,fecha_fin,estado) values (?,?,?,?,?);");
 			      stmt.setInt(1, id_empleado);
 			      stmt.setInt(2, duracion);
 			      stmt.setDate(3,vacaciones.getFecha_inicio());
 			      stmt.setDate(4, vacaciones.getFecha_fin());
+			      stmt.setString(4, "pendiente");
 			      stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 

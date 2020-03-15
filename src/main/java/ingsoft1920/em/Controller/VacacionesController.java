@@ -144,7 +144,7 @@ public class VacacionesController {
 			if (diasRestantes >= duracion) {
 				VacacionesDAO.insertaVacaciones(1, duracion,vacaciones);
 				VacacionesDAO.getIdVacaciones(1,vacaciones);
-				//VacacionesCM.peticionPedirVacaciones(vacaciones);
+				VacacionesCM.peticionPedirVacaciones(vacaciones);
 				
 			}
 		}
