@@ -87,15 +87,17 @@ public class VacacionesDAO {
 			  }
 	}
 	
-	public static void insertaVacaciones(int id_empleado,int duracion){
+	public static void insertaVacaciones(int id_empleado,int duracion,VacacionBean vacaciones){
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null; 
 		try { 
-				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion) values (?,?);");
+				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion,fecha_inicio,fecha_fin) values (?,?,?,?);");
 			      stmt.setInt(1, id_empleado);
 			      stmt.setInt(2, duracion);
+			      stmt.setDate(3,vacaciones.getFecha_inicio());
+			      stmt.setDate(4, vacaciones.getFecha_fin());
 			      stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -177,5 +179,38 @@ public class VacacionesDAO {
 			}
 		}
 		return res;
+	}
+
+	public static int getIdVacaciones(int id_empleado, VacacionBean vacaciones) {
+		 
+			if(conn==null) { 
+				conn=ConectorBBDD.conectar(); 
+			} 
+			ResultSet rs = null;  
+			PreparedStatement stmt = null;  
+			try {  
+				   stmt = conn.prepareStatement("Select id_vacaciones from vacaciones where id_empleado=? and fecha_inicio=?;"); 
+				   stmt.setInt(1, id_empleado); 
+				   stmt.setDate(2, vacaciones.getFecha_inicio()); 
+				   rs=stmt.executeQuery(); 
+				   return rs.getInt("id_baja"); 
+			}  
+			catch (SQLException ex){  
+			   System.out.println("SQLException: " + ex.getMessage()); 
+			   } 
+			finally { 
+					  	 
+				if (stmt!=null){ 
+					try{stmt.close(); 
+					}catch(SQLException sqlEx){} 
+					stmt=null; 
+				} 
+				if (conn!=null){ 
+					ConectorBBDD.desconectar(); 
+					conn=null; 
+				} 
+			} 
+			return -1; 
+		
 	}
 }

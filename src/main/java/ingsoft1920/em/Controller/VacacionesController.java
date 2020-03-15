@@ -124,22 +124,23 @@ public class VacacionesController {
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
 		int duracion;
-		System.out.print(vacaciones.getFecha_inicio());
-		/*Date fechaInicial= vacaciones.getFecha_inicio();
+		Date fechaInicial = vacaciones.getFecha_inicio();
 		Date fechaFinal = vacaciones.getFecha_fin();
-		duracion=(int) (fechaFinal.getTime()-fechaInicial.getTime());
-		if(duracion>0) { //para comprobar que la fechafinal sea mayor que la inicial
-		int[] res;
-		int diasRestantes=0;
-		res = VacacionesDAO.contVacaciones(1, duracion); //vacaciones.getIdEmpleado()
-		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-		model.addAttribute("diasRestantes", diasRestantes);
-		if(diasRestantes >= duracion) {
-		VacacionesCM.peticionPedirVacaciones(vacaciones);
-		VacacionesDAO.insertaVacaciones(1,duracion);
+		duracion = (int) ((vacaciones.getFecha_fin().getTime()-vacaciones.getFecha_inicio().getTime())/86400000);
+		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
+			int[] res;
+			int diasRestantes = 0;
+			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()
+			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+			model.addAttribute("diasRestantes", diasRestantes);
+			if (diasRestantes >= duracion) {
+				VacacionesDAO.insertaVacaciones(1, duracion,vacaciones);
+				VacacionesDAO.getIdVacaciones(1,vacaciones);
+				VacacionesCM.peticionPedirVacaciones(vacaciones);
+				
+			}
 		}
-		}*/
 		return "vacaciones";
 	}
-	
+
 }
