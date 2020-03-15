@@ -227,30 +227,23 @@ public class API {
 			
 		}
 		
-		//API que recibe el estado de la ausencia (vacacion)
 		@ResponseBody
-		@PostMapping("vacaciones")
-		public void cambiaEstadoVacacion(@RequestBody String req) {
-			//Creamos el objeto json con los parametros recibidos
+		@PostMapping("/resultadoAusencia")
+		public void redirige(@RequestBody String req) {
 			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			String motivo=obj.get("motivo").getAsString();
 			int id_ausencia=obj.get("id_ausencia").getAsInt();
 			String estado=obj.get("resultado").getAsString();
-			//Ejecutamos query
-			VacacionesDAO.editaVacacion(id_ausencia,estado);
+			
+			if(motivo.equals("vacaciones")) {
+				//Ejecutamos query
+				VacacionesDAO.editaVacacion(id_ausencia,estado);
+			}
+			else {
+				//Ejecutamos query
+				BajaDAO.editaBaja(id_ausencia,estado);
+			}		
 		}
-		
-		//API que recibe el estado de la ausencia (baja)
-		@ResponseBody
-		@PostMapping("baja")
-		public void cambiaEstadoBaja(@RequestBody String req) {
-			//Creamos el objeto json con los parametros recibidos
-			JsonObject obj = (JsonObject) JsonParser.parseString(req);
-			int id_ausencia=obj.get("id_ausencia").getAsInt();
-			String estado=obj.get("resultado").getAsString();
-			//Ejecutamos query
-			BajaDAO.editaBaja(id_ausencia,estado);
-		}
-		
 		
 		
 	

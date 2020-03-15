@@ -116,17 +116,18 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "muestraBajas";
 	}
 
-	@GetMapping("/añadeBaja")
+	@GetMapping("/aniadeBaja")
 	public String añadeBaja(Model model) {
 		BajaBean baja=new BajaBean();
 		model.addAttribute("bajaBean",baja);
 		model.addAttribute("mensajeError","");
 		return "bajas";
 	}
-	@PostMapping("/añadeBaja")
+	@PostMapping("/aniadeBaja")
 	public String añadeBaja1(BajaBean bajaBean,Model model) {
-		BajasCM.peticionPedirBaja(bajaBean);
-		BajaDAO.insertaBaja(1, bajaBean.getDuracion());
+		BajaDAO.insertaBaja(1, bajaBean);
+		int id_baja=BajaDAO.getIdBaja(1,bajaBean);
+		BajasCM.peticionPedirBaja(1,id_baja,bajaBean);
 		return "bajas";
 	}
 

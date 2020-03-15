@@ -23,12 +23,12 @@ public class BajaDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT id_empleado,id_baja,duracion,estado FROM baja WHERE id_empleado=?");
+		   stmt = conn.prepareStatement("SELECT id_empleado,id_baja,fecha_inicio,fecha_fin,duracion,estado FROM baja WHERE id_empleado=?");
 		   stmt.setInt(1, id_empleado);
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getInt("duracion"),rs.getString("estado"));
+			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getInt("duracion"),rs.getString("estado"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
 			   res.add(baja);
 			   }
 		   return res;
@@ -84,15 +84,19 @@ public class BajaDAO {
 		}
 	}
 
-	public static void insertaBaja(int id_empleado,int duracion) {
+	public static void insertaBaja(int id_empleado,BajaBean baja) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,duracion) values (?,?);");
+			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,fecha_inicio,fecha_fin,duracion,estado) values (?,?,?,?,?);");
 			   stmt.setInt(1, id_empleado);
-			   stmt.setInt(2, duracion);
+			   stmt.setDate(2, baja.getFecha_inicio());
+			   stmt.setDate(3, baja.getFecha_fin());
+			   int duracion = (int) ((baja.getFecha_fin().getTime()-baja.getFecha_inicio().getTime())/86400000); //duracion
+			   stmt.setInt(4, duracion);
+			   stmt.setString(5, "pendiente");
 			   stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -110,5 +114,41 @@ public class BajaDAO {
 				conn=null;
 			}
 		}
+	}
+
+
+	public static int getIdBaja(int id_empleado, BajaBean bajaBean) {
+		
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		ResultSet rs = null; 
+		PreparedStatement stmt = null; 
+		int res=-1;
+		try { 
+			   stmt = conn.prepareStatement("Select id_baja from baja where id_empleado=? and fecha_inicio=?;");
+			   stmt.setInt(1, id_empleado);
+			   stmt.setDate(2, bajaBean.getFecha_inicio());
+			   rs=stmt.executeQuery();
+			   while(rs.next())	res=rs.getInt("id_baja");
+			   return res;
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		return res;
+		
 	}
 }
