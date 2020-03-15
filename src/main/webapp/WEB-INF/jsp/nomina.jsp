@@ -72,6 +72,37 @@
 					    <input type="submit" />
 					</form>
 
+          <tbody>
+          <tr>
+            <td>
+
+              <nav class="nav">
+              <ul class="menu">
+
+              <li><a> Elige un mes </a>
+                  <ul class="submenu">
+                      <li><a href="/generarPDF">Enero</a></li>
+                      <li><a href="/generarPDF">Febrero</a></li>
+                      <li><a href="/generarPDF">Marzo</a></li>
+                      <li><a href="/generarPDF">Abril</a></li>
+                      <li><a href="/generarPDF">Mayo</a></li>
+                      <li><a href="/generarPDF">Junio</a></li>
+                      <li><a href="/generarPDF">Julio</a></li>
+                      <li><a href="/generarPDF">Agosto</a></li>
+                      <li><a href="/generarPDF">Septiembre</a></li>
+                      <li><a href="/generarPDF">Octubre</a></li>
+                      <li><a href="/generarPDF">Noviembre</a></li>
+                      <li><a href="/generarPDF">Diciembre</a></li>
+                  </ul>
+              </li>
+
+              </ul>
+              </nav>
+
+            </td>
+          </tr>
+          </tbody>
+
         </table>
  
 
