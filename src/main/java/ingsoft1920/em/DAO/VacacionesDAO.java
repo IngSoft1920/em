@@ -98,7 +98,7 @@ public class VacacionesDAO {
 			      stmt.setInt(2, duracion);
 			      stmt.setDate(3,vacaciones.getFecha_inicio());
 			      stmt.setDate(4, vacaciones.getFecha_fin());
-			      stmt.setString(4, "pendiente");
+			      stmt.setString(5, "pendiente");
 			      stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -189,12 +189,14 @@ public class VacacionesDAO {
 			} 
 			ResultSet rs = null;  
 			PreparedStatement stmt = null;  
+			int res=-1;
 			try {  
 				   stmt = conn.prepareStatement("Select id_vacaciones from vacaciones where id_empleado=? and fecha_inicio=?;"); 
 				   stmt.setInt(1, id_empleado); 
 				   stmt.setDate(2, vacaciones.getFecha_inicio()); 
 				   rs=stmt.executeQuery(); 
-				   return rs.getInt("id_vacaciones"); 
+				   while(rs.next())	res=rs.getInt("id_vacaciones");
+				   return res;
 			}  
 			catch (SQLException ex){  
 			   System.out.println("SQLException: " + ex.getMessage()); 
@@ -211,7 +213,7 @@ public class VacacionesDAO {
 					conn=null; 
 				} 
 			} 
-			return -1; 
+			return res; 
 		
 	}
 }
