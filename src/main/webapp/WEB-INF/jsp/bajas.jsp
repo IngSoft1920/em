@@ -96,8 +96,9 @@ alert('Se ha enviado tu peticion correctamente');
       </article>
 	</section>			
 	
-	
+    <section id="publicaciones">
    	<input type="submit" value="Enviar" onClick="mensaje()">
+   	</section>
 	</section>
 </form>
 
