@@ -83,30 +83,19 @@ alert('Se ha enviado tu peticion correctamente');
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Desde
-            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
+            <td><input type="text" name="duracion" id="inicio" required></td>
           </h1>
       </article>
-	</section>
-			  
- <section id="principal">
-	<u1>
-		<c:forEach var="diasRestantes" items="${diasRestantes}">
-			<li>
-				<p>
-						
-					<b>dias restantes:</b> ${diasRestantes} <br>
-				</p>
-			</li>
-		</c:forEach>
+      </section>
 
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Hasta
-            <td><input type="text" name="fecha_fin" id="fin" required></td>
+            <td><input type="text" name="duracion" id="fin" required></td>
           </h1>
       </article>
+      <input type="submit" value="Enviar" onClick="mensaje()">
 	</section>	
-	      <input type="submit" value="Enviar" onClick="mensaje()">
 	</section>		
 </form>
 
