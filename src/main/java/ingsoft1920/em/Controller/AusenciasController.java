@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
+import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
 
@@ -103,13 +105,20 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/vacaciones4")
-	public String vacacionesp1(Model model) {
+	public String vacacionesp1(Model model) throws ParseException {
 		HorarioDAO.checkin(1);
+		int[] res;
+		int diasRestantes = 0;
+		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
+		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+		System.out.println(diasRestantes);
+		model.addAttribute("diasRestantes", diasRestantes);
 		return "vacaciones";
 	}
 	
 	@PostMapping("/vacaciones4")
 	public String vacacionesp(Model model) {
+	
 		return "vacaciones";
 	}
 	
