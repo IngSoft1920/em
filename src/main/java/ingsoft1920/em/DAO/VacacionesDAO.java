@@ -27,11 +27,11 @@ public class VacacionesDAO {
 		ResultSet rs = null; 
 		
 	    try { 
-		   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado FROM vacaciones WHERE id_empleado=?");
+		   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado,fecha_inicio,fecha_fin FROM vacaciones WHERE id_empleado=?");
 		   stmt.setInt(1, id_empleado);
 		   rs=stmt.executeQuery();
 		   while (rs.next()){
-			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getInt("duracion"),rs.getString("estado"));
+			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getInt("duracion"),rs.getString("estado"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
 			   res.add(vacaciones);
 			   } 
 		
@@ -87,15 +87,18 @@ public class VacacionesDAO {
 			  }
 	}
 	
-	public static void insertaVacaciones(int id_empleado,int duracion){
+	public static void insertaVacaciones(int id_empleado,int duracion,VacacionBean vacaciones){
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null; 
 		try { 
-				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion) values (?,?);");
+				  stmt = conn.prepareStatement("INSERT into vacaciones(id_empleado,duracion,fecha_inicio,fecha_fin,estado) values (?,?,?,?,?);");
 			      stmt.setInt(1, id_empleado);
 			      stmt.setInt(2, duracion);
+			      stmt.setDate(3,vacaciones.getFecha_inicio());
+			      stmt.setDate(4, vacaciones.getFecha_fin());
+			      stmt.setString(4, "pendiente");
 			      stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -177,5 +180,38 @@ public class VacacionesDAO {
 			}
 		}
 		return res;
+	}
+
+	public static int getIdVacaciones(int id_empleado, VacacionBean vacaciones) {
+		 
+			if(conn==null) { 
+				conn=ConectorBBDD.conectar(); 
+			} 
+			ResultSet rs = null;  
+			PreparedStatement stmt = null;  
+			try {  
+				   stmt = conn.prepareStatement("Select id_vacaciones from vacaciones where id_empleado=? and fecha_inicio=?;"); 
+				   stmt.setInt(1, id_empleado); 
+				   stmt.setDate(2, vacaciones.getFecha_inicio()); 
+				   rs=stmt.executeQuery(); 
+				   return rs.getInt("id_vacaciones"); 
+			}  
+			catch (SQLException ex){  
+			   System.out.println("SQLException: " + ex.getMessage()); 
+			   } 
+			finally { 
+					  	 
+				if (stmt!=null){ 
+					try{stmt.close(); 
+					}catch(SQLException sqlEx){} 
+					stmt=null; 
+				} 
+				if (conn!=null){ 
+					ConectorBBDD.desconectar(); 
+					conn=null; 
+				} 
+			} 
+			return -1; 
+		
 	}
 }

@@ -1,5 +1,6 @@
 package ingsoft1920.em.Controller;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.util.List;
 
@@ -112,8 +113,14 @@ public class VacacionesController {
 	}
 
 	@GetMapping("/aniadeVacaciones")
-	public String añadeBaja(Model model) {
+	public String añadeBaja(Model model) throws ParseException {
 		VacacionBean vacacion = new VacacionBean();
+		int[] res;
+		int diasRestantes = 0;
+		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
+		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+		System.out.println(diasRestantes);
+		model.addAttribute("diasRestantes", diasRestantes);
 		model.addAttribute("vacaciones", vacacion);
 		model.addAttribute("mensajeError", "");
 		return "vacaciones";
@@ -122,16 +129,26 @@ public class VacacionesController {
 	@PostMapping("/aniadeVacaciones")
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		int[] res;
-		int diasRestantes=0;
-		res = VacacionesDAO.contVacaciones(1, vacaciones.getDuracion()); //vacaciones.getIdEmpleado()
-		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-		model.addAttribute("diasRestantes", diasRestantes);
-		if(diasRestantes >= vacaciones.getDuracion()) {
-		VacacionesCM.peticionPedirVacaciones(vacaciones);
-		VacacionesDAO.insertaVacaciones(1,vacaciones.getDuracion());
+		int duracion;
+		System.out.println(vacaciones.getFecha_fin().getTime());
+		System.out.println(vacaciones.getFecha_inicio().getTime());
+		duracion = (int) ((vacaciones.getFecha_fin().getTime()-vacaciones.getFecha_inicio().getTime())/86400000);
+		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
+			int[] res;
+			int diasRestantes = 0;
+			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()
+			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+			System.out.println(diasRestantes);
+			model.addAttribute("diasRestantes", diasRestantes);
+
+			if (diasRestantes >= duracion) {
+				VacacionesDAO.insertaVacaciones(1, duracion,vacaciones);
+				VacacionesDAO.getIdVacaciones(1,vacaciones);
+				VacacionesCM.peticionPedirVacaciones(vacaciones);
+				
+			}
 		}
 		return "vacaciones";
 	}
-	
+
 }

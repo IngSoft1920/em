@@ -45,6 +45,8 @@
 						
 					<b>duracion:</b> ${vacaciones.duracion} <br>
 					<b>estado:</b> ${vacaciones.estado} <br>
+					<b>fecha_inicio:</b> ${vacaciones.fecha_inicio} <br>
+					<b>fecha_fin:</b> ${vacaciones.fecha_fin} <br>
 				</p>
 			</li>
 		</c:forEach>
