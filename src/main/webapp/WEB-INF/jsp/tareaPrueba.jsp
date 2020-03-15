@@ -37,24 +37,21 @@
           </tr>
           </thead>
 
-			<u1>
+			
 		<c:forEach var="tareas" items="${tareas}">
 			
-				<p>
           <tbody>
           <tr>
             
-            <th class="text-center> ${tareas.horarioInicio} <br></td>
-            <th class="text-center> ${tareas.horarioFin} <br></td>
-            <th class="text-center> ${tareas.descripcionTarea}  <br></td>
+            <td> ${tareas.horarioInicio} <br></td>
+            <td> ${tareas.horarioFin} <br></td>
+            <td> ${tareas.descripcionTarea}  <br></td>
             
           </tr>
           </tbody>
 	
-				</p>
-			
 		</c:forEach>
-	</u1>
+	
     </table>					
 	</div>
 	  
@@ -172,6 +169,7 @@ header{
 
 #main-container{
 margin:50px auto;
+border:1px solid #075F68;
 width:80%;
 }
 
@@ -183,87 +181,18 @@ width:80%;
 
 th,td{
 padding: 20px;
+border:1px solid #075F68;
 }
 
 thead{
-
 background-color: #0B8894;
 border-bottom: solid 5px #075F68;
 color:white;
 }
 
-tr:nth-child(even){
-background-color: #ddd;
+td:ntd-child(even){
+background-color: #0B8894;
 }
-
-
-
-.menu > li{
-
-  position:relative;
-  display: inline-inline-block;
-  float:left;
-}
-
-.menu > li > a{
-  display: block;
-  padding: 5px 20px;
-  color: #353535;
-  font-family: 'Open sans';
-  text-decoration: none;
-
-}
-
-
-.menu li a:hover{
-  color: #CE7D35;
-
-
-}
-
-.submenu{
-  position: absolute;
-  background: #006480;
-  visibility: hidden;
-  opacity: 0;
-  list-style: none;
-
-
-}
-
-.submenu li a{
-  display: block;
-  color: #fff;
-  padding: 10px;
-  font-family: 'Open sans';
-  text-decoration: none;
-  position: relative;
-}
-
-.menu li:hover .submenu{
-  visibility: visible;
-  opacity: 1;
-  position: relative;
-
-}
-
-.nav li:hover > ul {
-  display:block;
-
-}
-
-.nav li ul li{
-  position: relative;
-
-}
-
-.nav li ul li {
-
-  top: 0px;
-}
-
-
-
 
 
 </style>
