@@ -46,6 +46,8 @@
 					<b>id_baja:</b> ${baja.id_Baja} <br>
 					<b>duracion:</b> ${baja.duracion} <br>
 					<b>estado:</b> ${baja.estado} <br>
+					<b>fecha_inicio:</b> ${baja.fecha_inicio} <br>
+					<b>fecha_fin:</b> ${baja.fecha_fin} <br>
 				</p>
 			</li>
 		</c:forEach>
