@@ -90,12 +90,13 @@ public class BajaDAO {
 		}
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,fecha_inicio,fecha_fin,duracion) values (?,?,?,?);");
+			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,fecha_inicio,fecha_fin,duracion,estado) values (?,?,?,?,?);");
 			   stmt.setInt(1, id_empleado);
 			   stmt.setDate(2, baja.getFecha_inicio());
 			   stmt.setDate(3, baja.getFecha_fin());
 			   int duracion = (int) ((baja.getFecha_fin().getTime()-baja.getFecha_inicio().getTime())/86400000); //duracion
 			   stmt.setInt(4, duracion);
+			   stmt.setString(5, "pendiente");
 			   stmt.executeUpdate();
 		} 
 		catch (SQLException ex){ 
@@ -129,7 +130,7 @@ public class BajaDAO {
 			   stmt.setInt(1, id_empleado);
 			   stmt.setDate(2, bajaBean.getFecha_inicio());
 			   rs=stmt.executeQuery();
-			   res=rs.getInt("id_baja");
+			   while(rs.next())	res=rs.getInt("id_baja");
 			   return res;
 		} 
 		catch (SQLException ex){ 
