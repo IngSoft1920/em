@@ -123,12 +123,14 @@ public class BajaDAO {
 		}
 		ResultSet rs = null; 
 		PreparedStatement stmt = null; 
+		int res=-1;
 		try { 
 			   stmt = conn.prepareStatement("Select id_baja from baja where id_empleado=? and fecha_inicio=?;");
 			   stmt.setInt(1, id_empleado);
 			   stmt.setDate(2, bajaBean.getFecha_inicio());
 			   rs=stmt.executeQuery();
-			   return rs.getInt("id_baja");
+			   res=rs.getInt("id_baja");
+			   return res;
 		} 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
@@ -145,7 +147,7 @@ public class BajaDAO {
 				conn=null;
 			}
 		}
-		return -1;
+		return res;
 		
 	}
 }

@@ -14,7 +14,7 @@ import ingsoft1920.em.Servicios.HttpClient;
 public class BajasCM {
 	public static void peticionPedirBaja(int id_empleado,int ausencia_id,BajaBean baja){
 		try {
-			HttpClient client = new HttpClient("http://localhost:7000/ausencia","POST");
+			HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/ausencia","POST");
 			JsonObject obj = new JsonObject();
 			obj.addProperty("ausencia_id", ausencia_id);
 			obj.addProperty("motivo", "baja");

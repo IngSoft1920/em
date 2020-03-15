@@ -14,7 +14,7 @@ import ingsoft1920.em.Servicios.HttpClient;
 public class VacacionesCM {
 	public static void peticionPedirVacaciones(VacacionBean vacaciones){
 		try {
-			HttpClient client = new HttpClient("http://localhost:7000/ausencia","POST");
+			HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/ausencia","POST");
 			JsonObject obj = new JsonObject();
 			obj.addProperty("ausencia_id", vacaciones.getId_vacacion());
 			obj.addProperty("motivo", "vacaciones");
