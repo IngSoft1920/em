@@ -40,15 +40,18 @@
 
 	<u1>
 		<c:forEach var="vacaciones" items="${vacaciones}">
-			<li>
+		<section id="publicaciones">
+      		<article class="post">
+			
 				<p>
 						
-					<b>duracion:</b> ${vacaciones.duracion} <br>
-					<b>estado:</b> ${vacaciones.estado} <br>
-					<b>fecha_inicio:</b> ${vacaciones.fecha_inicio} <br>
-					<b>fecha_fin:</b> ${vacaciones.fecha_fin} <br>
+					<b>DURACION:</b> ${vacaciones.duracion} <br>
+					<b>ESTADO:</b> ${vacaciones.estado} <br>
+					<b>FECHA INICIO:</b> ${vacaciones.fecha_inicio} <br>
+					<b>FECHA FIN:</b> ${vacaciones.fecha_fin} <br>
 				</p>
-			</li>
+      		</article>
+		</section>			
 		</c:forEach>
 
 	</u1>
@@ -140,6 +143,7 @@ header{
 
 #publicaciones{
   width: 70%;
+  padding:10px;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
   margin-top: 0px;
