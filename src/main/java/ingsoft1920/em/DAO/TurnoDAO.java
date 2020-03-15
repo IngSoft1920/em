@@ -22,7 +22,7 @@ public class TurnoDAO {
 		}
 		PreparedStatement stmt= null; 
 		  try { 
-			  stmt=conn.prepareStatement("INSERT INTO turno(id_Empleado,horarioInicio,horarioFin,diaSemana)"+
+			  stmt=conn.prepareStatement("INSERT INTO turno(id_Empleado,horario_inicio,horario_fin,diaSemana)"+
 						"values( ? , ? , ? ,DAYOFWEEK(?) );");
 							stmt.setInt(1, id_Empleado);
 							stmt.setString(2, horarioInicio);
