@@ -33,24 +33,26 @@
           <tr>
             <th class="text-center">HORA INICIO</th>
             <th class="text-center">HORA FIN</th>
-            <th>DESCRIPCION TAREA</th>
+            <th class="text-center">DESCRIPCION TAREA</th>
           </tr>
           </thead>
 
 			<u1>
 		<c:forEach var="tareas" items="${tareas}">
-			<li>
+			
 				<p>
           <tbody>
           <tr>
+            
             <th class="text-center> ${tareas.horarioInicio} <br></td>
             <th class="text-center> ${tareas.horarioFin} <br></td>
-            <td> ${tareas.descripcionTarea} <br></td>
+            <th class="text-center> ${tareas.descripcionTarea}  <br></td>
+            
           </tr>
           </tbody>
 	
 				</p>
-			</li>
+			
 		</c:forEach>
 	</u1>
     </table>					

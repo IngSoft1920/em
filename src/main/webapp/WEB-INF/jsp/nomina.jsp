@@ -52,25 +52,6 @@
 
         <table border="tabla">
 
-                  <form action="/ejemplo" name="formulario3" onsubmit="return elige()">
-					<select name="colores" id="colores" >
-					     <option>Elige un mes</option>
-					     <option>ENERO</option>
-					     <option>FEBRERO</option>
-					     <option>MARZO</option>
-					     <option>ABRIL</option>
-					     <option>MAYO</option>
-					     <option>JUNIO</option>
-					     <option>JULIO</option>
-					     <option>AGOSTO</option>
-					     <option>SEPTIEMBRE</option>
-					     <option>OCTUBRE</option>
-					     <option>NOVIEMBRE</option>
-					     <option>DICIEMBRE</option>
-					     
-					  </select><br/><br/>
-					    <input type="submit" />
-					</form>
 
           <tbody>
           <tr>
@@ -186,8 +167,8 @@ header{
 
 #principal{
   width: 60%;
-  height: 20%; overflow: hidden;
-  border: 3px solid; /* si no le ponemos nada significa negro*/
+  height: 90%; overflow: hidden;
+  border: 0px solid; /* si no le ponemos nada significa negro*/
   margin: 0px auto;
   padding:15px;
 }
@@ -207,6 +188,70 @@ color:#585858;
 }
 
 
+
+.menu > li{
+
+  position:relative;
+  display: inline-inline-block;
+  float:left;
+}
+
+.menu > li > a{
+  display: block;
+  padding: 5px 20px;
+  color: #353535;
+  font-family: 'Open sans';
+  text-decoration: none;
+
+}
+
+
+.menu li a:hover{
+  color: #CE7D35;
+
+
+}
+
+.submenu{
+  position: absolute;
+  background: #006480;
+  visibility: hidden;
+  opacity: 0;
+  list-style: none;
+
+
+}
+
+.submenu li a{
+  display: block;
+  color: #fff;
+  padding: 10px;
+  font-family: 'Open sans';
+  text-decoration: none;
+  position: relative;
+}
+
+.menu li:hover .submenu{
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+
+}
+
+.nav li:hover > ul {
+  display:block;
+
+}
+
+.nav li ul li{
+  position: relative;
+
+}
+
+.nav li ul li {
+
+  top: 0px;
+}
 
 
 
