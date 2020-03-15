@@ -13,12 +13,12 @@
 <script type="text/javascript">
 
 $(function() {
-    $("#inicio").datepicker({ dateFormat: "dd-mm-yy" }).val()
+    $("#inicio").datepicker({ dateFormat: "yy-mm-dd" }).val()
 });
 
 
 $(function() {
-    $("#fin").datepicker({ dateFormat: "dd-mm-yy" }).val()
+    $("#fin").datepicker({ dateFormat: "yy-mm-dd" }).val()
 });
 
 

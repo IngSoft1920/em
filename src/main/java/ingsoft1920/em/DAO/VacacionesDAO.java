@@ -27,11 +27,11 @@ public class VacacionesDAO {
 		ResultSet rs = null; 
 		
 	    try { 
-		   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado FROM vacaciones WHERE id_empleado=?");
+		   stmt = conn.prepareStatement("SELECT id_empleado,id_vacaciones,duracion,estado,fecha_inicio,fecha_fin FROM vacaciones WHERE id_empleado=?");
 		   stmt.setInt(1, id_empleado);
 		   rs=stmt.executeQuery();
 		   while (rs.next()){
-			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getInt("duracion"),rs.getString("estado"));
+			   VacacionesModel vacaciones=new VacacionesModel(rs.getInt("id_empleado"),rs.getInt("id_vacaciones"),rs.getInt("duracion"),rs.getString("estado"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
 			   res.add(vacaciones);
 			   } 
 		
@@ -193,7 +193,7 @@ public class VacacionesDAO {
 				   stmt.setInt(1, id_empleado); 
 				   stmt.setDate(2, vacaciones.getFecha_inicio()); 
 				   rs=stmt.executeQuery(); 
-				   return rs.getInt("id_baja"); 
+				   return rs.getInt("id_vacaciones"); 
 			}  
 			catch (SQLException ex){  
 			   System.out.println("SQLException: " + ex.getMessage()); 
