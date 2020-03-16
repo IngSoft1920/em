@@ -1,14 +1,7 @@
 package ingsoft1920.em.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import ingsoft1920.em.Beans.BajaBean;
-import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Servicios.HttpClient;
 
 public class BajasCM {

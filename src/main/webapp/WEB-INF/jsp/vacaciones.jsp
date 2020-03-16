@@ -83,7 +83,7 @@ alert('Se ha enviado tu peticion correctamente');
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Desde
-            <td><input type="text" name="duracion" id="inicio" required></td>
+            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
           </h1>
       </article>
       </section>
@@ -91,13 +91,18 @@ alert('Se ha enviado tu peticion correctamente');
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Hasta
-            <td><input type="text" name="duracion" id="fin" required></td>
+            <td><input type="text" name="fecha_fin" id="fin" required></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" onClick="mensaje()">
-	</section>	
-	</section>		
+	</section>			
+	
+    <section id="publicaciones">
+   	<input type="submit" value="Enviar" onClick="mensaje()">
+   	</section>
+	</section>
 </form>
+
+
 
 <input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones'" />
 

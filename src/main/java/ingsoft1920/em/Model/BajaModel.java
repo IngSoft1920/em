@@ -2,7 +2,6 @@ package ingsoft1920.em.Model;
 
 import java.sql.Date;
 
-import javax.validation.Valid;
 
 import ingsoft1920.em.Beans.BajaBean;
 

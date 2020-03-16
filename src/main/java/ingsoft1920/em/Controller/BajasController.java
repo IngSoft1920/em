@@ -2,14 +2,12 @@ package ingsoft1920.em.Controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
@@ -17,10 +15,8 @@ import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;
-import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.BajaModel;
-import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 

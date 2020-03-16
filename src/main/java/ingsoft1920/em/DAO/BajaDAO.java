@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ingsoft1920.em.Beans.BajaBean;
-import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.BajaModel;
 

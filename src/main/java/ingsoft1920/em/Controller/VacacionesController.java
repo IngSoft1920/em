@@ -1,10 +1,8 @@
 package ingsoft1920.em.Controller;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
-import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
@@ -114,15 +111,13 @@ public class VacacionesController {
 
 	@GetMapping("/aniadeVacaciones")
 	public String añadeBaja(Model model) throws ParseException {
-		VacacionBean vacacion = new VacacionBean();
+		VacacionBean vacaciones = new VacacionBean();
 		int[] res;
 		int diasRestantes = 0;
 		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
 		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-		System.out.println(diasRestantes);
 		model.addAttribute("diasRestantes", diasRestantes);
-		model.addAttribute("vacaciones", vacacion);
-		model.addAttribute("mensajeError", "");
+		model.addAttribute("vacaciones", vacaciones);
 		return "vacaciones";
 	}
 
@@ -130,15 +125,13 @@ public class VacacionesController {
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
 		int duracion;
-		System.out.println(vacaciones.getFecha_fin().getTime());
-		System.out.println(vacaciones.getFecha_inicio().getTime());
 		duracion = (int) ((vacaciones.getFecha_fin().getTime()-vacaciones.getFecha_inicio().getTime())/86400000);
+		
 		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
 			int[] res;
 			int diasRestantes = 0;
 			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()
 			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-			System.out.println(diasRestantes);
 			model.addAttribute("diasRestantes", diasRestantes);
 
 			if (diasRestantes >= duracion) {

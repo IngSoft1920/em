@@ -1,7 +1,5 @@
 package ingsoft1920.em.Beans;
 
-import java.sql.Date;
-
 import org.springframework.stereotype.Component;
 
 @Component

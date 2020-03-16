@@ -3,8 +3,6 @@ package ingsoft1920.em.Controller;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;

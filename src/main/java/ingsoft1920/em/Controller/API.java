@@ -1,9 +1,6 @@
 package ingsoft1920.em.Controller;
 
-import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,10 +18,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
-import ingsoft1920.em.Beans.DatoTurnoBean;
-import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;

@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
-import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.TurnoModel;
-import ingsoft1920.em.Model.VacacionesModel;
 
 public class TurnoDAO {
 	static Connection conn;

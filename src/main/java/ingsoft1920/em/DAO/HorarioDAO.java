@@ -1,11 +1,8 @@
 package ingsoft1920.em.DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
 
