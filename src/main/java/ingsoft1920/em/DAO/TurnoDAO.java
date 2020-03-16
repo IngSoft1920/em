@@ -62,8 +62,8 @@ public class TurnoDAO {
 		      res = new TurnoModel ( 
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"),
-		      rs.getString("horarioInicio"),
-		      rs.getString("horarioFin"),
+		      rs.getString("horario_inicio"),
+		      rs.getString("horario_fin"),
 		      rs.getString("diaSemana"));
 		      turnos.add(res);
 		      }
