@@ -1,3 +1,4 @@
+
 <html>
 
 
@@ -10,27 +11,48 @@
 
 
 <body>
+
+<%
+            //Al hacer click en el botón ingresar
+            if (request.getParameter("btn_ingresar") != null) 
+            {
+                //Crea dos strings, una para el user y otra para el password.
+                String username = request.getParameter("usuario");
+                String password = request.getParameter("contrasenia");
+                
+                //Si ambas son "admin"...
+                if (username.equals("admin")&& password.equals("admin"))
+                {
+                    //Redirecciona al servlet 'crear_departamento.do'
+                    response.sendRedirect("menu");
+                }
+                //Si no...
+                else
+                {
+                    //Muestra un mensaje javascript señalando que hay daros erróneos
+                    out.println("<script>alert('Usuario o contrasena incorrecta');</script>");
+                }
+            }
+        %>
+
 	<section class="form-login">
 	<h5>Login Empleados</h5>
 	
-	<form action="menu2" method="post"/>
+	<form action="login" method="post"/>
 	
 	<label>Usuario</label>
-	<td><input class="controls" type="text" name="usuario"/></td>
+	<td><input class="controls" type="text" name="usuario" required/></td>
 
 		
 	<label>Contrasena</label>
-	<td><input class="controls" type="password" name="contrasenia"/>
+	<td><input class="controls" type="password" name="contrasenia" required/>
 
-	<input type="submit" value="Ingresar"/>
+	<input type="submit" name="btn_ingresar" value="Ingresar"/>
+	</form>
 	</section>
 
+	
 </body>
-
-
-
-
-
 
 <style>
 

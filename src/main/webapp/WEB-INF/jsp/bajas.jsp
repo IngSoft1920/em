@@ -96,6 +96,14 @@ alert('Se ha enviado tu peticion correctamente');
       </article>
 	</section>			
 	
+	    <section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Motivo
+            <td><input type="text" name="motivo" id="motivo" required></td>
+          </h1>
+      </article>
+	</section>
+	
     <section id="publicaciones">
    	<input type="submit" value="Enviar" onClick="mensaje()">
    	</section>
