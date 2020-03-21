@@ -14,6 +14,7 @@ import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
 import ingsoft1920.em.Model.EmpleadoModelC3;
+import ingsoft1920.em.Model.EmpleadoModelC4;
 
 public class EmpleadoDAO {
 	//TODAS las consultas a las bases de datos
@@ -121,21 +122,22 @@ public class EmpleadoDAO {
 		  }
 		  return res;
 	}
-	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha) {
+	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha,String contrasenia) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}  
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel,fecha_contratacion)"+
-						"values( ? , ? , ? , ? , ?,?);");
+			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel,fecha_contratacion,contrasenia)"+
+						"values( ? , ? , ? , ? , ?, ?, ?);");
 							stmt.setInt(1, id_empleado);
 							stmt.setString(2, nombre);
 							stmt.setString(3, telefono);
 							stmt.setString(4, correo);
 							stmt.setInt(5, id_hotel);
 							stmt.setDate(6, fecha);
+							stmt.setString(7, contrasenia);
 							stmt.executeUpdate();
 		   
           } 
@@ -243,6 +245,119 @@ public class EmpleadoDAO {
 		}
 		return res;
 	}
+	public static void añadirDiasLibres(int id_empleado, int dia_libre) {
+		PreparedStatement stmt= null; 
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}  
+		try { 
+			stmt=conn.prepareStatement("INSERT INTO dias_libres(id_empleado,dia_libre)"+
+					"values( ? , ? );");
+			stmt.setInt(1, id_empleado);
+			stmt.setInt(2, dia_libre);
+			stmt.executeUpdate();
+				   
+		          } 
+				  catch (SQLException ex){ 
+				   System.out.println("SQLException: " + ex.getMessage());
+				  }
+				  finally {
+						if (stmt!=null){
+							try{stmt.close();
+							}catch(SQLException sqlEx){}
+							stmt=null;
+						}
+						if (conn!=null){
+							ConectorBBDD.desconectar();
+							conn=null;
+						}
+				  }
+	}
+	public static void eliminarDiasLibres(int id_empleado) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt2= null; 
+		try { 
+			stmt2=conn.prepareStatement("DELETE FROM dias_libres WHERE id_empleado = ? ;");
+			stmt2.setInt(1, id_empleado);
+			stmt2.executeUpdate();
+			
+		} 
+		catch (SQLException ex){ 
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}		  
+		}
+		
+	}
 	
+	public static String getContraseña(String correo) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt2= null; 
+		ResultSet rs = null;
+		String contraseña="";
+		try { 
+			stmt2=conn.prepareStatement("SELECT FROM empleado contrasenia WHERE correo = ? ;");
+			stmt2.setString(1, correo);
+			rs=stmt2.executeQuery();
+			while(rs.next())
+				contraseña=rs.getString("contrasenia");
+		} 
+		catch (SQLException ex){ 
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}		  
+		}
+		return contraseña;
+		
+	}
 	
+	public static List<EmpleadoModelC4> sacaEmpleados4(){
+		//CONSULTA5 -> enviamos a dho id:empleado, id_hotel, id_rol
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		List<EmpleadoModelC4> res = new ArrayList<EmpleadoModelC4>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement("SELECT empleado.id_empleado,empleado.id_hotel,rol.nombre_rol,nomina.valor,incentivos.valor from empleado join nomina on empleado.id_empleado=nomina.id_empleado join rol on rol.id_empleado=nomina.id_empleado join incentivos on incentivos.id_empleado=empleado.id_empleado");
+			rs=stmt.executeQuery();
+			while(rs.next()) {
+				EmpleadoModelC4 empleado = new EmpleadoModelC4(rs.getInt("empleado.id_empleado"),rs.getInt("empleado.id_hotel"),rs.getString("rol.nombre_rol"),rs.getInt("nomina.valor"),rs.getInt("incentivos.valor"));
+				res.add(empleado);
+			}
+		}
+		catch(SQLException ex) {
+			System.out.println("SQLException: " +ex.getMessage());				
+		}
+		finally {
+			if(rs!=null) {
+				try {rs.close();
+				}catch(SQLException sqlEx) {}
+				rs=null;
+			}
+			if(stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		return res;
+	}
 }
