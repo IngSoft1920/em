@@ -14,6 +14,7 @@ import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.EmpleadoModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
 import ingsoft1920.em.Model.EmpleadoModelC3;
+import ingsoft1920.em.Model.EmpleadoModelC4;
 
 public class EmpleadoDAO {
 	//TODAS las consultas a las bases de datos
@@ -320,5 +321,43 @@ public class EmpleadoDAO {
 		}
 		return contraseña;
 		
+	}
+	
+	public static List<EmpleadoModelC4> sacaEmpleados4(){
+		//CONSULTA5 -> enviamos a dho id:empleado, id_hotel, id_rol
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		List<EmpleadoModelC4> res = new ArrayList<EmpleadoModelC4>();
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = conn.prepareStatement("SELECT empleado.id_empleado,empleado.id_hotel,rol.nombre_rol,nomina.valor,nomina.incentivo from empleado join nomina on empleado.id_empleado=nomina.id_empleado join rol on rol.id_empleado=nomina.id_empleado");
+			rs=stmt.executeQuery();
+			while(rs.next()) {
+				EmpleadoModelC4 empleado = new EmpleadoModelC4(rs.getInt("id_empleado"),rs.getInt("id_hotel"),rs.getString("nombre_rol"),rs.getInt("valor"),rs.getInt("incentivo"));
+				res.add(empleado);
+			}
+		}
+		catch(SQLException ex) {
+			System.out.println("SQLException: " +ex.getMessage());				
+		}
+		finally {
+			if(rs!=null) {
+				try {rs.close();
+				}catch(SQLException sqlEx) {}
+				rs=null;
+			}
+			if(stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		return res;
 	}
 }

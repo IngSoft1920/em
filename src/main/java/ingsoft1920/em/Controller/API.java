@@ -28,6 +28,7 @@ import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
 import ingsoft1920.em.Model.EmpleadoModelC3;
+import ingsoft1920.em.Model.EmpleadoModelC4;
 import ingsoft1920.em.Model.SueldoModel;
 import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
@@ -325,22 +326,30 @@ public class API {
 		@GetMapping("/sueldoHotel")
 		public String getSueldoHotel() {
 			//consulta sql
-			List<SueldoModel> listaSueldos = new ArrayList<SueldoModel>();
-			listaSueldos = NominaDAO.sumaNomina();
+			List<EmpleadoModelC4> listaEmpleados = new ArrayList<EmpleadoModelC4>();
+			listaEmpleados = EmpleadoDAO.sacaEmpleados4();
 			//Guardamos la info de la consulta en formato JSON
-			JsonArray listaIdHotel = new JsonArray();
-			JsonArray listaValor = new JsonArray();
+			JsonArray listaIDEmpleados = new JsonArray();
+			JsonArray listaIDHotel = new JsonArray();
+			JsonArray listaRol = new JsonArray();
+			JsonArray listaSueldo = new JsonArray();
+			JsonArray listaIncentivos = new JsonArray();
 			
-			for(SueldoModel sueldo:listaSueldos) {
-				listaIdHotel.add(sueldo.getId_hotel());
-				listaValor.add(sueldo.getId_valor());			
+			for(EmpleadoModelC4 empleado:listaEmpleados) {
+				listaIDEmpleados.add(empleado.getEmpleado_id());
+				listaIDHotel.add(empleado.getHotel_id());
+				listaRol.add(empleado.getRol());
+				listaSueldo.add(empleado.getSueldo());
+				listaIncentivos.add(empleado.getIncentivo());
 			}
 			
-			JsonObject sueldo = new JsonObject();
-			sueldo.add("id_hotel", listaIdHotel);
-			sueldo.add("valor", listaValor);
-			
-			return sueldo.toString();
+			JsonObject empleado = new JsonObject();
+			empleado.add("empleado_id", listaIDEmpleados);
+			empleado.add("hotel_id", listaIDHotel);
+			empleado.add("rol", listaRol);
+			empleado.add("sueldo",listaSueldo);
+			empleado.add("incentivo", listaIncentivos);
+			return empleado.toString();
 		}
 		
 		
