@@ -131,11 +131,19 @@ public class API {
 			parsed = format.parse(fecha_contratacion);
 		} catch (ParseException e) {}
         java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+        //contrasenia y dias libres
+        String contrasenia=obj.get("contrasenia").getAsString();
+        JsonArray dias=obj.get("dias_libres").getAsJsonArray();
         
-	    //Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha);
+        //Ejecutamos query
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 		NominaDAO.asignarNomina(id_empleado, valor);
+		for(int i=0;i<dias.size();i++) {
+			int dia_libre=dias.getAsInt();
+			EmpleadoDAO.añadirDiasLibres(id_empleado,dia_libre);	
+		}
+		
 	}
 	
 	//API ELIMINAR EMPLEADO
@@ -148,6 +156,7 @@ public class API {
 		int id_empleado=obj.get("id").getAsInt();
 		//Ejecutamos query
 		EmpleadoDAO.eliminarEmpleado(id_empleado);
+		EmpleadoDAO.eliminarDiasLibres(id_empleado);
 	}
 	
 	
