@@ -295,7 +295,7 @@ public class EmpleadoDAO {
 		
 	}
 	
-	public static String getContraseña(int id_empleado) {
+	public static String getContraseña(String correo) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -303,8 +303,8 @@ public class EmpleadoDAO {
 		ResultSet rs = null;
 		String contraseña="";
 		try { 
-			stmt2=conn.prepareStatement("SELECT FROM empleado contrasenia WHERE id_empleado = ? ;");
-			stmt2.setInt(1, id_empleado);
+			stmt2=conn.prepareStatement("SELECT FROM empleado contrasenia WHERE correo = ? ;");
+			stmt2.setString(1, correo);
 			rs=stmt2.executeQuery();
 			while(rs.next())
 				contraseña=rs.getString("contrasenia");
