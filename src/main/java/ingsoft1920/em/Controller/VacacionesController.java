@@ -130,8 +130,8 @@ public class VacacionesController {
 		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
 			int[] res;
 			int diasRestantes = 0;
-			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()
-			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()       //le sumo los dias que ya tiene libres para no descontarlos como vacaciones
+			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1] + VacacionesDAO.descontarDiasLibres(vacaciones); // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
 			model.addAttribute("diasRestantes", diasRestantes);
 
 			if (diasRestantes >= duracion) {

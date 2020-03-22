@@ -206,17 +206,20 @@ public class VacacionesDAO {
 		rs=stmt.executeQuery();
 		Date diaInicio=vacaciones.getFecha_inicio();
 		Date diaFin=vacaciones.getFecha_fin();
-		Calendar c= Calendar.getInstance();
-		c.setTime(diaInicio);
-		int diaSI = c.get(Calendar.DAY_OF_WEEK);
-		c.setTime(diaFin);
-		int diaFI = c.get(Calendar.DAY_OF_WEEK);
+		Calendar cI= Calendar.getInstance();
+		Calendar cF= Calendar.getInstance();
+		cF.setTime(diaFin);
 		while(rs.next()) {
 			int diaL=rs.getInt("dia_libre");
-			if(diaSI<=diaL && diaL<=diaFI) {
+			cI.setTime(diaInicio);
+			while(!cF.before(cI)) {
+				if(cI.get(Calendar.DAY_OF_WEEK)==diaL+1) { //los dias de la semana en Calendar empiezan en el domingo como 1
+					res=res+1;
+				}
+				cI.add(Calendar.DATE, 1);
+			}
 				
-			}	
-		}
+		}	
 		}catch (SQLException ex){ 
 			   System.out.println("SQLException: " + ex.getMessage());
 			   }
