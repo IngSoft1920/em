@@ -296,6 +296,34 @@ public class EmpleadoDAO {
 		
 	}
 	
+	public static void cambiarContraseña(String correo,String nuevaContra) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt=null;
+		try {
+			stmt = conn.prepareStatement("UPDATE empleado SET contrasenia=? WHERE correo=?;");
+			stmt.setString(1, nuevaContra);
+			stmt.setString(2, correo);
+			stmt.executeUpdate();
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+	}
+	
 	public static String getContraseña(String correo) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
@@ -338,6 +366,7 @@ public class EmpleadoDAO {
 				EmpleadoModelC4 empleado = new EmpleadoModelC4(rs.getInt("empleado.id_empleado"),rs.getInt("empleado.id_hotel"),rs.getString("rol.nombre_rol"),rs.getInt("nomina.valor"),rs.getInt("incentivos.valor"));
 				res.add(empleado);
 			}
+			
 		}
 		catch(SQLException ex) {
 			System.out.println("SQLException: " +ex.getMessage());				
@@ -360,4 +389,11 @@ public class EmpleadoDAO {
 		}
 		return res;
 	}
+	/*public static void main (String[] args){
+		System.out.println("Hola");
+		List<EmpleadoModelC4> res=sacaEmpleados4();
+		for(EmpleadoModelC4 resF:res) {
+			System.out.println("empleado"+resF.getEmpleado_id()+"hotel"+resF.getHotel_id()+"incentivo"+resF.getIncentivo()+"rol"+resF.getRol()+"sueldo"+resF.getSueldo());
+		}
+	}*/
 }
