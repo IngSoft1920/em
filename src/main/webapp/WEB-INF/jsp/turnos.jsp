@@ -29,20 +29,25 @@
  </header>
  
 	
+	
 	<u1>
 		<c:forEach var="turnos" items="${turnos}">
-			<li>
+		<section id="publicaciones">
+      		<article class="post">
+			
 				<p>
-					<b>id_empleado:</b> ${turnos.id_Empleado} <br>
-					<b>id_turno:</b> ${turnos.id_Turno} <br>
-					<b>horarioInicio:</b> ${turnos.horarioInicio} <br>
-					<b>horarioFin:</b> ${turnos.horarioFin} <br>
-					<b>diaSemana:</b> ${turnos.diaSemana} <br>
+					<b>EMPLEADO:</b> ${turnos.id_Empleado} <br>
+					<b>TURNO:</b> ${turnos.id_Turno} <br>
+					<b>HORARIO INICIO:</b> ${turnos.horarioInicio} <br>
+					<b>HORARIO FIN:</b> ${turnos.horarioFin} <br>
+					<b>DIA DE LA SEMANA:</b> ${turnos.diaSemana} <br>
 				</p>
-			</li>
+			        		
+      		</article>
+		</section>
 		</c:forEach>
+
 	</u1>
-	
 					
 </body>
 
@@ -132,6 +137,7 @@ header{
 
 #publicaciones{
   width: 70%;
+  padding: 10px;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
   margin-top: 0px;

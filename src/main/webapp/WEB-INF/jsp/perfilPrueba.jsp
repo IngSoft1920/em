@@ -42,12 +42,12 @@
 
 <body>
 
-	<li>
+	
 		
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Nombre:<td>${empleado.nombre }<br></td></h1>
+          			<h1 class="titulo-post">Nombre: <td>${empleado.nombre }<br></td></h1>
         		
       		</article>
 		</section>
@@ -55,7 +55,7 @@
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Telefono:<td>${empleado.telefono }<br></td></h1>
+          			<h1 class="titulo-post">Telefono: <td>${empleado.telefono }<br></td></h1>
         		
       		</article>
 		</section>
@@ -63,7 +63,7 @@
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Correo:<td>${empleado.correo }<br></td></h1>
+          			<h1 class="titulo-post">Correo: <td>${empleado.correo }<br></td></h1>
         		
       		</article>
 		</section>
@@ -71,13 +71,13 @@
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Rol:<td>${empleado.nombre_rol }<br></td></h1>
+          			<h1 class="titulo-post">Rol: <td>${empleado.nombre_rol }<br></td></h1>
         		
       		</article>
 		</section>
 		
 		
-	</li>
+	
 
 </body>
 
@@ -167,6 +167,7 @@ header{
 
 #publicaciones{
   width: 70%;
+  padding:10px;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
   margin-top: 0px;

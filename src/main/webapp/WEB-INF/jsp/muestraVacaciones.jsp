@@ -45,7 +45,7 @@
 			
 				<p>
 						
-					<b>DURACION:</b> ${vacaciones.duracion} <br>
+					<b>DURACION:</b> ${vacaciones.duracion} DIAS<br>
 					<b>ESTADO:</b> ${vacaciones.estado} <br>
 					<b>FECHA INICIO:</b> ${vacaciones.fecha_inicio} <br>
 					<b>FECHA FIN:</b> ${vacaciones.fecha_fin} <br>
