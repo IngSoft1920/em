@@ -324,6 +324,51 @@ public class EmpleadoDAO {
 		}
 	}
 	
+	
+	public int validar(DatoEmpleadoBean empleado) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt2= null; 
+		ResultSet rs = null;
+		String contraseña="";
+		int r=0;
+		
+		try { 
+			stmt2=conn.prepareStatement("SELECT * FROM empleado WHERE correo = ? and contrasenia = ?;");
+			stmt2.setString(1, empleado.getCorreo());
+			stmt2.setString(2, empleado.getContrasenia());
+			rs=stmt2.executeQuery();
+			while(rs.next()) {
+				r=r+1;
+				empleado.setCorreo(rs.getString("correo"));
+				empleado.setContrasenia(rs.getString("contrasenia"));
+			}
+			
+			if(r==1) {
+				return 1;
+			}
+			
+			else {
+				return 0;
+			}
+			
+		} 
+		catch (SQLException ex){ 
+			System.out.println("SQLException: " + ex.getMessage());
+			return 0;
+		}
+		finally {
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}		  
+		}
+		
+	}
+	
+	
+	
 	public static String getContraseña(String correo) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
@@ -331,8 +376,9 @@ public class EmpleadoDAO {
 		PreparedStatement stmt2= null; 
 		ResultSet rs = null;
 		String contraseña="";
+		
 		try { 
-			stmt2=conn.prepareStatement("SELECT FROM empleado contrasenia WHERE correo = ? ;");
+			stmt2=conn.prepareStatement("SELECT * FROM empleado contrasenia WHERE correo = ? ;");
 			stmt2.setString(1, correo);
 			rs=stmt2.executeQuery();
 			while(rs.next())

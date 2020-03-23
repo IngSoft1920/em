@@ -13,16 +13,18 @@
 	<section class="form-login">
 	<h5>Login Empleados</h5>
 	
-	<form action="menu2" method="post"/>
+	<form method="post"/>
 	
-	<label>Usuario</label>
-	<td><input class="controls" type="text" name="usuario"/></td>
+	<label>Correo</label>
+	<td><input class="controls" type="text" name="usuario" required/></td>
 
 		
 	<label>Contrasena</label>
-	<td><input class="controls" type="password" name="contrasenia"/>
+	<td><input class="controls" type="password" name="contrasenia" required/>
 
-	<input type="submit" value="Ingresar"/>
+	<input type="submit" value="Ingresar" name="accion"/>
+	</form>
+	
 	</section>
 
 </body>
