@@ -2,7 +2,6 @@ package ingsoft1920.em.Controller;
 
 import java.util.List;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -17,105 +16,104 @@ import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
 @Controller 
-public class PerfilController {
+public class ContrasenaController {
 	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu2")
+	@GetMapping("/menu8")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu2")
+	@PostMapping("/menu8")
 	public String menup(Model model) {
 		return "menu";
 	}
-	@GetMapping("/turnos2")
+	@GetMapping("/turnos8")
 	public String turnosp1(Model model) {
 		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
 		model.addAttribute("turnos", turnos);
 		return "turnos";
 	}
 	
-	@PostMapping("/turnos2")
+	@PostMapping("/turnos8")
 	public String turnosp(Model model) {
 		return "turnos";
 	}
-	@GetMapping("/nomina2")
+	@GetMapping("/nomina8")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina2")
+	@PostMapping("/nomina8")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil2")
+	@GetMapping("/perfil8")
 	public String perfilp1(Model model) {
 		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 	
-	@PostMapping("/perfil2")
+	@PostMapping("/perfil8")
 	public String perfilp(Model model) {
 		return "perfilPrueba";
 	}
 	
-	@GetMapping("/cerrar2")
+	@GetMapping("/cerrar8")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar2")
+	@PostMapping("/cerrar8")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas2")
+	@GetMapping("/tareas8")
 	public String tareasp1(Model model) {
 		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 	
-	@PostMapping("/tareas2")
+	@PostMapping("/tareas8")
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/ausencias2")
+	@GetMapping("/ausencias8")
 	public String ausenciasp1(Model model) {
 		return "ausencias";
 	}
 	
-	@PostMapping("/ausencias2")
+	@PostMapping("/ausencias8")
 	public String ausenciasp(Model model) {
 		return "ausencias";
 	}
 	
-	@GetMapping("/registro2")
+	@GetMapping("/registro8")
 	public String registrop1(Model model) {
 		return "registro";
 	}
 	
-	@PostMapping("/registro2")
+	@PostMapping("/registro8")
 	public String registrop(Model model) {
 		return "registro";
 	}
-	
-	@GetMapping("/contrasena")
-	public String contrasenap1(Model model) {
-		return "contrasena";
-	}
-	
-	@PostMapping("/contrasena")
-	public String contrasenap(Model model) {
-		return "contrasena";
-	}
 
+	
+	@GetMapping("/cambiocontrasenia")
+	public String contraseña(Model model) {
+		return "perfilPrueba";
+	}
+	
+	@PostMapping("/cambiocontrasenia")
+	public String contrasena1(Model model) {
+
+		return "perfilPrueba";
+	}
 	
 }
-
-
