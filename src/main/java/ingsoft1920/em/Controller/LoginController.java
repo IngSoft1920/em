@@ -36,7 +36,7 @@ int r;
 	
 	@PostMapping("/")
 	public String loginValida(HttpServletRequest request, HttpServletResponse 
-			response, LoginBean loginBean) {
+			response) {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		String accion=request.getParameter("accion");
@@ -53,6 +53,7 @@ int r;
 			}
 			
 			else {
+				
 				return "login";
 			}
 		}

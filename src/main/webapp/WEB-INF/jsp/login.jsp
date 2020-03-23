@@ -15,14 +15,14 @@
 	
 	<form method="post"/>
 	
-	<label>Correo</label>
-	<td><input class="controls" type="text" name="usuario" required/></td>
+	<label>Usuario</label>
+	<td><input class="controls" type="text" name="usuario" placeholder="nombre@hotmail.com" required/></td>
 
 		
 	<label>Contrasena</label>
-	<td><input class="controls" type="password" name="contrasenia" required/>
+	<td><input class="controls" type="password" name="contrasenia" placeholder= "contrasena"required/>
 
-	<input type="submit" value="Ingresar" name="accion"/>
+	<input type="submit" value="Ingresar" name="accion" id="buttons"/>
 	</form>
 	
 	</section>
@@ -78,14 +78,17 @@ body{
   font-weight: bold;
 }
 
-.buttons{
+#buttons{
   width: 100%;
   height: 40px;
   background: #017bab;
   border: none;
   color: white;
   margin-bottom: 16px;
+  
 }
+
+
 
 </style>
 
