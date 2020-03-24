@@ -74,8 +74,14 @@ function activar(){
         <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
-
-
+    
+    <div id="publicaciones3">
+      <article class="cuerpo-tarea">
+      Hora check-in:  <br/> 
+	  Tiempo Trabajado:  ${tiempoTrans}
+      </article>
+    </div>
+	
     <div id="sidebar2">
     </div>
 
@@ -176,11 +182,17 @@ header{
 }
 
 #publicaciones2{
-  width: 330px;
+  width: 300px;
   float:left;
   padding:10px;
   margin:40px;
   margin-left:290px;
+}
+
+#publicaciones3{
+  width: 300px;
+  margin-left: 150px;
+  font-family: 'calibri light';
 }
 
 

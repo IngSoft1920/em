@@ -144,12 +144,13 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/checkin")
 	public String checkin(Model model) {
+		System.out.println("Estoy aqui");
 		HorarioDAO.checkin(1);
-		return "menu";
+		return "registro";
 	}
 	@PostMapping("/checkin")
 	public String checkinp(Model model) {
-		return "menu";
+		return "registro";
 	}
 	
 	@GetMapping("/checkout")

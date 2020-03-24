@@ -23,6 +23,7 @@ import ingsoft1920.em.Model.TurnoModel;
 public class MenuController {
 	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
+static boolean checkinDone = false;
 	
 	@GetMapping("/menu")
 	public String menu(Model model) {
@@ -92,6 +93,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/ausencias")
 	public String ausencias(Model model) {
+		
 		return "ausencias";
 	}
 	
