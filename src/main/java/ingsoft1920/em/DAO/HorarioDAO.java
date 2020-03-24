@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
 
@@ -46,19 +47,19 @@ public class HorarioDAO {
 			}
 		}
 	}
-	public static java.sql.Time horaCheckIn(){
+	public static Time horaCheckIn(){
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		java.sql.Time horaIn = null;
+		Time horaIn = null;
 		
 		try {
 			stmt = conn.prepareStatement("SELECT horario.horarioEntrada FROM horario");
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				horaIn = rs.getTime("time");
+				horaIn = rs.getTime("horarioEntrada");
 			} 
 		}
 		catch (SQLException ex){ 
@@ -109,19 +110,19 @@ public class HorarioDAO {
 			}
 		}
 	}
-	public static java.sql.Time horaCheckOut(){
+	public static Time horaCheckOut(){
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		java.sql.Time horaOut = null;
+		Time horaOut = null;
 		
 		try {
 			stmt = conn.prepareStatement("SELECT horario.horarioSalida FROM horario");
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				horaOut = rs.getTime("time");
+				horaOut = rs.getTime("horarioSalida");
 			} 
 		}
 		catch (SQLException ex){ 
@@ -135,4 +136,13 @@ public class HorarioDAO {
 		}
 		return horaOut;
 	}
+	public static <horaCheckIn, horaCheckOut> long difCheckInOut(horaCheckIn horain, horaCheckOut horaout) {
+		
+		Time in = Time.valueOf((String) horain);
+		Time out = Time.valueOf((String) horaout);
+		
+		long dif = in.getTime()-out.getTime();
+		
+		return dif;
+	}		
 }
