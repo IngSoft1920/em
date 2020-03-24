@@ -50,7 +50,7 @@
     <section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Nueva contrasena:
-            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
+            <td><input type="text" name="inicio" id="inicio" required></td>
           </h1>
       </article>
       </section>
@@ -58,13 +58,13 @@
 		<section id="publicaciones">
       <article class="post">
           <h1 class="titulo-post">Repite la nueva contrasena:
-            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
+            <td><input type="text" name="inicio" id="inicio" required></td>
           </h1>
       </article>
       </section>
 		
 	<section id="publicaciones">
-   	<input type="submit" value="Enviar">
+   	<input type="submit" value="Enviar" name="accion">
    	</section>
 	</section>
 </form>		

@@ -2,6 +2,9 @@ package ingsoft1920.em.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -108,10 +111,19 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@GetMapping("/cambiocontrasenia")
 	public String contraseña(Model model) {
 		return "perfilPrueba";
+		
 	}
 	
 	@PostMapping("/cambiocontrasenia")
-	public String contrasena1(Model model) {
+	public String contrasena1(HttpServletRequest request, HttpServletResponse 
+			response) {
+		response.setContentType("text/html;charset=UTF-8");
+		String accion=request.getParameter("accion");
+		if(accion.equals("Enviar")) {
+			String contra=request.getParameter("inicio");
+			String correo= EmpleadoDAO.sacaEmpleado(1).getCorreo();
+			EmpleadoDAO.cambiarContraseña(correo, contra);	
+		}
 
 		return "perfilPrueba";
 	}
