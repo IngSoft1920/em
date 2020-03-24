@@ -1,10 +1,18 @@
 package ingsoft1920.em.Controller;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.tomcat.jni.Time;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +30,12 @@ import ingsoft1920.em.Model.TurnoModel;
 
 
 @Controller 
-public class AusenciasController {
+public class AusenciasController extends HttpServlet{
 
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
 	@GetMapping("/menu4")
@@ -133,7 +145,11 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/registro4")
-	public String registrop1(Model model) {
+	public String registrop1(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
 		return "registro";
 	}
 	
@@ -143,9 +159,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/checkin")
-	public String checkin(Model model) {
-		System.out.println("Estoy aqui");
+	/**
+	 *@see HttpServlet#doGet( HttpServletRequest request, HttpServletResponse response)
+	 */
+	public String checkin(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {	
 		HorarioDAO.checkin(1);
+		
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
+				
 		return "registro";
 	}
 	@PostMapping("/checkin")
@@ -154,13 +177,21 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/checkout")
-	public String checkout(Model model) {
+	/**
+	 *@see HttpServlet#doGet( HttpServletRequest request, HttpServletResponse response)
+	 */
+	public String checkout(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException  {
 		HorarioDAO.checkout(1);
-		return "menu";
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
+		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
+		return "registro";
 	}
 	@PostMapping("/checkout")
 	public String checkoutp(Model model) {
-		return "menu";
+		return "registro";
 	}
 	
 	

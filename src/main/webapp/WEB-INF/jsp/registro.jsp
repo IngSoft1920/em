@@ -56,8 +56,8 @@ function activar(){
    
     <div id="publicaciones1">
     <article class="cuerpo-tarea">
-    <input type="button" value="Check-in" id="checkout" onClick=" window.location='/checkin'; " />
-      
+     <input type="button" value="Check-in" id="checkout" onClick=" window.location='/checkin'; " /> 
+     
        </a>
         <img src="/img/checkin2.jpg" class="img-post1">
       </article>
@@ -77,8 +77,8 @@ function activar(){
     
     <div id="publicaciones3">
       <article class="cuerpo-tarea">
-      Hora check-in:  <br/> 
-	  Tiempo Trabajado:  ${tiempoTrans}
+      Hora check-in:  <%  out.print(request.getAttribute("horaCI"));  %> <br/> 
+	  Hora check-out: <%  out.print(request.getAttribute("horaCO"));  %>
       </article>
     </div>
 	

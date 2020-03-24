@@ -8,14 +8,14 @@
 		
 		<h3 text-align = "center" >
 		<br>
+		ERROR EN LA PÁGINA
 		<br>
-			El usuario o la contraseña son incorrectos
 		</h3>	
 	</div>
 	<form method="POST" 
 		modelAttribute="loginErrorBean" style = "font-family:courier;">
 		<br>
-		<input type="submit" value="Volver a intentar">
+		<input type="submit" value="Volver">
 		<br>
 	</form>
 </body>

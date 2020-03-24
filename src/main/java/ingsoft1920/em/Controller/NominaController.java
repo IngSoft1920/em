@@ -1,7 +1,12 @@
 package ingsoft1920.em.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.NominaModel;
@@ -114,7 +120,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/registro3")
-	public String registrop1(Model model) {
+	public String registrop1(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
+		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
 		return "registro";
 	}
 	

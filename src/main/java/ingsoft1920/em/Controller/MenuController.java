@@ -1,7 +1,12 @@
 package ingsoft1920.em.Controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +21,7 @@ import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.LoginBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
@@ -92,7 +98,7 @@ static boolean checkinDone = false;
 	}
 	
 	@GetMapping("/ausencias")
-	public String ausencias(Model model) {
+	public String ausencias(Model model)  {
 		
 		return "ausencias";
 	}
@@ -104,7 +110,13 @@ static boolean checkinDone = false;
 	}
 	
 	@GetMapping("/registro")
-	public String registro(Model model) {
+	public String registro(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
+		
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
+		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
 		return "registro";
 	}
 	
