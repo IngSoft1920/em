@@ -56,7 +56,7 @@ function activar(){
    
     <div id="publicaciones1">
     <article class="cuerpo-tarea">
-    <input type="button" value="Check-in" id="checkout" onClick="activar()" />
+    <input type="button" value="Check-in" id="checkout" onClick=" window.location='/checkin'; " />
       
        </a>
         <img src="/img/checkin2.jpg" class="img-post1">
@@ -69,8 +69,8 @@ function activar(){
 
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <input type="button" name="tratamiento" id="checkin" value="Check-out" disabled="false" onClick="activar2()"/<br/>
-        </a><br/>
+        <input type="button" id="checkout" value="Check-out"  onClick=" window.location='/checkout';"//>
+        </a>
         <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
