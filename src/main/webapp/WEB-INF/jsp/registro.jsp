@@ -56,8 +56,8 @@ function activar(){
    
     <div id="publicaciones1">
     <article class="cuerpo-tarea">
-    <input type="button" value="Check-in" id="checkout" onClick="activar()" />
-      
+     <input type="button" value="Check-in" id="checkout" onClick=" window.location='/checkin'; " /> 
+     
        </a>
         <img src="/img/checkin2.jpg" class="img-post1">
       </article>
@@ -69,13 +69,20 @@ function activar(){
 
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <input type="button" name="tratamiento" id="checkin" value="Check-out" disabled="false" onClick="activar2()"/<br/>
-        </a><br/>
+        <input type="button" id="checkout" value="Check-out"  onClick=" window.location='/checkout';"//>
+        </a>
         <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
-
-
+    
+    <div id="publicaciones3">
+      <article class="cuerpo-tarea">
+      Hora check-in:  <%  out.print(request.getAttribute("horaCI"));  %> <br/> 
+      Tiempo trabajado:  <%  out.print(request.getAttribute("tiempo"));  %> <br/> 
+	  Hora check-out: <%  out.print(request.getAttribute("horaCO"));  %>
+      </article>
+    </div>
+	
     <div id="sidebar2">
     </div>
 
@@ -176,11 +183,17 @@ header{
 }
 
 #publicaciones2{
-  width: 330px;
+  width: 300px;
   float:left;
   padding:10px;
   margin:40px;
   margin-left:290px;
+}
+
+#publicaciones3{
+  width: 300px;
+  margin-left: 150px;
+  font-family: 'calibri light';
 }
 
 
