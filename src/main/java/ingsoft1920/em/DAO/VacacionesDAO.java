@@ -160,13 +160,9 @@ public class VacacionesDAO {
 				   dias = (int) ((fechaFinal.getTime()-fechaInicial.getTime())/86400000); //dias de vacas que le corresponden al empleado
 				   }
 			   while (rs.next()){
-				   if(rs.getBoolean("estado")) {
+				   if(rs.getString("estado").equalsIgnoreCase("aprobada")) {
 					   vacacionesGastadas=vacacionesGastadas+rs.getInt("duracion");
 				   }
-			   }
-			   
-			   while(rs3.next()) {
-				   
 			   }
 			   
 			   res[0]=dias;

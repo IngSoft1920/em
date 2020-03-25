@@ -120,7 +120,6 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		int diasRestantes = 0;
 		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
 		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-		System.out.println(diasRestantes);
 		model.addAttribute("diasRestantes", diasRestantes);
 		return "vacaciones";
 	}
