@@ -3,6 +3,7 @@ package ingsoft1920.em.Controller;
 
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -106,7 +107,24 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
 		request.setAttribute("horaCI", horaCheckin);
 		request.setAttribute("horaCO", horaCheckout);
-		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
+		
+		// Para calcular el timepo trabajado a partir de la hora actual
+				int horaA,minutosA,segundosA, horaC,minutosC,segundosC;
+				horaC = horaCheckin.getHours();
+				minutosC = horaCheckin.getMinutes();
+				segundosC = horaCheckin.getSeconds();		
+				Calendar calendario = Calendar.getInstance();
+				horaA = calendario.get(Calendar.HOUR_OF_DAY);
+				minutosA = calendario.get(Calendar.MINUTE);
+				segundosA = calendario.get(Calendar.SECOND);		 
+				int horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+				int horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+				int tiempoTrabajado = horaAenSeg - horaCenSeg;		
+				int horaFinal=tiempoTrabajado/3600;
+		        int minFinal=(tiempoTrabajado-(3600*horaFinal))/60;
+		        int segFianl=tiempoTrabajado-((horaFinal*3600)+(minFinal*60));
+		        String tiempoFinal = String.valueOf(horaFinal)+":"+ String.valueOf(minFinal)+":"+String.valueOf(segFianl);
+		        request.setAttribute("tiempo", tiempoFinal);
 		return "registro";
 	}
 	

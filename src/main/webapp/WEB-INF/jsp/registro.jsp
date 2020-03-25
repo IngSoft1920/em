@@ -78,6 +78,7 @@ function activar(){
     <div id="publicaciones3">
       <article class="cuerpo-tarea">
       Hora check-in:  <%  out.print(request.getAttribute("horaCI"));  %> <br/> 
+      Tiempo trabajado:  <%  out.print(request.getAttribute("tiempo"));  %> <br/> 
 	  Hora check-out: <%  out.print(request.getAttribute("horaCO"));  %>
       </article>
     </div>
