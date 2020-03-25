@@ -133,6 +133,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String registrop(Model model) {
 		return "registro";
 	}
+	
+	@GetMapping("/contrasena")
+	public String contrasenap1(Model model) {
+		return "contrasena";
+	}
+	
+	@PostMapping("/contrasena")
+	public String contrasenap(Model model) {
+		return "contrasena";
+	}
 
 	
 }

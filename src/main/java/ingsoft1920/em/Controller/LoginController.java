@@ -9,13 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ingsoft1920.em.Beans.LoginBean;;
+import org.springframework.web.servlet.HttpServletBean;
+import javax.servlet.http.*;
+
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.Beans.LoginBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;;
 
 @Controller
-public class LoginController {
+public class LoginController extends HttpServlet{
 	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
-	
+EmpleadoDAO dao= new EmpleadoDAO();
+DatoEmpleadoBean p=new DatoEmpleadoBean();
+int r;
 //	@Autowired
 //	LoginBean loginBean;
 	
@@ -28,21 +35,31 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@PostMapping("/")
-	public String loginValida(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
-			Model model) {
-				
-		String usuario = loginBean.getUsuario();  
-		String pass = loginBean.getPassword();
-				
-		if (usuario.equals("usuario") && pass.equals("1234"))
-			return "redirect:menu";
+	public String loginValida(HttpServletRequest request, HttpServletResponse 
+			response) {
 		
+		response.setContentType("text/html;charset=UTF-8");
+		String accion=request.getParameter("accion");
 		
-		else {
-			model.addAttribute("signupBean",loginBean);
-			model.addAttribute("mensajeError","Usuario o contraseña no validos");
-			return "login";
+		if(accion.equals("Ingresar")) {
+			String correo=request.getParameter("usuario");
+			String pass=request.getParameter("contrasenia");
+			p.setCorreo(correo);
+			p.setContrasenia(pass);
+			r=dao.validar(p);
+			
+			if(r==1) {
+				return "menu";
+			}
+			
+			else {
+				
+				return "login";
+			}
+		}
+		return "login";
+
 		}
 		
-	}
+	
 }
