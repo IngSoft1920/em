@@ -22,6 +22,11 @@ $(function() {
 $(function() {
     $("#fin").datepicker({ dateFormat: "yy-mm-dd" }).val()
 });
+/*
+$(function(){
+	$("/enviarPDF")
+});
+*/
 
 function mensaje(){
 
@@ -33,6 +38,11 @@ todo_correcto=false;
 if(document.getElementById('fin').value==''){
 todo_correcto=false;
 }
+/*
+if(document.getElementById('enviarPDF').value==''){
+	todo_correcto=false;
+	}
+	*/
 
 if(document.getElementById('buscar').value==''){
 todo_correcto=false;
@@ -73,216 +83,214 @@ alert('Se ha enviado tu peticion correctamente');
 
     </div>
   </header>
- 
- 
 
- 
-<form method="POST" 	action="aniadeBaja"	modelAttribute="BajaBean">
- 
-  <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-          <h1 class="titulo-post">Desde
-            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
-          </h1>
-      </article>
-      </section>
 
-    <section id="publicaciones">
-      <article class="post">
-          <h1 class="titulo-post">Hasta
-            <td><input type="text" name="fecha_fin" id="fin" required></td>
-          </h1>
-      </article>
-	</section>			
+
+
+	<form method="POST" action="aniadeBaja" modelAttribute="BajaBean">
+
+		<section id="principal">
+			<section id="publicaciones">
+				<article class="post">
+					<h1 class="titulo-post">
+						Desde
+						<td><input type="text" name="fecha_inicio" id="inicio"
+							required></td>
+					</h1>
+				</article>
+			</section>
+
+			<section id="publicaciones">
+				<article class="post">
+					<h1 class="titulo-post">
+						Hasta
+						<td><input type="text" name="fecha_fin" id="fin" required></td>
+					</h1>
+				</article>
+			</section>
+
+			<section id="principal">
+			<section id="publicaciones">
+				<article class="post">
+					<h1 class="titulo-post">
+						Justificante
+						<td><input type="text" name="enviarPDF" id="enviarPDF"
+							required></td>
+					</h1>
+				</article>
+			</section>
+
+			<section id="publicaciones">
+				<input type="submit" value="Enviar" onClick="mensaje()">
+			</section>
+		</section>
+	</form>
+
+	<input type="submit" value="Ver Bajas Previas"
+		onclick="window.location='/verBaja';" />
+
+
+
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #fff;
+	font-family: calibri;
+}
+
+header {
+	background: #01a9db;
+	width: 100%;
+	height: 100px;
+	box-shadow: 0px 0px 30px;
+}
+
+#encabezado {
+	width: 99%;
+	height: 30px;
+	margin: auto;
+	border: 0px solid #fff;
+}
+
+#logo {
+	width: 30%;
+	height: auto;
+	overflow: hidden;
+	float: left;
+	color: #fff;
+	font-size: 30px;
+	margin-top: 30px;
+}
+
+#menu {
+	width: 60%;
+	height: 90px;
+	border: 0px solid;
+	float: right;
+	margin-top: 55px;
+	border: 0px solid #fff;
+}
+
+#menu ul {
 	
-    <section id="publicaciones">
-   	<input type="submit" value="Enviar" onClick="mensaje()">
-   	</section>
-	</section>
-</form>
-
-<input type="submit" value="Ver Bajas Previas" onclick="window.location='/verBaja';" />
-
-  
-  
-  <style>
-  
-  *{
-  margin: 0;
-  padding: 0;
-
 }
 
-body{
-  background: #fff;
-  font-family: calibri;
-
+#menu ul li {
+	list-style: none;
+	display: inline-block;
+	margin-top: 10px;
 }
 
-header{
-  background: #01a9db;
-  width: 100%;
-  height: 100px;
-  box-shadow: 0px 0px 30px;
+#menu ul li .enlace {
+	text-decoration: none;
+	padding: 10px 20px;
+	font-size: 20px;
+	color: #fff
 }
 
-#encabezado{
-  width: 99%;
-  height: 30px;
-  margin: auto;
-  border: 0px solid #fff;
+#menu ul li .enlace:hover {
+	background: #585858;
+	color: #fff;
+	border-radius: 5px 5px 0px 0px;
 }
 
-#logo{
-  width: 30%;
-  height: auto; overflow: hidden;
-  float: left;
-  color: #fff;
-  font-size: 30px;
-  margin-top: 30px;
+#menu ul li .activate-menu {
+	background: #585858;
+	padding: 10px;
+	color: #fff;
+	border-radius: 5px 5px 0px 0px;
 }
-
-#menu{
-  width: 60%;
-  height: 90px;
-  border: 0px solid;
-  float: right;
-  margin-top: 55px;
-  border: 0px solid #fff;
-}
-
-#menu ul{}
-
-#menu ul li{
-  list-style: none;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-#menu ul li .enlace{
-  text-decoration: none;
-  padding: 10px 20px;
-  font-size: 20px;
-  color: #fff
-
-}
-
-#menu ul li .enlace:hover{
-  background: #585858;
-  color: #fff;
-  border-radius: 5px 5px 0px 0px;
-}
-
-#menu ul li .activate-menu{
-  background: #585858;
-  padding: 10px;
-  color: #fff;
-  border-radius: 5px 5px 0px 0px;
-}
-
 
 /*--------contenido principal ---------*/
-
-#principal{
-  width: 80%;
-  height: auto; overflow: hidden;
-  border: 0px solid; /* si no le ponemos nada significa negro*/
-  margin: 10px auto;
+#principal {
+	width: 80%;
+	height: auto;
+	overflow: hidden;
+	border: 0px solid; /* si no le ponemos nada significa negro*/
+	margin: 10px auto;
 }
 
-#publicaciones{
-  width: 70%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*significa que es rojo*/
-  margin-top: 0px;
-  float:left;
+#publicaciones {
+	width: 70%;
+	height: auto;
+	overflow: hidden;
+	border: 0px solid red; /*significa que es rojo*/
+	margin-top: 0px;
+	float: left;
 }
 
-  .post{ /*aplicar estilo a cada articulo. Espacios del texto*/
-    width: 96%;
-    height: auto; overflow: hidden;
-    padding: 10px 7px;
-    background: #fdfdfd;
-    border-Left-style: solid;
-    border-Left-width: 5px;
-    border-Left-color: #0489B1;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px #ccc;/*color gris*/
-    margin-bottom: 25px;
-  }
-
-.enlace-post{
- text-decoration: none;
+.post { /*aplicar estilo a cada articulo. Espacios del texto*/
+	width: 96%;
+	height: auto;
+	overflow: hidden;
+	padding: 10px 7px;
+	background: #fdfdfd;
+	border-Left-style: solid;
+	border-Left-width: 5px;
+	border-Left-color: #0489B1;
+	border-radius: 10px;
+	box-shadow: 0px 0px 15px #ccc; /*color gris*/
+	margin-bottom: 25px;
 }
 
-
-.menu > li{
-
-  position:relative;
-  display: inline-inline-block;
-  float:left;
+.enlace-post {
+	text-decoration: none;
 }
 
-.menu > li > a{
-  display: block;
-  padding: 5px 20px;
-  color: #353535;
-  font-family: 'Open sans';
-  text-decoration: none;
-
+.menu>li {
+	position: relative;
+	display: inline-inline-block;
+	float: left;
 }
 
-
-.menu li a:hover{
-  color: #CE7D35;
-
-
+.menu>li>a {
+	display: block;
+	padding: 5px 20px;
+	color: #353535;
+	font-family: 'Open sans';
+	text-decoration: none;
 }
 
-.submenu{
-  position: absolute;
-  background: #006480;
-  visibility: hidden;
-  opacity: 0;
-  list-style: none;
-
-
+.menu li a:hover {
+	color: #CE7D35;
 }
 
-.submenu li a{
-  display: block;
-  color: #fff;
-  padding: 10px;
-  font-family: 'Open sans';
-  text-decoration: none;
-  position: relative;
+.submenu {
+	position: absolute;
+	background: #006480;
+	visibility: hidden;
+	opacity: 0;
+	list-style: none;
 }
 
-.menu li:hover .submenu{
-  visibility: visible;
-  opacity: 1;
-  position: relative;
-
+.submenu li a {
+	display: block;
+	color: #fff;
+	padding: 10px;
+	font-family: 'Open sans';
+	text-decoration: none;
+	position: relative;
 }
 
-.nav li:hover > ul {
-  display:block;
-
+.menu li:hover .submenu {
+	visibility: visible;
+	opacity: 1;
+	position: relative;
 }
 
-.nav li ul li{
-  position: relative;
-
+.nav li:hover>ul {
+	display: block;
 }
 
 .nav li ul li {
-
-  top: 0px;
+	position: relative;
 }
-  
-  
-  
-  </style>
 
-  </html>
+.nav li ul li {
+	top: 0px;
+}
+</style></html>
