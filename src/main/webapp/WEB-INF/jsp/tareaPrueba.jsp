@@ -34,6 +34,7 @@
             <th class="text-center">HORA INICIO</th>
             <th class="text-center">HORA FIN</th>
             <th class="text-center">DESCRIPCION TAREA</th>
+            <th class="text-center">LUGAR TAREA</th>
           </tr>
           </thead>
 
@@ -46,6 +47,7 @@
             <td> ${tareas.horarioInicio} <br></td>
             <td> ${tareas.horarioFin} <br></td>
             <td> ${tareas.descripcionTarea}  <br></td>
+            <td> ${tareas.lugar}  <br></td>
             
           </tr>
           </tbody>
