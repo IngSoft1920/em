@@ -47,7 +47,7 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -99,7 +99,7 @@ public class VacacionesController {
 
 	@GetMapping("/verVacaciones")
 	public String verVacaciones(Model model){
-		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(1);
+		List<VacacionesModel> vacaciones = VacacionesDAO.sacaVacaciones(LoginController.id_empleado);
 		model.addAttribute("vacaciones", vacaciones);
 		return "muestraVacaciones";
 	}
@@ -114,7 +114,7 @@ public class VacacionesController {
 		VacacionBean vacaciones = new VacacionBean();
 		int[] res;
 		int diasRestantes = 0;
-		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
+		res = VacacionesDAO.contVacaciones(LoginController.id_empleado,0); // vacaciones.getIdEmpleado()
 		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
 		model.addAttribute("diasRestantes", diasRestantes);
 		model.addAttribute("vacaciones", vacaciones);
@@ -130,13 +130,13 @@ public class VacacionesController {
 		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
 			int[] res;
 			int diasRestantes = 0;
-			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()       //le sumo los dias que ya tiene libres para no descontarlos como vacaciones
+			res = VacacionesDAO.contVacaciones(LoginController.id_empleado, duracion); // vacaciones.getIdEmpleado()       //le sumo los dias que ya tiene libres para no descontarlos como vacaciones
 			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1] + VacacionesDAO.descontarDiasLibres(vacaciones); // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
 			model.addAttribute("diasRestantes", diasRestantes);
 
 			if (diasRestantes >= duracion) {
-				VacacionesDAO.insertaVacaciones(1, duracion,vacaciones);
-				VacacionesDAO.getIdVacaciones(1,vacaciones);
+				VacacionesDAO.insertaVacaciones(LoginController.id_empleado, duracion,vacaciones);
+				VacacionesDAO.getIdVacaciones(LoginController.id_empleado,vacaciones);
 				VacacionesCM.peticionPedirVacaciones(vacaciones);
 				
 			}

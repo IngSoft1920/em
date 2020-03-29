@@ -13,7 +13,8 @@ import ingsoft1920.em.Servicios.HttpClient;
 public class ActividadesDHO {
 	public static List<ActividadBean> peticionPedirTarea() {
 		try {
-			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/getTarea/1","GET");
+			int id=LoginController.id_empleado;
+			HttpClient client= new HttpClient("http://piedrafita.ls.fi.upm.es:7001/getTarea/"+id,"GET");
 			int respCode = client.getResponseCode();
 		
 			if(respCode==200){

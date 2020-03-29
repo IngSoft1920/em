@@ -52,7 +52,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil5")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
