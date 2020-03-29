@@ -1,20 +1,15 @@
 package ingsoft1920.em.Controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Servicios.HttpClient;
 
 public class VacacionesCM {
 	public static void peticionPedirVacaciones(VacacionBean vacaciones){
 		try {
-			HttpClient client = new HttpClient("http://localhost:7000/ausencia","POST");
+			HttpClient client = new HttpClient("http://piedrafita.ls.fi.upm.es:7000/ausencia","POST");
 			JsonObject obj = new JsonObject();
 			obj.addProperty("ausencia_id", vacaciones.getId_vacacion());
 			obj.addProperty("motivo", "vacaciones");

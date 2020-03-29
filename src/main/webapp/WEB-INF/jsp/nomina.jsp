@@ -7,34 +7,22 @@
   <link rel="stylesheet" type="text/css" href="css/estilonom.css"> <!--carpeta donde se encuentra el estilo css-->
 
 
+
+	<script>
+	function elige() {
+         var lista = document.getElementById("colores")
+         if (lista.selectedIndex == null || lista.selectedIndex == 0) { 
+            alert("No se ha podido realizar tu peticion; \n Debes elegir un mes de la lista.")
+            return false
+            }
+         	
+         }
+	
+	</script>
 </head>
 
 <body>
 
-
-<%
-
-	String UsuarioIn=" ",ContraseniaIn=" ";
-	if(request.getParameter("usuario")!=null){
-		UsuarioIn=request.getParameter("usuario");
-	}
-	
-	if(request.getParameter("contrasenia")!=null){
-		ContraseniaIn=request.getParameter("contrasenia");
-	}
-
-
-	%>
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<jsp:setProperty name="sesionActual" property="usuario" value="<%=UsuarioIn%>"/>
-	<jsp:setProperty name="sesionActual" property="contrasenia" value="<%=ContraseniaIn%>"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
-	
-	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
       <div id="logo">
@@ -47,9 +35,9 @@
           <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
           <li><a href="/turnos3" class="enlace">Turnos</a></li>
           <li><a href="/tareas3" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones3" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas3" class="enlace">Bajas</a></li>
+          <li><a href="/ausencias3" class="enlace">Ausencias</a></li>
           <li><a href="/perfil3" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -58,21 +46,12 @@
   </header>
 
   <section id="principal">
-    <section id="publicaciones">
-      <article class="post">
-
-
-        <a href="" class="enlace-post">
-          <h2 class="titulo-post">Visualizar nomina: </h2>
-        </a>
+    
+          <h2> -> Para visualizar la nomina elige un mes: </h2><br/>
+        
 
         <table border="tabla">
 
-          <thead>
-          <tr>
-            <th>Nomina</th>
-          </tr>
-          </thead>
 
           <tbody>
           <tr>
@@ -83,18 +62,18 @@
 
               <li><a> Elige un mes </a>
                   <ul class="submenu">
-                      <li><a href="/ejemplo">Enero</a></li>
-                      <li><a href="/ejemplo">Febrero</a></li>
-                      <li><a href="/ejemplo">Marzo</a></li>
-                      <li><a href="/ejemplo">Abril</a></li>
-                      <li><a href="/ejemplo">Mayo</a></li>
-                      <li><a href="/ejemplo">Junio</a></li>
-                      <li><a href="/ejemplo">Julio</a></li>
-                      <li><a href="/ejemplo">Agosto</a></li>
-                      <li><a href="/ejemplo">Septiembre</a></li>
-                      <li><a href="/ejemplo">Octubre</a></li>
-                      <li><a href="/ejemplo">Noviembre</a></li>
-                      <li><a href="/ejemplo">Diciembre</a></li>
+                      <li><a href="/generarPDF">Enero</a></li>
+                      <li><a href="/generarPDF">Febrero</a></li>
+                      <li><a href="/generarPDF">Marzo</a></li>
+                      <li><a href="/generarPDF">Abril</a></li>
+                      <li><a href="/generarPDF">Mayo</a></li>
+                      <li><a href="/generarPDF">Junio</a></li>
+                      <li><a href="/generarPDF">Julio</a></li>
+                      <li><a href="/generarPDF">Agosto</a></li>
+                      <li><a href="/generarPDF">Septiembre</a></li>
+                      <li><a href="/generarPDF">Octubre</a></li>
+                      <li><a href="/generarPDF">Noviembre</a></li>
+                      <li><a href="/generarPDF">Diciembre</a></li>
                   </ul>
               </li>
 
@@ -107,8 +86,7 @@
 
         </table>
  
-      </article>
-    </section>
+
   </section>
 
   <style>
@@ -132,7 +110,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -188,36 +166,21 @@ header{
 /*--------contenido principal ---------*/
 
 #principal{
-  width: 80%;
-  height: auto; overflow: hidden;
+  width: 60%;
+  height: 90%; overflow: hidden;
   border: 0px solid; /* si no le ponemos nada significa negro*/
   margin: 0px auto;
+  padding:15px;
 }
 
-#publicaciones{
-  width: 20%;
-  height: auto; overflow: hidden;
-  border: 0px solid red; /*significa que es rojo*/
-  margin-top: 10px;
-  margin-left: 390px;
-  float:middle;
-}
+h2{
+color:#585858;
 
-  .post{ /*aplicar estilo a cada articulo. Espacios del texto*/
-    width: 99%;
-    height: 90%; overflow: hidden;
-    padding: 15px;
-    background: #fff;
-    /*border-Left-style: solid;
-    border-Left-width: 5px;
-    border-Left-color: #048981;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px #ccc;/*color gris*/
-    margin-bottom: 25px;
-  }
+}
 
 .enlace-post{
  text-decoration: none;
+ width:90%;
  padding: 5px;
  height: 5px;
  color: #01a9db;
@@ -225,17 +188,18 @@ header{
 }
 
 
+
 .menu > li{
 
   position:relative;
   display: inline-inline-block;
-  float:right;
+  float:left;
 }
 
 .menu > li > a{
   display: block;
-  padding: 20px 20px;
-
+  padding: 5px 20px;
+  color: #353535;
   font-family: 'Open sans';
   text-decoration: none;
 
@@ -243,7 +207,7 @@ header{
 
 
 .menu li a:hover{
-  color: #048981;
+  color: #CE7D35;
 
 
 }
@@ -260,7 +224,7 @@ header{
 
 .submenu li a{
   display: block;
-  color: #ffff;
+  color: #fff;
   padding: 10px;
   font-family: 'Open sans';
   text-decoration: none;
@@ -288,6 +252,9 @@ header{
 
   top: 0px;
 }
+
+
+
   
   </style>
 

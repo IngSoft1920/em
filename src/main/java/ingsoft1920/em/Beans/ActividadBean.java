@@ -1,7 +1,5 @@
 package ingsoft1920.em.Beans;
 
-import java.sql.Date;
-
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,19 +10,30 @@ public class ActividadBean {
 	String horarioInicio;
 	String horarioFin;
 	String fecha;
+	String lugar;
 	
 	
 	public ActividadBean() {}
 	
-	public ActividadBean(int id_tarea, int id_empleado, String descripcionTarea,String horarioInicio, String horarioFin,String fecha) {
+	public ActividadBean(int id_tarea, int id_empleado, String descripcionTarea,String horarioInicio, String horarioFin,String fecha,String lugar) {
 		this.id_tarea = id_tarea;
 		this.id_empleado = id_empleado;
 		this.descripcionTarea = descripcionTarea;
 		this.horarioInicio = horarioInicio;
 		this.horarioFin = horarioFin;
 		this.fecha=fecha;
+		this.lugar=lugar;
 	}
 	
+	
+	public String getLugar() {
+		return lugar;
+	}
+
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
+	}
+
 	public String getFecha() {
 		return fecha;
 	}

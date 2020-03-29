@@ -3,7 +3,6 @@ package ingsoft1920.em.Controller;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,9 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
-import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.VacacionBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
+import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
 @Controller
@@ -45,6 +47,8 @@ public class VacacionesController {
 
 	@GetMapping("/perfil7")
 	public String perfilp1(Model model) {
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 
@@ -74,26 +78,24 @@ public class VacacionesController {
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
-
-	@GetMapping("/vacaciones7")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	
+	@GetMapping("/turnos7")
+	public String turnosp(Model model) {
+		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
+		model.addAttribute("turnos", turnos);
+		return "turnos";
 	}
 
-	@PostMapping("/vacaciones7")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias7")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 
-	@GetMapping("/bajas7")
-	public String bajasp1(Model model) {
-		return "bajas";
+	@PostMapping("/ausencias7")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 
-	@PostMapping("/bajas7")
-	public String bajasp(Model model) {
-		return "bajas";
-	}
 
 	@GetMapping("/verVacaciones")
 	public String verVacaciones(Model model){
@@ -108,27 +110,38 @@ public class VacacionesController {
 	}
 
 	@GetMapping("/aniadeVacaciones")
-	public String añadeBaja(Model model) {
-		VacacionBean vacacion = new VacacionBean();
-		model.addAttribute("vacaciones", vacacion);
-		model.addAttribute("mensajeError", "");
+	public String añadeBaja(Model model) throws ParseException {
+		VacacionBean vacaciones = new VacacionBean();
+		int[] res;
+		int diasRestantes = 0;
+		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
+		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+		model.addAttribute("diasRestantes", diasRestantes);
+		model.addAttribute("vacaciones", vacaciones);
 		return "vacaciones";
 	}
 
 	@PostMapping("/aniadeVacaciones")
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
-		int[] res;
-		int diasRestantes;
-		res = VacacionesDAO.contVacaciones(vacaciones.getId_empleado(), vacaciones.getDuracion());
-		System.out.println(res[0]);
-		diasRestantes= (int)((res[0]/30)*2.5)-res[1]; //if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
-		model.addAttribute("diasRestantes", diasRestantes);
-		if(diasRestantes >= vacaciones.getDuracion()) {
-		VacacionesCM.peticionPedirVacaciones(vacaciones);
-		VacacionesDAO.insertaVacaciones(1,vacaciones.getDuracion());
+		int duracion;
+		duracion = (int) ((vacaciones.getFecha_fin().getTime()-vacaciones.getFecha_inicio().getTime())/86400000);
+		
+		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
+			int[] res;
+			int diasRestantes = 0;
+			res = VacacionesDAO.contVacaciones(1, duracion); // vacaciones.getIdEmpleado()       //le sumo los dias que ya tiene libres para no descontarlos como vacaciones
+			diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1] + VacacionesDAO.descontarDiasLibres(vacaciones); // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
+			model.addAttribute("diasRestantes", diasRestantes);
+
+			if (diasRestantes >= duracion) {
+				VacacionesDAO.insertaVacaciones(1, duracion,vacaciones);
+				VacacionesDAO.getIdVacaciones(1,vacaciones);
+				VacacionesCM.peticionPedirVacaciones(vacaciones);
+				
+			}
 		}
 		return "vacaciones";
 	}
-	
+
 }

@@ -1,3 +1,4 @@
+
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html lan="es">
 
@@ -24,14 +25,14 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
-          <li><a href="/turnos2" class="enlace">Turnos</a></li>
-          <li><a href="/tareas2" class="enlace">Tareas</a></li>
-          <li><a href="/ausencias2" class="enlace">Ausencias</a></li>
-          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
-          <li><a href="/registro2" class="enlace">Registro</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu8" class="enlace">Inicio</a></li>
+          <li><a href="/nomina8" class="enlace">Nomina</a></li>
+          <li><a href="/turnos8" class="enlace">Turnos</a></li>
+          <li><a href="/tareas8" class="enlace">Tareas</a></li>
+          <li><a href="/ausencias8" class="enlace">Ausencias</a></li>
+          <li><a href="/perfil8" class="activate-menu">Perfil</a></li>
+          <li><a href="/registro8" class="enlace">Registro</a></li>
+          <li><a href="/cerrar8" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
@@ -42,48 +43,34 @@
 
 <body>
 
-	
-		
-		<section id="publicaciones">
-      		<article class="post">
-        		
-          			<h1 class="titulo-post">Nombre: <td>${empleado.nombre }<br></td></h1>
-        		
-      		</article>
-		</section>
-		
-		<section id="publicaciones">
-      		<article class="post">
-        		
-          			<h1 class="titulo-post">Telefono: <td>${empleado.telefono }<br></td></h1>
-        		
-      		</article>
-		</section>
-		
-		<section id="publicaciones">
-      		<article class="post">
-        		
-          			<h1 class="titulo-post">Correo: <td>${empleado.correo }<br></td></h1>
-        		
-      		</article>
-		</section>
-		
-		<section id="publicaciones">
-      		<article class="post">
-        		
-          			<h1 class="titulo-post">Rol: <td>${empleado.nombre_rol }<br></td></h1>
-        		
-      		</article>
-		</section>
-		
-		<section id="publicaciones">
-      		<article class="post">
+<form method="POST" 	action="cambiocontrasenia"	modelAttribute="DatoEmpleadoBean">
 
-          			<input type="submit" value="CAMBIO CONTRASENA" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
-        		
-      		</article>
-		</section>
+<section id="principal">
 	
+    <section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Nueva contrasena:
+            <td><input type="text" name="inicio" id="inicio" required></td>
+          </h1>
+      </article>
+      </section>
+		
+		<section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Repite la nueva contrasena:
+            <td><input type="text" name="inicio" id="inicio" required></td>
+          </h1>
+      </article>
+      </section>
+		
+	<section id="publicaciones">
+   	<input type="submit" value="Enviar" name="accion">
+   	</section>
+	</section>
+</form>		
+		
+
+</section>	
 
 </body>
 

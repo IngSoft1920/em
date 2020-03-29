@@ -1,8 +1,13 @@
 package ingsoft1920.em.Controller;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -17,6 +22,7 @@ import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.LoginBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
 
@@ -24,6 +30,7 @@ import ingsoft1920.em.Model.TurnoModel;
 public class MenuController {
 	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
+static boolean checkinDone = false;
 	
 	@GetMapping("/menu")
 	public String menu(Model model) {
@@ -91,30 +98,51 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "turnos";
 	}
 	
-	@GetMapping("/vacaciones1")
-	public String vacaciones(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias")
+	public String ausencias(Model model)  {
+		
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones1")
-	public String vacaciones(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+	@PostMapping("/ausencias")
+	public String ausencias(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "vacaciones";
+		return "ausencias";
 	}
 	
-	@GetMapping("/bajas")
-	public String bajas(Model model) {
-		return "bajas";
+	@GetMapping("/registro")
+	public String registro(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
+		
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
+		RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
+		
+		// Para calcular el timepo trabajado a partir de la hora actual
+		int horaA,minutosA,segundosA, horaC,minutosC,segundosC;
+		horaC = horaCheckin.getHours();
+		minutosC = horaCheckin.getMinutes();
+		segundosC = horaCheckin.getSeconds();		
+		Calendar calendario = Calendar.getInstance();
+		horaA = calendario.get(Calendar.HOUR_OF_DAY);
+		minutosA = calendario.get(Calendar.MINUTE);
+		segundosA = calendario.get(Calendar.SECOND);		 
+		int horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+		int horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+		int tiempoTrabajado = horaAenSeg - horaCenSeg;		
+		int horaFinal=tiempoTrabajado/3600;
+        int minFinal=(tiempoTrabajado-(3600*horaFinal))/60;
+        int segFianl=tiempoTrabajado-((horaFinal*3600)+(minFinal*60));
+        String tiempoFinal = String.valueOf(horaFinal)+":"+ String.valueOf(minFinal)+":"+String.valueOf(segFianl);
+        request.setAttribute("tiempo", tiempoFinal);
+		return "registro";
 	}
 	
-	@PostMapping("/bajas")
-	public String bajas(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
+	@PostMapping("/registro")
+	public String registro(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "bajas";
+		return "registro";
 	}
 	
-	
-	
-	
-
 }

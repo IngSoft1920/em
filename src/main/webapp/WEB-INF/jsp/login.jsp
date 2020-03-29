@@ -13,16 +13,18 @@
 	<section class="form-login">
 	<h5>Login Empleados</h5>
 	
-	<form action="menu2" method="post"/>
+	<form method="post"/>
 	
 	<label>Usuario</label>
-	<td><input class="controls" type="text" name="usuario"/></td>
+	<td><input class="controls" type="text" name="usuario" placeholder="nombre@hotmail.com" required/></td>
 
 		
 	<label>Contrasena</label>
-	<td><input class="controls" type="password" name="contrasenia"/>
+	<td><input class="controls" type="password" name="contrasenia" placeholder= "contrasena"required/>
 
-	<input type="submit" value="Ingresar"/>
+	<input type="submit" value="Ingresar" name="accion" id="buttons"/>
+	</form>
+	
 	</section>
 
 </body>
@@ -76,14 +78,17 @@ body{
   font-weight: bold;
 }
 
-.buttons{
+#buttons{
   width: 100%;
   height: 40px;
   background: #017bab;
   border: none;
   color: white;
   margin-bottom: 16px;
+  
 }
+
+
 
 </style>
 

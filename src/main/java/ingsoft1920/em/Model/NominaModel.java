@@ -45,4 +45,5 @@ public class NominaModel {
 		this.valor = valor;
 	}
 	
+	
 }

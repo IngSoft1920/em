@@ -1,6 +1,5 @@
 package ingsoft1920.em.Model;
 
-import java.sql.Time;
 
 public class TurnoModel {
 	private int id_Empleado;
