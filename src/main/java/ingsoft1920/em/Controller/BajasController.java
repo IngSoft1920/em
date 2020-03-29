@@ -126,9 +126,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	@PostMapping("/aniadeBaja")
 	public String añadeBaja1(BajaBean bajaBean,Model model) {
-		BajaDAO.insertaBaja(1, bajaBean);
-		int id_baja=BajaDAO.getIdBaja(1,bajaBean);
-		BajasCM.peticionPedirBaja(1,id_baja,bajaBean);
+		BajaDAO.insertaBaja(LoginController.id_empleado, bajaBean);
+		int id_baja=BajaDAO.getIdBaja(LoginController.id_empleado,bajaBean);
+		BajasCM.peticionPedirBaja(LoginController.id_empleado,id_baja,bajaBean);
 		return "bajas";
 	}
 	@GetMapping("/enviarPDF")
