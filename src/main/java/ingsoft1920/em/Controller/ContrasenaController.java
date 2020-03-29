@@ -55,7 +55,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil8")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -121,7 +121,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		String accion=request.getParameter("accion");
 		if(accion.equals("Enviar")) {
 			String contra=request.getParameter("inicio");
-			String correo= EmpleadoDAO.sacaEmpleado(1).getCorreo();
+			String correo= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado).getCorreo();
 			EmpleadoDAO.cambiarContraseña(correo, contra);	
 		}
 

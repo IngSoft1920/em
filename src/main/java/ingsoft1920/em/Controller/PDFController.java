@@ -22,7 +22,7 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina(){
 		
-		List<NominaModel> nominas = NominaDAO.verNomina(1);
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado);
 		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
 		
 		HttpHeaders headers = new HttpHeaders();

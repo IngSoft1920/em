@@ -18,7 +18,8 @@ import ingsoft1920.em.DAO.EmpleadoDAO;;
 
 @Controller
 public class LoginController extends HttpServlet{
-	
+
+static int id_empleado;
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 EmpleadoDAO dao= new EmpleadoDAO();
 DatoEmpleadoBean p=new DatoEmpleadoBean();
@@ -36,7 +37,7 @@ int r;
 	
 	@PostMapping("/")
 	public String loginValida(HttpServletRequest request, HttpServletResponse 
-			response) {
+			response,Model model) {
 		
 		response.setContentType("text/html;charset=UTF-8");
 		String accion=request.getParameter("accion");
@@ -49,6 +50,7 @@ int r;
 			r=dao.validar(p);
 			
 			if(r==1) {
+				id_empleado=EmpleadoDAO.getIdEmpleado(pass, correo);
 				return "menu";
 			}
 			
