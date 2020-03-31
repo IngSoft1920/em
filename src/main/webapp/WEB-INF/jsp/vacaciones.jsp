@@ -1,22 +1,54 @@
 <html lan="es">
 
 <head>
-  <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
-  <title> USUARIO  : </title> <!--Título-->
-  <link rel="stylesheet" type="text/css" href="css/vacaciones.css"> <!--carpeta donde se encuentra el estilo css-->
+ 	<meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
+ 	<title> USUARIO  : </title> <!--Título-->
+	<link rel="stylesheet" type="text/css" href="css/vacaciones.css"> <!--carpeta donde se encuentra el estilo css-->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	
 
+
+<script type="text/javascript">
+
+$(function() {
+    $("#inicio").datepicker({ dateFormat: "yy-mm-dd" }).val()
+});
+
+
+$(function() {
+    $("#fin").datepicker({ dateFormat: "yy-mm-dd" }).val()
+});
+
+
+function mensaje(){
+
+var todo_correcto=true;
+
+if(document.getElementById('inicio').value==''){
+todo_correcto=false;
+}
+if(document.getElementById('fin').value==''){
+todo_correcto=false;
+}
+
+if(!todo_correcto){
+alert('Debes rellenar todos los campos');
+}
+
+if(todo_corecto){
+
+alert('Se ha enviado tu peticion correctamente');
+}
+
+}
+</script>
 
 </head>
 
+
 <body>
-
-
-	
-	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
 	
   <header class="header"> <!-- La parte de arriba de la página web-->
     <div id="encabezado">
@@ -30,9 +62,9 @@
           <li><a href="/nomina7" class="enlace">Nomina</a></li>
           <li><a href="/turnos7" class="enlace">Turnos</a></li>
           <li><a href="/tareas7" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones7" class="activate-menu">Vacaciones</a></li>
-          <li><a href="/bajas7" class="enlace">Bajas</a></li>
+          <li><a href="/ausencias7" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil7" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
           <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -40,21 +72,41 @@
     </div>
   </header>
  
+ 	<u1>			
+ 	<b>dias restantes:</b> ${diasRestantes} <br>
+	</u1>	
+
  
-<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones';" />
- 
-<form method="POST" 	action="a�adeVacaciones"	modelAttribute="VacacionBean">
+<form method="POST" 	action="aniadeVacaciones"	modelAttribute="VacacionBean">
  
   <section id="principal">
     <section id="publicaciones">
       <article class="post">
-          <h1 class="titulo-post">Duracion
-            <td><input type="text" name="duracion" placeholder="Escribe aqui" path="duracion" ></td>
+          <h1 class="titulo-post">Desde
+            <td><input type="text" name="fecha_inicio" id="inicio" required></td>
           </h1>
       </article>
-      <input type="submit" value="Enviar" >
+      </section>
+
+    <section id="publicaciones">
+      <article class="post">
+          <h1 class="titulo-post">Hasta
+            <td><input type="text" name="fecha_fin" id="fin" required></td>
+          </h1>
+      </article>
 	</section>			
+	
+    <section id="publicaciones">
+   	<input type="submit" value="Enviar" onClick="mensaje()">
+   	</section>
+	</section>
 </form>
+
+
+
+<input type="submit" value="Ver Vacaciones" onclick="window.location='/verVacaciones'" />
+
+</body>
   
   <style>
   
@@ -78,7 +130,7 @@ header{
 }
 
 #encabezado{
-  width: 100%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #fff;

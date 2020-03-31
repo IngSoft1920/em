@@ -9,6 +9,7 @@ import java.util.List;
 
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.Model.NominaModel;
+import ingsoft1920.em.Model.SueldoModel;
 
 public class NominaDAO {
 	static Connection conn;
@@ -81,6 +82,40 @@ public class NominaDAO {
 	  }
 	  return res;
 		
+	}
+
+	public static List<SueldoModel> sumaNomina() {
+		//CONSULTA-> Pasar a fna la suma de las nominas de los empleados del hotel que nos pidan 
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt= null;
+		ResultSet rs = null; 
+		List<SueldoModel> res=new ArrayList<SueldoModel>();
+		try { 
+			  stmt=conn.prepareStatement("SELECT sum(nomina.valor),empleado.id_hotel FROM nomina join empleado on empleado.id_empleado=nomina.id_empleado group by empleado.id_hotel");
+			  rs= stmt.executeQuery();
+			  while(rs.next()) {
+					SueldoModel valor=new SueldoModel(rs.getInt("empleado.id_hotel"),rs.getInt("sum(nomina.valor)"));
+					res.add(valor);
+				}	
+        } 
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+			if (stmt!=null){
+				try{stmt.close();
+				}
+				catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		}
+		return res;
 	}
 	
 

@@ -6,6 +6,23 @@
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 
 
+<script type="text/javascript">
+// Variable global por estar declarada sin hacer uso de var
+
+function activar(){
+   document.getElementById('checkin').disabled = false;
+   document.getElementById('checkout').disabled = true;
+   alert("Se ha guardado tu check-in correctamente")
+ }
+
+ function activar2(){
+    document.getElementById('checkin').disabled = true;
+    document.getElementById('checkout').disabled = false;
+    alert("Se ha guardado tu check-out correctamente")
+  }
+
+	</script>
+
 </head>
 
 <body>
@@ -18,13 +35,13 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu" class="activate-menu">Inicio</a></li>
+          <li><a href="/menu" class="enlace">Inicio</a></li>
           <li><a href="/nomina" class="enlace">Nomina</a></li>
           <li><a href="/turnos" class="enlace">Turnos</a></li>
           <li><a href="/tareas" class="enlace">Tareas</a></li>
           <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
-          <li><a href="/registro" class="enlace">Registro</a></li>
+          <li><a href="/registro" class="activate-menu">Registro</a></li>
           <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
@@ -34,13 +51,15 @@
 
 
   <div id="principal1">
-
+  
+  
+   
     <div id="publicaciones1">
-      <article class="cuerpo-nomina">
-        <a href="/nomina" class="enlace-nomina">
-        <h2 class="nomina"> NOMINA </h2>
-        </a>
-        <img src="/img/nomina.jpg" class="img-post1">
+    <article class="cuerpo-tarea">
+     <input type="button" value="Check-in" id="checkout" onClick=" window.location='/checkin'; " /> 
+     
+       </a>
+        <img src="/img/checkin2.jpg" class="img-post1">
       </article>
     </div>
 
@@ -48,22 +67,28 @@
     </div>
 
 
-
-
     <div id="publicaciones2">
       <article class="cuerpo-tarea">
-        <a href="/perfil" class="enlace-tarea">
-        <h2 class="tarea"> PERFIL </h2>
+        <input type="button" id="checkout" value="Check-out"  onClick=" window.location='/checkout';"//>
         </a>
-        <img src="/img/perfill.jpg" class="img-post2">
+        <img src="/img/checkout.jpg" class="img-post2">
       </article>
     </div>
-
-
+    
+    <div id="publicaciones3">
+      <article class="cuerpo-tarea">
+      Hora check-in:  <%  out.print(request.getAttribute("horaCI"));  %> <br/> 
+      Tiempo trabajado:  <%  out.print(request.getAttribute("tiempo"));  %> <br/> 
+	  Hora check-out: <%  out.print(request.getAttribute("horaCO"));  %>
+      </article>
+    </div>
+	
     <div id="sidebar2">
     </div>
 
   </div>
+
+
 
 </body>
 <style>
@@ -158,11 +183,17 @@ header{
 }
 
 #publicaciones2{
-  width: 330px;
+  width: 300px;
   float:left;
   padding:10px;
   margin:40px;
   margin-left:290px;
+}
+
+#publicaciones3{
+  width: 300px;
+  margin-left: 150px;
+  font-family: 'calibri light';
 }
 
 
@@ -186,7 +217,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 70px; /*CENTRAR LA IMAGEN*/
+  margin-left: 35px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones1 a .nomina:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -203,6 +234,10 @@ header{
 
 /*TAREAAAASSSSSSS*/
 
+input[type="button"]{
+margin:5px 5px 10px 5px;
+float:left;
+width:99%;}
 
 .cuerpo-tarea{
   width: 99%;
@@ -225,7 +260,7 @@ header{
   color: #6e6e6e;
   font-size: 40px;
   font-family: 'calibri light';
-  margin-left: 90px; /*CENTRAR LA IMAGEN*/
+  margin-left: 45px; /*CENTRAR LA IMAGEN*/
 }
 
 #publicaciones2 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
@@ -239,10 +274,7 @@ header{
   margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
   margin-left: 90px; /*CENTRAR LA IMAGEN*/
 }
-
-
-          
-            
+     
     </style>
 
 

@@ -1,8 +1,15 @@
 package ingsoft1920.em.Controller;
 
+
+
+import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
-import javax.validation.Valid;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,95 +21,115 @@ import org.springframework.web.bind.annotation.PostMapping;
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.TurnoModel;
-
-
-
 
 @Controller 
 public class TareasController {
 
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 	
-	@GetMapping("/menu4")
+	@GetMapping("/menu5")
 	public String loginp(Model model) {
 		return "menu";
 	}
 	
-	@PostMapping("/menu4")
+	@PostMapping("/menu5")
 	public String menup(Model model) {
 		return "menu";
 	}
 	
-	@GetMapping("/nomina4")
+	@GetMapping("/nomina5")
 	public String nominap1(Model model) {
 		return "nomina";
 	}
 	
-	@PostMapping("/nomina4")
+	@PostMapping("/nomina5")
 	public String nominap(Model model) {
 		return "nomina";
 	}
 	
-	@GetMapping("/perfil4")
+	@GetMapping("/perfil5")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
 	
-	@PostMapping("/perfil4")
+	@PostMapping("/perfil5")
 	public String perfilp(Model model) {
 		return "perfil";
 	}
 	
-	@GetMapping("/cerrar4")
+	@GetMapping("/cerrar5")
 	public String cerrarp1(Model model) {
 		return "login";
 	}
 	
-	@PostMapping("/cerrar4")
+	@PostMapping("/cerrar5")
 	public String cerrarp(Model model) {
 		return "login";
 	}
 	
-	@GetMapping("/tareas4")
+	@GetMapping("/tareas5")
 	public String tareasp1(Model model) {
 		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
 		model.addAttribute("tareas", tareas);
 		return "tareaPrueba";
 	}
 	
-	@PostMapping("/tareas4")
+	@PostMapping("/tareas5")
 	public String tareasp(Model model) {
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/vacaciones4")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	@GetMapping("/ausencias5")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones4")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
+	@PostMapping("/ausencias5")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
-	
-	@GetMapping("/bajas4")
-	public String bajasp1(Model model) {
-		return "bajas";
-	}
-	
-	@PostMapping("/bajas4")
-	public String bajasp(Model model) {
-		return "bajas";
-	}
-	@GetMapping("/turnos4")
+
+	@GetMapping("/turnos5")
 	public String turnosp(Model model) {
 		List<TurnoModel> turnos=TurnoDAO.enviarTurnos();
 		model.addAttribute("turnos", turnos);
 		return "turnos";
 	}
 	
+	@GetMapping("/registro5")
+	public String registrop1(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
+		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
+		
+		// Para calcular el timepo trabajado a partir de la hora actual
+				int horaA,minutosA,segundosA, horaC,minutosC,segundosC;
+				horaC = horaCheckin.getHours();
+				minutosC = horaCheckin.getMinutes();
+				segundosC = horaCheckin.getSeconds();		
+				Calendar calendario = Calendar.getInstance();
+				horaA = calendario.get(Calendar.HOUR_OF_DAY);
+				minutosA = calendario.get(Calendar.MINUTE);
+				segundosA = calendario.get(Calendar.SECOND);		 
+				int horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+				int horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+				int tiempoTrabajado = horaAenSeg - horaCenSeg;		
+				int horaFinal=tiempoTrabajado/3600;
+		        int minFinal=(tiempoTrabajado-(3600*horaFinal))/60;
+		        int segFianl=tiempoTrabajado-((horaFinal*3600)+(minFinal*60));
+		        String tiempoFinal = String.valueOf(horaFinal)+":"+ String.valueOf(minFinal)+":"+String.valueOf(segFianl);
+		        request.setAttribute("tiempo", tiempoFinal);
+		return "registro";
+	}
+	
+	@PostMapping("/registro5")
+	public String registrop(Model model) {
+		return "registro";
+	}
 }

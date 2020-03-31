@@ -1,7 +1,8 @@
 package ingsoft1920.em.Controller;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
-import ingsoft1920.em.Beans.DatoTurnoBean;
-import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
 import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;
@@ -29,6 +27,9 @@ import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.EmpleadoModelC2;
+import ingsoft1920.em.Model.EmpleadoModelC3;
+import ingsoft1920.em.Model.EmpleadoModelC4;
+import ingsoft1920.em.Model.SueldoModel;
 import ingsoft1920.em.Model.TurnoModel;
 import ingsoft1920.em.Model.VacacionesModel;
 @Controller
@@ -73,8 +74,9 @@ public class API {
 		int id_empleado=obj.get("id_empleado").getAsInt();
 		String horarioInicio=obj.get("horarioInicio").getAsString();
 		String horarioFin=obj.get("horarioFin").getAsString();
+		String diaSemana=obj.get("dia").getAsString();
 		//Ejecutamos consulta insert
-		TurnoDAO.añadirTurno(id_empleado, horarioInicio, horarioFin);
+		TurnoDAO.añadirTurno(id_empleado, horarioInicio, horarioFin,diaSemana);
 	}
 	//TO-DO
 	//API PARA DHO
@@ -89,11 +91,13 @@ public class API {
 		JsonArray listaIDEmpleados=new JsonArray();
 		JsonArray listaHorarioInicio=new JsonArray();
 		JsonArray listaHorarioFin=new JsonArray();
+		JsonArray listaDiaSemana=new JsonArray();
 		for(TurnoModel turno:respuesta) {
 			listaIDTurno.add(turno.getId_Turno());
 			listaIDEmpleados.add(turno.getId_Turno());
 			listaHorarioInicio.add(turno.getHorarioInicio());
 			listaHorarioFin.add(turno.getHorarioFin());
+			listaDiaSemana.add(turno.getDiaSemana());
 		}
 		
 		JsonObject turno = new JsonObject();
@@ -101,6 +105,7 @@ public class API {
 		turno.add("id_empleado",listaIDTurno);
 		turno.add("horarioInicio",listaHorarioInicio);
 		turno.add("horarioFin",listaHorarioFin);
+		turno.add("diaSemana",listaDiaSemana);
 		
 		return turno.toString();
 	}
@@ -110,17 +115,36 @@ public class API {
 	@PostMapping("/creaEmpleado")
 	//Recibimos id_empleado, nombre, telefono , correo
 	public void creaEmpleado(@RequestBody String req) {
-		//Creamos el objeto json con los parametros recibidos
+		//Creamos el objeto json cod los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
 		int id_empleado=obj.get("id").getAsInt();
 		String nombre=obj.get("nombre").getAsString();
 		String telefono=obj.get("telefono").getAsString();
 		String correo=obj.get("email").getAsString();
 		String rol=obj.get("ocupacion").getAsString();
-		//falta ocupacion es decir rol
-		//Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo);
+		int id_hotel=obj.get("id_hotel").getAsInt();
+		int valor=(int) obj.get("valor").getAsDouble();
+		String fecha_contratacion= obj.get("fecha_contratacion").getAsString();
+		//fecha contratacion
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date parsed = null;
+		try {
+			parsed = format.parse(fecha_contratacion);
+		} catch (ParseException e) {}
+        java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+        //contrasenia y dias libres
+        String contrasenia=obj.get("contrasenia").getAsString();
+        JsonArray dias=obj.get("dias_libres").getAsJsonArray();
+        
+        //Ejecutamos query
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
+		NominaDAO.asignarNomina(id_empleado, valor);
+		for(int i=0;i<dias.size();i++) {
+			int dia_libre=dias.getAsInt();
+			EmpleadoDAO.añadirDiasLibres(id_empleado,dia_libre);	
+		}
+		
 	}
 	
 	//API ELIMINAR EMPLEADO
@@ -130,27 +154,16 @@ public class API {
 	public void eliminaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		String correo_empleado=obj.get("email").getAsString();
+		int id_empleado=obj.get("id").getAsInt();
 		//Ejecutamos query
-		EmpleadoDAO.eliminarEmpleado(correo_empleado);
+		EmpleadoDAO.eliminarEmpleado(id_empleado);
+		EmpleadoDAO.eliminarDiasLibres(id_empleado);
 	}
 	
-	//API ASIGNAR NOMINA
-	@ResponseBody
-	@PostMapping("/asignaNomina")
-	//Recibimos una nomina con un valor
-	public void asignaNomina(@RequestBody String req) {
-		//Creamos el objeto json con los parametros recibidos
-		JsonObject obj = (JsonObject) JsonParser.parseString(req);
-		int id_empleado=obj.get("id_empleado").getAsInt();
-		int valor=obj.get("valor").getAsInt();
-		//Ejecutamos query
-		NominaDAO.asignarNomina(id_empleado, valor);
-	}
 	
 	//API ENVIA BAJA
 	@ResponseBody
-	@GetMapping("/baja")
+	@GetMapping("/sacaBaja")
 	//Enviamos informacion de la baja de un empleado recibimos id_empleado
 	public String baja(@RequestBody String req) {
 		//Obtenemos parametro recibido
@@ -168,7 +181,7 @@ public class API {
 			listaIDEmpleado.add(baja.getId_Empleado());
 			listaIDBaja.add(baja.getId_Baja());
 			listaDuracion.add(baja.getDuracion());
-			listaEstado.add(baja.isEstado());
+			listaEstado.add(baja.getEstado());
 		}
 		//Transformamos a formato deseado
 		JsonObject baja = new JsonObject();
@@ -183,15 +196,17 @@ public class API {
 	
 	//API ENVIA VACACIONES
 		@ResponseBody
-		@GetMapping("/vacaciones")
+		@GetMapping("/sacaVacaciones")
 		//Enviamos informacion de las vacaciones de un empleado filtramos id_empleado
-		public String vacaciones(@RequestBody String req) {
+		public String vacaciones(@RequestBody String req) throws ParseException {
 			//Obtenemos parametro recibido
+			String res="";
 			JsonObject obj = (JsonObject) JsonParser.parseString(req);
 			int id_empleado=obj.get("id_empleado").getAsInt();
 			List<VacacionesModel>consulta=new ArrayList<VacacionesModel>();
 			//QUERY
 			consulta=VacacionesDAO.sacaVacaciones(id_empleado);
+			if (consulta!=null) {
 			//Guardamos resultado
 			JsonArray listaIDEmpleado=new JsonArray();
 			JsonArray listaIDVacacion=new JsonArray();
@@ -201,7 +216,7 @@ public class API {
 				listaIDEmpleado.add(vacacion.getId_Empleado());
 				listaIDVacacion.add(vacacion.getId_Vacaciones());
 				listaDuracion.add(vacacion.getDuracion());
-				listaEstado.add(vacacion.isEstado());
+				listaEstado.add(vacacion.getEstado());
 			}
 			//Transformamos a formato deseado
 			JsonObject vacacion = new JsonObject();
@@ -209,10 +224,31 @@ public class API {
 			vacacion.add("id_vacacion",listaIDVacacion);
 			vacacion.add("duracion",listaDuracion);
 			vacacion.add("estado",listaEstado);
+			res=vacacion.toString();
+			}
 			
-			return vacacion.toString();
+			return res;
 			
 		}
+		
+		@ResponseBody
+		@PostMapping("/resultadoAusencia")
+		public void redirige(@RequestBody String req) {
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			String motivo=obj.get("motivo").getAsString();
+			int id_ausencia=obj.get("id_ausencia").getAsInt();
+			String estado=obj.get("resultado").getAsString();
+			
+			if(motivo.equals("vacaciones")) {
+				//Ejecutamos query
+				VacacionesDAO.editaVacacion(id_ausencia,estado);
+			}
+			else {
+				//Ejecutamos query
+				BajaDAO.editaBaja(id_ausencia,estado);
+			}		
+		}
+		
 		
 	
 	//OBTENCION EMPLEADOS BBDD dado nombre
@@ -256,6 +292,66 @@ public class API {
 			return empleado.toString();
 			
 		}
+		//API para DHO, devolvemos lista de empleados
+		@ResponseBody
+		@PostMapping("/sacaEmpleadoHotel")
+		//recibimos el id_hotel del que quiere obtener la lista de empleados
+		public String getEmpleadoHotel(@RequestBody String req) {
+			//convertimos el parámetro recibido a variable
+			JsonObject obj = (JsonObject) JsonParser.parseString(req);
+			int id_hotel=obj.get("id_hotel").getAsInt();
+			//consulta sql
+			List<EmpleadoModelC3> listaEmpleados = new ArrayList<EmpleadoModelC3>();
+			listaEmpleados = EmpleadoDAO.sacaEmpleados3(id_hotel);
+			//Guardamos la info de la consulta en formato JSON
+			JsonArray listaIDEmpleados = new JsonArray();
+			JsonArray listaIDHotel = new JsonArray();
+			JsonArray listaRol = new JsonArray();
+			
+			for(EmpleadoModelC3 empleado:listaEmpleados) {
+				listaIDEmpleados.add(empleado.getId_Empleado());
+				listaIDHotel.add(empleado.getId_Hotel());
+				listaRol.add(empleado.getRol());			
+			}
+			
+			JsonObject empleado = new JsonObject();
+			empleado.add("id_empleado", listaIDEmpleados);
+			empleado.add("id_hotel", listaIDHotel);
+			empleado.add("rol", listaRol);
+			return empleado.toString();
+		}
+		
+		//API PARA FNA
+		@ResponseBody
+		@GetMapping("/sueldoHotel")
+		public String getSueldoHotel() {
+			//consulta sql
+			List<EmpleadoModelC4> listaEmpleados = new ArrayList<EmpleadoModelC4>();
+			listaEmpleados = EmpleadoDAO.sacaEmpleados4();
+			//Guardamos la info de la consulta en formato JSON
+			JsonArray listaIDEmpleados = new JsonArray();
+			JsonArray listaIDHotel = new JsonArray();
+			JsonArray listaRol = new JsonArray();
+			JsonArray listaSueldo = new JsonArray();
+			JsonArray listaIncentivos = new JsonArray();
+			
+			for(EmpleadoModelC4 empleado:listaEmpleados) {
+				listaIDEmpleados.add(empleado.getEmpleado_id());
+				listaIDHotel.add(empleado.getHotel_id());
+				listaRol.add(empleado.getRol());
+				listaSueldo.add(empleado.getSueldo());
+				listaIncentivos.add(empleado.getIncentivo());
+			}
+			
+			JsonObject empleado = new JsonObject();
+			empleado.add("empleado_id", listaIDEmpleados);
+			empleado.add("hotel_id", listaIDHotel);
+			empleado.add("rol", listaRol);
+			empleado.add("sueldo",listaSueldo);
+			empleado.add("incentivo", listaIncentivos);
+			return empleado.toString();
+		}
+		
 		
 	
 	

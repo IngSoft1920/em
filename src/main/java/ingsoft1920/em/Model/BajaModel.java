@@ -1,34 +1,57 @@
 package ingsoft1920.em.Model;
 
-import javax.validation.Valid;
+import java.sql.Date;
+
 
 import ingsoft1920.em.Beans.BajaBean;
 
 public class BajaModel {
 	private int id_Empleado;
 	private int id_Baja;
-	private String duracion;
-	private boolean estado;
+	private int duracion;
+	private String estado;
+	Date fecha_inicio;
+	Date fecha_fin;
 	
-	public BajaModel(int id_Empleado,int id_Baja, String duracion,boolean estado) {
+	public BajaModel(int id_Empleado,int id_Baja, int duracion,String estado,Date fecha_inicio,Date fecha_fin) {
 		this.id_Empleado=id_Empleado;
 		this.id_Baja=id_Baja;
 		this.duracion=duracion;
 		this.estado=estado;
+		this.fecha_inicio=fecha_inicio;
+		this.fecha_fin=fecha_fin;
 	}
 	
 	public BajaModel(BajaBean baja) {
 		this.id_Empleado=baja.getId_empleado();
 		this.id_Baja=baja.getId_baja();
 		this.duracion=baja.getDuracion();
-		this.estado=baja.isEstado();
+		this.estado=baja.getEstado();
 	}
 
-	public boolean isEstado() {
+	
+	
+	public Date getFecha_inicio() {
+		return fecha_inicio;
+	}
+
+	public void setFecha_inicio(Date fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+
+	public Date getFecha_fin() {
+		return fecha_fin;
+	}
+
+	public void setFecha_fin(Date fecha_fin) {
+		this.fecha_fin = fecha_fin;
+	}
+
+	public String getEstado() {
 		return estado;
 	}
 
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 
@@ -49,11 +72,11 @@ public class BajaModel {
 		this.id_Baja = id_Baja;
 	}
 
-	public String getDuracion() {
+	public int getDuracion() {
 		return duracion;
 	}
 
-	public void setDuracion(String duracion) {
+	public void setDuracion(int duracion) {
 		this.duracion = duracion;
 	}
 	

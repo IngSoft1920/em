@@ -1,15 +1,17 @@
 package ingsoft1920.em.Controller;
 
 import java.util.List;
+import java.util.Map;
 
-import javax.validation.Valid;
+import javax.swing.*;
+import java.awt.event.*;
+import java.io.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
@@ -17,11 +19,10 @@ import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;
-import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.BajaModel;
-import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Model.TurnoModel;
+import ingsoft1920.em.Servicios.JFileChooserTest;
 
 @Controller 
 
@@ -51,7 +52,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil6")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -94,29 +95,20 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "tareaPrueba";
 	}
 	
-	@GetMapping("/vacaciones6")
-	public String vacacionesp1(Model model) {
-		return "vacaciones";
+	
+	@GetMapping("/ausencias6")
+	public String ausenciasp1(Model model) {
+		return "ausencias";
 	}
 	
-	@PostMapping("/vacaciones6")
-	public String vacacionesp(Model model) {
-		return "vacaciones";
-	}
-	
-	@GetMapping("/bajas6")
-	public String bajasp1(Model model) {
-		return "bajas";
-	}
-	
-	@PostMapping("/bajas6")
-	public String bajasp(Model model) {
-		return "bajas";
+	@PostMapping("/ausencia6")
+	public String ausenciasp(Model model) {
+		return "ausencias";
 	}
 	
 	@GetMapping("/verBaja")
 	public String verBaja(Model model) {
-		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(1);
+		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(LoginController.id_empleado);
 		model.addAttribute("bajas",bajas);
 		return "muestraBajas";
 	}
@@ -125,19 +117,33 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "muestraBajas";
 	}
 
-	@GetMapping("/añadeBaja")
+	@GetMapping("/aniadeBaja")
 	public String añadeBaja(Model model) {
 		BajaBean baja=new BajaBean();
 		model.addAttribute("bajaBean",baja);
 		model.addAttribute("mensajeError","");
 		return "bajas";
 	}
-	@PostMapping("/añadeBaja")
+	@PostMapping("/aniadeBaja")
 	public String añadeBaja1(BajaBean bajaBean,Model model) {
-		//TO-DO COMPROBAR CAMPOS VALIDOS
-		BajaDAO.insertaBaja(1, bajaBean.getDuracion());
+		BajaDAO.insertaBaja(LoginController.id_empleado, bajaBean);
+		int id_baja=BajaDAO.getIdBaja(LoginController.id_empleado,bajaBean);
+		BajasCM.peticionPedirBaja(LoginController.id_empleado,id_baja,bajaBean);
 		return "bajas";
 	}
+	@GetMapping("/enviarPDF")
+	public String enviarPDF(Model model) {
+		JFileChooserTest test = new JFileChooserTest();
+		test.setDefaultCloseOperation(0);
+		test.setSize(400, 110);
+		test.setVisible(true);
+		return "enviarPDF";
+	}
+	@PostMapping("/enviarPDF")
+	public String enviarPDF1(Model model) {
+		return "enviarPDF";
+	}
+	
 
 	
 	

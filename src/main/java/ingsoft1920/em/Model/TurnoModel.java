@@ -1,19 +1,28 @@
 package ingsoft1920.em.Model;
 
-import java.sql.Time;
 
 public class TurnoModel {
 	private int id_Empleado;
 	private int id_Turno;
 	private String horarioInicio;
 	private String horarioFin;
+	private String diaSemana;
 	
-	public TurnoModel(int id_Empleado, int id_Turno, String horarioInicio, String horarioFin) {
+	public String getDiaSemana() {
+		return diaSemana;
+	}
+
+	public void setDiaSemana(String diaSemana) {
+		this.diaSemana = diaSemana;
+	}
+
+	public TurnoModel(int id_Empleado, int id_Turno, String horarioInicio, String horarioFin,String diaSemana) {
 		super();
 		this.id_Empleado=id_Empleado;
 		this.id_Turno=id_Turno;
 		this.horarioInicio=horarioInicio;
 		this.horarioFin=horarioFin;
+		this.diaSemana=diaSemana;
 	}
 
 	public int getId_Empleado() {
@@ -47,6 +56,7 @@ public class TurnoModel {
 	public void setHorarioFin(String horarioFin) {
 		this.horarioFin = horarioFin;
 	}
+
 	
 
 }

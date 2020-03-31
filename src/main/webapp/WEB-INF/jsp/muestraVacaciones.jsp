@@ -24,13 +24,14 @@
 
       <div id="menu">
         <ul>
-          <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
-          <li><a href="/tareas2" class="enlace">Tareas</a></li>
-          <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
-          <li><a href="/bajas2" class="enlace">Bajas</a></li>
-          <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/menu7" class="enlace">Inicio</a></li>
+          <li><a href="/nomina7" class="enlace">Nomina</a></li>
+          <li><a href="/turnos7" class="enlace">Turnos</a></li>
+          <li><a href="/tareas7" class="enlace">Tareas</a></li>
+          <li><a href="/ausencias7" class="activate-menu">Ausencias</a></li>
+          <li><a href="/perfil7" class="enlace">Perfil</a></li>
+          <li><a href="/registro3" class="enlace">Registro</a></li>
+          <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
 
@@ -39,13 +40,18 @@
 
 	<u1>
 		<c:forEach var="vacaciones" items="${vacaciones}">
-			<li>
+		<section id="publicaciones">
+      		<article class="post">
+			
 				<p>
 						
-					<b>duracion:</b> ${vacaciones.duracion} <br>
-					<b>estado:</b> ${vacaciones.estado} <br>
+					<b>DURACION:</b> ${vacaciones.duracion} DIAS<br>
+					<b>ESTADO:</b> ${vacaciones.estado} <br>
+					<b>FECHA INICIO:</b> ${vacaciones.fecha_inicio} <br>
+					<b>FECHA FIN:</b> ${vacaciones.fecha_fin} <br>
 				</p>
-			</li>
+      		</article>
+		</section>			
 		</c:forEach>
 
 	</u1>
@@ -73,7 +79,7 @@ header{
 }
 
 #encabezado{
-  width: 90%;
+  width: 99%;
   height: 30px;
   margin: auto;
   border: 0px solid #000;
@@ -137,6 +143,7 @@ header{
 
 #publicaciones{
   width: 70%;
+  padding:10px;
   height: auto; overflow: hidden;
   border: 0px solid red; /*significa que es rojo*/
   margin-top: 0px;
