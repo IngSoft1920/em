@@ -31,7 +31,7 @@ public class MenuController {
 	
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 static boolean checkinDone = false;
-	
+
 	@GetMapping("/menu")
 	public String menu(Model model) {
 		return "menu";
@@ -50,7 +50,8 @@ static boolean checkinDone = false;
 	
 	@GetMapping("/perfil")
 	public String perfil(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}

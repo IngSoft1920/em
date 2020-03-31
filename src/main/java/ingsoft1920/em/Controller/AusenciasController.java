@@ -59,7 +59,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil4")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -115,10 +115,10 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/vacaciones4")
 	public String vacacionesp1(Model model) throws ParseException {
-		HorarioDAO.checkin(1);
+		HorarioDAO.checkin(LoginController.id_empleado);
 		int[] res;
 		int diasRestantes = 0;
-		res = VacacionesDAO.contVacaciones(1,0); // vacaciones.getIdEmpleado()
+		res = VacacionesDAO.contVacaciones(LoginController.id_empleado,0); // vacaciones.getIdEmpleado()
 		diasRestantes = (int) ((res[0] / 30) * 2.5) - res[1]; // if(((dias/30)*2.5)<=duracion+vacacionesGastadas)
 		model.addAttribute("diasRestantes", diasRestantes);
 		return "vacaciones";
@@ -133,7 +133,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/bajas4")
 	public String bajasp1(Model model) {
-		HorarioDAO.checkout(1);
+		HorarioDAO.checkout(LoginController.id_empleado);
 		return "bajas";
 	}
 	
@@ -184,7 +184,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	 *@see HttpServlet#doGet( HttpServletRequest request, HttpServletResponse response)
 	 */
 	public String checkin(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {	
-		HorarioDAO.checkin(1);
+		HorarioDAO.checkin(LoginController.id_empleado);
 		
 		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
 		request.setAttribute("horaCI", horaCheckin);
@@ -221,7 +221,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	 *@see HttpServlet#doGet( HttpServletRequest request, HttpServletResponse response)
 	 */
 	public String checkout(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException  {
-		HorarioDAO.checkout(1);
+		HorarioDAO.checkout(LoginController.id_empleado);
 		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
 		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
 		request.setAttribute("horaCI", horaCheckin);

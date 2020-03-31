@@ -52,7 +52,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil6")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -108,7 +108,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/verBaja")
 	public String verBaja(Model model) {
-		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(1);
+		List<BajaModel> bajas=BajaDAO.BajaModelSacaBajas(LoginController.id_empleado);
 		model.addAttribute("bajas",bajas);
 		return "muestraBajas";
 	}
@@ -126,9 +126,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	@PostMapping("/aniadeBaja")
 	public String añadeBaja1(BajaBean bajaBean,Model model) {
-		BajaDAO.insertaBaja(1, bajaBean);
-		int id_baja=BajaDAO.getIdBaja(1,bajaBean);
-		BajasCM.peticionPedirBaja(1,id_baja,bajaBean);
+		BajaDAO.insertaBaja(LoginController.id_empleado, bajaBean);
+		int id_baja=BajaDAO.getIdBaja(LoginController.id_empleado,bajaBean);
+		BajasCM.peticionPedirBaja(LoginController.id_empleado,id_baja,bajaBean);
 		return "bajas";
 	}
 	@GetMapping("/enviarPDF")

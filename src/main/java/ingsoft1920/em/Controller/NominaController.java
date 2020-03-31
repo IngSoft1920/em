@@ -53,7 +53,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/perfil3")
 	public String perfilp1(Model model) {
-		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(1);
+		DatoEmpleadoBean empleado=EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
 		model.addAttribute("empleado", empleado);
 		return "perfilPrueba";
 	}
@@ -88,7 +88,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@GetMapping("/ejemplo")
 	public String ejemplop1(Model model) {
 		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
-		List<NominaModel>nominas=NominaDAO.verNomina(1);
+		List<NominaModel>nominas=NominaDAO.verNomina(LoginController.id_empleado);
 		model.addAttribute("nominas", nominas);
 		return "ejemplo";
 	}
