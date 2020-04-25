@@ -22,12 +22,12 @@ public class BajaDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT id_empleado,id_baja,fecha_inicio,fecha_fin,duracion,estado FROM baja WHERE id_empleado=?");
+		   stmt = conn.prepareStatement("SELECT id_empleado,id_baja,fecha_inicio,fecha_fin,duracion,estado,tipo FROM baja WHERE id_empleado=?");
 		   stmt.setInt(1, id_empleado);
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getInt("duracion"),rs.getString("estado"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
+			   BajaModel baja=new BajaModel(rs.getInt("id_empleado"),rs.getInt("id_baja"),rs.getInt("duracion"),rs.getString("estado"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"),rs.getString("tipo"));
 			   res.add(baja);
 			   }
 		   return res;
@@ -89,7 +89,7 @@ public class BajaDAO {
 		}
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,fecha_inicio,fecha_fin,duracion,estado) values (?,?,?,?,?);");
+			   stmt = conn.prepareStatement("INSERT into baja(id_empleado,fecha_inicio,fecha_fin,duracion,estado,tipo) values (?,?,?,?,?,?);");
 			   stmt.setInt(1, id_empleado);
 			   stmt.setDate(2, baja.getFecha_inicio());
 			   stmt.setDate(3, baja.getFecha_fin());
@@ -97,6 +97,7 @@ public class BajaDAO {
 			   stmt.setInt(4, duracion);
 			   stmt.setString(5, "pendiente");
 			   stmt.executeUpdate();
+			   stmt.setString(6, baja.getTipo());
 		} 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
