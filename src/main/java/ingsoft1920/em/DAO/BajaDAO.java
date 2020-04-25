@@ -96,8 +96,9 @@ public class BajaDAO {
 			   int duracion = (int) ((baja.getFecha_fin().getTime()-baja.getFecha_inicio().getTime())/86400000); //duracion
 			   stmt.setInt(4, duracion);
 			   stmt.setString(5, "pendiente");
-			   stmt.executeUpdate();
 			   stmt.setString(6, baja.getTipo());
+			   stmt.executeUpdate();
+			   
 		} 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());

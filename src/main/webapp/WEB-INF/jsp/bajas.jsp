@@ -109,7 +109,18 @@ alert('Se ha enviado tu peticion correctamente');
 				</article>
 			</section>
 
-			<section id="principal">
+
+			<section id="publicaciones">
+				<article class="post">
+					<h1 class="titulo-post">
+						Tipo
+						<td><input type="text" name="tipo" id="tipo" required></td>
+					</h1>
+				</article>
+			</section>
+
+
+			
 			<section id="publicaciones">
 				<article class="post">
 					<h1 class="titulo-post">
