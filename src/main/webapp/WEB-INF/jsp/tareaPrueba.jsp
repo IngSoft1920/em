@@ -35,6 +35,8 @@
             <th class="text-center">HORA FIN</th>
             <th class="text-center">DESCRIPCION TAREA</th>
             <th class="text-center">LUGAR TAREA</th>
+            <th class="text-center">Estado</th>
+            
           </tr>
           </thead>
 
@@ -48,6 +50,7 @@
             <td> ${tareas.horarioFin} <br></td>
             <td> ${tareas.descripcionTarea}  <br></td>
             <td> ${tareas.lugar}  <br></td>
+            <td><button type="button" onclick"insertText();">Terminada</button> <br></td>
             
           </tr>
           </tbody>

@@ -132,4 +132,6 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String registrop(Model model) {
 		return "registro";
 	}
+	
+	
 }

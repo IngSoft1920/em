@@ -59,26 +59,26 @@ public class TurnoDAO {
 		   rs = stmt.executeQuery("SELECT * FROM turno");
 		   while (rs.next()){
 			   switch(rs.getString("diaSemana")) {
-			   		case "0":
-			   			diaSemana="lunes";
-			   			break;
-			   		case "1":
-			   			diaSemana="martes";
-			   			break;
-			   		case "2":
-			   			diaSemana="miercoles";
-			   			break;
-			   		case "3":
-			   			diaSemana="jueves";
-			   			break;
-			   		case "4":
-			   			diaSemana="viernes";
-			   			break;
-			   		case "5":
+			   		case "7":
 			   			diaSemana="sabado";
 			   			break;
-			   		case "6":
+			   		case "1":
 			   			diaSemana="domingo";
+			   			break;
+			   		case "2":
+			   			diaSemana="lunes";
+			   			break;
+			   		case "3":
+			   			diaSemana="martes";
+			   			break;
+			   		case "4":
+			   			diaSemana="miercoles";
+			   			break;
+			   		case "5":
+			   			diaSemana="jueves";
+			   			break;
+			   		case "6":
+			   			diaSemana="viernes";
 			   			break;
 			   }
 			   
