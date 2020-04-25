@@ -52,17 +52,44 @@ public class TurnoDAO {
 		TurnoModel res = null;
 		Statement stmt = null; 
 		ResultSet rs = null; 
+		String diaSemana="";
 		List<TurnoModel> turnos=new ArrayList<TurnoModel>();
 		  try { 
 		   stmt=conn.createStatement();
 		   rs = stmt.executeQuery("SELECT * FROM turno");
 		   while (rs.next()){
-		      res = new TurnoModel ( 
+			   switch(rs.getString("diaSemana")) {
+			   		case "0":
+			   			diaSemana="lunes";
+			   			break;
+			   		case "1":
+			   			diaSemana="martes";
+			   			break;
+			   		case "2":
+			   			diaSemana="miercoles";
+			   			break;
+			   		case "3":
+			   			diaSemana="jueves";
+			   			break;
+			   		case "4":
+			   			diaSemana="viernes";
+			   			break;
+			   		case "5":
+			   			diaSemana="sabado";
+			   			break;
+			   		case "6":
+			   			diaSemana="domingo";
+			   			break;
+			   }
+			   
+			   res = new TurnoModel ( 
 		      rs.getInt("id_Empleado"), 
 		      rs.getInt("id_Turno"),
 		      rs.getString("horario_inicio"),
 		      rs.getString("horario_fin"),
-		      rs.getString("diaSemana"));
+		      diaSemana
+		      );
+		      
 		      turnos.add(res);
 		      }
           } 
