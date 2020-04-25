@@ -17,12 +17,11 @@ import ingsoft1920.em.Servicios.GenerarPDF;
 
 @Controller
 public class PDFController {
+	@RequestMapping(value = "/generarPDF1", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	
-	@RequestMapping(value = "/generarPDF", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	public ResponseEntity<InputStreamResource> generarNomina1(){
 	
-	public ResponseEntity<InputStreamResource> generarNomina(){
-		
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado);
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
 		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -36,7 +35,205 @@ public class PDFController {
                 .body(new InputStreamResource(gPDF));
 		
 	}
+    @RequestMapping(value = "/generarPDF2", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
 	
+	public ResponseEntity<InputStreamResource> generarNomina2(){
 	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,2);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    
+    @RequestMapping(value = "/generarPDF3", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina3(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,3);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    
+    @RequestMapping(value = "/generarPDF4", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina4(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,4);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF5", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina5(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,5);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF6", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina6(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,6);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF7", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina7(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,7);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF8", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina8(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,8);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF9", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina9(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,9);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF10", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina10(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,10);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF11", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina11(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,11);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
+    @RequestMapping(value = "/generarPDF12", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+	
+	public ResponseEntity<InputStreamResource> generarNomina12(){
+	
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,12);
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
+		
+				
+		return ResponseEntity
+				.ok()
+				.headers(headers)
+				.contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(gPDF));
+		
+	}
 
 }

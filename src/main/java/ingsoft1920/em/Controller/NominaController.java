@@ -88,7 +88,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@GetMapping("/ejemplo")
 	public String ejemplop1(Model model) {
 		//model.addatribute (nombre atributo,objeto el bean o el model) ((importante tiene que ser igual que el del html))
-		List<NominaModel>nominas=NominaDAO.verNomina(LoginController.id_empleado);
+		List<NominaModel>nominas=NominaDAO.verNomina(LoginController.id_empleado,1);
 		model.addAttribute("nominas", nominas);
 		return "ejemplo";
 	}
