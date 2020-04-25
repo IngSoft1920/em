@@ -63,4 +63,20 @@ public class ActividadesDHO {
 		return null;
 		
 	}
+	
+	public static void peticionEliminarTarea(int id_tarea) {
+		HttpClient client;
+		try {
+			client = new HttpClient("http://piedrafita.ls.fi.upm.es:7001/eliminaTarea/"+id_tarea,"POST");
+			int respCode = client.getResponseCode();
+		if(respCode==200){}
+		else { 
+			throw new Exception("fallo peticion");
+			}
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
 }

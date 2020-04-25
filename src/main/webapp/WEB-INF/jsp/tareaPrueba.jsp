@@ -50,7 +50,7 @@
             <td> ${tareas.horarioFin} <br></td>
             <td> ${tareas.descripcionTarea}  <br></td>
             <td> ${tareas.lugar}  <br></td>
-            <td><button type="button" onclick"insertText();">Terminada</button> <br></td>
+            <td><input type="submit" value="Terminada ${tareas.id_tarea}" onclick="window.location='/eliminarTarea/' ${tareas.id_tarea};" /></td>
             
           </tr>
           </tbody>
