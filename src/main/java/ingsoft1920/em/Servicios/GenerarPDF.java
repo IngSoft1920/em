@@ -108,9 +108,6 @@ public class GenerarPDF {
         	hcell2.setHorizontalAlignment(Element.ALIGN_CENTER);
         	hcell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table2.addCell(hcell2); 
-        	
-        	table2.addCell("4");
-        	table2.addCell("3");
 
         	
         	/*
@@ -131,13 +128,13 @@ public class GenerarPDF {
         	*/
         	
 			
-        	/*for (NominaModel nomina2:listaNominas) {
+        	for (NominaModel nomina2:listaNominas) {
 			  
-			  table1.addCell(Integer.toString(nomina2.getId_empleado()));
+			  table2.addCell(Integer.toString(nomina2.getId_nomina()));
 			  
-			  table1.addCell( "holaaa");
+			  table2.addCell( Integer.toString(nomina2.getId_empleado()));
 			  
-			  }*/
+			  }
 			 
         	
         	
