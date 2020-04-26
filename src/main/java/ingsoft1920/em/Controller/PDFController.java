@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Servicios.GenerarPDF;
@@ -22,7 +24,8 @@ public class PDFController {
 	public ResponseEntity<InputStreamResource> generarNomina1(){
 	
 		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -39,8 +42,10 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina2(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,2);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
+		
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -58,8 +63,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina3(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,3);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -77,8 +83,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina4(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,4);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -95,8 +102,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina5(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,5);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -113,8 +121,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina6(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,6);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -131,8 +140,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina7(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,7);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -149,8 +159,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina8(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,8);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -167,8 +178,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina9(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,9);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -185,8 +197,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina10(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,10);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -203,8 +216,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina11(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,11);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
@@ -221,8 +235,9 @@ public class PDFController {
 	
 	public ResponseEntity<InputStreamResource> generarNomina12(){
 	
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,12);
-		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas);
+    	List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,1);
+		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
+		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,empleado);
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition","inline; filename=generarPDF.pdf");
