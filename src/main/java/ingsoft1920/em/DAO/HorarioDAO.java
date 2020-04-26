@@ -141,15 +141,6 @@ public class HorarioDAO {
 		Time in = horaCheckIn();
 		Time out = horaCheckOut();		
 		long horasTrabajadas = difHoras(in,out);
-//		long horaC = in.getHours();
-//		long minutosC = in.getMinutes();
-//		long segundosC = in.getSeconds();		
-//		long horaA = out.getHours();
-//		long minutosA = out.getMinutes();
-//		long segundosA = out.getSeconds();	
-//		long horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
-//		long horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
-//		long horasTrabajadas = horaAenSeg - horaCenSeg;
 		//long horasTrabajadas = res/3600;
 
 		
