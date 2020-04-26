@@ -38,7 +38,7 @@ public class GenerarPDF {
     private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 	
 
-	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo) {             
+	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo, DatoEmpleadoBean empleado) {             
   
     	Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -74,26 +74,74 @@ public class GenerarPDF {
         	table.addCell("C/ Gran Via 64");
         	
         	
-        	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
-        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
-        	table.addCell(hcell);
+        	PdfPTable table1 = new PdfPTable(3);
+        	PdfPCell hcell1;
+        	hcell1 = new PdfPCell(new Phrase("Trabajador", categoryFont));
+        	hcell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table1.addCell(hcell1);
         	
-        	hcell = new PdfPCell(new Phrase("Sueldo final",categoryFont));
-        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
-        	table.addCell(hcell);
- 	for (NominaModel nomina:listaNominas) {
+        	hcell1= new PdfPCell(new Phrase("Telefono",categoryFont));
+        	hcell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table1.addCell(hcell1);
+        	
+        	hcell1 = new PdfPCell(new Phrase("Categoria",categoryFont));
+        	hcell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table1.addCell(hcell1);
+        	
+        	table1.addCell(empleado.getNombre());
+        	table1.addCell(empleado.getTelefono());
+        	table1.addCell(empleado.getNombre_rol());
+        	
+        	
+        	PdfPTable table2 = new PdfPTable(2);
+        	PdfPCell hcell2;
+        	
+        	hcell2 = new PdfPCell(new Phrase("Id Nomina", categoryFont));
+        	hcell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table2.addCell(hcell2);
+        	
+        	hcell2 = new PdfPCell(new Phrase("Id Empleado",categoryFont));
+        	hcell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table2.addCell(hcell2); 
+        	
+		 	for (NominaModel nomina:listaNominas) {
+		        		
+		        		table.addCell( Integer.toString(nomina.getId_nomina()));
+		        		
+		        		table.addCell( Integer.toString(nomina.getId_empleado()));
+		 	}
+ 			
+		 	PdfPTable table3 = new PdfPTable(3);
+			
+			PdfPCell hcell3;
+			hcell3 = new PdfPCell(new Phrase("Precio", categoryFont));
+			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table3.addCell(hcell3);
+			
+			hcell3= new PdfPCell(new Phrase("Cantidad",categoryFont));
+			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table3.addCell(hcell3);
+			
+			hcell3 = new PdfPCell(new Phrase("Concepto",categoryFont));
+			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table3.addCell(hcell3);
+ 	
+			for (NominaModel nomina:listaNominas) {
+				
+				table3.addCell(Integer.toString(nomina.getId_sueldo())+ "\n"+ Integer.toString(nomina.getValor())+ "\n"+"19,00 \n"+"22,00 \n"+"15,00 \n");
+	        	table3.addCell("1 \n"+"3 \n"+"4 \n"+"7 \n"+"11 \n");
+	        	table3.addCell("Salario Base\n"+ "Botella de vino\n"+"Plato caro \n"+"Botella de Champagne \n"+"Otros \n");
         		
-        		table.addCell( Integer.toString(nomina.getId_nomina()));
-        		
-        		table.addCell( Integer.toString(nomina.getId_empleado()));
-        		
-        		table.addCell( Integer.toString(nomina.getId_incentivo()));
-        		
-        		table.addCell(Integer.toString(nomina.getValor()));
-
-        		table.addCell(Float.toString(sueldo));
- 	}
-       
+			}
+		
         	PdfPTable table4 = new PdfPTable(1);
         	
         	PdfPCell hcell4;
@@ -101,7 +149,7 @@ public class GenerarPDF {
         	hcell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
         	hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table4.addCell(hcell4);
-        	PdfPCell Total_dinero = new PdfPCell(new Phrase("1000"));  
+        	PdfPCell Total_dinero = new PdfPCell(new Phrase(Float.toString(sueldo)));  
         	Total_dinero.setHorizontalAlignment(Element.ALIGN_RIGHT);
             table4.addCell(Total_dinero);
         		        	
