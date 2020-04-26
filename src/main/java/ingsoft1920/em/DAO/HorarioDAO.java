@@ -136,13 +136,95 @@ public class HorarioDAO {
 		}
 		return horaOut;
 	}
-	public static <horaCheckIn, horaCheckOut> long difCheckInOut(horaCheckIn horain, horaCheckOut horaout) {
+	
+	public static float horasAlMes(int id_empleado, int mes) {
+		 
+		if(conn==null) { 
+			conn=ConectorBBDD.conectar(); 
+		} 
 		
-		Time in = Time.valueOf((String) horain);
-		Time out = Time.valueOf((String) horaout);
+		ResultSet rs = null;  
+		PreparedStatement stmt = null;  
+		float res=-1;
+		try {  
+			   stmt = conn.prepareStatement("SELECT SUM(horasTrabajadas) FROM horario where id_empleado=? and MONTH(dia)=?"); 
+			   stmt.setInt(1, id_empleado); 
+			   stmt.setInt(2, mes); 
+			   rs=stmt.executeQuery(); 
+			   while(rs.next())	res=rs.getFloat("SUM(horasTrabajadas)");
+			   return res;
+		}  
+		catch (SQLException ex){  
+		   System.out.println("SQLException: " + ex.getMessage()); 
+		   } 
+		finally { 
+				  	 
+			if (stmt!=null){ 
+				try{stmt.close(); 
+				}catch(SQLException sqlEx){} 
+				stmt=null; 
+			} 
+			if (conn!=null){ 
+				ConectorBBDD.desconectar(); 
+				conn=null; 
+			} 
+		} 
+		return res; 
+	
+		}
+	public static void horasTrabajadas(int id_empleado) {
 		
-		long dif = in.getTime()-out.getTime();
+		Time in = horaCheckIn();
+		Time out = horaCheckOut();		
+		long horasTrabajadas = difHoras(in,out);
+		//long horasTrabajadas = res/3600;
+
 		
-		return dif;
-	}		
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null;	
+		long millis=System.currentTimeMillis();
+		java.sql.Date date=new java.sql.Date(millis);
+	    try { 
+			   stmt = conn.prepareStatement("UPDATE horario SET horasTrabajadas=? WHERE dia=? AND id_empleado=?  ;");
+			   stmt.setLong(1,horasTrabajadas);
+			   stmt.setDate(2, date);
+			   stmt.setInt(3, id_empleado );
+			   stmt.executeUpdate();
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		
+	}
+	
+	public static long difHoras(Time hora1,Time hora2) {
+		//Calcula la diferencia entre dos horas y lo devuelve en segundos
+		
+		long horaC = hora1.getHours();
+		long minutosC = hora1.getMinutes();
+		long segundosC = hora1.getSeconds();		
+		long horaA = hora2.getHours();
+		long minutosA = hora2.getMinutes();
+		long segundosA = hora2.getSeconds();	
+		long horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+		long horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+		return horaAenSeg - horaCenSeg;
+		
+		
+		
+	}
 }

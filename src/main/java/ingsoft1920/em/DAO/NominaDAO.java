@@ -118,5 +118,44 @@ public class NominaDAO {
 		return res;
 	}
 	
+	public static float verSueldo(int id_Empleado) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		float sueldo=-1;
+		PreparedStatement stmt= null;
+		ResultSet rs = null; 
+		
+		try { 
+			stmt=conn.prepareStatement("SELECT valor FROM nomina WHERE id_empleado=?");
+			stmt.setInt(1, id_Empleado);
+			rs=stmt.executeQuery();
+			while(rs.next()) {
+				sueldo=rs.getInt("valor");
+			}
+			return sueldo;
+        } 
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+		  	if (rs!=null){
+				try{rs.close();
+				}catch(SQLException sqlEx){}
+				rs=null;
+			}
+		  	if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+	  }
+	  return sueldo;
+		
+	}
 
 }

@@ -75,32 +75,22 @@ String mes=request.getParameter("mes");
               <nav class="nav">
               <ul class="menu">
 
-<form method="POST" action="aniadeBaja" modelAttribute="BajaBean">
-              <section id="publicaciones">
-				
-					<h1 class="titulo-post">
-							Selecciona un mes: 
-						<select name="mes">
-							<option value="1">Mes ...</option> 			   
-							<option value="2">Enero</option> 
-		   					<option value="3">Febrero</option>
-		   					<option value="4">Marzo</option>
-		   					<option value="5">Abril</option>
-		   					<option value="6">Mayo</option>
-		   					<option value="7">Junio</option>
-		   					<option value="8">Julio</option>
-		   					<option value="9">Agosto</option>
-		   					<option value="10">Septiembre</option>
-		   					<option value="11">Octubre</option>
-		   					<option value="12">Noviembre</option>
-		   					<option value="13">Diciembre</option>	
-					</h1>
-			
-			</section>
-			
-			<section id="publicaciones">
-				<input type="submit" value="Abrir nomina" >
-			</section>
+              <li><a> Elige un mes </a>
+                  <ul class="submenu">
+                      <li><a href="/generarPDF/01">Enero</a></li>
+                      <li><a href="/generarPDF/02">Febrero</a></li>
+                      <li><a href="/generarPDF/03">Marzo</a></li>
+                      <li><a href="/generarPDF/04">Abril</a></li>
+                      <li><a href="/generarPDF/05">Mayo</a></li>
+                      <li><a href="/generarPDF/06">Junio</a></li>
+                      <li><a href="/generarPDF/07">Julio</a></li>
+                      <li><a href="/generarPDF/08">Agosto</a></li>
+                      <li><a href="/generarPDF/09">Septiembre</a></li>
+                      <li><a href="/generarPDF/10">Octubre</a></li>
+                      <li><a href="/generarPDF/11">Noviembre</a></li>
+                      <li><a href="/generarPDF/12">Diciembre</a></li>
+                  </ul>
+              </li>
 
 </form>
               </ul>

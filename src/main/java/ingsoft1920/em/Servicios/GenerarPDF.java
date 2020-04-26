@@ -36,7 +36,7 @@ public class GenerarPDF {
     private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 	
 
-	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas) {             
+	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo) {             
   
     	Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -60,11 +60,12 @@ public class GenerarPDF {
         	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Sueldo",categoryFont));
+        	
+        	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
         	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
+        	hcell = new PdfPCell(new Phrase("Sueldo final",categoryFont));
         	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
         	table.addCell(hcell);
  	for (NominaModel nomina:listaNominas) {
@@ -75,9 +76,9 @@ public class GenerarPDF {
         		
         		table.addCell( Integer.toString(nomina.getId_incentivo()));
         		
-        		table.addCell( Integer.toString(nomina.getId_sueldo()));
-    
         		table.addCell(Integer.toString(nomina.getValor()));
+
+        		table.addCell(Float.toString(sueldo));
  	}
        
         		        	
