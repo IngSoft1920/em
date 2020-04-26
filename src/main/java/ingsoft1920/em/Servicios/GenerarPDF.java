@@ -111,9 +111,9 @@ public class GenerarPDF {
         	
 		 	for (NominaModel nomina:listaNominas) {
 		        		
-		        		table.addCell( Integer.toString(nomina.getId_nomina()));
+		        		table2.addCell( Integer.toString(nomina.getId_nomina()));
 		        		
-		        		table.addCell( Integer.toString(nomina.getId_empleado()));
+		        		table2.addCell( Integer.toString(nomina.getId_empleado()));
 		 	}
  			
 		 	PdfPTable table3 = new PdfPTable(3);
@@ -141,7 +141,8 @@ public class GenerarPDF {
 	        	table3.addCell("Salario Base\n"+ "Botella de vino\n"+"Plato caro \n"+"Botella de Champagne \n"+"Otros \n");
         		
 			}
-		
+			
+       
         	PdfPTable table4 = new PdfPTable(1);
         	
         	PdfPCell hcell4;
