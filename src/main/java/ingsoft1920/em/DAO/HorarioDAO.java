@@ -142,15 +142,16 @@ public class HorarioDAO {
 		if(conn==null) { 
 			conn=ConectorBBDD.conectar(); 
 		} 
+		
 		ResultSet rs = null;  
 		PreparedStatement stmt = null;  
-		int res=-1;
+		float res=-1;
 		try {  
-			   stmt = conn.prepareStatement("SELECT SUM(horasTrabajadas) FROM horario where id_empleado="+id_empleado+"and MONTH(dia)="+mes); 
+			   stmt = conn.prepareStatement("SELECT SUM(horasTrabajadas) FROM horario where id_empleado=? and MONTH(dia)=?"); 
 			   stmt.setInt(1, id_empleado); 
 			   stmt.setInt(2, mes); 
 			   rs=stmt.executeQuery(); 
-			   while(rs.next())	res=rs.getInt("horasTrabajadas");
+			   while(rs.next())	res=rs.getFloat("SUM(horasTrabajadas)");
 			   return res;
 		}  
 		catch (SQLException ex){  

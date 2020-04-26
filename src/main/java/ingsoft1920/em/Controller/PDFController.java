@@ -29,10 +29,14 @@ public class PDFController {
 		
 		horas=HorarioDAO.horasAlMes(LoginController.id_empleado, mes);
 		sueldo=NominaDAO.verSueldo(LoginController.id_empleado);
-		if(horas<80) {
+		System.out.println(horas);
+		if(horas<80 ) {
 			sueldo=sueldo-100;
 		}
 		
+		if(horas==0) {
+			sueldo=0;
+		}
 		
 		ByteArrayInputStream gPDF = GenerarPDF.generarPDF(nominas,sueldo);
 		
