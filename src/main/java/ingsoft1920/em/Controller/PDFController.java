@@ -14,6 +14,7 @@ import java.util.List;
 import ingsoft1920.em.DAO.NominaDAO;
 import ingsoft1920.em.Model.NominaModel;
 import ingsoft1920.em.Servicios.GenerarPDF;
+import io.micrometer.core.ipc.http.HttpSender.Method;
 
 @Controller
 public class PDFController {

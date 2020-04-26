@@ -12,14 +12,16 @@ public class BajaModel {
 	private String estado;
 	Date fecha_inicio;
 	Date fecha_fin;
+	String tipo;
 	
-	public BajaModel(int id_Empleado,int id_Baja, int duracion,String estado,Date fecha_inicio,Date fecha_fin) {
+	public BajaModel(int id_Empleado,int id_Baja, int duracion,String estado,Date fecha_inicio,Date fecha_fin,String tipo) {
 		this.id_Empleado=id_Empleado;
 		this.id_Baja=id_Baja;
 		this.duracion=duracion;
 		this.estado=estado;
 		this.fecha_inicio=fecha_inicio;
 		this.fecha_fin=fecha_fin;
+		this.tipo = tipo;
 	}
 	
 	public BajaModel(BajaBean baja) {
@@ -78,6 +80,14 @@ public class BajaModel {
 
 	public void setDuracion(int duracion) {
 		this.duracion = duracion;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 

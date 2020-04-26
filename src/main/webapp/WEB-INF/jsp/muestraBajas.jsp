@@ -11,9 +11,7 @@
 
 
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
+
 	
 	
   <header class="header"> <!-- La parte de arriba de la página web-->
@@ -47,6 +45,7 @@
 					<b>ID BAJA:</b> ${baja.id_Baja} <br>
 					<b>DURACION:</b> ${baja.duracion} DIAS<br>
 					<b>ESTADO:</b> ${baja.estado} <br>
+					<b>TIPO:</b> ${baja.tipo} <br>
 					<b>FECHA INICIO:</b> ${baja.fecha_inicio} <br>
 					<b>FECHA FIN:</b> ${baja.fecha_fin} <br>
 				</p>
