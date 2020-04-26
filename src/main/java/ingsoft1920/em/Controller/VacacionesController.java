@@ -125,6 +125,7 @@ public class VacacionesController {
 	public String añadeVacaciones1(VacacionBean vacaciones, Model model) throws ParseException {
 		// TO-DO COMPROBAR CAMPOS VALIDOS
 		int duracion;
+		int id_vaca=-1;
 		duracion = (int) ((vacaciones.getFecha_fin().getTime()-vacaciones.getFecha_inicio().getTime())/86400000);
 		
 		if (duracion > 0) { // para comprobar que la fechafinal sea mayor que la inicial
@@ -136,8 +137,8 @@ public class VacacionesController {
 
 			if (diasRestantes >= duracion) {
 				VacacionesDAO.insertaVacaciones(LoginController.id_empleado, duracion,vacaciones);
-				VacacionesDAO.getIdVacaciones(LoginController.id_empleado,vacaciones);
-				VacacionesCM.peticionPedirVacaciones(vacaciones);
+				id_vaca=VacacionesDAO.getIdVacaciones(LoginController.id_empleado,vacaciones);
+				VacacionesCM.peticionPedirVacaciones(vacaciones,id_vaca,LoginController.id_empleado);
 				
 			}
 		}

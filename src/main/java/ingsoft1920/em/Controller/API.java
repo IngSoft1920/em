@@ -150,7 +150,7 @@ public class API {
 	//API ELIMINAR EMPLEADO
 	@ResponseBody
 	@PostMapping("/eliminarEmpleado")
-	//Recibimos correo
+	//Recibimos id
 	public void eliminaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
