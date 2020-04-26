@@ -136,15 +136,6 @@ public class HorarioDAO {
 		}
 		return horaOut;
 	}
-	public static <horaCheckIn, horaCheckOut> long difCheckInOut(horaCheckIn horain, horaCheckOut horaout) {
-		
-		Time in = Time.valueOf((String) horain);
-		Time out = Time.valueOf((String) horaout);
-		
-		long dif = in.getTime()-out.getTime();
-		
-		return dif;
-	}
 	
 	public static float horasAlMes(int id_empleado, int mes) {
 		 
