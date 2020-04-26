@@ -61,7 +61,7 @@ public class BajaDAO {
 		}
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("UPDATE baja SET estado=? WHERE id_empleado=?;");
+			   stmt = conn.prepareStatement("UPDATE baja SET estado=? WHERE id_baja=?;");
 			   stmt.setString(1, estado);
 			   stmt.setInt(2, id_baja);
 			   stmt.executeUpdate();
