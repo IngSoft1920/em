@@ -13,7 +13,7 @@ import ingsoft1920.em.Model.SueldoModel;
 
 public class NominaDAO {
 	static Connection conn;
-	public static void asignarNomina(int id_Empleado,int sueldo) {
+	public static void asignarNomina(int id_Empleado,int sueldo,int id_nomina) {
 		//CONSULTA1-> Metemos en la tabla nomina 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
@@ -24,6 +24,7 @@ public class NominaDAO {
 						"values( ? , ?);");
 							stmt.setInt(1, id_Empleado);
 							stmt.setInt(2, sueldo);
+							stmt.setInt(3,id_nomina);
 							stmt.executeUpdate();
 		   
         } 
