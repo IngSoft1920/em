@@ -36,7 +36,7 @@ public class GenerarPDF {
     private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 	
 
-	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas) {             
+	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo) {             
   
     	Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -77,7 +77,7 @@ public class GenerarPDF {
         		
         		table.addCell( Integer.toString(nomina.getId_sueldo()));
     
-        		table.addCell(Integer.toString(nomina.getValor()));
+        		table.addCell(Float.toString(sueldo));
  	}
        
         		        	

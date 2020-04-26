@@ -62,18 +62,18 @@
 
               <li><a> Elige un mes </a>
                   <ul class="submenu">
-                      <li><a href="/generarPDF">Enero</a></li>
-                      <li><a href="/generarPDF">Febrero</a></li>
-                      <li><a href="/generarPDF">Marzo</a></li>
-                      <li><a href="/generarPDF">Abril</a></li>
-                      <li><a href="/generarPDF">Mayo</a></li>
-                      <li><a href="/generarPDF">Junio</a></li>
-                      <li><a href="/generarPDF">Julio</a></li>
-                      <li><a href="/generarPDF">Agosto</a></li>
-                      <li><a href="/generarPDF">Septiembre</a></li>
-                      <li><a href="/generarPDF">Octubre</a></li>
-                      <li><a href="/generarPDF">Noviembre</a></li>
-                      <li><a href="/generarPDF">Diciembre</a></li>
+                      <li><a href="/generarPDF/01">Enero</a></li>
+                      <li><a href="/generarPDF/02">Febrero</a></li>
+                      <li><a href="/generarPDF/03">Marzo</a></li>
+                      <li><a href="/generarPDF/04">Abril</a></li>
+                      <li><a href="/generarPDF/05">Mayo</a></li>
+                      <li><a href="/generarPDF/06">Junio</a></li>
+                      <li><a href="/generarPDF/07">Julio</a></li>
+                      <li><a href="/generarPDF/08">Agosto</a></li>
+                      <li><a href="/generarPDF/09">Septiembre</a></li>
+                      <li><a href="/generarPDF/10">Octubre</a></li>
+                      <li><a href="/generarPDF/11">Noviembre</a></li>
+                      <li><a href="/generarPDF/12">Diciembre</a></li>
                   </ul>
               </li>
 
