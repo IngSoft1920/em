@@ -186,8 +186,10 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String checkin(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {	
 		HorarioDAO.checkin(LoginController.id_empleado);
 		
-		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();		
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();	
+		String horaCheckout = "Todavía no realizado";
 		request.setAttribute("horaCI", horaCheckin);
+		request.setAttribute("horaCO", horaCheckout);
 
 		//RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
 		
