@@ -136,13 +136,68 @@ public class HorarioDAO {
 		}
 		return horaOut;
 	}
-	public static <horaCheckIn, horaCheckOut> long difCheckInOut(horaCheckIn horain, horaCheckOut horaout) {
+	public static void horasTrabajadas(int id_empleado) {
 		
-		Time in = Time.valueOf((String) horain);
-		Time out = Time.valueOf((String) horaout);
+		Time in = horaCheckIn();
+		Time out = horaCheckOut();		
+		long horasTrabajadas = difHoras(in,out);
+//		long horaC = in.getHours();
+//		long minutosC = in.getMinutes();
+//		long segundosC = in.getSeconds();		
+//		long horaA = out.getHours();
+//		long minutosA = out.getMinutes();
+//		long segundosA = out.getSeconds();	
+//		long horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+//		long horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+//		long horasTrabajadas = horaAenSeg - horaCenSeg;
+		//long horasTrabajadas = res/3600;
+
 		
-		long dif = in.getTime()-out.getTime();
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null;	
+		long millis=System.currentTimeMillis();
+		java.sql.Date date=new java.sql.Date(millis);
+	    try { 
+			   stmt = conn.prepareStatement("UPDATE horario SET horasTrabajadas=? WHERE dia=? AND id_empleado=?  ;");
+			   stmt.setLong(1,horasTrabajadas);
+			   stmt.setDate(2, date);
+			   stmt.setInt(3, id_empleado );
+			   stmt.executeUpdate();
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
 		
-		return dif;
-	}		
+	}
+	
+	public static long difHoras(Time hora1,Time hora2) {
+		//Calcula la diferencia entre dos horas y lo devuelve en segundos
+		
+		long horaC = hora1.getHours();
+		long minutosC = hora1.getMinutes();
+		long segundosC = hora1.getSeconds();		
+		long horaA = hora2.getHours();
+		long minutosA = hora2.getMinutes();
+		long segundosA = hora2.getSeconds();	
+		long horaAenSeg = horaA*3600 + minutosA*60 + segundosA;
+		long horaCenSeg = horaC*3600 + minutosC*60 + segundosC;
+		return horaAenSeg - horaCenSeg;
+		
+		
+		
+	}
 }

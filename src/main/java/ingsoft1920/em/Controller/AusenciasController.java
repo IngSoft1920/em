@@ -186,8 +186,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String checkin(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {	
 		HorarioDAO.checkin(LoginController.id_empleado);
 		
-		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();
+		java.sql.Time horaCheckin = HorarioDAO.horaCheckIn();		
 		request.setAttribute("horaCI", horaCheckin);
+
 		//RequestDispatcher rd = request.getRequestDispatcher("registro.jsp");
 		
 		// Para calcular el timepo trabajado a partir de la hora actual
@@ -244,6 +245,9 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		        int segFianl=tiempoTrabajado-((horaFinal*3600)+(minFinal*60));
 		        String tiempoFinal = String.valueOf(horaFinal)+":"+ String.valueOf(minFinal)+":"+String.valueOf(segFianl);
 		        request.setAttribute("tiempo", tiempoFinal);
+		        
+		 // Meter horas trabajadas en la BBDD
+		 HorarioDAO.horasTrabajadas(LoginController.id_empleado);       
 		return "registro";
 	}
 	@PostMapping("/checkout")
