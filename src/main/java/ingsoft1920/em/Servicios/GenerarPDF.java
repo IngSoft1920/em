@@ -14,11 +14,13 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Model.NominaModel;
 
 public class GenerarPDF {
@@ -43,22 +45,33 @@ public class GenerarPDF {
 
         try {
         	
-        	PdfPTable table = new PdfPTable(5);
-        	table.setWidthPercentage(110);
-        	table.setWidths(new int[] {40,40,40,40,40});
+        	Paragraph info = new Paragraph(empleado.getNombre() +
+        									" Perez"  + "\n" +
+        									empleado.getCorreo() + "\n" +empleado.getTelefono()+"\n\n", 
+        									FontFactory.getFont("arial", 
+        											14,
+        											Font.BOLD,
+        											BaseColor.DARK_GRAY)
+        			);
+        	info.setAlignment(Element.ALIGN_RIGHT);
+        	
+        	
+        	
+        	PdfPTable table = new PdfPTable(2);
         	
         	PdfPCell hcell;
-        	hcell = new PdfPCell(new Phrase("Id_Nomina", categoryFont));
-        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Empresa", categoryFont));
+        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Empleado",categoryFont));
-        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
+        	hcell = new PdfPCell(new Phrase("Domicilio",categoryFont));
+        	hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        	hcell.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table.addCell(hcell);
         	
-        	hcell = new PdfPCell(new Phrase("Id_Incentivo",categoryFont));
-        	hcell.setVerticalAlignment(Element.ALIGN_CENTER);
-        	table.addCell(hcell);
+        	table.addCell("Hotel Debod");
+        	table.addCell("C/ Gran Via 64");
         	
         	
         	hcell = new PdfPCell(new Phrase("Valor",categoryFont));
@@ -81,18 +94,33 @@ public class GenerarPDF {
         		table.addCell(Float.toString(sueldo));
  	}
        
+        	PdfPTable table4 = new PdfPTable(1);
+        	
+        	PdfPCell hcell4;
+        	hcell4 = new PdfPCell(new Phrase("Liquido a recibir", categoryFont));
+        	hcell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        	hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table4.addCell(hcell4);
+        	PdfPCell Total_dinero = new PdfPCell(new Phrase("1000"));  
+        	Total_dinero.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            table4.addCell(Total_dinero);
         		        	
         	PdfWriter.getInstance(document, out);
         	
             document.open(); 
-            document.addTitle("Nomina");
          // First page
          // Primera página 
          Chunk chunk = new Chunk("Nomina", chapterFont);
          chunk.setBackground(BaseColor.CYAN);
         
          //Añadimos una tabla  
-            document.add(table);        
+         	document.add(info);
+            document.add(table); 
+            document.add(table1);
+            document.add(table2);
+            document.add(table3);
+            document.add(table4);
+            
             document.close();
             
         } catch (DocumentException documentException) {

@@ -13,17 +13,18 @@ import ingsoft1920.em.Model.SueldoModel;
 
 public class NominaDAO {
 	static Connection conn;
-	public static void asignarNomina(int id_Empleado,int sueldo) {
+	public static void asignarNomina(int id_Empleado,int sueldo,int id_nomina) {
 		//CONSULTA1-> Metemos en la tabla nomina 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt= null; 
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO nomina(id_Empleado,valor)"+
-						"values( ? , ?);");
-							stmt.setInt(1, id_Empleado);
-							stmt.setInt(2, sueldo);
+			  stmt=conn.prepareStatement("INSERT INTO nomina(id_nomina,id_Empleado,valor)"+
+						"values( ? , ?, ?);");
+			  				stmt.setInt(1,id_nomina);
+							stmt.setInt(2, id_Empleado);
+							stmt.setInt(3, sueldo);
 							stmt.executeUpdate();
 		   
         } 
@@ -44,7 +45,7 @@ public class NominaDAO {
 		}
 	}
 	
-	public static List<NominaModel> verNomina(int id_Empleado) {
+	public static List<NominaModel> verNomina(int id_Empleado,int id_nomina) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -53,8 +54,9 @@ public class NominaDAO {
 		ResultSet rs = null; 
 		
 		try { 
-			stmt=conn.prepareStatement("SELECT * FROM nomina WHERE id_empleado=?");
+			stmt=conn.prepareStatement("SELECT * FROM nomina WHERE id_empleado=? and id_nomina=?; ");
 			stmt.setInt(1, id_Empleado);
+			stmt.setInt(2,id_nomina);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
 				NominaModel nomina=new NominaModel(rs.getInt("id_nomina"),rs.getInt("id_empleado"),rs.getInt("id_incentivo"),rs.getInt("id_sueldo"),rs.getInt("valor"));
