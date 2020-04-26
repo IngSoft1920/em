@@ -1,88 +1,85 @@
 <html lan="es">
 
 <head>
-  <meta charset="utf-8">	<!--Para decodificación de caracteres especiales -->
-  <title> USUARIO  : </title> <!--Título-->
-  <link rel="stylesheet" type="text/css" href="css/bajas.css"> <!--carpeta donde se encuentra el estilo css-->
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<meta charset="utf-8">
+<!--Para decodificación de caracteres especiales -->
+<title>USUARIO :</title>
+<!--Título-->
+<link rel="stylesheet" type="text/css" href="css/bajas.css">
+<!--carpeta donde se encuentra el estilo css-->
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
 </head>
 
 <body>
 
 	<script type="text/javascript">
+		$(function() {
+			$("#inicio").datepicker({
+				dateFormat : "yy-mm-dd"
+			}).val()
+		});
 
-$(function() {
-    $("#inicio").datepicker({ dateFormat: "yy-mm-dd" }).val()
-});
+		$(function() {
+			$("#fin").datepicker({
+				dateFormat : "yy-mm-dd"
+			}).val()
+		});
+		
 
+		function mensaje() {
 
-$(function() {
-    $("#fin").datepicker({ dateFormat: "yy-mm-dd" }).val()
-});
-/*
-$(function(){
-	$("/enviarPDF")
-});
-*/
+			var todo_correcto = true;
 
-function mensaje(){
+			if (document.getElementById('inicio').value == '') {
+				todo_correcto = false;
+			}
+			if (document.getElementById('fin').value == '') {
+				todo_correcto = false;
+		
+		    }
 
-var todo_correcto=true;
+			if (document.getElementById('enviarPDF').value == '') {
+				todo_correcto = false;
+			}
 
-if(document.getElementById('inicio').value==''){
-todo_correcto=false;
-}
-if(document.getElementById('fin').value==''){
-todo_correcto=false;
-}
-/*
-if(document.getElementById('enviarPDF').value==''){
-	todo_correcto=false;
-	}
-	*/
+			
 
-if(document.getElementById('buscar').value==''){
-todo_correcto=false;
-}
+			if (!todo_correcto) {
+				alert('Debes rellenar todos los campos');
+			}
 
-if(!todo_correcto){
-alert('Debes rellenar todos los campos');
-}
+			if (todo_corecto) {
 
-if(todo_corecto){
+				alert('Se ha enviado tu peticion correctamente');
+			}
 
-alert('Se ha enviado tu peticion correctamente');
-}
+		}
+	</script>
 
-}
+	<header class="header">
+		<!-- La parte de arriba de la página web-->
+		<div id="encabezado">
+			<div id="logo">BAJAS</div>
 
+			<div id="menu">
+				<ul>
+					<li><a href="/menu6" class="enlace">Inicio</a></li>
+					<li><a href="/nomina6" class="enlace">Nomina</a></li>
+					<li><a href="/turnos6" class="enlace">Turnos</a></li>
+					<li><a href="/tareas6" class="enlace">Tareas</a></li>
+					<li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
+					<li><a href="/perfil6" class="enlace">Perfil</a></li>
+					<li><a href="/registro3" class="enlace">Registro</a></li>
+					<li><a href="/cerrar6" class="enlace">Cerrar Sesion</a></li>
+				</ul>
+			</div>
 
-</script>
-	
-  <header class="header"> <!-- La parte de arriba de la página web-->
-    <div id="encabezado">
-      <div id="logo">
-        BAJAS
-      </div>
-
-      <div id="menu">
-        <ul>
-          <li><a href="/menu6" class="enlace">Inicio</a></li>
-          <li><a href="/nomina6" class="enlace">Nomina</a></li>
-          <li><a href="/turnos6" class="enlace">Turnos</a></li>
-          <li><a href="/tareas6" class="enlace">Tareas</a></li>
-          <li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
-          <li><a href="/perfil6" class="enlace">Perfil</a></li>
-          <li><a href="/registro3" class="enlace">Registro</a></li>
-          <li><a href="/cerrar6" class="enlace">Cerrar Sesion</a></li>
-        </ul>
-      </div>
-
-    </div>
-  </header>
+		</div>
+	</header>
 
 
 
@@ -109,21 +106,21 @@ alert('Se ha enviado tu peticion correctamente');
 				</article>
 			</section>
 
-			<section id="principal">
-			<section id="publicaciones">
-				<article class="post">
-					<h1 class="titulo-post">
-						Justificante
-						<td><input type="text" name="enviarPDF" id="enviarPDF"
-							required></td>
-					</h1>
-				</article>
-			</section>
 
+            <section id="publicaciones">
+			<form name="formulario" method="post"
+				action="http://pagina.com/send.php" enctype="multipart/form-data">
+				<!-- �No olvides el enctype! -->
+				<!-- Campo de selecci�n de archivo -->
+				<input type="file" name="adjunto" id="enviarPDF" accept=".pdf,.jpg,.png" multiple>
+			</form>
 			<section id="publicaciones">
-				<input type="submit" value="Enviar" onClick="mensaje()">
+			<section id="principal">
+
+				<section id="publicaciones">
+					<input type="submit" value="Enviar" onClick="mensaje()">
+				</section>
 			</section>
-		</section>
 	</form>
 
 	<input type="submit" value="Ver Bajas Previas"
@@ -293,4 +290,5 @@ header {
 .nav li ul li {
 	top: 0px;
 }
-</style></html>
+</style>
+</html>
