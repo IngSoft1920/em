@@ -42,6 +42,9 @@ public class GenerarPDF {
   
     	Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
+        String sueldo_base = null;
+		String incentivos = null, penalizacion = null;
+		Float total=null;
 
         try {
         	
@@ -119,26 +122,38 @@ public class GenerarPDF {
 		 	PdfPTable table3 = new PdfPTable(3);
 			
 			PdfPCell hcell3;
-			hcell3 = new PdfPCell(new Phrase("Precio", categoryFont));
-			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
-			table3.addCell(hcell3);
-			
-			hcell3= new PdfPCell(new Phrase("Cantidad",categoryFont));
-			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
-			table3.addCell(hcell3);
-			
 			hcell3 = new PdfPCell(new Phrase("Concepto",categoryFont));
 			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
 			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			table3.addCell(hcell3);
+			
+			hcell3 = new PdfPCell(new Phrase("Devengos", categoryFont));
+			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table3.addCell(hcell3);
+			
+			hcell3= new PdfPCell(new Phrase("Deducciones",categoryFont));
+			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table3.addCell(hcell3);
+			
+
  	
 			for (NominaModel nomina:listaNominas) {
 				
-				table3.addCell(Integer.toString(nomina.getId_sueldo())+ "\n"+ Integer.toString(nomina.getValor())+ "\n"+"19,00 \n"+"22,00 \n"+"15,00 \n");
-	        	table3.addCell("1 \n"+"3 \n"+"4 \n"+"7 \n"+"11 \n");
-	        	table3.addCell("Salario Base\n"+ "Botella de vino\n"+"Plato caro \n"+"Botella de Champagne \n"+"Otros \n");
+				sueldo_base=Integer.toString(nomina.getValor());
+				incentivos=Integer.toString(nomina.getId_incentivo());
+				penalizacion=Float.toString(sueldo);
+				total = nomina.getValor()+nomina.getId_incentivo()+sueldo;
+				
+	        	table3.addCell("Salario Base\n"+ 
+	        					"Incentivos\n"+
+	        					"Penalizaciones por inclumplimiento de horas de trabajo \n");
+				table3.addCell(Integer.toString(nomina.getValor())+ "\n"+
+	        					Integer.toString(nomina.getId_incentivo()));
+	        	table3.addCell("\n"+
+	        					"\n"+
+	        					Float.toString(sueldo));
         		
 			}
 			
@@ -150,9 +165,48 @@ public class GenerarPDF {
         	hcell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
         	hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table4.addCell(hcell4);
-        	PdfPCell Total_dinero = new PdfPCell(new Phrase(Float.toString(sueldo)));  
+			PdfPCell Total_dinero = new PdfPCell(new Phrase(Float.toString(total)));  
         	Total_dinero.setHorizontalAlignment(Element.ALIGN_RIGHT);
             table4.addCell(Total_dinero);
+            
+            
+            /*PdfPTable table5 = new PdfPTable(5);
+			
+			PdfPCell hcell5;
+			hcell5 = new PdfPCell(new Phrase("ID_SUELDO", categoryFont));
+			hcell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table5.addCell(hcell5);
+			
+			hcell5= new PdfPCell(new Phrase("GET_VALOR",categoryFont));
+			hcell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table5.addCell(hcell5);
+			
+			hcell5 = new PdfPCell(new Phrase("ID_EMPLEADO",categoryFont));
+			hcell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table5.addCell(hcell5);
+ 	
+			hcell5 = new PdfPCell(new Phrase("ID_INCENTIVO",categoryFont));
+			hcell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table5.addCell(hcell5);
+			
+			hcell5 = new PdfPCell(new Phrase("ID_NOMINA",categoryFont));
+			hcell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table5.addCell(hcell5);
+			for (NominaModel nomina:listaNominas) {
+				
+				table5.addCell(Integer.toString(nomina.getId_sueldo()));
+	        	table5.addCell(Integer.toString(nomina.getValor()));
+	        	table5.addCell(Integer.toString(nomina.getId_empleado()));
+	        	table5.addCell(Integer.toString(nomina.getId_incentivo()));
+	        	table5.addCell(Integer.toString(nomina.getId_nomina()));
+        		
+			}
+            */
         		        	
         	PdfWriter.getInstance(document, out);
         	
