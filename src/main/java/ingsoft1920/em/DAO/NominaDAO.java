@@ -13,18 +13,18 @@ import ingsoft1920.em.Model.SueldoModel;
 
 public class NominaDAO {
 	static Connection conn;
-	public static void asignarNomina(int id_Empleado,int sueldo,int id_nomina) {
+	public static void asignarNomina(int id_Empleado,int sueldo,int id_mes) {
 		//CONSULTA1-> Metemos en la tabla nomina 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
 		PreparedStatement stmt= null; 
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO nomina(id_nomina,id_Empleado,valor)"+
+			  stmt=conn.prepareStatement("INSERT INTO nomina(id_Empleado,valor,id_mes)"+
 						"values( ? , ?, ?);");
-			  				stmt.setInt(1,id_nomina);
-							stmt.setInt(2, id_Empleado);
-							stmt.setInt(3, sueldo);
+							stmt.setInt(1, id_Empleado);
+							stmt.setInt(2, sueldo);
+							stmt.setInt(3,id_mes);
 							stmt.executeUpdate();
 		   
         } 
