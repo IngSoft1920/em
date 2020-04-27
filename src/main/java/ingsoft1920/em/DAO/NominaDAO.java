@@ -20,7 +20,7 @@ public class NominaDAO {
 		}
 		PreparedStatement stmt= null; 
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO nomina(id_Empleado,valor,id_mes)"+
+			  stmt=conn.prepareStatement("INSERT INTO nomina(id_empleado,valor,id_mes)"+
 						"values( ? , ?, ?);");
 							stmt.setInt(1, id_Empleado);
 							stmt.setInt(2, sueldo);
