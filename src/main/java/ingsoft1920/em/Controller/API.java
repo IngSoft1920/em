@@ -329,6 +329,7 @@ public class API {
 			//consulta sql
 			List<EmpleadoModelC4> listaEmpleados = new ArrayList<EmpleadoModelC4>();
 			listaEmpleados = EmpleadoDAO.sacaEmpleados4();
+			
 			//Guardamos la info de la consulta en formato JSON
 			JsonArray listaIDEmpleados = new JsonArray();
 			JsonArray listaIDHotel = new JsonArray();
