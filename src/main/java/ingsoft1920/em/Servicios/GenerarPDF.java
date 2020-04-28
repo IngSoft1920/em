@@ -132,7 +132,7 @@ public class GenerarPDF {
 			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			table3.addCell(hcell3);
 			
-			hcell3= new PdfPCell(new Phrase("Deducciones",categoryFont));
+			hcell3= new PdfPCell(new Phrase("Reducciones",categoryFont));
 			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
 			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			table3.addCell(hcell3);

@@ -139,9 +139,8 @@ public class API {
         //Ejecutamos query
 		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
-		for(int i=1;i<=12;i++) {
-		NominaDAO.asignarNomina(id_empleado, valor,i);
-		}
+		NominaDAO.asignarNomina(id_empleado, valor);
+
 		for(JsonElement elem : dias) {
 			int dia_libre=elem.getAsInt();
 			EmpleadoDAO.añadirDiasLibres(id_empleado,dia_libre);	

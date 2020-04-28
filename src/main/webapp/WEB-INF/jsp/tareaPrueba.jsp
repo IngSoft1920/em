@@ -14,13 +14,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu5" class="enlace">Inicio</a></li>
-          <li><a href="/nomina5" class="enlace">Nomina</a></li>
+          <li><a href="/nomina5" class="enlace">Nómina</a></li>
           <li><a href="/turnos5" class="enlace">Turnos</a></li>
           <li><a href="/tareas5" class="activate-menu">Tareas</a></li>
           <li><a href="/ausencias5" class="enlace">Ausencias</a></li>
           <li><a href="/perfil5" class="enlace">Perfil</a></li>
           <li><a href="/registro5" class="enlace">Registro</a></li>
-          <li><a href="/cerrar5" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar5" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>
@@ -35,7 +35,7 @@
             <th class="text-center">HORA FIN</th>
             <th class="text-center">DESCRIPCION TAREA</th>
             <th class="text-center">LUGAR TAREA</th>
-            <th class="text-center">Estado</th>
+            <th class="text-center">ESTADO</th>
             
           </tr>
           </thead>

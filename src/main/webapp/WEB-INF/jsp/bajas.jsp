@@ -68,13 +68,13 @@
 			<div id="menu">
 				<ul>
 					<li><a href="/menu6" class="enlace">Inicio</a></li>
-					<li><a href="/nomina6" class="enlace">Nomina</a></li>
+					<li><a href="/nomina6" class="enlace">Nómina</a></li>
 					<li><a href="/turnos6" class="enlace">Turnos</a></li>
 					<li><a href="/tareas6" class="enlace">Tareas</a></li>
 					<li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
 					<li><a href="/perfil6" class="enlace">Perfil</a></li>
 					<li><a href="/registro3" class="enlace">Registro</a></li>
-					<li><a href="/cerrar6" class="enlace">Cerrar Sesion</a></li>
+					<li><a href="/cerrar6" class="enlace">Cerrar Sesión</a></li>
 				</ul>
 			</div>
 

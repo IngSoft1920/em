@@ -25,13 +25,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/nomina2" class="enlace">Nómina</a></li>
           <li><a href="/turnos2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/ausencias2" class="enlace">Ausencias</a></li>
           <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
           <li><a href="/registro2" class="enlace">Registro</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -55,7 +55,7 @@
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Telefono: <td>${empleado.telefono }<br></td></h1>
+          			<h1 class="titulo-post">Teléfono: <td>${empleado.telefono }<br></td></h1>
         		
       		</article>
 		</section>
@@ -79,7 +79,7 @@
 		<section id="publicaciones">
       		<article class="post">
 
-          			<input type="submit" value="CAMBIO CONTRASENA" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
+          			<input type="submit" value="CAMBIO CONTRASEÑA" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
         		
       		</article>
 		</section>

@@ -26,13 +26,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu8" class="enlace">Inicio</a></li>
-          <li><a href="/nomina8" class="enlace">Nomina</a></li>
+          <li><a href="/nomina8" class="enlace">Nómina</a></li>
           <li><a href="/turnos8" class="enlace">Turnos</a></li>
           <li><a href="/tareas8" class="enlace">Tareas</a></li>
           <li><a href="/ausencias8" class="enlace">Ausencias</a></li>
           <li><a href="/perfil8" class="activate-menu">Perfil</a></li>
           <li><a href="/registro8" class="enlace">Registro</a></li>
-          <li><a href="/cerrar8" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar8" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -49,7 +49,7 @@
 	
     <section id="publicaciones">
       <article class="post">
-          <h1 class="titulo-post">Nueva contrasena:
+          <h1 class="titulo-post">Nueva contraseña:
             <td><input type="text" name="inicio" id="inicio" required></td>
           </h1>
       </article>
@@ -57,7 +57,7 @@
 		
 		<section id="publicaciones">
       <article class="post">
-          <h1 class="titulo-post">Repite la nueva contrasena:
+          <h1 class="titulo-post">Repite la nueva contraseña:
             <td><input type="text" name="inicio" id="inicio" required></td>
           </h1>
       </article>
