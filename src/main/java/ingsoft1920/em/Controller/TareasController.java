@@ -137,7 +137,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@PostMapping("/eliminarTarea/{parametro}")
 	public String eliminarTarea(Model model, @PathVariable("parametro") int id_tarea) {
 		ActividadesDHO.peticionEliminarTarea(id_tarea);
-		return "tareaPrueba";
+		return "redirect:tareaPrueba";
 	}
 	
 }
