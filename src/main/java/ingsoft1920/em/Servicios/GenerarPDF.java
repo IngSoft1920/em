@@ -44,7 +44,7 @@ public class GenerarPDF {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         String sueldo_base = null;
 		String incentivos = null, penalizacion = null;
-		Float total=null;
+		Float total=0f;
 
         try {
         	
@@ -84,12 +84,12 @@ public class GenerarPDF {
         	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table1.addCell(hcell1);
         	
-        	hcell1= new PdfPCell(new Phrase("Telefono",categoryFont));
+        	hcell1= new PdfPCell(new Phrase("Teléfono",categoryFont));
         	hcell1.setHorizontalAlignment(Element.ALIGN_CENTER);
         	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table1.addCell(hcell1);
         	
-        	hcell1 = new PdfPCell(new Phrase("Categoria",categoryFont));
+        	hcell1 = new PdfPCell(new Phrase("Categoría",categoryFont));
         	hcell1.setHorizontalAlignment(Element.ALIGN_CENTER);
         	hcell1.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table1.addCell(hcell1);
@@ -102,7 +102,7 @@ public class GenerarPDF {
         	PdfPTable table2 = new PdfPTable(2);
         	PdfPCell hcell2;
         	
-        	hcell2 = new PdfPCell(new Phrase("Id Nomina", categoryFont));
+        	hcell2 = new PdfPCell(new Phrase("Id Nómina", categoryFont));
         	hcell2.setHorizontalAlignment(Element.ALIGN_CENTER);
         	hcell2.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table2.addCell(hcell2);

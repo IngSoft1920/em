@@ -44,7 +44,7 @@ public class NominaDAO {
 		}
 	}
 	
-	public static List<NominaModel> verNomina(int id_Empleado,int id_mes) {
+	public static List<NominaModel> verNomina(int id_Empleado) {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -53,9 +53,8 @@ public class NominaDAO {
 		ResultSet rs = null; 
 		
 		try { 
-			stmt=conn.prepareStatement("SELECT * FROM nomina WHERE id_empleado=? and id_mes=?; ");
+			stmt=conn.prepareStatement("SELECT * FROM nomina WHERE id_empleado=?; ");
 			stmt.setInt(1, id_Empleado);
-			stmt.setInt(2,id_mes);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
 				NominaModel nomina=new NominaModel(rs.getInt("id_nomina"),rs.getInt("id_empleado"),rs.getInt("id_incentivo"),rs.getInt("id_sueldo"),rs.getInt("valor"));

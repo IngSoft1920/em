@@ -27,7 +27,7 @@ public class PDFController {
 	public ResponseEntity<InputStreamResource> generarNomina( @PathVariable("parametro") int mes){
 		float horas,sueldo;
 		sueldo=-1;
-		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado,mes);
+		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado);
 		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado); 
 		horas=HorarioDAO.horasAlMes(LoginController.id_empleado, mes);
 		if(horas==0) {
