@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.Model.IncentivosModel;
 import ingsoft1920.em.Model.NominaModel;
 
 public class GenerarPDF {
@@ -38,7 +39,7 @@ public class GenerarPDF {
     private static final Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 	
 
-	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo, DatoEmpleadoBean empleado) {             
+	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo, DatoEmpleadoBean empleado,List<IncentivosModel> listaIncentivos) {             
   
     	Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
