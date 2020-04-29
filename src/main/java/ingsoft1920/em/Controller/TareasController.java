@@ -133,11 +133,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String registrop(Model model) {
 		return "registro";
 	}
-	
+	@GetMapping("/eliminarTarea")
+	public String eliminarTarea(Model model) {
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
+	}
 	@PostMapping("/eliminarTarea/{parametro}")
 	public String eliminarTarea(Model model, @PathVariable("parametro") int id_tarea) {
 		ActividadesDHO.peticionEliminarTarea(id_tarea);
-		return "redirect:tareaPrueba";
+		return "redirect:/eliminarTarea";
 	}
 	
 }
