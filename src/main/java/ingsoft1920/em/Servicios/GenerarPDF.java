@@ -42,9 +42,11 @@ public class GenerarPDF {
 	public static ByteArrayInputStream generarPDF(List<NominaModel> listaNominas,float sueldo, DatoEmpleadoBean empleado,List<IncentivosModel> listaIncentivos) {             
   
     	Document document = new Document();
+    	document.setMargins(15,15,42,40);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         String sueldo_base = null;
-		String incentivos = null, penalizacion = null;
+		int incentivos = 0;
+		String penalizacion = null;
 		Float total=0f;
 
         try {
@@ -121,7 +123,8 @@ public class GenerarPDF {
 		 	}
  			
 		 	PdfPTable table3 = new PdfPTable(3);
-			
+		 	float[] medidaCeldas = {2.50f, 1.00f, 1.00f};
+		 	table3.setWidths(medidaCeldas);
 			PdfPCell hcell3;
 			hcell3 = new PdfPCell(new Phrase("Concepto",categoryFont));
 			hcell3.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -143,26 +146,30 @@ public class GenerarPDF {
 			for (NominaModel nomina:listaNominas) {
 				
 				sueldo_base=Integer.toString(nomina.getValor());
-				incentivos=Integer.toString(nomina.getId_incentivo());
+				incentivos=0;
 				penalizacion=Float.toString(sueldo);
-				total = nomina.getValor()+nomina.getId_incentivo()+sueldo;
 				
-	        	table3.addCell("Salario Base\n"+ 
-	        					"Incentivos\n"+
-	        					"Penalizaciones por inclumplimiento de horas de trabajo \n");
-				table3.addCell(Integer.toString(nomina.getValor())+ "\n"+
-	        					Integer.toString(nomina.getId_incentivo()));
-	        	table3.addCell("\n"+
-	        					"\n"+
-	        					Float.toString(sueldo));
-        		
+				
+				for (IncentivosModel incentivo: listaIncentivos) {
+					incentivos=incentivos+incentivo.getValor(); 
+				}
+				
+				total = nomina.getValor()+incentivos+sueldo;
+				table3.addCell("Salario Base\n\n"+ 
+    					"Incentivos"+"\n\n"+
+    					"Penalizaciones por inclumplimiento de horas de trabajo \n");
+				table3.addCell(Integer.toString(nomina.getValor())+ "\n\n"+
+    					incentivos);
+				table3.addCell("\n\n"+
+    					"\n\n"+
+    					Float.toString(sueldo));
 			}
 			
        
         	PdfPTable table4 = new PdfPTable(1);
         	
         	PdfPCell hcell4;
-        	hcell4 = new PdfPCell(new Phrase("Liquido a recibir", categoryFont));
+        	hcell4 = new PdfPCell(new Phrase("Líquido a recibir", categoryFont));
         	hcell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
         	hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table4.addCell(hcell4);
