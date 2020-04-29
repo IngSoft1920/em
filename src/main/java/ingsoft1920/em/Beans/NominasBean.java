@@ -6,6 +6,7 @@ public class NominasBean {
 	private int id_incentivo;
 	private int id_sueldo;
 	private int valor;
+	private String nombre;
 	
 	public NominasBean() {}
 	
@@ -47,4 +48,10 @@ public class NominasBean {
 		this.valor = valor;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 }

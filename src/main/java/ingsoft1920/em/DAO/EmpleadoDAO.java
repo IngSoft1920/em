@@ -446,10 +446,10 @@ public class EmpleadoDAO {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			stmt = conn.prepareStatement("SELECT empleado.id_empleado,empleado.id_hotel,rol.nombre_rol,nomina.valor,incentivos.valor from empleado join nomina on empleado.id_empleado=nomina.id_empleado join rol on rol.id_empleado=nomina.id_empleado join incentivos on incentivos.id_empleado=empleado.id_empleado");
+			stmt = conn.prepareStatement("SELECT empleado.id_empleado,empleado.id_hotel,rol.nombre_rol,nomina.valor from empleado join nomina on empleado.id_empleado=nomina.id_empleado join rol on rol.id_empleado=nomina.id_empleado;");
 			rs=stmt.executeQuery();
 			while(rs.next()) {
-				EmpleadoModelC4 empleado = new EmpleadoModelC4(rs.getInt("empleado.id_empleado"),rs.getInt("empleado.id_hotel"),rs.getString("rol.nombre_rol"),rs.getInt("nomina.valor"),rs.getInt("incentivos.valor"));
+				EmpleadoModelC4 empleado = new EmpleadoModelC4(rs.getInt("empleado.id_empleado"),rs.getInt("empleado.id_hotel"),rs.getString("rol.nombre_rol"),rs.getInt("nomina.valor"),0);
 				res.add(empleado);
 			}
 			

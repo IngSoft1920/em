@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -134,14 +135,14 @@ public class API {
         java.sql.Date fecha = new java.sql.Date(parsed.getTime());
         //contrasenia y dias libres
         String contrasenia=obj.get("contrasenia").getAsString();
-        JsonArray dias=obj.get("dias_libres").getAsJsonArray();
-        
+        JsonArray dias=JsonParser.parseString(obj.get("dias_libres").getAsString()).getAsJsonArray();
         //Ejecutamos query
 		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 		NominaDAO.asignarNomina(id_empleado, valor);
-		for(int i=0;i<dias.size();i++) {
-			int dia_libre=dias.getAsInt();
+
+		for(JsonElement elem : dias) {
+			int dia_libre=elem.getAsInt();
 			EmpleadoDAO.añadirDiasLibres(id_empleado,dia_libre);	
 		}
 		
@@ -150,7 +151,7 @@ public class API {
 	//API ELIMINAR EMPLEADO
 	@ResponseBody
 	@PostMapping("/eliminarEmpleado")
-	//Recibimos correo
+	//Recibimos id
 	public void eliminaEmpleado(@RequestBody String req) {
 		//Creamos el objeto json con los parametros recibidos
 		JsonObject obj = (JsonObject) JsonParser.parseString(req);
@@ -328,6 +329,7 @@ public class API {
 			//consulta sql
 			List<EmpleadoModelC4> listaEmpleados = new ArrayList<EmpleadoModelC4>();
 			listaEmpleados = EmpleadoDAO.sacaEmpleados4();
+			
 			//Guardamos la info de la consulta en formato JSON
 			JsonArray listaIDEmpleados = new JsonArray();
 			JsonArray listaIDHotel = new JsonArray();

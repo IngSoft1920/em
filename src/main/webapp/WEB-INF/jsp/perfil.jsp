@@ -44,13 +44,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/nomina2" class="enlace">Nómina</a></li>
           <li><a href="/turno2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/vacaciones2" class="enlace">Vacaciones</a></li>
           <li><a href="/bajas2" class="enlace">Bajas</a></li>
           <li><a href="/perfil2" class="activate-menu">Perfil</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -63,7 +63,7 @@
 
         <a href="" class="enlace-post">
           <h1 class="titulo-post">Nombre
-            <td><input type="text" name="buscar" placeholder="Escribe aqui"></td>
+            <td><input type="text" name="buscar" placeholder="Escribe aquí"></td>
           </h1>
         </a>
 
@@ -76,7 +76,7 @@
       <article class="post">
 
         <a href="" class="enlace-post">
-          <h1 class="titulo-post">Apellidos <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+          <h1 class="titulo-post">Apellidos <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
         </a>
 
 
@@ -88,7 +88,7 @@
     <article class="post">
 
       <a href="" class="enlace-post">
-        <h1 class="titulo-post">Direccion de correo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+        <h1 class="titulo-post">Direccion de correo <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
       </a>
 
 
@@ -100,7 +100,7 @@
   <article class="post">
 
     <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero seg social <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+      <h1 class="titulo-post">Numero seg social <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
     </a>
 
 
@@ -111,7 +111,7 @@
   <article class="post">
 
     <a href="" class="enlace-post">
-      <h1 class="titulo-post">Hotel <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+      <h1 class="titulo-post">Hotel <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
     </a>
 
 
@@ -122,7 +122,7 @@
   <article class="post">
 
     <a href="" class="enlace-post">
-      <h1 class="titulo-post">Numero de contacto <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+      <h1 class="titulo-post">Numero de contacto <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
     </a>
 
 
@@ -134,7 +134,7 @@
     <article class="post">
 
       <a href="" class="enlace-post">
-        <h1 class="titulo-post">Puesto de trabajo <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+        <h1 class="titulo-post">Puesto de trabajo <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
       </a>
 
 
@@ -148,7 +148,7 @@
     <article class="post">
 
       <a href="" class="enlace-post">
-        <h1 class="titulo-post">Fecha de nacimiento <td><input type="text" name="buscar" placeholder="Escribe aqui"></td></h1>
+        <h1 class="titulo-post">Fecha de nacimiento <td><input type="text" name="buscar" placeholder="Escribe aquí"></td></h1>
       </a>
 
     </article>

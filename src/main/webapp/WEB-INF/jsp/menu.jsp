@@ -19,13 +19,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu" class="activate-menu">Inicio</a></li>
-          <li><a href="/nomina" class="enlace">Nomina</a></li>
+          <li><a href="/nomina" class="enlace">Nómina</a></li>
           <li><a href="/turnos" class="enlace">Turnos</a></li>
           <li><a href="/tareas" class="enlace">Tareas</a></li>
           <li><a href="/ausencias" class="enlace">Ausencias</a></li>
           <li><a href="/perfil" class="enlace">Perfil</a></li>
           <li><a href="/registro" class="enlace">Registro</a></li>
-          <li><a href="/cerrar" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>

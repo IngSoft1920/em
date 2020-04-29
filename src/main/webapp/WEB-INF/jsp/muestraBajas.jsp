@@ -11,9 +11,7 @@
 
 
 	<jsp:useBean id="sesionActual" class="ingsoft1920.em.Beans.DatoEmpleadoBean" scope="application"/>
-	<table>
-	<tr><td>Nombre: </td><td><jsp:getProperty name="sesionActual" property="usuario"/></td></tr>
-	</table>
+
 	
 	
   <header class="header"> <!-- La parte de arriba de la pÃ¡gina web-->
@@ -25,13 +23,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu2" class="enlace">Inicio</a></li>
-          <li><a href="/nomina2" class="enlace">Nomina</a></li>
+          <li><a href="/nomina2" class="enlace">Nómina</a></li>
           <li><a href="/turnos2" class="enlace">Turnos</a></li>
           <li><a href="/tareas2" class="enlace">Tareas</a></li>
           <li><a href="/ausencias2" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil2" class="enlace">Perfil</a></li>
           <li><a href="/registro3" class="enlace">Registro</a></li>
-          <li><a href="/cerrar2" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar2" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -47,6 +45,7 @@
 					<b>ID BAJA:</b> ${baja.id_Baja} <br>
 					<b>DURACION:</b> ${baja.duracion} DIAS<br>
 					<b>ESTADO:</b> ${baja.estado} <br>
+					<b>TIPO:</b> ${baja.tipo} <br>
 					<b>FECHA INICIO:</b> ${baja.fecha_inicio} <br>
 					<b>FECHA FIN:</b> ${baja.fecha_fin} <br>
 				</p>
