@@ -22,7 +22,7 @@ import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.TurnoModel;
-import ingsoft1920.em.Servicios.JFileChooserTest;
+
 
 @Controller 
 
@@ -131,20 +131,5 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		BajasCM.peticionPedirBaja(LoginController.id_empleado,id_baja,bajaBean);
 		return "bajas";
 	}
-	@GetMapping("/enviarPDF")
-	public String enviarPDF(Model model) {
-		JFileChooserTest test = new JFileChooserTest();
-		test.setDefaultCloseOperation(0);
-		test.setSize(400, 110);
-		test.setVisible(true);
-		return "enviarPDF";
-	}
-	@PostMapping("/enviarPDF")
-	public String enviarPDF1(Model model) {
-		return "enviarPDF";
-	}
-	
-
-	
 	
 }

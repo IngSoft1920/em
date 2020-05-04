@@ -66,7 +66,7 @@ public class VacacionesDAO {
 		}
 		PreparedStatement stmt = null; 
 		try { 
-			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado=? WHERE id_vacacion=?;");
+			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado=? WHERE id_vacaciones=?;");
 			   stmt.setString(1, estado);
 			   stmt.setInt(2, id_vacacion);
 			   stmt.executeUpdate();

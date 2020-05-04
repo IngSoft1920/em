@@ -59,13 +59,13 @@ alert('Se ha enviado tu peticion correctamente');
       <div id="menu">
         <ul>
           <li><a href="/menu7" class="enlace">Inicio</a></li>
-          <li><a href="/nomina7" class="enlace">Nomina</a></li>
+          <li><a href="/nomina7" class="enlace">Nómina</a></li>
           <li><a href="/turnos7" class="enlace">Turnos</a></li>
           <li><a href="/tareas7" class="enlace">Tareas</a></li>
           <li><a href="/ausencias7" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil7" class="enlace">Perfil</a></li>
           <li><a href="/registro3" class="enlace">Registro</a></li>
-          <li><a href="/cerrar7" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar7" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -73,7 +73,7 @@ alert('Se ha enviado tu peticion correctamente');
   </header>
  
  	<u1>			
- 	<b>dias restantes:</b> ${diasRestantes} <br>
+ 	<b>días restantes:</b> ${diasRestantes} <br>
 	</u1>	
 
  

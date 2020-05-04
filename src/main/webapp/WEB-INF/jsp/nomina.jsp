@@ -23,6 +23,22 @@
 
 <body>
 
+
+
+<script type="text/javascript">
+
+String mes=request.getParameter("mes");
+
+
+
+
+
+
+}
+
+
+</script>
+
   <header class="header"> <!-- La parte de arriba de la pÃ¡gina web-->
     <div id="encabezado">
       <div id="logo">
@@ -32,13 +48,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu3" class="enlace">Inicio</a></li>
-          <li><a href="/nomina3" class="activate-menu">Nomina</a></li>
+          <li><a href="/nomina3" class="activate-menu">Nómina</a></li>
           <li><a href="/turnos3" class="enlace">Turnos</a></li>
           <li><a href="/tareas3" class="enlace">Tareas</a></li>
           <li><a href="/ausencias3" class="enlace">Ausencias</a></li>
           <li><a href="/perfil3" class="enlace">Perfil</a></li>
           <li><a href="/registro3" class="enlace">Registro</a></li>
-          <li><a href="/cerrar3" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar3" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
 
@@ -47,41 +63,40 @@
 
   <section id="principal">
     
-          <h2> -> Para visualizar la nomina elige un mes: </h2><br/>
+          <h2> Para visualizar la nómina elige un mes: </h2><br/>
         
 
         <table border="tabla">
 
 
           <tbody>
-          <tr>
-            <td>
+
 
               <nav class="nav">
               <ul class="menu">
 
               <li><a> Elige un mes </a>
                   <ul class="submenu">
-                      <li><a href="/generarPDF">Enero</a></li>
-                      <li><a href="/generarPDF">Febrero</a></li>
-                      <li><a href="/generarPDF">Marzo</a></li>
-                      <li><a href="/generarPDF">Abril</a></li>
-                      <li><a href="/generarPDF">Mayo</a></li>
-                      <li><a href="/generarPDF">Junio</a></li>
-                      <li><a href="/generarPDF">Julio</a></li>
-                      <li><a href="/generarPDF">Agosto</a></li>
-                      <li><a href="/generarPDF">Septiembre</a></li>
-                      <li><a href="/generarPDF">Octubre</a></li>
-                      <li><a href="/generarPDF">Noviembre</a></li>
-                      <li><a href="/generarPDF">Diciembre</a></li>
+                      <li><a href="/generarPDF/01">Enero</a></li>
+                      <li><a href="/generarPDF/02">Febrero</a></li>
+                      <li><a href="/generarPDF/03">Marzo</a></li>
+                      <li><a href="/generarPDF/04">Abril</a></li>
+                      <li><a href="/generarPDF/05">Mayo</a></li>
+                      <li><a href="/generarPDF/06">Junio</a></li>
+                      <li><a href="/generarPDF/07">Julio</a></li>
+                      <li><a href="/generarPDF/08">Agosto</a></li>
+                      <li><a href="/generarPDF/09">Septiembre</a></li>
+                      <li><a href="/generarPDF/10">Octubre</a></li>
+                      <li><a href="/generarPDF/11">Noviembre</a></li>
+                      <li><a href="/generarPDF/12">Diciembre</a></li>
                   </ul>
               </li>
 
+</form>
               </ul>
               </nav>
 
-            </td>
-          </tr>
+
           </tbody>
 
         </table>
@@ -165,93 +180,94 @@ header{
 
 /*--------contenido principal ---------*/
 
-#principal{
-  width: 60%;
-  height: 90%; overflow: hidden;
-  border: 0px solid; /* si no le ponemos nada significa negro*/
-  margin: 0px auto;
-  padding:15px;
+#principal {
+	width: 80%;
+	height: auto;
+	overflow: hidden;
+	border: 0px solid; /* si no le ponemos nada significa negro*/
+	margin: 10px auto;
 }
 
-h2{
-color:#585858;
-
+#publicaciones {
+	width: 70%;
+	height: auto;
+	overflow: hidden;
+	border: 0px solid red; /*significa que es rojo*/
+	margin-top: 0px;
+	float: left;
 }
 
-.enlace-post{
- text-decoration: none;
- width:90%;
- padding: 5px;
- height: 5px;
- color: #01a9db;
-
+.post { /*aplicar estilo a cada articulo. Espacios del texto*/
+	width: 96%;
+	height: auto;
+	overflow: hidden;
+	padding: 10px 7px;
+	background: #fdfdfd;
+	border-Left-style: solid;
+	border-Left-width: 5px;
+	border-Left-color: #0489B1;
+	border-radius: 10px;
+	box-shadow: 0px 0px 15px #ccc; /*color gris*/
+	margin-bottom: 25px;
 }
 
-
-
-.menu > li{
-
-  position:relative;
-  display: inline-inline-block;
-  float:left;
+.enlace-post {
+	text-decoration: none;
 }
 
-.menu > li > a{
-  display: block;
-  padding: 5px 20px;
-  color: #353535;
-  font-family: 'Open sans';
-  text-decoration: none;
-
+.menu>li {
+	position: relative;
+	display: inline-inline-block;
+	float: left;
 }
 
-
-.menu li a:hover{
-  color: #CE7D35;
-
-
+.menu>li>a {
+	display: block;
+	padding: 5px 20px;
+	color: #353535;
+	font-family: 'Open sans';
+	text-decoration: none;
 }
 
-.submenu{
-  position: absolute;
-  background: #006480;
-  visibility: hidden;
-  opacity: 0;
-  list-style: none;
-
-
+.menu li a:hover {
+	color: #CE7D35;
 }
 
-.submenu li a{
-  display: block;
-  color: #fff;
-  padding: 10px;
-  font-family: 'Open sans';
-  text-decoration: none;
-  position: relative;
+.submenu {
+	position: absolute;
+	background: #006480;
+	visibility: hidden;
+	opacity: 0;
+	list-style: none;
 }
 
-.menu li:hover .submenu{
-  visibility: visible;
-  opacity: 1;
-  position: relative;
-
+.submenu li a {
+	display: block;
+	color: #fff;
+	padding: 10px;
+	font-family: 'Open sans';
+	text-decoration: none;
+	position: relative;
 }
 
-.nav li:hover > ul {
-  display:block;
-
+.menu li:hover .submenu {
+	visibility: visible;
+	opacity: 1;
+	position: relative;
 }
 
-.nav li ul li{
-  position: relative;
-
+.nav li:hover>ul {
+	display: block;
 }
 
 .nav li ul li {
-
-  top: 0px;
+	position: relative;
 }
+
+.nav li ul li {
+	top: 0px;
+}
+
 
 
 

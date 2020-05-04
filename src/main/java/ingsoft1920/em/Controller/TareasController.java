@@ -16,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
@@ -132,4 +133,16 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String registrop(Model model) {
 		return "registro";
 	}
+	@GetMapping("/eliminarTarea")
+	public String eliminarTarea(Model model) {
+		List<ActividadBean> tareas=ActividadesDHO.peticionPedirTarea();
+		model.addAttribute("tareas", tareas);
+		return "tareaPrueba";
+	}
+	@PostMapping("/eliminarTarea/{parametro}")
+	public String eliminarTarea(Model model, @PathVariable("parametro") int id_tarea) {
+		ActividadesDHO.peticionEliminarTarea(id_tarea);
+		return "redirect:/eliminarTarea";
+	}
+	
 }

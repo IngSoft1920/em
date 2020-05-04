@@ -20,13 +20,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu4" class="enlace">Inicio</a></li>
-          <li><a href="/nomina4" class="enlace">Nomina</a></li>
+          <li><a href="/nomina4" class="enlace">Nómina</a></li>
           <li><a href="/turnos4" class="enlace">Turnos</a></li>
           <li><a href="/tareas4" class="enlace">Tareas</a></li>
           <li><a href="/ausencias4" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil4" class="enlace">Perfil</a></li>
           <li><a href="/registro4" class="enlace">Registro</a></li>
-          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
+          <li><a href="/cerrar4" class="enlace">Cerrar Sesión</a></li>
         </ul>
       </div>
     </div>
