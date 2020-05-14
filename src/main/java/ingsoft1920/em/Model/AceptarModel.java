@@ -10,12 +10,14 @@ public class AceptarModel {
 	Date fecha_inicio;
 	Date fecha_fin;
 	private String tipo;
+	int id;
 	
-	public AceptarModel(String nombre, String tipo, Date fecha_inicio,Date fecha_fin) {
+	public AceptarModel(String nombre, String tipo, Date fecha_inicio,Date fecha_fin, int id) {
 		this.nombre=nombre;
 		this.tipo=tipo;
 		this.fecha_inicio=fecha_inicio;
 		this.fecha_fin=fecha_fin;
+		this.id= id;
 	}
 
 	public String getNombre() {
@@ -49,8 +51,13 @@ public class AceptarModel {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
+	public int getId() {
+		return id;
+	}
 
+	public void setId_Empleado(int id) {
+		this.id = id;
 
+	}
 
 }
