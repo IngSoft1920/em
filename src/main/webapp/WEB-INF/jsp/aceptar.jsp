@@ -28,8 +28,8 @@
           <li><a href="/nomina9" class="enlace">Nomina</a></li>
           <li><a href="/turnos9" class="enlace">Turnos</a></li>
           <li><a href="/tareas9" class="enlace">Tareas</a></li>
-          <li><a href="/ausencias9" class="enlace">Ausencias</a></li>
-          <li><a href="/perfil9" class="activate-menu">Perfil</a></li>
+          <li><a href="/ausencias9" class="activate-menu">Ausencias</a></li>
+          <li><a href="/perfil9" class="enlace">Perfil</a></li>
           <li><a href="/registro9" class="enlace">Registro</a></li>
           <li><a href="/cerrar9" class="enlace">Cerrar Sesion</a></li>
         </ul>
