@@ -64,7 +64,7 @@ function activar(){
       		<article class="post">
         			<h1 class="titulo-post">Solicitud de: <td>Bajas<br></td></h1>
           			<h1 class="titulo-post">Nombre: <td>${bajas.nombre}<br></td></h1>
-          			<h1 class="titulo-post">Duracion: <td>${bajas.fecha_inicio} - ${bajas.fecha_fin}<br></td></h1>
+          			<h1 class="titulo-post">Duracion: <td>${bajas.fecha_inicio} -> ${bajas.fecha_fin}<br></td></h1>
           			<h1 class="titulo-post">Motivo: <td>${bajas.tipo}<br></td></h1>
                    	<form action="/denegarBaja/${bajas.id}"  method="POST">
             		<input type="submit" value="Denegar"/>
