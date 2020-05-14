@@ -45,10 +45,26 @@
 		<c:forEach var="bajas" items="${bajas}">
 		<section id="publicaciones">
       		<article class="post">
-        		
+        			<h1 class="titulo-post">Solicitud de: <td>Bajas<br></td></h1>
           			<h1 class="titulo-post">Nombre: <td>${bajas.nombre}<br></td></h1>
-          			<h1 class="titulo-post">Duracion: <td>${bajas.duracion} DIAS<br></td></h1>
+          			<h1 class="titulo-post">Duracion: <td>${bajas.fecha_inicio} - ${bajas.fecha_fin}<br></td></h1>
           			<h1 class="titulo-post">Motivo: <td>${bajas.tipo}<br></td></h1>
+          			<input type="submit" value="Aceptar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
+          			<input type="submit" value="Denegar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
+          			
+        		
+      		</article>
+		</section>
+		</c:forEach>
+	</u1>
+	
+	<u1>
+		<c:forEach var="vacaciones" items="${vacaciones}">
+		<section id="publicaciones">
+      		<article class="post">
+        			<h1 class="titulo-post">Solicitud de: <td>Vacaciones<br></td></h1>
+          			<h1 class="titulo-post">Nombre: <td>${vacaciones.nombre}<br></td></h1>
+          			<h1 class="titulo-post">Duracion: <td>${vacaciones.fecha_inicio} - ${vacaciones.fecha_fin}<br></td></h1>
           			<input type="submit" value="Aceptar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
           			<input type="submit" value="Denegar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
           			
