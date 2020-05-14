@@ -273,12 +273,11 @@ public class VacacionesDAO {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
-		//CONSULTA3-> Hay que enviar a cm las bajas con el id_empleado que la pide y su duracion y estado
 		List<AceptarModel> res = new ArrayList<AceptarModel>();
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT empleado.nombre, tipo,duracion FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=?;");
+		   stmt = conn.prepareStatement("SELECT empleado.nombre, tipo,fecha_inicio,fecha_fin FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=?;");
 		   stmt.setString(1,"gobernanta");
 		   rs=stmt.executeQuery();
 		   
