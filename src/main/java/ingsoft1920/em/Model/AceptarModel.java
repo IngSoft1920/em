@@ -17,13 +17,6 @@ public class AceptarModel {
 		this.fecha_inicio=fecha_inicio;
 		this.fecha_fin=fecha_fin;
 	}
-	
-//	public AceptarModel(BajaBean baja) {
-//		this.nombre=baja.getId_empleado();
-//		this.id_Baja=baja.getId_baja();
-//		this.duracion=baja.getDuracion();
-//		this.estado=baja.getEstado();
-//	}
 
 	public String getNombre() {
 		return nombre;

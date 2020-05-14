@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -102,6 +101,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "turnos";
 	}
 	
+	@SuppressWarnings("deprecation")
 	@GetMapping("/registro5")
 	public String registrop1(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
 		java.sql.Time horaCheckout = HorarioDAO.horaCheckOut();
