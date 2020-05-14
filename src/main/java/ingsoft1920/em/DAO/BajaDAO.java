@@ -195,4 +195,58 @@ public class BajaDAO {
 		return res;
 		
 	}
+	public static void aceptarBaja(int id_baja) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("UPDATE baja SET estado = ? WHERE id_baja = ?;;");
+			   stmt.setString(1,"aprobada");
+			   stmt.setInt(2, id_baja);		   
+			   stmt.executeUpdate();		   
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+	}
+	public static void denegarBaja(int id_baja) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("UPDATE baja SET estado = ? WHERE id_baja = ?;;");
+			   stmt.setString(1,"denegada");
+			   stmt.setInt(2, id_baja);		   
+			   stmt.executeUpdate();		   
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+	}
 }
