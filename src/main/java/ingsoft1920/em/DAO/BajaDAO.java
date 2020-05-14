@@ -9,6 +9,7 @@ import java.util.List;
 
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
+import ingsoft1920.em.Controller.LoginController;
 import ingsoft1920.em.Model.AceptarModel;
 import ingsoft1920.em.Model.BajaModel;
 
@@ -251,7 +252,7 @@ public class BajaDAO {
 		}
 	}
 	
-	public static boolean tieneSuperior (int id_empleado) {
+	public static boolean tieneSuperior (int id_empleado) throws SQLException {
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}
@@ -261,11 +262,11 @@ public class BajaDAO {
 			   stmt = conn.prepareStatement("SELECT superior FROM empleado WHERE id_empleado= ?;");
 			   stmt.setInt(1,id_empleado);		   
 			   rs=stmt.executeQuery();
-			   
-			   if (!rs.next()) {
+			   rs.next();
+			   String sup = rs.getString("superior");
+			   if(sup==null)
 				   return false;
-			   }
-		} 
+			   } 
 		catch (SQLException ex){ 
 		   System.out.println("SQLException: " + ex.getMessage());
 		   }
@@ -282,6 +283,7 @@ public class BajaDAO {
 			}
 		}
 		return true;
+		
 	}
 	
 }

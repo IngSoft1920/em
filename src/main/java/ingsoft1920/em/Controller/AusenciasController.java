@@ -1,6 +1,7 @@
 package ingsoft1920.em.Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
@@ -147,9 +148,8 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	}
 	
 	@GetMapping("/aceptar")
-	public String aceptar(Model model) {
-		System.out.println(BajaDAO.tieneSuperior(LoginController.id_empleado));
-		if (!BajaDAO.tieneSuperior(LoginController.id_empleado)) {
+	public String aceptar(Model model) throws SQLException{
+		if (BajaDAO.tieneSuperior(LoginController.id_empleado)==false) {
 			List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo, fecha inicio y fecha fin de la baja 
 			model.addAttribute("bajas",bajas);
 			List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
