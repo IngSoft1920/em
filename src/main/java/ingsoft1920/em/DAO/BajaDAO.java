@@ -64,12 +64,12 @@ public class BajaDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT empleado.nombre, tipo,duracion FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=?;");
+		   stmt = conn.prepareStatement("SELECT empleado.nombre, tipo,fecha_inicio,fecha_fin FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=?;");
 		   stmt.setString(1,"gobernanta");
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),rs.getString("tipo"),rs.getInt("duracion"));
+			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),rs.getString("tipo"),rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
 			   res.add(bajas);
 			   }
 		   return res;

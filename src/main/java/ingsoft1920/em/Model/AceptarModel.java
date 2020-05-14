@@ -7,13 +7,15 @@ import ingsoft1920.em.Beans.BajaBean;
 public class AceptarModel {
 
 	private String nombre;
-	private int duracion;
+	Date fecha_inicio;
+	Date fecha_fin;
 	private String tipo;
 	
-	public AceptarModel(String nombre, String tipo, int duracion) {
+	public AceptarModel(String nombre, String tipo, Date fecha_inicio,Date fecha_fin) {
 		this.nombre=nombre;
 		this.tipo=tipo;
-		this.duracion=duracion;
+		this.fecha_inicio=fecha_inicio;
+		this.fecha_fin=fecha_fin;
 	}
 	
 //	public AceptarModel(BajaBean baja) {
@@ -31,12 +33,20 @@ public class AceptarModel {
 		this.nombre = nombre;
 	}
 
-	public int getDuracion() {
-		return duracion;
+	public Date getFecha_inicio() {
+		return fecha_inicio;
 	}
 
-	public void setDuracion(int duracion) {
-		this.duracion = duracion;
+	public void setFecha_inicio(Date fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
+	}
+
+	public Date getFecha_fin() {
+		return fecha_fin;
+	}
+
+	public void setFecha_fin(Date fecha_fin) {
+		this.fecha_fin = fecha_fin;
 	}
 
 	public String getTipo() {
