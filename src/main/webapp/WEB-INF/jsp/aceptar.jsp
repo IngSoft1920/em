@@ -84,7 +84,7 @@ function activar(){
       		<article class="post">
         			<h1 class="titulo-post">Solicitud de: <td>Vacaciones<br></td></h1>
           			<h1 class="titulo-post">Nombre: <td>${vacaciones.nombre}<br></td></h1>
-          			<h1 class="titulo-post">Duracion: <td>${vacaciones.fecha_inicio} - ${vacaciones.fecha_fin}<br></td></h1>
+          			<h1 class="titulo-post">Duracion: <td>${vacaciones.fecha_inicio} -> ${vacaciones.fecha_fin}<br></td></h1>
           			<form action="/denegarVacaciones/${vacaciones.id}"  method="POST">
             		<input type="submit" value="Denegar"/>
             		</form>
