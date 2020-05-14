@@ -42,7 +42,7 @@
 		
 		    }
 
-			if (document.getElementById('enviarPDF').value == '') {
+			if (document.getElementById('Subir fichero').value == '') {
 				todo_correcto = false;
 			}
 
@@ -117,23 +117,12 @@
 			</section>
 
 
-			
-			<section id="publicaciones">
-				<article class="post">
-					<h1 class="titulo-post">
-						Justificante
-						<td><input type="text" name="enviarPDF" id="enviarPDF"
-							required></td>
-					</h1>
-				</article>
-			</section>
 
             <section id="publicaciones">
 			<form name="formulario" method="post"
-				action="http://pagina.com/send.php" enctype="multipart/form-data">
-				<!-- �No olvides el enctype! -->
-				<!-- Campo de selecci�n de archivo -->
-				<input type="file" name="adjunto" id="enviarPDF" accept=".pdf,.jpg,.png" multiple>
+				action="subefichero.jsp" enctype="multipart/form-data">
+				Fichero: <input type="file" name="fichero"/></br>
+				<input type="submit" value="Subir fichero" id="Subir fichero" accept=".pdf,.jpg,.png" multiple/>
 			</form>
 			<section id="publicaciones">
 			<section id="principal">
