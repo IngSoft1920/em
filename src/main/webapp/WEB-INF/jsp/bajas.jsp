@@ -41,13 +41,7 @@
 				todo_correcto = false;
 		
 		    }
-
-			if (document.getElementById('Subir fichero').value == '') {
-				todo_correcto = false;
-			}
-
 			
-
 			if (!todo_correcto) {
 				alert('Debes rellenar todos los campos');
 			}
@@ -118,14 +112,13 @@
 
 
 
-            <section id="publicaciones">
-			<form name="formulario" method="post"
-				action="subefichero.jsp" enctype="multipart/form-data">
-				Fichero: <input type="file" name="fichero"/></br>
-				<input type="submit" value="Subir fichero" id="Subir fichero" accept=".pdf,.jpg,.png" multiple/>
-			</form>
-			<section id="publicaciones">
-			<section id="principal">
+            <section id="publicaciones"> 
+				<form action="subirFile.jsp" enctype="multipart/form-data" method="post"> 
+					<input type="file" name="fichero" /></br> 
+					<!--  <input type="submit" value="Subir fichero"/>   -->
+				</form> 
+			</section> 
+
 
 				<section id="publicaciones">
 					<input type="submit" value="Enviar" onClick="mensaje()">
