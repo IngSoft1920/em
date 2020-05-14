@@ -21,6 +21,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.IncentivosDAO;
 import ingsoft1920.em.Model.IncentivosModel;
 import ingsoft1920.em.Model.NominaModel;
 
@@ -141,6 +142,24 @@ public class GenerarPDF {
 			hcell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
 			table3.addCell(hcell3);
 			
+			PdfPTable table4 = new PdfPTable(3);
+		 	float[] medidaCeldas2 = {2.50f, 1.00f, 1.00f};
+		 	table4.setWidths(medidaCeldas);
+			PdfPCell hcell4;
+			hcell4 = new PdfPCell(new Phrase("Desglose incentivos",categoryFont));
+			hcell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table4.addCell(hcell4);
+			
+			hcell4 = new PdfPCell(new Phrase("Cantidad", categoryFont));
+			hcell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table4.addCell(hcell4);
+			
+			hcell4= new PdfPCell(new Phrase("Precio por unidad",categoryFont));
+			hcell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+			hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+			table4.addCell(hcell4);
 
  	
 			for (NominaModel nomina:listaNominas) {
@@ -148,34 +167,60 @@ public class GenerarPDF {
 				sueldo_base=Integer.toString(nomina.getValor());
 				incentivos=0;
 				penalizacion=Float.toString(sueldo);
-				
-				
+				String[] nombres=new String[20];
+				int[] cantidades = new int[20];
+				boolean esta=false;
+				nombres[0]="";
+				int pos=0;
 				for (IncentivosModel incentivo: listaIncentivos) {
-					incentivos=incentivos+incentivo.getValor(); 
+					esta=false;
+					incentivos=incentivos+incentivo.getValor();
+					int i;
+					for(i=0;i<nombres.length && !esta;i++) {
+						if(incentivo.getDescripcion().equals(nombres[i])) {
+							cantidades[i]=cantidades[i]+1;
+							esta=true;
+						}
+					}
+					if(!esta) {
+						nombres[pos]=incentivo.getDescripcion();
+						cantidades[pos]=1;
+						pos++;
+					}
 				}
 				
 				total = nomina.getValor()+incentivos+sueldo;
+				
+					
 				table3.addCell("Salario Base\n\n"+ 
-    					"Incentivos"+"\n\n"+
+    					"Total Incentivos"+"\n\n"+
     					"Penalizaciones por inclumplimiento de horas de trabajo \n");
+				
+				
 				table3.addCell(Integer.toString(nomina.getValor())+ "\n\n"+
     					incentivos);
 				table3.addCell("\n\n"+
     					"\n\n"+
     					Float.toString(sueldo));
+				for (int j=0; j<pos;j++) {
+					table4.addCell(nombres[j]);
+					table4.addCell(Integer.toString(cantidades[j]));
+					table4.addCell(Integer.toString(IncentivosDAO.verPrecio(nombres[j])));
+				}
+		
 			}
 			
        
-        	PdfPTable table4 = new PdfPTable(1);
+        	PdfPTable table5 = new PdfPTable(1);
         	
-        	PdfPCell hcell4;
-        	hcell4 = new PdfPCell(new Phrase("Líquido a recibir", categoryFont));
-        	hcell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
-        	hcell4.setBackgroundColor(BaseColor.LIGHT_GRAY);
-        	table4.addCell(hcell4);
+        	PdfPCell hcell5;
+        	hcell5 = new PdfPCell(new Phrase("Líquido a recibir", categoryFont));
+        	hcell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        	hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        	table5.addCell(hcell5);
 			PdfPCell Total_dinero = new PdfPCell(new Phrase(Float.toString(total)));  
         	Total_dinero.setHorizontalAlignment(Element.ALIGN_RIGHT);
-            table4.addCell(Total_dinero);
+            table5.addCell(Total_dinero);
             
             
             /*PdfPTable table5 = new PdfPTable(5);
