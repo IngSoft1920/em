@@ -250,4 +250,38 @@ public class BajaDAO {
 			}
 		}
 	}
+	
+	public static boolean tieneSuperior (int id_empleado) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		ResultSet rs = null;
+		try { 
+			   stmt = conn.prepareStatement("SELECT superior FROM empleado WHERE id_empleado= ?;");
+			   stmt.setInt(1,id_empleado);		   
+			   rs=stmt.executeQuery();
+			   
+			   if (!rs.next()) {
+				   return false;
+			   }
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+		return true;
+	}
+	
 }

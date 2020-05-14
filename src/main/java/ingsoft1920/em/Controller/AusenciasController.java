@@ -148,11 +148,15 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/aceptar")
 	public String aceptar(Model model) {
-		List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo, fecha inicio y fecha fin de la baja 
-		model.addAttribute("bajas",bajas);
-		List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
-		model.addAttribute("vacaciones",vacaciones);
-		return "aceptar";
+		System.out.println(BajaDAO.tieneSuperior(LoginController.id_empleado));
+		if (!BajaDAO.tieneSuperior(LoginController.id_empleado)) {
+			List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo, fecha inicio y fecha fin de la baja 
+			model.addAttribute("bajas",bajas);
+			List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
+			model.addAttribute("vacaciones",vacaciones);
+			return "aceptar";
+		}
+		return "ausencias";
 	}
 	
 	@PostMapping("/aceptar")
