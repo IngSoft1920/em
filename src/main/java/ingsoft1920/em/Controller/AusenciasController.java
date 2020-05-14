@@ -142,6 +142,17 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 		return "bajas";
 	}
 	
+	@GetMapping("/aceptar")
+	public String aceptar(Model model) {
+		return "aceptar";
+	}
+	
+	@PostMapping("/aceptar")
+	public String aceptar1(Model model) {
+		return "aceptar";
+	}
+	
+	
 	@SuppressWarnings("deprecation")
 	@GetMapping("/registro4")
 	public String registrop1(Model model, HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException, InterruptedException {
