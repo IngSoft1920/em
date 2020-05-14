@@ -5,7 +5,24 @@
   <title> USUARIO  : </title> <!--Título-->
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 
+<script type="text/javascript">
+// Variable global por estar declarada sin hacer uso de var
 
+function activar(){
+   document.getElementById('checkin').disabled = false;
+   document.getElementById('checkout').disabled = true;
+   alert("Se ha guardado tu check-in correctamente")
+ }
+
+ function activar2(){
+    document.getElementById('checkin').disabled = true;
+    document.getElementById('checkout').disabled = false;
+    alert("Se ha guardado tu check-out correctamente")
+  }
+
+	</script>
+	
+	
 </head>
 
 <body>
@@ -65,7 +82,7 @@
     <div id="publicaciones3">
       <article class="cuerpo-tarea">
         <a href="/aceptar" class="enlace-tarea">
-        <h2 class="tarea"> ACEPTACION </h2>
+        <input type="button" id="checkout" value="Aceptacion"  onClick=" window.location='/aceptar';"//>
         </a>
         <img src="/img/tareas.jpg" class="img-post2">
       </article>

@@ -17,17 +17,21 @@ import org.apache.logging.log4j.LogManager;
 	import org.springframework.ui.Model;
 	import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 	import ingsoft1920.em.Beans.ActividadBean;
-	import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.Beans.BajaBean;
+import ingsoft1920.em.Beans.DatoEmpleadoBean;
 import ingsoft1920.em.Beans.LoginBean;
 import ingsoft1920.em.Beans.VacacionBean;
-	import ingsoft1920.em.DAO.EmpleadoDAO;
+import ingsoft1920.em.DAO.BajaDAO;
+import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 	import ingsoft1920.em.DAO.VacacionesDAO;
-	import ingsoft1920.em.Model.TurnoModel;
+import ingsoft1920.em.Model.AceptarModel;
+import ingsoft1920.em.Model.TurnoModel;
 	import ingsoft1920.em.Model.VacacionesModel;
 
 	@Controller
@@ -141,5 +145,61 @@ import ingsoft1920.em.DAO.TurnoDAO;
 				Model model) {
 			return "registro";
 		}
+		
+		@GetMapping("/denegarBaja")
+		public String eliminarBaja(Model model) {
+			List<AceptarModel> bajas=BajaDAO.aceptar();
+			model.addAttribute("bajas", bajas);
+			return "aceptar";
+		}
+		
+		@PostMapping("/denegarBaja/{parametro}")
+		public String denegarBaja(Model model, @PathVariable("parametro") int id_bajas) {
+			BajaDAO.denegarBaja(id_bajas);
+			return "redirect:/denegarBaja";
+		}
+		
+		@GetMapping("/aceptarBaja")
+		public String aceptarBaja(Model model) {
+			List<AceptarModel> bajas=BajaDAO.aceptar();
+			model.addAttribute("bajas", bajas);
+			return "aceptar";
+		}
+		
+		@PostMapping("/aceptarBaja/{parametro}")
+		public String aceptarBaja(Model model, @PathVariable("parametro") int id_bajas) {
+			BajaDAO.aceptarBaja(id_bajas);
+			return "redirect:/aceptarBaja";
+		}
+		
+		
+		@GetMapping("/denegarVacaciones")
+		public String eliminarVacaciones(Model model) {
+			List<AceptarModel> vacaciones=VacacionesDAO.aceptar();
+			model.addAttribute("vacaciones", vacaciones);
+			return "aceptar";
+		}
+		@PostMapping("/denegarVacaciones/{parametro}")
+		public String eliminarVacaciones(Model model, @PathVariable("parametro") int id_vacaciones) {
+			VacacionesDAO.denegarVacaciones(id_vacaciones);
+			return "redirect:/denegarVacaciones";
+		}
+		
+		
+		
+		
+		@GetMapping("/aceptarVacaciones")
+		public String aceptarVacaciones(Model model) {
+			List<AceptarModel> vacaciones=VacacionesDAO.aceptar();
+			model.addAttribute("vacaciones", vacaciones);
+			return "aceptar";
+		}
+		@PostMapping("/aceptarVacaciones/{parametro}")
+		public String aceptarVacaciones(Model model, @PathVariable("parametro") int id_vacaciones) {
+			VacacionesDAO.aceptarVacaciones(id_vacaciones);
+			return "redirect:/aceptarVacaciones";
+		}
+		
+		
 
 	}

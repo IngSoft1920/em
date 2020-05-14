@@ -277,12 +277,17 @@ public class VacacionesDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
+<<<<<<< HEAD
 		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=?;");
+=======
+		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=?;");
+>>>>>>> AceptarBajas
 		   stmt.setString(1,"gobernanta");
+		   stmt.setString(2,"pendiente");
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),"VACACIONES",rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"));
+			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),"VACACIONES",rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"),rs.getInt("id_vacaciones"));
 			   res.add(bajas);
 			   }
 		   return res;
