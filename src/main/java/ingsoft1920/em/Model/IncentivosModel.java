@@ -4,11 +4,13 @@ public class IncentivosModel {
 	private int id_incentivo;
 	private int id_empleado;
 	private int valor;
+	private String descripcion;
 	
-	public IncentivosModel(int id_incentivo,int id_empleado,int valor) {
+	public IncentivosModel(int id_incentivo,int id_empleado,int valor,String descripcion) {
 		this.id_incentivo=id_incentivo;
 		this.id_empleado=id_empleado;
 		this.valor=valor;
+		this.descripcion=descripcion;
 	}
 
 	public int getId_incentivo() {
@@ -33,6 +35,14 @@ public class IncentivosModel {
 
 	public void setValor(int valor) {
 		this.valor = valor;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 

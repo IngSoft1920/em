@@ -27,7 +27,7 @@ public class IncentivosDAO {
 			stmt.setInt(1, id_Empleado);
 			rs=stmt.executeQuery();
 			while(rs.next()) {
-				IncentivosModel incentivos=new IncentivosModel(rs.getInt("id_incentivo"),rs.getInt("id_empleado"),rs.getInt("valor"));
+				IncentivosModel incentivos=new IncentivosModel(rs.getInt("id_incentivo"),rs.getInt("id_empleado"),rs.getInt("valor"),rs.getString("descripcion"));
 				res.add(incentivos);
 			}				
         } 
