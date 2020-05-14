@@ -53,5 +53,33 @@ public class IncentivosDAO {
 	  return res;
 		
 	}
-
+	
+	public static void aniadeIncentivos(int id_Empleado,String descripcion,float valor) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt= null;
+		try { 
+			stmt=conn.prepareStatement("INSERT INTO incentivos(id_empleado,descripcion,valor) values (?,?,?) ");
+			stmt.setInt(1, id_Empleado);
+			stmt.setString(2, descripcion);
+			stmt.setFloat(3, valor);
+			stmt.executeUpdate();				
+        } 
+		catch (SQLException ex){
+			System.out.println("SQLException: " + ex.getMessage());
+		}
+		finally {
+		  	if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+	  }
+		
+	}
 }
