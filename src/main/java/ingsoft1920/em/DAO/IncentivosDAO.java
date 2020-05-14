@@ -60,7 +60,7 @@ public class IncentivosDAO {
 		}
 		PreparedStatement stmt= null;
 		try { 
-			stmt=conn.prepareStatement("INSERT INTO incentivos(id_empleado,descripcion,valor) values (?,?,?) ");
+			stmt=conn.prepareStatement("INSERT INTO incentivos(id_empleado,descripcion,valor,fecha) values (?,?,?,CURDATE()) ");
 			stmt.setInt(1, id_Empleado);
 			stmt.setString(2, descripcion);
 			stmt.setFloat(3, valor);
