@@ -6,7 +6,24 @@
   <title> USUARIO  : </title> <!--Título-->
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 
+<script type="text/javascript">
+// Variable global por estar declarada sin hacer uso de var
 
+function activar(){
+   document.getElementById('in').disabled = false;
+   document.getElementById('out').disabled = true;
+   alert("Se ha guardado tu check-in correctamente")
+ }
+
+ function activar2(){
+    document.getElementById('in').disabled = true;
+    document.getElementById('out').disabled = false;
+    alert("Se ha guardado tu check-out correctamente")
+  }
+
+	</script>
+	
+	
 </head>
 
 <body>
@@ -49,9 +66,12 @@
           			<h1 class="titulo-post">Nombre: <td>${bajas.nombre}<br></td></h1>
           			<h1 class="titulo-post">Duracion: <td>${bajas.fecha_inicio} - ${bajas.fecha_fin}<br></td></h1>
           			<h1 class="titulo-post">Motivo: <td>${bajas.tipo}<br></td></h1>
-          			<input type="submit" value="Aceptar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
-          			<input type="submit" value="Denegar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
-          			
+                   	<form action="/denegarBaja/${bajas.id}"  method="POST">
+            		<input type="submit" value="Denegar"/>
+            		</form>
+            		<form action="/aceptarBaja/${bajas.id}"  method="POST">
+            		<input type="submit" value="Aceptar"/>
+            		</form>
         		
       		</article>
 		</section>
@@ -65,9 +85,13 @@
         			<h1 class="titulo-post">Solicitud de: <td>Vacaciones<br></td></h1>
           			<h1 class="titulo-post">Nombre: <td>${vacaciones.nombre}<br></td></h1>
           			<h1 class="titulo-post">Duracion: <td>${vacaciones.fecha_inicio} - ${vacaciones.fecha_fin}<br></td></h1>
-          			<input type="submit" value="Aceptar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
-          			<input type="submit" value="Denegar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
-          			
+          			<form action="/denegarVacaciones/${vacaciones.id}"  method="POST">
+            		<input type="submit" value="Denegar"/>
+            		</form>
+            		<form action="/aceptarVacaciones/${vacaciones.id}"  method="POST">
+            		<input type="submit" value="Aceptar"/>
+            		</form>
+            
         		
       		</article>
 		</section>
