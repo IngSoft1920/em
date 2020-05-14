@@ -148,6 +148,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	@GetMapping("/aceptar")
 	public String aceptar(Model model) {
 		List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo y duración de la baja 
+		model.addAttribute("bajas",bajas);
 		return "aceptar";
 	}
 	

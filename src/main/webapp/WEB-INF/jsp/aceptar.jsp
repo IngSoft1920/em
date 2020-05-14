@@ -41,21 +41,23 @@
 
 
 <body>
-		
+	<u1>
+		<c:forEach var="bajas" items="${bajas}">
 		<section id="publicaciones">
       		<article class="post">
         		
-          			<h1 class="titulo-post">Nombre: <td>NOMBRE<br></td></h1>
-          			<h1 class="titulo-post">Duracion: <td>DURACION<br></td></h1>
-          			<h1 class="titulo-post">Motivo: <td>MOTIVO<br></td></h1>
+          			<h1 class="titulo-post">Nombre: <td>${bajas.nombre}<br></td></h1>
+          			<h1 class="titulo-post">Duracion: <td>${bajas.duracion} DIAS<br></td></h1>
+          			<h1 class="titulo-post">Motivo: <td>${bajas.tipo}<br></td></h1>
           			<input type="submit" value="Aceptar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
           			<input type="submit" value="Denegar" name="accion" id="buttons" onclick="window.location='/contrasena';"/>
           			
         		
       		</article>
 		</section>
+		</c:forEach>
+	</u1>
 	
-
 </body>
 
 <style>
