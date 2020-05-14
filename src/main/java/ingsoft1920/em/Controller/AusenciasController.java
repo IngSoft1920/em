@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
+import ingsoft1920.em.Model.AceptarModel;
+import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.TurnoModel;
 
 
@@ -144,6 +147,7 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/aceptar")
 	public String aceptar(Model model) {
+		List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo y duración de la baja 
 		return "aceptar";
 	}
 	
