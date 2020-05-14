@@ -9,6 +9,7 @@ import java.util.List;
 
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
+import ingsoft1920.em.Model.AceptarModel;
 import ingsoft1920.em.Model.BajaModel;
 
 public class BajaDAO {
@@ -54,6 +55,48 @@ public class BajaDAO {
 		  return res;
 	}
 
+	public static List<AceptarModel> aceptar () {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		//CONSULTA3-> Hay que enviar a cm las bajas con el id_empleado que la pide y su duracion y estado
+		List<AceptarModel> res = new ArrayList<AceptarModel>();
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		  try { 
+		   stmt = conn.prepareStatement("SELECT empleado.nombre, tipo,duracion FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=?;");
+		   stmt.setString(1,"gobernanta");
+		   rs=stmt.executeQuery();
+		   
+		   while (rs.next()){
+			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),rs.getString("tipo"),rs.getInt("duracion"));
+			   res.add(bajas);
+			   }
+		   return res;
+		   }
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+			  	if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+			  	if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
+		  return res;
+	}
+	
+	
 
 	public static void editaBaja(int id_baja,String estado) {
 		if(conn==null) {
