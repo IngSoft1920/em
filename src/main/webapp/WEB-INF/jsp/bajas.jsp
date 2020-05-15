@@ -111,15 +111,6 @@
 			</section>
 
 
-
-            <section id="publicaciones"> 
-				<form action="subirFile.jsp" enctype="multipart/form-data" method="post"> 
-					<input type="file" name="fichero" /></br> 
-					<!--  <input type="submit" value="Subir fichero"/>   -->
-				</form> 
-			</section> 
-
-
 				<section id="publicaciones">
 					<input type="submit" value="Enviar" onClick="mensaje()">
 				</section>
