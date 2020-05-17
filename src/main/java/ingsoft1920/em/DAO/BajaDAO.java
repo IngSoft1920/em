@@ -9,7 +9,6 @@ import java.util.List;
 
 import ingsoft1920.em.Beans.BajaBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
-import ingsoft1920.em.Controller.LoginController;
 import ingsoft1920.em.Model.AceptarModel;
 import ingsoft1920.em.Model.BajaModel;
 

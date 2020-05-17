@@ -126,6 +126,7 @@ public class API {
 		int id_hotel=obj.get("id_hotel").getAsInt();
 		int valor=(int) obj.get("valor").getAsDouble();
 		String fecha_contratacion= obj.get("fecha_contratacion").getAsString();
+		String superior= obj.get("superior").getAsString();
 		//fecha contratacion
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         java.util.Date parsed = null;
@@ -137,7 +138,7 @@ public class API {
         String contrasenia=obj.get("contrasenia").getAsString();
         JsonArray dias=JsonParser.parseString(obj.get("dias_libres").getAsString()).getAsJsonArray();
         //Ejecutamos query
-		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia);
+		EmpleadoDAO.añadirEmpleado(id_empleado, nombre, telefono, correo,id_hotel,fecha,contrasenia,superior);
 		EmpleadoDAO.añadirRol(rol,id_empleado);
 		NominaDAO.asignarNomina(id_empleado, valor);
 
