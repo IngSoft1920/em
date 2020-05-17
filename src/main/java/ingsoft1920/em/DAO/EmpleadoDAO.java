@@ -162,15 +162,15 @@ public class EmpleadoDAO {
 		  return res;
 	}
 	
-	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha,String contrasenia) {
+	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha,String contrasenia, String superior) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
 		if(conn==null) {
 			conn=ConectorBBDD.conectar();
 		}  
 		try { 
-			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel,fecha_contratacion,contrasenia)"+
-						"values( ? , ? , ? , ? , ?, ?, ?);");
+			  stmt=conn.prepareStatement("INSERT INTO empleado(id_empleado,nombre,telefono,correo,id_hotel,fecha_contratacion,contrasenia,superior)"+
+						"values( ? , ? , ? , ? , ?, ?, ?, ?);");
 							stmt.setInt(1, id_empleado);
 							stmt.setString(2, nombre);
 							stmt.setString(3, telefono);
@@ -178,6 +178,7 @@ public class EmpleadoDAO {
 							stmt.setInt(5, id_hotel);
 							stmt.setDate(6, fecha);
 							stmt.setString(7, contrasenia);
+							stmt.setString(8, superior);
 							stmt.executeUpdate();
 		   
           } 

@@ -41,13 +41,7 @@
 				todo_correcto = false;
 		
 		    }
-
-			if (document.getElementById('enviarPDF').value == '') {
-				todo_correcto = false;
-			}
-
 			
-
 			if (!todo_correcto) {
 				alert('Debes rellenar todos los campos');
 			}
@@ -68,13 +62,13 @@
 			<div id="menu">
 				<ul>
 					<li><a href="/menu6" class="enlace">Inicio</a></li>
-					<li><a href="/nomina6" class="enlace">Nómina</a></li>
+					<li><a href="/nomina6" class="enlace">Nï¿½mina</a></li>
 					<li><a href="/turnos6" class="enlace">Turnos</a></li>
 					<li><a href="/tareas6" class="enlace">Tareas</a></li>
 					<li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
 					<li><a href="/perfil6" class="enlace">Perfil</a></li>
 					<li><a href="/registro3" class="enlace">Registro</a></li>
-					<li><a href="/cerrar6" class="enlace">Cerrar Sesión</a></li>
+					<li><a href="/cerrar6" class="enlace">Cerrar Sesiï¿½n</a></li>
 				</ul>
 			</div>
 
@@ -116,17 +110,6 @@
 				</article>
 			</section>
 
-
-			
-			<section id="publicaciones">
-				<article class="post">
-					<h1 class="titulo-post">
-						Justificante
-						<td><input type="text" name="enviarPDF" id="enviarPDF"
-							required></td>
-					</h1>
-				</article>
-			</section>
 
             <section id="publicaciones">
 			<form name="formulario" method="post"

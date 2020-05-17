@@ -1,6 +1,7 @@
 package ingsoft1920.em.Controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
@@ -15,14 +16,18 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import ingsoft1920.em.Beans.ActividadBean;
 import ingsoft1920.em.Beans.DatoEmpleadoBean;
+import ingsoft1920.em.DAO.BajaDAO;
 import ingsoft1920.em.DAO.EmpleadoDAO;
 import ingsoft1920.em.DAO.HorarioDAO;
 import ingsoft1920.em.DAO.TurnoDAO;
 import ingsoft1920.em.DAO.VacacionesDAO;
+import ingsoft1920.em.Model.AceptarModel;
+import ingsoft1920.em.Model.BajaModel;
 import ingsoft1920.em.Model.TurnoModel;
 
 
@@ -141,6 +146,24 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	public String bajasp(Model model) {
 		return "bajas";
 	}
+	
+	@GetMapping("/aceptar")
+	public String aceptar(Model model) throws SQLException{
+		if (BajaDAO.tieneSuperior(LoginController.id_empleado)==false) {
+			List<AceptarModel> bajas=BajaDAO.aceptar();//esto te saca nombre, tipo, fecha inicio y fecha fin de la baja 
+			model.addAttribute("bajas",bajas);
+			List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
+			model.addAttribute("vacaciones",vacaciones);
+			return "aceptar";
+		}
+		return "ausencias";
+	}
+	
+	@PostMapping("/aceptar")
+	public String aceptar1(Model model) {
+		return "aceptar";
+	}
+	
 	
 	@SuppressWarnings("deprecation")
 	@GetMapping("/registro4")

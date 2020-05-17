@@ -14,6 +14,7 @@ import java.util.List;
 
 import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
+import ingsoft1920.em.Model.AceptarModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
 public class VacacionesDAO {
@@ -267,5 +268,99 @@ public class VacacionesDAO {
 			} 
 			return res; 
 		
+	}
+	public static List<AceptarModel> aceptar () {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		List<AceptarModel> res = new ArrayList<AceptarModel>();
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		  try { 
+		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=?;");
+		   stmt.setString(1,"gobernanta");
+		   stmt.setString(2,"pendiente");
+		   rs=stmt.executeQuery();
+		   
+		   while (rs.next()){
+			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),"VACACIONES",rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"),rs.getInt("id_vacaciones"));
+			   res.add(bajas);
+			   }
+		   return res;
+		   }
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+			  	if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+			  	if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
+		  return res;
+	}
+	public static void aceptarVacaciones(int id_vacaciones) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado = ? WHERE id_vacaciones = ?;;");
+			   stmt.setString(1,"aprobada");
+			   stmt.setInt(2, id_vacaciones);		   
+			   stmt.executeUpdate();		   
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
+	}
+	public static void denegarVacaciones(int id_vacaciones) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		PreparedStatement stmt = null; 
+		try { 
+			   stmt = conn.prepareStatement("UPDATE vacaciones SET estado = ? WHERE id_vacaciones = ?;;");
+			   stmt.setString(1,"denegada");
+			   stmt.setInt(2, id_vacaciones);		   
+			   stmt.executeUpdate();		   
+		} 
+		catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		   }
+		finally {
+				  	
+			if (stmt!=null){
+				try{stmt.close();
+				}catch(SQLException sqlEx){}
+				stmt=null;
+			}
+			if (conn!=null){
+				ConectorBBDD.desconectar();
+				conn=null;
+			}
+		}
 	}
 }

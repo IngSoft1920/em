@@ -5,7 +5,24 @@
   <title> USUARIO  : </title> <!--TÃ­tulo-->
   <link rel="stylesheet" type="text/css" href="css/perfil.css"> <!--carpeta donde se encuentra el estilo css-->
 
+<script type="text/javascript">
+// Variable global por estar declarada sin hacer uso de var
 
+function activar(){
+   document.getElementById('checkin').disabled = false;
+   document.getElementById('checkout').disabled = true;
+   alert("Se ha guardado tu check-in correctamente")
+ }
+
+ function activar2(){
+    document.getElementById('checkin').disabled = true;
+    document.getElementById('checkout').disabled = false;
+    alert("Se ha guardado tu check-out correctamente")
+  }
+
+	</script>
+	
+	
 </head>
 
 <body>
@@ -20,13 +37,13 @@
       <div id="menu">
         <ul>
           <li><a href="/menu4" class="enlace">Inicio</a></li>
-          <li><a href="/nomina4" class="enlace">Nómina</a></li>
+          <li><a href="/nomina4" class="enlace">Nomina</a></li>
           <li><a href="/turnos4" class="enlace">Turnos</a></li>
           <li><a href="/tareas4" class="enlace">Tareas</a></li>
           <li><a href="/ausencias4" class="activate-menu">Ausencias</a></li>
           <li><a href="/perfil4" class="enlace">Perfil</a></li>
           <li><a href="/registro4" class="enlace">Registro</a></li>
-          <li><a href="/cerrar4" class="enlace">Cerrar Sesión</a></li>
+          <li><a href="/cerrar4" class="enlace">Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
@@ -60,6 +77,19 @@
 
 
     <div id="sidebar2">
+    </div>
+    
+    <div id="publicaciones3">
+      <article class="cuerpo-tarea">
+        <a href="/aceptar" class="enlace-tarea">
+        <input type="button" id="checkout" value="Aceptacion"  onClick=" window.location='/aceptar';"//>
+        </a>
+        <img src="/img/tareas.jpg" class="img-post2">
+      </article>
+    </div>
+
+
+    <div id="sidebar3">
     </div>
 
   </div>
@@ -164,6 +194,14 @@ header{
   margin-left:290px;
 }
 
+#publicaciones3{
+  width: 300px;
+  float:left;
+  padding:10px;
+  margin:40px;
+  margin-left:5px;
+}
+
 
 .cuerpo-nomina{
   width: 99%;
@@ -239,6 +277,47 @@ header{
   margin-left: 68px; /*CENTRAR LA IMAGEN*/
 }
 
+#publicaciones2 a .tarea{ /*titulo-post*/
+  color: #6e6e6e;
+  font-size: 40px;
+  font-family: 'calibri light';
+  margin-left: 80px; /*CENTRAR LA IMAGEN*/
+}
+
+#publicaciones2 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
+  text-decoration: underline;
+}
+
+#publicaciones2 .img-post2{
+  width: 150px;
+  height: 100px;
+  float: left;
+  margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
+  margin-left: 68px; /*CENTRAR LA IMAGEN*/
+}
+
+
+
+/*ACEPTACION*/
+
+#publicaciones3 a .tarea{ /*titulo-post*/
+  color: #6e6e6e;
+  font-size: 40px;
+  font-family: 'calibri light';
+  margin-left: 20px; /*CENTRAR LA IMAGEN*/
+}
+
+#publicaciones3 a .tarea:hover{ /*PARA QUE ME SUBRAYE EL TEXTO CUNDO PASO SOBE EL*/
+  text-decoration: underline;
+}
+
+#publicaciones3 .img-post2{
+  width: 150px;
+  height: 100px;
+  float: left;
+  margin-top: 7px; /*PARA BAJAR LA IMAGEN*/
+  margin-left: 68px; /*CENTRAR LA IMAGEN*/
+}
 
           
             
