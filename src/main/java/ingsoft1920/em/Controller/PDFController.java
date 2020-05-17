@@ -31,7 +31,7 @@ public class PDFController {
 		sueldo=-1;
 		List<NominaModel> nominas = NominaDAO.verNomina(LoginController.id_empleado);
 		DatoEmpleadoBean empleado= EmpleadoDAO.sacaEmpleado(LoginController.id_empleado);
-		List<IncentivosModel> incentivos = IncentivosDAO.verIncentivos(LoginController.id_empleado);
+		List<IncentivosModel> incentivos = IncentivosDAO.verIncentivos(LoginController.id_empleado,mes);
 		horas=HorarioDAO.horasAlMes(LoginController.id_empleado, mes);
 		if(horas==0) {
 			sueldo=0;
