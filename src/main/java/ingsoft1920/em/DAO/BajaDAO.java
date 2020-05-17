@@ -263,7 +263,7 @@ public class BajaDAO {
 			   rs=stmt.executeQuery();
 			   rs.next();
 			   String sup = rs.getString("superior");
-			   if(sup==null)
+			   if(sup.equals(""))
 				   return false;
 			   } 
 		catch (SQLException ex){ 
