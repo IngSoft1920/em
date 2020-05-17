@@ -48,13 +48,29 @@
 					<b>TIPO:</b> ${baja.tipo} <br>
 					<b>FECHA INICIO:</b> ${baja.fecha_inicio} <br>
 					<b>FECHA FIN:</b> ${baja.fecha_fin} <br>
+										
 				</p>
 			        		
       		</article>
+			Añadir justificante:
+			<form method="post" enctype="multipart/form-data" action="/upload">
+				<div class="form-group">
+					<spring:message code="fileToUpload" />
+					<br> <input type="file" name="file" class="btn btn-default">
+					<br />
+					<spring:message code="upload" var="upload" />
+					<input type="submit" class="btn btn-default" value="Enviar${upload }">
+					<spring:message code="pressHere" />
+				</div>
+
+			</form>
+
+
 		</section>
 		</c:forEach>
 
 	</u1>
+
 </body>			
 
 	<style>

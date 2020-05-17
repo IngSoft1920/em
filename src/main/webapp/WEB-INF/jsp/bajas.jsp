@@ -41,13 +41,7 @@
 				todo_correcto = false;
 		
 		    }
-
-			if (document.getElementById('enviarPDF').value == '') {
-				todo_correcto = false;
-			}
-
 			
-
 			if (!todo_correcto) {
 				alert('Debes rellenar todos los campos');
 			}
