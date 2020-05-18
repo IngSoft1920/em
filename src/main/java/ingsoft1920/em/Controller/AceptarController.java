@@ -150,6 +150,8 @@ import ingsoft1920.em.Model.TurnoModel;
 		public String eliminarBaja(Model model) {
 			List<AceptarModel> bajas=BajaDAO.aceptar();
 			model.addAttribute("bajas", bajas);
+			List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
+			model.addAttribute("vacaciones",vacaciones);
 			return "aceptar";
 		}
 		
@@ -163,6 +165,8 @@ import ingsoft1920.em.Model.TurnoModel;
 		public String aceptarBaja(Model model) {
 			List<AceptarModel> bajas=BajaDAO.aceptar();
 			model.addAttribute("bajas", bajas);
+			List<AceptarModel> vacaciones = VacacionesDAO.aceptar();// esto saca nombre, tipo, fecha inicio y fecha fin de las vacaciones 
+			model.addAttribute("vacaciones",vacaciones);
 			return "aceptar";
 		}
 		
@@ -177,6 +181,8 @@ import ingsoft1920.em.Model.TurnoModel;
 		public String eliminarVacaciones(Model model) {
 			List<AceptarModel> vacaciones=VacacionesDAO.aceptar();
 			model.addAttribute("vacaciones", vacaciones);
+			List<AceptarModel> bajas=BajaDAO.aceptar();
+			model.addAttribute("bajas", bajas);
 			return "aceptar";
 		}
 		@PostMapping("/denegarVacaciones/{parametro}")
@@ -186,12 +192,12 @@ import ingsoft1920.em.Model.TurnoModel;
 		}
 		
 		
-		
-		
 		@GetMapping("/aceptarVacaciones")
 		public String aceptarVacaciones(Model model) {
 			List<AceptarModel> vacaciones=VacacionesDAO.aceptar();
 			model.addAttribute("vacaciones", vacaciones);
+			List<AceptarModel> bajas=BajaDAO.aceptar();
+			model.addAttribute("bajas", bajas);
 			return "aceptar";
 		}
 		@PostMapping("/aceptarVacaciones/{parametro}")
