@@ -59,7 +59,7 @@
 					<br> <input type="file" name="file" class="btn btn-default">
 					<br />
 					<spring:message code="upload" var="upload" />
-					<input type="submit" class="btn btn-default" value="Enviar${upload }">
+					<input type="submit" class="btn btn-default" value="Enviar${upload}">
 					<spring:message code="pressHere" />
 				</div>
 
