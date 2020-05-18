@@ -278,14 +278,14 @@ public class VacacionesDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=? AND id_hotel=?;");
+		   stmt = conn.prepareStatement("SELECT empleado.nombre, empleado.correo, fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=? AND id_hotel=?;");
 		   stmt.setString(1,"gobernanta");
 		   stmt.setString(2,"pendiente");
 		   stmt.setInt(3, LoginController.id_hotel);
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){
-			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),"VACACIONES",rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"),rs.getInt("id_vacaciones"));
+			   AceptarModel bajas=new AceptarModel(rs.getString("empleado.nombre"),rs.getString("empleado.correo"),"VACACIONES",rs.getDate("fecha_inicio"),rs.getDate("fecha_fin"),rs.getInt("id_vacaciones"));
 			   res.add(bajas);
 			   }
 		   return res;

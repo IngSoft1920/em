@@ -10,14 +10,16 @@ public class AceptarModel {
 	Date fecha_inicio;
 	Date fecha_fin;
 	private String tipo;
+	String correo;
 	int id;
 	
-	public AceptarModel(String nombre, String tipo, Date fecha_inicio,Date fecha_fin, int id) {
+	public AceptarModel(String nombre,String correo, String tipo, Date fecha_inicio,Date fecha_fin, int id) {
 		this.nombre=nombre;
 		this.tipo=tipo;
 		this.fecha_inicio=fecha_inicio;
 		this.fecha_fin=fecha_fin;
 		this.id= id;
+		this.correo=correo;
 	}
 
 	public String getNombre() {
@@ -59,5 +61,14 @@ public class AceptarModel {
 		this.id = id;
 
 	}
+	
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+	
 
 }

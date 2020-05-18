@@ -81,10 +81,8 @@ function activar(){
     
     <div id="publicaciones3">
       <article class="cuerpo-tarea">
-        <a href="/aceptar" class="enlace-tarea">
+        <h2 class="tarea"> Solo personal autorizado </h2>
         <input type="button" id="checkout" value="Aceptacion"  onClick=" window.location='/aceptar';"//>
-        </a>
-        <img src="/img/tareas.jpg" class="img-post2">
       </article>
     </div>
 

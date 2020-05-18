@@ -62,13 +62,13 @@
 			<div id="menu">
 				<ul>
 					<li><a href="/menu6" class="enlace">Inicio</a></li>
-					<li><a href="/nomina6" class="enlace">Nï¿½mina</a></li>
+					<li><a href="/nomina6" class="enlace">Nómina</a></li>
 					<li><a href="/turnos6" class="enlace">Turnos</a></li>
 					<li><a href="/tareas6" class="enlace">Tareas</a></li>
 					<li><a href="/ausencias6" class="activate-menu">Ausencias</a></li>
 					<li><a href="/perfil6" class="enlace">Perfil</a></li>
 					<li><a href="/registro3" class="enlace">Registro</a></li>
-					<li><a href="/cerrar6" class="enlace">Cerrar Sesiï¿½n</a></li>
+					<li><a href="/cerrar6" class="enlace">Cerrar Sesión</a></li>
 				</ul>
 			</div>
 
@@ -110,16 +110,6 @@
 				</article>
 			</section>
 
-
-            <section id="publicaciones">
-			<form name="formulario" method="post"
-				action="http://pagina.com/send.php" enctype="multipart/form-data">
-				<!-- ï¿½No olvides el enctype! -->
-				<!-- Campo de selecciï¿½n de archivo -->
-				<input type="file" name="adjunto" id="enviarPDF" accept=".pdf,.jpg,.png" multiple>
-			</form>
-			<section id="publicaciones">
-			<section id="principal">
 
 				<section id="publicaciones">
 					<input type="submit" value="Enviar" onClick="mensaje()">
