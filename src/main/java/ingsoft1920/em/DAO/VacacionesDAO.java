@@ -14,6 +14,7 @@ import java.util.List;
 
 import ingsoft1920.em.Beans.VacacionBean;
 import ingsoft1920.em.Conector.ConectorBBDD;
+import ingsoft1920.em.Controller.LoginController;
 import ingsoft1920.em.Model.AceptarModel;
 import ingsoft1920.em.Model.VacacionesModel;
 
@@ -277,9 +278,10 @@ public class VacacionesDAO {
 		PreparedStatement stmt = null; 
 		ResultSet rs = null; 
 		  try { 
-		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=?;");
+		   stmt = conn.prepareStatement("SELECT empleado.nombre,fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=? AND id_hotel=?;");
 		   stmt.setString(1,"gobernanta");
 		   stmt.setString(2,"pendiente");
+		   stmt.setInt(3, LoginController.id_hotel);
 		   rs=stmt.executeQuery();
 		   
 		   while (rs.next()){

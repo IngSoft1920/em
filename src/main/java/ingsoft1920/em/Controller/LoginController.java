@@ -20,6 +20,7 @@ import ingsoft1920.em.DAO.EmpleadoDAO;;
 public class LoginController extends HttpServlet{
 
 static int id_empleado;
+public static int id_hotel;
 final static Logger logger = LogManager.getLogger(LoginController.class.getName());
 EmpleadoDAO dao= new EmpleadoDAO();
 DatoEmpleadoBean p=new DatoEmpleadoBean();
@@ -51,6 +52,7 @@ int r;
 			
 			if(r==1) {
 				id_empleado=EmpleadoDAO.getIdEmpleado(pass, correo);
+				id_hotel = EmpleadoDAO.getHotelId(pass,correo);
 				return "menu";
 			}
 			

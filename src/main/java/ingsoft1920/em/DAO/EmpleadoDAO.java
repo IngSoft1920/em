@@ -162,6 +162,45 @@ public class EmpleadoDAO {
 		  return res;
 	}
 	
+	public static int getHotelId(String contrasena, String correo) {
+		if(conn==null) {
+			conn=ConectorBBDD.conectar();
+		}
+		int res=-1;
+		PreparedStatement stmt = null; 
+		ResultSet rs = null; 
+		  try { 
+		   stmt = conn.prepareStatement("select empleado.id_hotel from empleado where empleado.contrasenia=? and empleado.correo=?");;
+		   stmt.setString(1,contrasena);
+		   stmt.setString(2,correo);
+		   rs=stmt.executeQuery();
+		   while(rs.next()) {
+			   res=rs.getInt("empleado.id_hotel");
+		   }
+		   return res;
+          } 
+		  catch (SQLException ex){ 
+		   System.out.println("SQLException: " + ex.getMessage());
+		  }
+		  finally {
+				if (rs!=null){
+					try{rs.close();
+					}catch(SQLException sqlEx){}
+					rs=null;
+				}
+				if (stmt!=null){
+					try{stmt.close();
+					}catch(SQLException sqlEx){}
+					stmt=null;
+				}
+				if (conn!=null){
+					ConectorBBDD.desconectar();
+					conn=null;
+				}
+		  }
+		  return res;
+	}
+	
 	public static void añadirEmpleado(int id_empleado, String nombre, String telefono, String correo,int id_hotel,Date fecha,String contrasenia, String superior) {
 		//CONSULTA3->Hay que añadir a la base de datos los nuevos empleados
 		PreparedStatement stmt= null; 
