@@ -12,7 +12,7 @@ public class AceptarModel {
 	private String tipo;
 	int id;
 	
-	public AceptarModel(String nombre, String tipo, Date fecha_inicio,Date fecha_fin, int id) {
+	public AceptarModel(String nombre,String correo, String tipo, Date fecha_inicio,Date fecha_fin, int id) {
 		this.nombre=nombre;
 		this.tipo=tipo;
 		this.fecha_inicio=fecha_inicio;
