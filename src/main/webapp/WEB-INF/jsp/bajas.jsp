@@ -111,16 +111,6 @@
 			</section>
 
 
-            <section id="publicaciones">
-			<form name="formulario" method="post"
-				action="http://pagina.com/send.php" enctype="multipart/form-data">
-				<!-- �No olvides el enctype! -->
-				<!-- Campo de selecci�n de archivo -->
-				<input type="file" name="adjunto" id="enviarPDF" accept=".pdf,.jpg,.png" multiple>
-			</form>
-			<section id="publicaciones">
-			<section id="principal">
-
 				<section id="publicaciones">
 					<input type="submit" value="Enviar" onClick="mensaje()">
 				</section>
