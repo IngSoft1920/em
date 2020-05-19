@@ -121,7 +121,7 @@
 		onclick="window.location='/verBaja';" />
 		
 		<section id="publicaciones">
-					<a href="/verPDF/prueba" >
+					<a href="/verPDF" >
 					<h2 class="verPDFController">PRUEBA</a>
 				</section>
 		
