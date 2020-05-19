@@ -73,8 +73,13 @@ function activar(){
             		<form action="/aceptarBaja/${bajas.id}"  method="POST">
             		<input type="submit" value="Aceptar"/>
             		</form>
-        		
-      		</article>
+
+				
+				<input type="button" id="checkout" value="Ver justificante"
+					onClick=" window.location='/verPDF';" //>
+
+
+			</article>
 		</section>
 		</c:forEach>
 	</u1>
