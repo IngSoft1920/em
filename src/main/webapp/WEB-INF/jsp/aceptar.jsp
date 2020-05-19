@@ -73,11 +73,9 @@ function activar(){
             		<form action="/aceptarBaja/${bajas.id}"  method="POST">
             		<input type="submit" value="Aceptar"/>
             		</form>
-				<section id="publicaciones">
-					<a href="/verPDF/prueba">
-						<h2 class="verPDFController">Ver justificante
-					</a>
-				</section>
+            		
+            		<input type="submit" action="/verPDF" value="Ver justificante">			
+					
 
 			</article>
 		</section>
