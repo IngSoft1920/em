@@ -73,9 +73,11 @@ function activar(){
             		<form action="/aceptarBaja/${bajas.id}"  method="POST">
             		<input type="submit" value="Aceptar"/>
             		</form>
-            		
-            		<input type="submit" action="/verPDF" value="Ver justificante">			
-					
+
+				
+				<input type="button" id="checkout" value="Ver justificante"
+					onClick=" window.location='/verPDF';" //>
+
 
 			</article>
 		</section>
