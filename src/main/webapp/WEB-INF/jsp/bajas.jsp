@@ -119,6 +119,12 @@
 
 	<input type="submit" value="Ver Bajas Previas"
 		onclick="window.location='/verBaja';" />
+		
+		<section id="publicaciones">
+					<a href="/verPDF/prueba" >
+					<h2 class="verPDFController">PRUEBA</a>
+				</section>
+		
 
 
 
