@@ -76,7 +76,7 @@ function activar(){
 
 				
 				<input type="button" id="checkout" value="Ver justificante"
-					onClick=" window.location='/verPDF';" //>
+					onClick=" window.location='/verPDF/${bajas.id}';" //>
 
 
 			</article>

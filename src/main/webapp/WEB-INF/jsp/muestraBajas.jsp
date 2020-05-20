@@ -53,17 +53,19 @@
 			        		
       		<br></br>
 			Adjuntar justificante:
-			<form method="post" enctype="multipart/form-data" action="/upload">
+				<form method="post" enctype="multipart/form-data" action="/upload/${baja.id_Baja}">
 				<div class="form-group">
 					<spring:message code="fileToUpload" />
 					<br> <input type="file" name="file" class="btn btn-default">
 					<br />
 					<spring:message code="upload" var="upload" />
-					<input type="submit" class="btn btn-default" value="Enviar${upload}">
+					<input type="submit" class="btn btn-default" value="Enviar">
 					<spring:message code="pressHere" />
 				</div>
 
 			</form>
+           
+		
 
 </article>
 		</section>
