@@ -211,11 +211,11 @@ public class GenerarPDF {
 			}
 			
        
-        	PdfPTable table5 = new PdfPTable(1);
+        	PdfPTable table5 = new PdfPTable(2);
         	
         	PdfPCell hcell5;
-        	hcell5 = new PdfPCell(new Phrase("Líquido a recibir", categoryFont));
-        	hcell5.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        	hcell5 = new PdfPCell(new Phrase("Total", categoryFont));
+        	hcell5.setHorizontalAlignment(Element.ALIGN_LEFT);
         	hcell5.setBackgroundColor(BaseColor.LIGHT_GRAY);
         	table5.addCell(hcell5);
 			PdfPCell Total_dinero = new PdfPCell(new Phrase(Float.toString(total)));  
@@ -276,7 +276,7 @@ public class GenerarPDF {
             document.add(table2);
             document.add(table3);
             document.add(table4);
-            
+            document.add(table5);
             document.close();
             
         } catch (DocumentException documentException) {
