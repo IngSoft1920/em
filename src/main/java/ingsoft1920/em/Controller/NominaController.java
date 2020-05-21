@@ -65,12 +65,12 @@ final static Logger logger = LogManager.getLogger(LoginController.class.getName(
 	
 	@GetMapping("/cerrar3")
 	public String cerrarp1(Model model) {
-		return "login";
+		return "redirect:";
 	}
 	
 	@PostMapping("/cerrar3")
 	public String cerrarp(Model model) {
-		return "login";
+		return "redirect:";
 	}
 	
 	@GetMapping("/tareas3")

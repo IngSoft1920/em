@@ -74,12 +74,12 @@ import ingsoft1920.em.Model.TurnoModel;
 
 		@GetMapping("/cerrar9")
 		public String cerrarp1(Model model) {
-			return "login";
+			return "redirect:";
 		}
 
 		@PostMapping("/cerrar9")
 		public String cerrarp(Model model) {
-			return "login";
+			return "redirect:";
 		}
 
 		@GetMapping("/tareas9")

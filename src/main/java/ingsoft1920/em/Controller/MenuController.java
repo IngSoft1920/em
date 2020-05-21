@@ -64,13 +64,13 @@ static boolean checkinDone = false;
 	
 	@GetMapping("/cerrar")
 	public String cerrar(Model model) {
-		return "login";
+		return "redirect:";
 	}
 	
 	@PostMapping("/cerrar")
 	public String cerrar(@Valid @ModelAttribute("loginBean") LoginBean loginBean,
 			Model model) {
-		return "login";
+		return "redirect:";
 	}
 	
 	@GetMapping("/tareas")

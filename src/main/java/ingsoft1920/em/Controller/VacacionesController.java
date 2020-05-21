@@ -59,12 +59,12 @@ public class VacacionesController {
 
 	@GetMapping("/cerrar7")
 	public String cerrarp1(Model model) {
-		return "login";
+		return "redirect:";
 	}
 
 	@PostMapping("/cerrar7")
 	public String cerrarp(Model model) {
-		return "login";
+		return "redirect:";
 	}
 
 	@GetMapping("/tareas7")
