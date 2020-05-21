@@ -25,39 +25,40 @@ import ingsoft1920.em.Servicios.HttpClient;
 
 @Controller
 public class verPDFController {
-	@RequestMapping(value = "/verPDF", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
-	
-	public static ResponseEntity<InputStream> verPDF() throws Exception {
-		InputStream is = null;
-		HttpHeaders headers = null;
-		try {			
-			// Abrimos el archivo
-			File file = new File("./files/");
-			if (!file.exists()) {
-				throw new Exception("PDF does not exist");
+	@ResponseBody
+	@GetMapping("/verPDF/{id_baja}")
+	public static void verPDF(@PathVariable("id_baja")int id_baja,HttpServletResponse response) {
+		
+		try {
+			
+			//Abrir fichero pedido
+			File file = new File("/hs/em/files/"+id_baja+".pdf");
+			if(!file.exists())
+				throw new Exception("PDF does not exists");
+			
+			//Obtenemos InputStream del fichero
+			InputStream is = new FileInputStream(file);
+			//Marcamos respuesta en cabecera
+			response.setContentType("application/pdf");
+			response.setContentLength((int) file.length());
+			response.setStatus(HttpStatus.OK.value());
+			// Ponemos el strem del fichero en el stream de la respuesta
+			IOUtils.copy(is, response.getOutputStream());
+			// Flusheamos buffer para permitir que cliente empiece a recibir info
+			response.flushBuffer();
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
+			response.setStatus(HttpStatus.CONFLICT.value());
+			response.setContentType("text/plain");
+			try {
+				PrintWriter w = response.getWriter();
+				w.println(ex.getLocalizedMessage());
+				response.setContentType("aplication/pdf");
+				response.flushBuffer();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			// Obtenemos el InputStream del fichero
-			is = new FileInputStream(file);
-			// Marcamos respuesta en cabecera
-			headers = new HttpHeaders();
-			headers.add("Content-Disposition","inline; filename=upload.pdf");
-			
-			
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			
 		}
-		return ResponseEntity
-				.ok()
-				.headers(headers)
-				.contentType(MediaType.APPLICATION_PDF)
-                .body(is);
 	}
 }
-	
-
-
-
-			
-
