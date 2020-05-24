@@ -66,7 +66,7 @@ public class BajaDAO {
 		ResultSet rs = null; 
 		  try { 
 		   stmt = conn.prepareStatement("SELECT empleado.nombre,empleado.correo, tipo,fecha_inicio,fecha_fin,id_baja FROM baja JOIN empleado on baja.id_empleado=empleado.id_empleado WHERE superior=? AND baja.estado=?  AND id_hotel=?;");
-		   stmt.setString(1,"gobernanta");
+		   stmt.setString(1,LoginController.correoUsuario);
 		   stmt.setString(2,"pendiente");
 		   stmt.setInt(3, LoginController.id_hotel);
 		   rs=stmt.executeQuery();

@@ -279,7 +279,7 @@ public class VacacionesDAO {
 		ResultSet rs = null; 
 		  try { 
 		   stmt = conn.prepareStatement("SELECT empleado.nombre, empleado.correo, fecha_inicio,fecha_fin, id_vacaciones FROM vacaciones JOIN empleado on vacaciones.id_empleado=empleado.id_empleado WHERE superior=? AND vacaciones.estado=? AND id_hotel=?;");
-		   stmt.setString(1,"gobernanta");
+		   stmt.setString(1,LoginController.correoUsuario);
 		   stmt.setString(2,"pendiente");
 		   stmt.setInt(3, LoginController.id_hotel);
 		   rs=stmt.executeQuery();
